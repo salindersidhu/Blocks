@@ -1,7 +1,9 @@
 # Visual Studio Generated Files
 *.sdf
-.vs/
 *.opendb
+Blocks.aps
+.vs/
 Debug
 Release
-Blocks.aps
+x64
+x86
