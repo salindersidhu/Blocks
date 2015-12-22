@@ -81,7 +81,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\SFML-2.3.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SFML_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>C:\SFML-2.3.2\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-graphics-s-d.lib;sfml-window-s-d.lib;sfml-system-s-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -103,13 +109,44 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\SFML-2.3.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SFML_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>C:\SFML-2.3.2\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-graphics-s.lib;sfml-window-s.lib;sfml-system-s.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ButtonGUI.cpp" />
+    <ClCompile Include="DrawManager.cpp" />
+    <ClCompile Include="Grid.cpp" />
+    <ClCompile Include="LevelManager.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MDSChecker.cpp" />
+    <ClCompile Include="MinuteClock.cpp" />
+    <ClCompile Include="PhyfsStream.cpp" />
+    <ClCompile Include="WindowsDialogs.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ButtonGUI.h" />
+    <ClInclude Include="Constants.h" />
+    <ClInclude Include="DrawManager.h" />
+    <ClInclude Include="Grid.h" />
+    <ClInclude Include="LevelManager.h" />
+    <ClInclude Include="MD5Checker.h" />
+    <ClInclude Include="MinuteClock.h" />
+    <ClInclude Include="PhyfsStream.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="WindowsDialogs.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Blocks.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\Icon.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
