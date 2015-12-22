@@ -11,21 +11,21 @@ UPDATE DATE:	12/22/2015
 
 PhyfsStreamException::PhyfsStreamException(string action) {
 
-	message = "PhyfsStreamException: Could not perform required action: '" + action + "'";
+	message = "Error: Could not perform required action: '" + action + "'";
 }
 
 /* ResourceNotLoadedException class */
 
 ResourceNotLoadedException::ResourceNotLoadedException(string resourceType, string resourceFilePath) {
 
-	message = "ResourceNotLoadedException: Can't load resource of type '" + resourceType + "' from '" + resourceFilePath + "'";
+	message = "Error: Can't load resource of type '" + resourceType + "' from '" + resourceFilePath + "'";
 }
 
 /* ResourceNotFoundException class */
 
 ResourceNotFoundException::ResourceNotFoundException(string resourceType, int resourceID) {
 
-	message = "ResourceNotFoundException: Can't locate resource of type '" + resourceType + "' with ID '" + to_string(resourceID) + "'";
+	message = "Error: Can't locate resource of type '" + resourceType + "' with ID '" + to_string(resourceID) + "'";
 }
 
 /* DrawManager class */
