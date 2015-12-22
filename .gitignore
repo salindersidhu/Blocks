@@ -2,3 +2,6 @@
 *.sdf
 .vs/
 *.opendb
+Debug
+Release
+Blocks.aps
