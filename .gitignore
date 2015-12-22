@@ -1,2 +1,4 @@
 # Visual Studio Generated Files
 *.sdf
+.vs/
+*.opendb
