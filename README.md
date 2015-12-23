@@ -3,7 +3,7 @@
 Description:
 -------------
 Blocks is a 2D puzzle game where the objective is to re-arrange the blocks (horizontally or vertically) so that you can push
-the red block out of the board. The blocks can only move in the direction of their orientation (blocks positioned vertically, can only
+the red block out of the board. The blocks can only move in the direction of their orientation (blocks positioned vertically can only
 move vertically, likewise, blocks positioned horizontally can only move horizontally). To slide a block, simply click on the block to 
 select it and move the mouse, release the mouse to position the block. The number of moves and amount of time taken are displayed when the 
 level is successfully completed.
@@ -33,7 +33,7 @@ Build Instructions:
 6. Right click the `Blocks` project in the `Class View` pane and select `Clean`
 7. Set the `Solutions Configurations` to `Release` and set the `Solutions Platform` to `x86`
 8. Right click the `Blocks` project in the `Class View` pane and select `Build`
-9. If successful, Blocks.exe will build in the `Release` folder in your repo's root folder
+9. If successful, `Blocks.exe` will build in the `Release` folder in your repo's root folder
 10. Copy the `Data.7z` resource file from `\Blocks\Resources` to the `\Release` folder where `Blocks.exe` is located
 11. Execute `Blocks.exe` to launch the application
 
