@@ -8,8 +8,8 @@
 #include "DrawManager.hpp"
 #include "Grid.hpp"
 #include "ButtonGUI.hpp"
-//#include "WindowsDialogs.hpp"
 #include "Clock.hpp"
+#include "Dialog.hpp"
 using namespace std;
 
 class LevelManager {
@@ -27,9 +27,9 @@ class LevelManager {
 		int currentLevel;
 		int numberOfMoves;
 		DrawManager *dm;
-		//WindowsDialogs *dialog;
 		Clock timer;
 		Grid grid;
+		Dialog *dialog;
 		vector<ButtonGUI> buttons;
 		sf::RenderWindow *canvasWindow;
 };

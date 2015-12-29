@@ -2,13 +2,13 @@
 
 LevelManager::LevelManager(sf::RenderWindow *window) {
 
-	// Initalize windows dialogs
-	//dialog = new WindowsDialogs(window->getSystemHandle(), WINDOW_TITLE);
+	// Initalize dialogs
+	dialog = new Dialog(WINDOW_TITLE);
 	// Initalize drawing manager
 	try {
 		dm = new DrawManager(window, &string(GAME_RESOURCE_ARCHIVE));
 	} catch (exception &ex) {
-		//dialog->showErrorDialog(ex.what());
+		dialog->errorDialog(ex.what());
 		window->close();
 	}
 	canvasWindow = window;
@@ -49,7 +49,7 @@ LevelManager::LevelManager(sf::RenderWindow *window) {
 		dm->loadTextFont(TEXTS::BUTTON_RESET, FONT_COOPER_BLACK_STD);
 		dm->loadTextFont(TEXTS::BUTTON_QUIT, FONT_COOPER_BLACK_STD);
 	} catch (exception &ex) {
-		//dialog->showErrorDialog(ex.what());
+		dialog->errorDialog(ex.what());
 		window->close();
 	}
 
@@ -79,7 +79,7 @@ void LevelManager::buildLevel() {
 		dm->configTextCenterHorizontal(TEXTS::HEADER, 60, WHITE, "Level " + to_string(currentLevel), 15);
 		dm->configTextCenterHorizontal(TEXTS::INFO, 30, WHITE, "Time: " + timer.output() + "    Moves: " + to_string(numberOfMoves), 640);
 	} catch (exception &ex) {
-		//dialog->showErrorDialog(ex.what());
+		dialog->errorDialog(ex.what());
 		canvasWindow->close();
 	}
 
@@ -198,7 +198,7 @@ void LevelManager::buildLevel() {
 		grid.addBlock(Block(ORIENTATION::H, 2, 0, 0, SPRITE::BH25, false));
 	} else {
 		// Display a game victory message at the last level and start over at level 1
-		//dialog->showInfoDialog(GAME_WON_MESSAGE);
+		dialog->messageDialog(GAME_WON_MESSAGE);
 		currentLevel = 1;
 		buildLevel();
 	}
@@ -213,7 +213,7 @@ void LevelManager::checkLevelCleared() {
 		// Display a level complete message and load the next level
 		string head = "LEVEL " + to_string(currentLevel) +  " COMPLETE!\n\n";
 		string body = "Your time: " + timer.output() + " with " + to_string(numberOfMoves) + " moves.";
-		//dialog->showInfoDialog(head + body);
+		dialog->messageDialog(head + body);
 		currentLevel++;
 		buildLevel();
 	}
@@ -249,7 +249,7 @@ void LevelManager::handleTimer() {
 	try {
 		dm->configTextCenterHorizontal(TEXTS::INFO, 30, WHITE, "Time: " + timer.output() + "    Moves: " + to_string(numberOfMoves), 640);
 	} catch (exception &ex) {
-		//dialog->showErrorDialog(ex.what());
+		dialog->errorDialog(ex.what());
 		canvasWindow->close();
 	}
 }
@@ -297,7 +297,7 @@ void LevelManager::drawLevel() {
 		// Draw the grid
 		grid.draw(dm);
 	} catch (exception &ex) {
-		//dialog->showErrorDialog(ex.what());
+		dialog->errorDialog(ex.what());
 		canvasWindow->close();
 	}
 }
