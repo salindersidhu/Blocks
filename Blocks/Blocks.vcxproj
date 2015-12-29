@@ -138,7 +138,6 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Clock.cpp" />
     <ClCompile Include="PhyfsStream.cpp" />
-    <ClCompile Include="WindowsDialogs.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ButtonGUI.hpp" />
@@ -149,7 +148,6 @@
     <ClInclude Include="Clock.hpp" />
     <ClInclude Include="PhyfsStream.hpp" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="WindowsDialogs.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Blocks.rc" />

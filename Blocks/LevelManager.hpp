@@ -8,7 +8,7 @@
 #include "DrawManager.hpp"
 #include "Grid.hpp"
 #include "ButtonGUI.hpp"
-#include "WindowsDialogs.hpp"
+//#include "WindowsDialogs.hpp"
 #include "Clock.hpp"
 using namespace std;
 
@@ -27,7 +27,7 @@ class LevelManager {
 		int currentLevel;
 		int numberOfMoves;
 		DrawManager *dm;
-		WindowsDialogs *dialog;
+		//WindowsDialogs *dialog;
 		Clock timer;
 		Grid grid;
 		vector<ButtonGUI> buttons;
