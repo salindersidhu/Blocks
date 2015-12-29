@@ -1,14 +1,6 @@
-/*
-FILENAME:		Grid.cpp
-AUTHOR:			Salinder Sidhu
-DESCRIPTION:	Implementation for Grid.h.
-UPDATE DATE:	10/27/2013
-*/
-
-#include "Grid.h"
+#include "Grid.hpp"
 
 /* BLOCK class */
-
 Block::Block(ORIENTATION _orientation, int _size, int _x, int _y, SPRITE _image, bool _isRedBlock) {
 	orientation = _orientation;
 	size = _size;
@@ -20,7 +12,6 @@ Block::Block(ORIENTATION _orientation, int _size, int _x, int _y, SPRITE _image,
 }
 
 /* Grid class */
-
 Grid::Grid() {
 	blockFree = true;
 }

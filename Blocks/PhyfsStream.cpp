@@ -1,11 +1,4 @@
-/*
-FILENAME:		PhyfsStream.cpp
-AUTHOR:			Salinder Sidhu
-DESCRIPTION:	Implementation for PhyfsStream.h.
-UPDATE DATE:	10/29/2013
-*/
-
-#include "PhyfsStream.h"
+#include "PhyfsStream.hpp"
 
 PhyfsStream::~PhyfsStream() {
 

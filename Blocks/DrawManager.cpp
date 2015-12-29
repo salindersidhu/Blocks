@@ -1,35 +1,24 @@
-/*
-FILENAME:		DrawManager.cpp
-AUTHOR:			Salinder Sidhu
-DESCRIPTION:	Implementation for DrawManager.h.
-UPDATE DATE:	12/22/2015
-*/
-
-#include "DrawManager.h"
+#include "DrawManager.hpp"
 
 /* PhyfsStreamException class*/
-
 PhyfsStreamException::PhyfsStreamException(string action) {
 
 	message = "Error: Could not perform required action: '" + action + "'";
 }
 
 /* ResourceNotLoadedException class */
-
 ResourceNotLoadedException::ResourceNotLoadedException(string resourceType, string resourceFilePath) {
 
 	message = "Error: Can't load resource of type '" + resourceType + "' from '" + resourceFilePath + "'";
 }
 
 /* ResourceNotFoundException class */
-
 ResourceNotFoundException::ResourceNotFoundException(string resourceType, int resourceID) {
 
 	message = "Error: Can't locate resource of type '" + resourceType + "' with ID '" + to_string(resourceID) + "'";
 }
 
 /* DrawManager class */
-
 DrawManager::DrawManager(sf::RenderWindow *window, string *resourceArchive) {
 
 	canvasWindow = window;

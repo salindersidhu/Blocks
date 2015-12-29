@@ -1,11 +1,4 @@
-/*
-FILENAME:		ButtonGUI.cpp
-AUTHOR:			Salinder Sidhu
-DESCRIPTION:	Implementation for ButtonGUI.h.
-UPDATE DATE:	10/27/2013
-*/
-
-#include "ButtonGUI.h"
+#include "ButtonGUI.hpp"
 
 ButtonGUI::ButtonGUI(string text, TEXTS font, float width, float height, float positionX, float positionY, SPRITE normal, SPRITE selected) {
 	buttonText = text;

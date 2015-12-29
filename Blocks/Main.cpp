@@ -1,14 +1,6 @@
-/*
-FILENAME:		Main.cpp
-AUTHOR:			Salinder Sidhu
-DESCRIPTION:	Blocks logic game main application.
-DEPENDENCIES:	SFML (Game library [C++]), PHYSFS (Archive handler [C]), OPENSSL (MD5 file checking [C])
-UPDATE DATE:	11/05/2013
-*/
-
 #include <SFML\Graphics.hpp>
-#include "Constants.h"
-#include "LevelManager.h"
+#include "Constants.hpp"
+#include "LevelManager.hpp"
 
 int main() {
 

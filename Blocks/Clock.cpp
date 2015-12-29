@@ -1,20 +1,13 @@
-/*
-FILENAME:		MinuteClock.cpp
-AUTHOR:			Salinder Sidhu
-DESCRIPTION:	Implementation for MinuteClock.h.
-UPDATE DATE:	10/27/2013
-*/
+#include "Clock.hpp"
 
-#include "MinuteClock.h"
-
-MinuteClock::MinuteClock() {
+Clock::Clock() {
 
 	minutes = 0;
 	seconds = 0;
 	milliSeconds = 0;
 }
 
-void MinuteClock::tick() {
+void Clock::tick() {
 
 	milliSeconds++;
 	if (milliSeconds >= 60) {
@@ -27,14 +20,14 @@ void MinuteClock::tick() {
 	}
 }
 
-void MinuteClock::reset() {
+void Clock::reset() {
 
 	seconds = 0;
 	minutes = 0;
 	milliSeconds = 0;
 }
 
-string MinuteClock::doubleDigit(int integer) {
+string Clock::doubleDigit(int integer) {
 
 	string num = to_string(integer);
 	if (num.length() == 1) {
@@ -43,7 +36,7 @@ string MinuteClock::doubleDigit(int integer) {
 	return num;
 }
 
-string MinuteClock::output() {
+string Clock::output() {
 
 	return doubleDigit(minutes) + ":" + doubleDigit(seconds) + ":" + doubleDigit(milliSeconds);
 }

@@ -1,11 +1,4 @@
-/*
-FILENAME:		LevelManager.cpp
-AUTHOR:			Salinder Sidhu
-DESCRIPTION:	Implementation for LevelManager.h.
-UPDATE DATE:	11/05/2013
-*/
-
-#include "LevelManager.h"
+#include "LevelManager.hpp"
 
 LevelManager::LevelManager(sf::RenderWindow *window) {
 

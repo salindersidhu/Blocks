@@ -1,11 +1,4 @@
-/*
-FILENAME:		WindowsDialogs.cpp
-AUTHOR:			Salinder Sidhu
-DESCRIPTION:	Implementation for WindowsDialogs.h.
-UPDATE DATE:	10/27/2013
-*/
-
-#include "WindowsDialogs.h"
+#include "WindowsDialogs.hpp"
 
 WindowsDialogs::WindowsDialogs(HWND handle, string title) {
 	windowHandle = handle;

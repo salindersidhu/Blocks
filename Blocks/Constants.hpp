@@ -1,12 +1,5 @@
-/*
-FILENAME:		Constants.h
-AUTHOR:			Salinder Sidhu
-DESCRIPTION:	Macros, definitions and enumerations.
-UPDATE DATE:	12/22/2015
-*/
-
-#ifndef CONSTANTS_H
-#define CONSTANTS_H
+#ifndef CONSTANTS_HPP
+#define CONSTANTS_HPP
 
 // Window constants
 #define WINDOW_WIDTH 600
