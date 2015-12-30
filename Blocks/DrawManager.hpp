@@ -57,9 +57,10 @@ class DrawManager {
 		// Store raw resource data objects
 		map<SPRITE, sf::Texture> texturesMap;
 		map<TEXTS, sf::Font> fontsMap;
-		// Store sprite and text objects
+		// Store sprite, text and image objects
 		map<SPRITE, sf::Sprite> spritesMap;
 		map<TEXTS, sf::Text> textsMap;
+		map<IMAGE, sf::Image> imageMap;
 		// Window to draw on
 		sf::RenderWindow *canvasWindow;
 		// The PHYSFS custom input stream

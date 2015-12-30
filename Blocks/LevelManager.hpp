@@ -7,7 +7,7 @@
 #include "Constants.hpp"
 #include "DrawManager.hpp"
 #include "Grid.hpp"
-#include "ButtonGUI.hpp"
+#include "Button.hpp"
 #include "Clock.hpp"
 #include "Dialog.hpp"
 using namespace std;
@@ -30,7 +30,7 @@ class LevelManager {
 		Clock timer;
 		Grid grid;
 		Dialog *dialog;
-		vector<ButtonGUI> buttons;
+		vector<Button> buttons;
 		sf::RenderWindow *canvasWindow;
 };
 

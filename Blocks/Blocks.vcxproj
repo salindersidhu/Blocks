@@ -131,7 +131,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ButtonGUI.cpp" />
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="Dialog.cpp" />
     <ClCompile Include="DrawManager.cpp" />
     <ClCompile Include="Grid.cpp" />
@@ -142,7 +142,7 @@
     <ClCompile Include="tinyfiledialogs.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ButtonGUI.hpp" />
+    <ClInclude Include="Button.hpp" />
     <ClInclude Include="Constants.hpp" />
     <ClInclude Include="Dialog.hpp" />
     <ClInclude Include="DrawManager.hpp" />
