@@ -47,15 +47,6 @@ Blocks is a 2D puzzle game where the objective is to rearrange the blocks (horiz
 7. Copy the `Data.7z` resource file from `\Blocks\Resources` to the `\Release` folder where `Blocks.exe` is located
 8. Execute `Blocks.exe` to launch the application
 
-###Linux:
-
-##To Do:
-- [x] Update README with instructions for compiling PhysicsFS
-- [ ] Update README with instructions for compiling the project on Linux
-- [X] Remove windows dependent dialog message code
-- [X] Use cross platform code for message dialogs
-- [ ] Redesign the structure of the code
-
 ##License:
 Copyright (c) 2015 Salinder Sidhu
 

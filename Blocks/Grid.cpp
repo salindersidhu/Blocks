@@ -1,198 +1,181 @@
 #include "Grid.hpp"
 
-/* BLOCK class */
-Block::Block(ORIENTATION _orientation, int _size, int _x, int _y, SPRITE _image, bool _isRedBlock) {
-	orientation = _orientation;
-	size = _size;
-	x = GAME_INIT_X + (_x * GAME_POS_INCR);
-	y = GAME_INIT_Y + (_y * GAME_POS_INCR);
-	blockSelected = false;
-	image = _image;
-	isRedBlock = _isRedBlock;
-}
-
 /* Grid class */
-Grid::Grid() {
-	blockFree = true;
+Grid::Grid(int x, int y, int endX, int endY, int incr, int victoryPos) {
+    gridX = x;
+    gridY  = y;
+    gridEndX = endX;
+    gridEndY = endY;
+    posIncr = incr;
+    blockVictoryPos = victoryPos;
+	isBlockFree = true;
 }
 
-void Grid::configure(DrawManager *dm) {
-
-	// Cycle through the container
-	for (unsigned int i = 0; i < blockContainer.size(); i++) {
-		// Configure the block image positions prior to drawing
-		dm->configSpritePosition(blockContainer[i].image, (float) blockContainer[i].x, (float) blockContainer[i].y);
+void Grid::set(DrawManager *dm) {
+	// Cycle through all the blocks on the grid
+	for (unsigned int i = 0; i < blocks.size(); i++) {
+		// Set the block image positions prior to drawing
+		dm->setSprite(blocks[i].getSpriteName(), (float)blocks[i].getX(), (float)blocks[i].getY());
 	}
 }
 
 void Grid::draw(DrawManager *dm) {
-
-	// Cycle through the container
-	for (unsigned int i = 0; i < blockContainer.size(); i++) {
+	// Cycle through all the blocks on the grid
+	for (unsigned int i = 0; i < blocks.size(); i++) {
 		// Draw the block to the screen
-		dm->drawSprite(blockContainer[i].image);
+		dm->drawSprite(blocks[i].getSpriteName());
 	}
 }
 
 void Grid::addBlock(Block block) {
-
-	// Add block to container
-	blockContainer.push_back(block);
+	// Add block to the grid
+	blocks.push_back(block);
 }
 
 bool Grid::isHovering(int x, int y, int a, int b, int c, int d) {
-
-	return ((x >= a && x <= a + c) && (y >= b && y <= b + d));
+	return (x >= a && x <= a + c) && (y >= b && y <= b + d);
 }
 
-bool Grid::isBounded(int blockPosition, int blockSize, int upperBound, int lowerBound) {
-
-	return ((blockPosition >= upperBound) && (blockPosition + (blockSize * GAME_POS_INCR) <= lowerBound));
+bool Grid::isBounded(int position, int size, int upBound, int lowBound) {
+	return (position >= upBound) && (position + (size * posIncr) <= lowBound);
 }
 
 bool Grid::isVictory() {
-
-	// Cycle through all the blocks
-	for (unsigned int i = 0; i < blockContainer.size(); i++) {
-		Block block = blockContainer[i];
-		// Check if the red block is aligned in the victory position
-		if (block.isRedBlock && block.x == BLOCK_VICTORY_POS) {
+	// Cycle through all the blocks on the grid
+	for (unsigned int i = 0; i < blocks.size(); i++) {
+        int x = blocks[i].getX();
+		// Check if the victory block is aligned in the victory position
+		if (blocks[i].isVictory() && x == blockVictoryPos) {
 			return true;
 		}
 	}
 	return false;
 }
 
-void Grid::selectBlock(int mouseX, int mouseY) {
-
-	blockMoved = false;
-	// Cycle through all the blocks
-	for (unsigned int i = 0; i < blockContainer.size(); i++) {
-		int blockX = blockContainer[i].x;
-		int blockY = blockContainer[i].y;
-		// Physical size (pixel length) of block
-		int blockSize = -49 + (90 * blockContainer[i].size);
-		ORIENTATION blockOrientation = blockContainer[i].orientation;
+void Grid::selectBlock(int mX, int mY) {
+	isBlockMoved = false;
+	// Cycle through all the blocks on the grid
+	for (unsigned int i = 0; i < blocks.size(); i++) {
+		int bX = blocks[i].getX();
+		int bY = blocks[i].getY();
+		int width = blocks[i].getWidth();
+		int height = blocks[i].getLength();
 		// Determine if mouse is over a block
-		if ((blockOrientation == ORIENTATION::V && isHovering(mouseX, mouseY, blockX, blockY, 58, blockSize)) || (blockOrientation == ORIENTATION::H && isHovering(mouseX, mouseY, blockX, blockY, blockSize, 57))) {
-			blockContainer[i].blockSelected = true;
+		if ((blocks[i].isVertical() && isHovering(mX, mY, bX, bY, width, height)) || (!blocks[i].isVertical() && isHovering(mX, mY, bX, bY, width, height))) {
+			blocks[i].setSelected(true);
 			// Set the current values of x and y used for the alignment system
-			previousX = blockX - GAME_INIT_X;
-			previousY = blockY - GAME_INIT_Y;
+			previousX = bX - gridX;
+			previousY = bY - gridY;
 			// Set the distances for sliding movement
-			distanceX = (int) fabs((float) blockContainer[i].x - mouseX); // Type casting required to solve issue with ambigous fabs call
-			distanceY = (int) fabs((float) blockContainer[i].y - mouseY);
+			distanceX = (int)fabs((float)bX - mX);
+			distanceY = (int)fabs((float)bY - mY);
 		}
 	}
 }
 
-void Grid::alignBlock(int initalPosition, int &positionValue, int previousPosition) {
-
-	// Get modulus for distance to cover and current position of positionValue
-	int currentPosition = positionValue - initalPosition;
-	int mod = currentPosition % GAME_POS_INCR;
+void Grid::alignBlock(int initPos, int &posVal, int prevPos) {
+	// Get modulus for distance to cover and current position
+	int currPos = posVal - initPos;
+	int mod = currPos % posIncr;
 	// Find and set the closest positional alignment
-	if (mod != 0) {
-		if ((positionValue - mod) % GAME_POS_INCR != 0) {
-			positionValue -= mod;
+	if (mod) {
+		if ((posVal - mod) % posIncr) {
+			posVal -= mod;
 		} else {
-			positionValue += mod;
+			posVal += mod;
 		}
 		// Align to the correct direction
-		if ((currentPosition > previousPosition) && (mod <= currentPosition)) {
-			positionValue += GAME_POS_INCR;
+		if ((currPos > prevPos) && (mod <= currPos)) {
+			posVal += posIncr;
 		}
 	}
 }
 
-void Grid::releaseBlock(int &numberOfMoves) {
-
-	blockFree = true;
-	// Cycle through all the blocks
-	for (unsigned int i = 0; i < blockContainer.size(); i++) {
+void Grid::releaseBlock(int &numMoves) {
+	isBlockFree = true;
+	// Cycle through all the blocks on the grid
+	for (unsigned int i = 0; i < blocks.size(); i++) {
+        int bX = blocks[i].getX();
+        int bY = blocks[i].getY();
 		// If a block is selected then unselect it
-		if (blockContainer[i].blockSelected) {
-			blockContainer[i].blockSelected = false;
-			distanceX = 0;
-			distanceY = 0;
+		if (blocks[i].isSelected()) {
+			blocks[i].setSelected(false);
+			distanceX = distanceY = 0;
 			// Align the block correctly to the grid
-			if (blockContainer[i].orientation == ORIENTATION::H) {
-				alignBlock(GAME_INIT_X, blockContainer[i].x, previousX);
+			if (!blocks[i].isVertical()) {
+				alignBlock(gridX, bX, previousX);
 			} else {
-				alignBlock(GAME_INIT_Y, blockContainer[i].y, previousY);
+				alignBlock(gridY, bY, previousY);
 			}
 		}
 	}
-	// If block moved GAME_POS_INCRease number of moves
-	if (blockMoved) {
-		numberOfMoves++;
-		blockMoved = false;
+	// If block moved then increase the number of moves by 1
+	if (isBlockMoved) {
+		numMoves++;
+		isBlockMoved = false;
 	}
 }
 
-void Grid::moveBlock(int mouseX, int mouseY) {
-
-	// Cycle though all the blocks
-	for (unsigned int i = 0; i < blockContainer.size(); i++) {
+void Grid::moveBlock(int mX, int mY) {
+	// Cycle through all the blocks on the grid
+	for (unsigned int i = 0; i < blocks.size(); i++) {
 		// Find the currently selected block
-		if (blockContainer[i].blockSelected && blockFree) {
-			int size = blockContainer[i].size;
+		if (blocks[i].isSelected() && isBlockFree) {
+			int size = blocks[i].getSize();
+            int currY = mY - distanceY;
+            int currX = mX - distanceX;
 			// Move the block with the mouse in the correct orientation
-			if (blockContainer[i].orientation == V) {
-				int currentY = mouseY - distanceY;
-				if (isBounded(currentY, size, GAME_INIT_Y, 637) && notCollision(blockContainer[i], 0, currentY)) {
-					blockContainer[i].y = currentY;
-					blockMoved = true;
+			if (blocks[i].isVertical()) {
+				if (isBounded(currY, size, gridY, gridEndY) && isNotCollision(blocks[i], 0, currY)) {
+					blocks[i].setY(currY);
+					isBlockMoved = true;
 				}
-			}
-			else
-			{
-				int currentX = mouseX - distanceX;
-				if (isBounded(currentX, size, GAME_INIT_X, 535) && notCollision(blockContainer[i], currentX, 0)) {
-					blockContainer[i].x = currentX;
-					blockMoved = true;
+			} else {
+				if (isBounded(currX, size, gridX, gridEndX) && isNotCollision(blocks[i], currX, 0)) {
+					blocks[i].setX(currX);
+					isBlockMoved = true;
 				}
 			}
 		}
 	}
 }
 
-bool Grid::notCollision(Block block, int currentX, int currentY)
-{
-	for (unsigned int i = 0; i < blockContainer.size(); i++) {
+bool Grid::isNotCollision(Block block, int x, int y) {
+    // Cycle through all the blocks on the grid
+	for (unsigned int i = 0; i < blocks.size(); i++) {
 		// Default collision boundry values
-		int startX = blockContainer[i].x;
-		int endX = blockContainer[i].x;
-		int startY = blockContainer[i].y;
-		int endY = blockContainer[i].y;
-		int checkX = currentX; // Default for left movement
-		int checkY = currentY; // Default for moving up
-		if (blockContainer[i].orientation == V) {
-			endY += ((blockContainer[i].size - 1) * GAME_POS_INCR);
+		int startX = blocks[i].getX();
+		int endX = blocks[i].getX();
+		int startY = blocks[i].getY();
+		int endY = blocks[i].getY();
+		int checkX = x; // Default for left movement
+		int checkY = y; // Default for moving up
+		if (blocks[i].isVertical()) {
+			endY += (blocks[i].getSize() - 1) * posIncr;
 		} else {
-			endX += ((blockContainer[i].size - 1) * GAME_POS_INCR);
+			endX += (blocks[i].getSize() - 1) * posIncr;
 		}
 		// Checking for horizontal blocks
-		if (blockContainer[i].x != block.x && currentX > 0) {
-			endX += GAME_POS_INCR;
-			// Calculate for right (-->) movement
-			if ((previousX + GAME_INIT_X) - currentX < 0) {
-				checkX += block.size * GAME_POS_INCR;
+		if (blocks[i].getX() != block.getX() && x > 0) {
+			endX += posIncr;
+			// Calculate for moving right
+			if ((previousX + gridX) - x < 0) {
+				checkX += block.getSize() * posIncr;
 			}
 			// Check if collision will occur
-			if ((checkX >= startX && checkX <= endX) && (block.y >= startY && block.y <= endY)) {
-				blockFree = false;
-				return false;
+			if ((checkX >= startX && checkX <= endX) && (block.getY() >= startY && block.getY() <= endY)) {
+				isBlockFree = false;
+				return isBlockFree;
 			}
-		} else if (blockContainer[i].y != block.y && currentY > 0) { // Checking for verticle blocks
-			endY += GAME_POS_INCR;
+		} else if (blocks[i].getY() != block.getY() && y > 0) { // Checking for verticle blocks
+			endY += posIncr;
 			// Calculate for down movement
-			if ((previousY + GAME_INIT_Y) - currentY < 0) {
-				checkY += block.size * GAME_POS_INCR;
+			if ((previousY + gridY) - y < 0) {
+				checkY += block.getSize() * posIncr;
 			}
 			// Check if collision will occur
-			if ((checkY >= startY && checkY <= endY) && (block.x >= startX && block.x <= endX)) {
-				blockFree = false;
+			if ((checkY >= startY && checkY <= endY) && (block.getX() >= startX && block.getX() <= endX)) {
+				isBlockFree = false;
 				return false;
 			}
 		}
@@ -201,7 +184,6 @@ bool Grid::notCollision(Block block, int currentX, int currentY)
 }
 
 void Grid::clear() {
-
 	// Clear the block container
-	blockContainer.clear();
+	blocks.clear();
 }

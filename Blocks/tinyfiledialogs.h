@@ -49,7 +49,7 @@ tested with C & C++ compilers
 on Windows Visual Studio MinGW Mac OSX LINUX FREEBSD ILLUMOS SOLARIS
 using Gnome Kde Enlightenment Mate Cinnamon Unity
 Lxde Lxqt Xfce WindowMaker IceWm Cde Jds OpenBox
- 
+
 - License -
 
 This software is provided 'as-is', without any express or implied
@@ -265,13 +265,13 @@ int main()
 
 OSX :
 $ gcc -o hello.app hello.c tinyfiledialogs.c
- 
+
 UNIX :
 $ gcc -o hello hello.c tinyfiledialogs.c
 
 MinGW :
 > gcc -o hello.exe hello.c tinyfiledialogs.c -LC:/mingw/lib -lcomdlg32
- 
+
 VisualStudio :
   Create a console application project, it links against Comdlg32.lib.
 	Right click on your Project, select Properties.

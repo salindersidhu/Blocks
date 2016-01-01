@@ -1,15 +1,15 @@
 /*
-tinyfiledialogs.c 
+tinyfiledialogs.c
 Unique code file of "tiny file dialogs" created [November 9, 2014]
 Copyright (c) 2014 - 2015 Guillaume Vareille http://ysengrin.com
 http://tinyfiledialogs.sourceforge.net
- 
+
  Let me know here mailto:tinfyfiledialogs@ysengrin.com
 	- if you are including tiny file dialogs,
 	  I'll be happy to add your link to the list of projects using it.
 	- If you are using it on not listed here hardware / OS / compiler.
 	- and please, leave a review on Sourceforge. Thanks.
- 
+
 tiny file dialogs (cross-platform C C++)
 InputBox PasswordBox MessageBox ColorPicker
 OpenFileDialog SaveFileDialog SelectFolderDialog
@@ -113,7 +113,7 @@ for unix & windows: 0 (graphic mode) or 1 (console mode).
 on windows it only make sense for console applications */
 #endif /* TINYFD_WIN_CONSOLE_ONLY */
 
-#pragma warning(disable:4996) 
+#pragma warning(disable:4996)
 /* allows usage of strncpy, strcpy, strcat, sprintf, fopen */
 
 static int gWarningDisplayed = 0 ;
@@ -256,7 +256,7 @@ static void replaceSubStr ( char const * const aSource ,
 	char const * pOccurence ;
 	char const * p ;
 	char const * lNewSubStr = "" ;
-	
+
 	if ( ! aSource )
 	{
 		* aoDestination = '\0' ;
@@ -359,11 +359,11 @@ static char const * ensureFilesExist( char * const aDestination ,
 	{
 		return NULL ;
 	}
-	
+
 	p = aSourcePathsAndNames ;
 	while ( (p2 = strchr(p, '|')) != NULL )
 	{
-		lLen = p2-p ;		
+		lLen = p2-p ;
 		memmove(lDestination,p,lLen);
 		lDestination[lLen] = '\0';
 		if ( fileExists ( lDestination ) )
@@ -376,7 +376,7 @@ static char const * ensureFilesExist( char * const aDestination ,
 	}
 	if ( fileExists ( p ) )
 	{
-		lLen = strlen(p) ;		
+		lLen = strlen(p) ;
 		memmove(lDestination,p,lLen);
 		lDestination[lLen] = '\0';
 	}
@@ -413,7 +413,7 @@ static int messageBoxWinGui (
 {
 	int lBoxReturnValue;
     UINT aCode ;
-	
+
 	if ( aIconType && ! strcmp( "warning" , aIconType ) )
 	{
 		aCode = MB_ICONWARNING ;
@@ -699,7 +699,7 @@ static char const * saveFileDialogWinGui (
 
 	getPathWithoutFinalSlash(lDirname, aDefaultPathAndFile);
 	getLastName(aoBuff, aDefaultPathAndFile);
-    
+
 	if (aNumOfFilterPatterns > 0)
 	{
 		if ( aSingleFilterDescription && strlen(aSingleFilterDescription) )
@@ -727,7 +727,7 @@ static char const * saveFileDialogWinGui (
 			p ++ ;
 		}
 	}
-    
+
 	ofn.lStructSize     = sizeof(OPENFILENAME) ;
 	ofn.hwndOwner       = 0 ;
 	ofn.hInstance       = 0 ;
@@ -754,8 +754,8 @@ static char const * saveFileDialogWinGui (
 	{
 		return NULL ;
 	}
-	else 
-	{ 
+	else
+	{
 		return aoBuff ;
 	}
 }
@@ -841,13 +841,13 @@ static char const * openFileDialogWinGui (
 	{
 		return NULL ;
 	}
-	else 
+	else
 	{
 		lBuffLen = strlen(aoBuff) ;
 		lPointers[0] = aoBuff + lBuffLen + 1 ;
 		if ( !aAllowMultipleSelects || (lPointers[0][0] == '\0')  )
 			return aoBuff ;
-        
+
 		i = 0 ;
 		do
 		{
@@ -883,7 +883,7 @@ static char const * selectFolderDialogWinGui (
 {
 	BROWSEINFO bInfo ;
 	LPITEMIDLIST lpItem ;
-	
+
 	/* we can't use aDefaultPath */
 	bInfo.hwndOwner = 0 ;
 	bInfo.pidlRoot = NULL ;
@@ -1000,7 +1000,7 @@ static int messageBoxWinConsole (
 	char lDialogFile[MAX_PATH_OR_CMD];
 	FILE * lIn;
     char lBuff [ MAX_PATH_OR_CMD ] = "";
-	
+
 	strcpy ( lDialogString , "dialog " ) ;
 	if ( aTitle && strlen(aTitle) )
 	{
@@ -1028,7 +1028,7 @@ static int messageBoxWinConsole (
 	else
 	{
 		strcat ( lDialogString , "--msgbox " ) ;
-			
+
 	}
 
 
@@ -1049,7 +1049,7 @@ static int messageBoxWinConsole (
 
 	/* printf ( "lDialogString: %s\n" , lDialogString ) ; //*/
 	system ( lDialogString ) ;
-		
+
 	if (!(lIn = fopen(lDialogFile, "r")))
 	{
 		remove(lDialogFile);
@@ -1177,7 +1177,7 @@ static char const * saveFileDialogWinConsole (
 		strcpy(lPathAndFile, aDefaultPathAndFile);
 		replaceChr ( lPathAndFile , '\\' , '/' ) ;
 	}
-		
+
 	/* dialog.exe needs at least one separator */
 	if ( ! strchr(lPathAndFile, '/') )
 	{
@@ -1237,7 +1237,7 @@ static char const * openFileDialogWinConsole (
 		strcpy(lFilterPatterns, aDefaultPathAndFile);
 		replaceChr ( lFilterPatterns , '\\' , '/' ) ;
 	}
-		
+
 	/* dialog.exe needs at least one separator */
 	if ( ! strchr(lFilterPatterns, '/') )
 	{
@@ -1275,7 +1275,7 @@ static char const * selectFolderDialogWinConsole (
 	char lDialogString [ MAX_PATH_OR_CMD ] ;
 	char lString [ MAX_PATH_OR_CMD ] ;
 	FILE * lIn ;
-	
+
 	strcpy ( lDialogString , "dialog " ) ;
  	if ( aTitle && strlen(aTitle) )
 	{
@@ -1425,7 +1425,7 @@ char const * tinyfd_inputBox(
 		lBuff[0]='\0';
 		return inputBoxWinConsole(lBuff,aTitle,aMessage,aDefaultInput);
 	}
-	else 
+	else
 	{
 		lBuff[0]='\0';
 		if ( !gWarningDisplayed )
@@ -1589,7 +1589,7 @@ char const * tinyfd_selectFolderDialog (
 	{
 		p = tinyfd_inputBox(aTitle, "Select folder","");
 	}
-	
+
 	if ( ! p || ! strlen ( p ) || ! dirExists ( p ) )
 	{
 		return NULL ;
@@ -1651,7 +1651,7 @@ char const * tinyfd_colorChooser(
 #else /* unix */
 
 static char gPython2Name[16];
-							
+
 static int isDarwin ( )
 {
 	static int lsIsDarwin = -1 ;
@@ -1678,7 +1678,7 @@ static int dirExists ( char const * const aDirPath )
 	return 1 ;
 }
 
-									
+
 static int detectPresence ( char const * const aExecutable )
 {
     char lBuff [ MAX_PATH_OR_CMD ] ;
@@ -2063,7 +2063,7 @@ static int zenity3Present ( )
     static int lZenity3Present = -1 ;
     char lBuff [ MAX_PATH_OR_CMD ] ;
     FILE * lIn ;
-	
+
 
 	if ( lZenity3Present < 0 )
 	{
@@ -2103,7 +2103,7 @@ static int tkinter2Present ( )
     {
 		strcpy(gPython2Name , "python" ) ;
 		sprintf ( lPythonCommand , "%s %s" , gPython2Name , lPythonParams ) ;
-	    lTkinter2Present = tryCommand(lPythonCommand);		
+	    lTkinter2Present = tryCommand(lPythonCommand);
         if ( ! lTkinter2Present )
 	    {
 			strcpy(gPython2Name , "python2" ) ;
@@ -2188,7 +2188,7 @@ int tinyfd_messageBox (
 		else if ( aDialogType && ! strcmp( "yesno" , aDialogType ) )
 		{
 			strcat ( lDialogString ,"buttons {\"No\", \"Yes\"} " ) ;
-			if (aDefaultButton) 
+			if (aDefaultButton)
 			{
 				strcat ( lDialogString ,"default button \"Yes\" " ) ;
 			}
@@ -2234,13 +2234,13 @@ int tinyfd_messageBox (
 		{
             strcat ( lDialogString , "info" ) ;
         }
-		if ( aTitle && strlen(aTitle) ) 
+		if ( aTitle && strlen(aTitle) )
 		{
 			strcat(lDialogString, " --title=\"") ;
 			strcat(lDialogString, aTitle) ;
 			strcat(lDialogString, "\"") ;
 		}
-		if ( aMessage && strlen(aMessage) ) 
+		if ( aMessage && strlen(aMessage) )
 		{
 			strcat(lDialogString, " --text=\"") ;
 			strcat(lDialogString, aMessage) ;
@@ -2313,10 +2313,10 @@ int tinyfd_messageBox (
         {
            	strcat ( lDialogString , " -i" ) ;  /* for osx without console */
         }
-		
+
 		strcat ( lDialogString ,
 " -c \"import Tkinter,tkMessageBox;root=Tkinter.Tk();root.withdraw();");
-		
+
 		if ( isDarwin ( ) )
 		{
 			strcat ( lDialogString ,
@@ -2394,7 +2394,7 @@ else :\n\tprint 1\n\"" ) ;
 		{
 			strcpy ( lDialogString , " -buttons Yes:1,No:0");
 		}
-	
+
 		strcpy ( lDialogString , " -center \"");
 		if ( aMessage && strlen(aMessage) )
 		{
@@ -2424,7 +2424,7 @@ else :\n\tprint 1\n\"" ) ;
 		}
 		strcat ( lDialogString , "\"" ) ;
 	}
-	else if (!xdialogPresent() && !gdialogPresent() && xmessagePresent() 
+	else if (!xdialogPresent() && !gdialogPresent() && xmessagePresent()
 		&& strcmp("okcancel" , aDialogType)
 		&& strcmp("yesno" , aDialogType) )
 	{
@@ -2763,7 +2763,7 @@ char const * tinyfd_inputBox(
 		else
 		{
 			strcat(lDialogString, " --inputbox ") ;
-			
+
 		}
 		strcat(lDialogString, "\"") ;
 		if ( aMessage && strlen(aMessage) )
@@ -2793,17 +2793,17 @@ char const * tinyfd_inputBox(
 		{
         	strcat ( lDialogString , " -i" ) ;  /* for osx without console */
 		}
-		
+
 		strcat ( lDialogString ,
 " -c \"import Tkinter,tkSimpleDialog;root=Tkinter.Tk();root.withdraw();");
-		
+
 		if ( isDarwin ( ) )
 		{
 			strcat ( lDialogString ,
 "import os;os.system('''/usr/bin/osascript -e 'tell app \\\"Finder\\\" to set \
 frontmost of process \\\"Python\\\" to true' ''');");
 		}
-		
+
 		strcat ( lDialogString ,"res=tkSimpleDialog.askstring(" ) ;
 		if ( aTitle && strlen(aTitle) )
 		{
@@ -2968,7 +2968,7 @@ frontmost of process \\\"Python\\\" to true' ''');");
 			strcat ( lDialogString, aTitle) ;
 			strcat ( lDialogString , "\";echo;" ) ;
 		}
-		
+
 		strcat ( lDialogString , "echo \"" ) ;
 		if ( aMessage && strlen(aMessage) )
 		{
@@ -3116,18 +3116,18 @@ char const * tinyfd_saveFileDialog (
     {
 		strcpy ( lDialogString ,
 				"zenity --file-selection --save --confirm-overwrite" ) ;
-		if ( aTitle && strlen(aTitle) ) 
+		if ( aTitle && strlen(aTitle) )
 		{
 			strcat(lDialogString, " --title=\"") ;
 			strcat(lDialogString, aTitle) ;
 			strcat(lDialogString, "\"") ;
 		}
-		if ( aDefaultPathAndFile && strlen(aDefaultPathAndFile) ) 
+		if ( aDefaultPathAndFile && strlen(aDefaultPathAndFile) )
 		{
 			strcat(lDialogString, " --filename=\"") ;
 			strcat(lDialogString, aDefaultPathAndFile) ;
 			strcat(lDialogString, "\"") ;
-		}		
+		}
 		if ( aNumOfFilterPatterns > 0 )
 		{
 			strcat ( lDialogString , " --file-filter='" ) ;
@@ -3348,7 +3348,7 @@ char const * tinyfd_saveFileDialog (
     return lBuff ;
 }
 
-                 
+
 /* in case of multiple files, the separator is | */
 char const * tinyfd_openFileDialog (
     char const * const aTitle , /* NULL or "" */
@@ -3447,7 +3447,7 @@ char const * tinyfd_openFileDialog (
 		}
         if ( aNumOfFilterPatterns > 0 )
         {
-	        strcat ( lDialogString , " --file-filter='" ) ; 
+	        strcat ( lDialogString , " --file-filter='" ) ;
 			if ( aSingleFilterDescription && strlen(aSingleFilterDescription) )
 			{
 				strcat ( lDialogString , aSingleFilterDescription ) ;
@@ -3720,13 +3720,13 @@ char const * tinyfd_selectFolderDialog (
 	else if ( zenityPresent() )
 	{
         strcpy ( lDialogString , "zenity --file-selection --directory" ) ;
-		if ( aTitle && strlen(aTitle) ) 
+		if ( aTitle && strlen(aTitle) )
 		{
 			strcat(lDialogString, " --title=\"") ;
 			strcat(lDialogString, aTitle) ;
 			strcat(lDialogString, "\"") ;
 		}
-		if ( aDefaultPath && strlen(aDefaultPath) ) 
+		if ( aDefaultPath && strlen(aDefaultPath) )
 		{
 			strcat(lDialogString, " --filename=\"") ;
 			strcat(lDialogString, aDefaultPath) ;
@@ -3822,7 +3822,7 @@ frontmost of process \\\"Python\\\" to true' ''');");
 			strcat(lDialogString, getenv("HOME")) ;
 			strcat(lDialogString, "/");
 		}
-		
+
 		if ( lWasGraphicDialog )
 		{
 			strcat(lDialogString, "\" 0 60 ) 2>&1 ") ;
@@ -3938,7 +3938,7 @@ application as Unicode text) to set mycolor to choose color default color {");
 		lWasZenity3 = 1 ;
         sprintf ( lDialogString ,
 "zenity --color-selection --show-palette --color=%s" , lpDefaultHexRGB ) ;
-		if ( aTitle && strlen(aTitle) ) 
+		if ( aTitle && strlen(aTitle) )
 		{
 			strcat(lDialogString, " --title=\"") ;
 			strcat(lDialogString, aTitle) ;
@@ -3977,7 +3977,7 @@ application as Unicode text) to set mycolor to choose color default color {");
 		{
         	strcat ( lDialogString , " -i" ) ;  /* for osx without console */
 		}
-		
+
 		strcat ( lDialogString ,
 " -c \"import Tkinter,tkColorChooser;root=Tkinter.Tk();root.withdraw();");
 
@@ -4138,13 +4138,13 @@ int main()
 /*
 OSX :
 $ gcc -o main.app main.c tinyfiledialogs.c
- 
+
 UNIX :
 $ gcc -o main main.c tinyfiledialogs.c
- 
+
 MinGW :
 > gcc -o main.exe main.c tinyfiledialogs.c -LC:/mingw/lib -lcomdlg32
- 
+
 VisualStudio :
   Create a console application project, it links against Comdlg32.lib.
 	Right click on your Project, select Properties.

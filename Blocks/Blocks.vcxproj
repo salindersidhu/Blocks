@@ -139,17 +139,18 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Clock.cpp" />
     <ClCompile Include="PhyfsStream.cpp" />
+    <ClCompile Include="Block.cpp" />
     <ClCompile Include="tinyfiledialogs.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.hpp" />
-    <ClInclude Include="Constants.hpp" />
     <ClInclude Include="Dialog.hpp" />
     <ClInclude Include="DrawManager.hpp" />
     <ClInclude Include="Grid.hpp" />
     <ClInclude Include="LevelManager.hpp" />
     <ClInclude Include="Clock.hpp" />
     <ClInclude Include="PhyfsStream.hpp" />
+    <ClInclude Include="Block.hpp" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="tinyfiledialogs.h" />
   </ItemGroup>

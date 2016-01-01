@@ -2,28 +2,31 @@
 #define BUTTON_HPP
 
 #include <string>
-#include "Constants.hpp"
 #include "DrawManager.hpp"
 using namespace std;
 
 class Button {
 	public:
-		Button(string, TEXTS, float, float, float, float, SPRITE, SPRITE); // Constructor
-		virtual ~Button() {}; // Destructor
-		bool hovering(int, int);
-		bool selected(int, int, SPRITE);
-		void configure(DrawManager*);
+		// Constructor and destructor
+		Button(DrawManager*, string, string, unsigned int, string, string, string, sf::Color, sf::Color, float, float, float, float);
+		virtual ~Button() {};
+		bool isHovering(int, int);
+		bool isSelected(string, int, int);
+		void set(DrawManager*);
 		void draw(DrawManager*);
 	private:
 		string buttonText;
-		TEXTS buttonFont;
+		string buttonTextName;
+		string spriteName;
+		string spriteSelectedName;
+		sf::Color buttonNormalColour;
+		sf::Color buttonHoverColour;
+		int buttonTextSize;
 		float buttonWidth;
 		float buttonHeight;
-		float buttonPositionX;
-		float buttonPositionY;
-		bool mouseHovering;
-		SPRITE imageNormal;
-		SPRITE imageSelected;
+		float buttonX;
+		float buttonY;
+		bool isMouseOver;
 	};
 
 #endif

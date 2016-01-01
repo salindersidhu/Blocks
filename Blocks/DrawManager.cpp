@@ -7,12 +7,12 @@ PhyfsStreamException::PhyfsStreamException(string action) {
 
 /* ResourceNotLoadedException class */
 ResourceNotLoadedException::ResourceNotLoadedException(string type, string source) {
-	message = "Cannot load resource " + type + " from " + source;
+        message = "Cannot load resource " + type + " from " + source;
 }
 
 /* ResourceNotFoundException class */
 ResourceNotFoundException::ResourceNotFoundException(string type, string name) {
-	message = "Cannot find resource " + type + " called " + name;
+        message = "Cannot find resource " + type + " called " + name;
 }
 
 /* DrawManager class */
@@ -40,7 +40,7 @@ void DrawManager::createSprite(string source, string name) {
 	// Obtain the texture from the stream
 	if (texture.loadFromStream(archiveStream)) {
 		// Add the texture to the sprite object and store it in sprites
-		sprites.setTexture(texture);
+		sprites[name].setTexture(texture);
 		sprites[name] = sprite;
 		// Close the stream
 		archiveStream.close();
@@ -70,7 +70,7 @@ void DrawManager::createText(string source, string name) {
 }
 
 void DrawManager::createImage(string source, string name) {
-	sf::Image image
+	sf::Image image;
 	// Load image from the resource archive
 	if (!archiveStream.open(&source)) {
 		// Throw PhyfsStreamException
@@ -78,7 +78,7 @@ void DrawManager::createImage(string source, string name) {
 	}
 	// Obtain the font from the stream
 	if (image.loadFromStream(archiveStream)) {
-		images[name] = image
+		images[name] = image;
 	} else {
 		// Throw a ResourceNotLoadedException
 		throw ResourceNotLoadedException("Image", source);
@@ -109,13 +109,13 @@ void DrawManager::setText(string name, unsigned int size, sf::Color colour, stri
 }
 
 void DrawManager::centerTextHorizontal(string name, float winWidth, float y) {
-	sf:::FloatRect rect;
+	sf::FloatRect rect;
 	// Check if the text exists and set its parameters
 	if (text.find(name) != text.end()) {
 		// Center the text horizontally
 		rect = text[name].getLocalBounds();
-		text[name].setOrigin(rect.left + rect.width) / 2, 0);
-		text.setPosition(winWidth / 2, y);
+		text[name].setOrigin((rect.left + rect.width) / 2, 0);
+		text[name].setPosition(winWidth / 2, y);
 	} else {
 		// Throw a ResourceNotFoundException
 		throw ResourceNotFoundException("Text", name);
@@ -128,7 +128,7 @@ void DrawManager::centerTextRectangle(string name, float startX, float startY, f
 	if (text.find(name) != text.end()) {
 		// Center the text in the rectangular area
 		rect = text[name].getLocalBounds();
-		text[name].setOrigin((rect.left + rect.width) / 2, (rect.top + rect.right) / 2);
+		text[name].setOrigin((rect.left + rect.width) / 2, (rect.top + rect.height) / 2);
 		text[name].setPosition(startX + ((endX - startX) / 2), startY + ((endY - startY) / 2));
 	} else {
 		// Throw a ResourceNotFoundException
@@ -178,7 +178,7 @@ sf::Text DrawManager::getText(string name) {
 
 sf::Image DrawManager::getImage(string name) {
 	// Check if the image exists and return it
-	if (images.find(name) != text.end()) {
+	if (images.find(name) != images.end()) {
 		return images[name];
 	} else {
 		// Throw a ResourceNotFoundException

@@ -32,7 +32,7 @@ class ResourceNotLoadedException : public exception {
 /* ResourceNotFoundException class */
 class ResourceNotFoundException : public exception {
 	public:
-		ResourceNotFoundException(string, int);
+		ResourceNotFoundException(string, string);
 		virtual ~ResourceNotFoundException() throw() {};
 		const char *what() const throw() {return message.c_str();};
 	private:
