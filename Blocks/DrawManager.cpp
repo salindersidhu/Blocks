@@ -2,17 +2,17 @@
 
 /* PhyfsStreamException class */
 PhyfsStreamException::PhyfsStreamException(string action) {
-	message = "Cannot perform action: " + action;
+    message = "Cannot perform action: " + action;
 }
 
 /* ResourceNotLoadedException class */
 ResourceNotLoadedException::ResourceNotLoadedException(string type, string source) {
-        message = "Cannot load resource " + type + " from " + source;
+    message = "Cannot load resource " + type + " from " + source;
 }
 
 /* ResourceNotFoundException class */
 ResourceNotFoundException::ResourceNotFoundException(string type, string name) {
-        message = "Cannot find resource " + type + " called " + name;
+    message = "Cannot find resource " + type + " called " + name;
 }
 
 /* DrawManager class */
@@ -40,9 +40,8 @@ void DrawManager::createSprite(string source, string name) {
 	// Obtain the texture from the stream
 	if (texture.loadFromStream(archiveStream)) {
 		// Add the texture to the sprite object and store it in sprites
-		sprites[name].setTexture(texture);
+		sprite.setTexture(texture);
 		sprites[name] = sprite;
-		// Close the stream
 		archiveStream.close();
 	} else {
 		// Throw a ResourceNotLoadedException
@@ -61,8 +60,9 @@ void DrawManager::createText(string source, string name) {
 	// Obtain the font from the stream
 	if (font.loadFromStream(archiveStream)) {
 		// Add the font to the text object and store it in text
-		newText.setFont(font);
 		text[name] = newText;
+		newText.setFont(font);
+		archiveStream.close();
 	} else {
 		// Throw a ResourceNotLoadedException
 		throw ResourceNotLoadedException("Font", source);

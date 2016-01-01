@@ -8,7 +8,7 @@ using namespace std;
 class Button {
 	public:
 		// Constructor and destructor
-		Button(DrawManager*, string, string, unsigned int, string, string, string, sf::Color, sf::Color, float, float, float, float);
+		Button(string, string, unsigned int, string, string, sf::Color, sf::Color, float, float, float, float);
 		virtual ~Button() {};
 		bool isHovering(int, int);
 		bool isSelected(string, int, int);

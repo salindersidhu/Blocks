@@ -1,6 +1,6 @@
 #include "Button.hpp"
 
-Button::Button(DrawManager *dm, string text, string textName, unsigned int textSize, string font, string sprite, string spriteSelected, sf::Color normalColour, sf::Color hoverColour, float width, float height, float x, float y) {
+Button::Button(string textName, string text, unsigned int textSize, string sprite, string spriteSelected, sf::Color normalColour, sf::Color hoverColour, float width, float height, float x, float y) {
 	// Set button variables
 	buttonText = text;
 	buttonTextName = textName;
@@ -14,8 +14,6 @@ Button::Button(DrawManager *dm, string text, string textName, unsigned int textS
 	buttonX = x;
 	buttonY = y;
 	isMouseOver = false;
-	// Create text for button
-	dm->createText(font, buttonTextName);
 }
 
 bool Button::isHovering(int x, int y) {

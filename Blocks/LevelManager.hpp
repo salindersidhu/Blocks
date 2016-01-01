@@ -3,8 +3,8 @@
 
 #include <string>
 #include <vector>
+#include <map>
 #include <SFML\Graphics.hpp>
-#include "Constants.hpp"
 #include "DrawManager.hpp"
 #include "Grid.hpp"
 #include "Button.hpp"
@@ -14,24 +14,26 @@ using namespace std;
 
 class LevelManager {
 	public:
-		LevelManager(sf::RenderWindow*); // Constructor
-		virtual ~LevelManager() {}; // Destructor
+        // Constructor and destructor
+		LevelManager(sf::RenderWindow*, DrawManager*, Dialog*, map<int, vector<Block>>);
+		virtual ~LevelManager() {};
 		void drawLevel();
-		void handleEvents(sf::Event*);
-		void handleTimer();
+        void handleInputEvents(sf::Event*);
+        void handlePassiveEvents();
 	private:
-		void buildLevel();
-		void checkLevelCleared();
-		void buttonEvent(int, int);
-		void buttonHover(int, int);
+        void createLevel();
+        void handleLevelcleared();
+		void buttonClickEvents(int, int);
+		void buttonHoverEvents(int, int);
 		int currentLevel;
-		int numberOfMoves;
-		DrawManager *dm;
-		Clock timer;
-		Grid grid;
-		Dialog *dialog;
+		int numMoves;
+        sf::RenderWindow *window;
+		DrawManager *drawMan;
+        Dialog *dialog;
+		Clock clock;
+		Grid *grid;
 		vector<Button> buttons;
-		sf::RenderWindow *canvasWindow;
+        map<int, vector<Block>> levels;
 };
 
 #endif

@@ -131,6 +131,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BlocksGame.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Dialog.cpp" />
     <ClCompile Include="DrawManager.cpp" />
@@ -143,6 +144,7 @@
     <ClCompile Include="tinyfiledialogs.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BlocksGame.hpp" />
     <ClInclude Include="Button.hpp" />
     <ClInclude Include="Dialog.hpp" />
     <ClInclude Include="DrawManager.hpp" />
