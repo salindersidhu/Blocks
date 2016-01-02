@@ -1,19 +1,22 @@
 #include "Button.hpp"
 
-Button::Button(string textName, string text, unsigned int textSize, string sprite, string spriteSelected, sf::Color normalColour, sf::Color hoverColour, float width, float height, float x, float y) {
-	// Set button variables
-	buttonText = text;
-	buttonTextName = textName;
-	buttonTextSize = textSize;
-	spriteName = sprite;
-	spriteSelectedName = spriteSelected;
-	buttonNormalColour = normalColour;
-	buttonHoverColour = hoverColour;
-	buttonWidth = width;
-	buttonHeight = height;
-	buttonX = x;
-	buttonY = y;
-	isMouseOver = false;
+Button::Button(string text, string fontName, string normalTexture, string hoverTexture, sf::Color normalColour, sf::Color hoverColour, unsigned int fontSize, float width, float height, float x, float y) {
+    // Initialize button attributes
+    buttonText = text;
+    buttonFontName = fontName;
+    buttonNormalTexture = normalTexture;
+    buttonHoverTexture = hoverTexture;
+    buttonNormalColour = normalColour;
+    buttonHoverColour = hoverColour;
+    // Create new sprite ID names for the button normal and hover textures
+    buttonNormalSprite = "S_N_" + buttonText;
+    buttonHoverSprite = "S_H_" + buttonText;
+    buttonFontSize = fontSize;
+    buttonWidth = width;
+    buttonHeight = height;
+    buttonX = x;
+    buttonY = y;
+    isMouseOver = false;
 }
 
 bool Button::isHovering(int x, int y) {
@@ -21,26 +24,26 @@ bool Button::isHovering(int x, int y) {
 	return isMouseOver;
 }
 
-bool Button::isSelected(string spriteSelected, int x, int y) {
-	return (isHovering(x, y) && spriteSelectedName == spriteSelected);
+bool Button::isSelected(string text, int x, int y) {
+	return (isHovering(x, y) && buttonText == text);
 }
 
-void Button::set(DrawManager *dm) {
+void Button::set(DrawManager &drawMan) {
 	if (isMouseOver) {
-		dm->setSprite(spriteSelectedName, buttonX, buttonY);
-		dm->setText(buttonTextName, buttonTextSize, buttonHoverColour, buttonText, buttonX, buttonY);
+		drawMan.createSprite(buttonHoverSprite, buttonHoverTexture, buttonX, buttonY);
+		drawMan.createText(buttonText, buttonFontName, buttonFontSize, buttonHoverColour, buttonText, buttonX, buttonY);
 	} else {
-		dm->setSprite(spriteName, buttonX, buttonY);
-		dm->setText(buttonTextName, buttonTextSize, buttonNormalColour, buttonText, buttonX, buttonY);
+		drawMan.createSprite(buttonNormalSprite, buttonNormalTexture, buttonX, buttonY);
+		drawMan.createText(buttonText, buttonFontName, buttonFontSize, buttonNormalColour, buttonText, buttonX, buttonY);
 	}
-	dm->centerTextRectangle(buttonTextName, buttonX, buttonY, buttonX + buttonWidth, buttonY + buttonHeight);
+	drawMan.setTextCentered(buttonText, buttonX, buttonY, buttonX + buttonWidth, buttonY + buttonHeight);
 }
 
-void Button::draw(DrawManager *dm) {
+void Button::draw(DrawManager &drawMan) {
 	if (isMouseOver) {
-		dm->drawSprite(spriteSelectedName);
+		drawMan.drawSprite(buttonHoverSprite);
 	} else {
-		dm->drawSprite(spriteName);
+		drawMan.drawSprite(buttonNormalSprite);
 	}
-	dm->drawText(buttonText);
+	drawMan.drawText(buttonText);
 }

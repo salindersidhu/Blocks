@@ -13,8 +13,8 @@ class Grid {
 		// Constructor and destructor
 		Grid(int, int, int, int, int, int);
 		virtual ~Grid() {};
-		void set(DrawManager*);
-		void draw(DrawManager*);
+		void set(DrawManager&);
+		void draw(DrawManager&);
 		void addBlock(Block);
 		void selectBlock(int, int);
 		void releaseBlock(int&);
@@ -22,7 +22,7 @@ class Grid {
 		void clear();
 		bool isVictory();
 	private:
-		void alignBlock(int, int&, int);
+		int alignBlock(int, int, int);
 		bool isHovering(int, int, int, int, int, int);
 		bool isNotCollision(Block, int, int);
 		bool isBounded(int, int, int, int);

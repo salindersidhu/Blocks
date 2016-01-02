@@ -1,13 +1,13 @@
-#include "Dialog.hpp"
+#include "DialogManager.hpp"
 
-Dialog::Dialog(string title) {
+DialogManager::DialogManager(string title) {
 	dialogTitle = title;
 }
 
-void Dialog::messageDialog(string message) {
+void DialogManager::message(string message) {
 	tinyfd_messageBox(dialogTitle.c_str(), message.c_str(), "ok", "info", 1);
 }
 
-void Dialog::errorDialog(string message) {
+void DialogManager::error(string message) {
 	tinyfd_messageBox(dialogTitle.c_str(), message.c_str(), "ok", "error", 1);
 }

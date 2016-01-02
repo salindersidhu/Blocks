@@ -133,7 +133,7 @@
   <ItemGroup>
     <ClCompile Include="BlocksGame.cpp" />
     <ClCompile Include="Button.cpp" />
-    <ClCompile Include="Dialog.cpp" />
+    <ClCompile Include="DialogManager.cpp" />
     <ClCompile Include="DrawManager.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="LevelManager.cpp" />
@@ -146,7 +146,7 @@
   <ItemGroup>
     <ClInclude Include="BlocksGame.hpp" />
     <ClInclude Include="Button.hpp" />
-    <ClInclude Include="Dialog.hpp" />
+    <ClInclude Include="DialogManager.hpp" />
     <ClInclude Include="DrawManager.hpp" />
     <ClInclude Include="Grid.hpp" />
     <ClInclude Include="LevelManager.hpp" />

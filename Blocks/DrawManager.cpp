@@ -29,19 +29,18 @@ DrawManager::~DrawManager() {
 	PHYSFS_deinit();
 }
 
-void DrawManager::createSprite(string source, string name) {
+void DrawManager::loadTexture(string source, string name) {
 	sf::Texture texture;
-	sf::Sprite sprite;
 	// Load texture from the resource archive
 	if (!archiveStream.open(&source)) {
 		// Throw PhyfsStreamException
-		throw PhyfsStreamException("Loading resource" + source);
+		throw PhyfsStreamException("Loading resource " + source);
 	}
 	// Obtain the texture from the stream
 	if (texture.loadFromStream(archiveStream)) {
-		// Add the texture to the sprite object and store it in sprites
-		sprite.setTexture(texture);
-		sprites[name] = sprite;
+		// Store the texture
+		textures[name] = texture;
+		// Close the stream
 		archiveStream.close();
 	} else {
 		// Throw a ResourceNotLoadedException
@@ -49,9 +48,8 @@ void DrawManager::createSprite(string source, string name) {
 	}
 }
 
-void DrawManager::createText(string source, string name) {
+void DrawManager::loadFont(string source, string name) {
 	sf::Font font;
-	sf::Text newText;
 	// Load font from the resource archive
 	if (!archiveStream.open(&source)) {
 		// Throw PhyfsStreamException
@@ -59,17 +57,16 @@ void DrawManager::createText(string source, string name) {
 	}
 	// Obtain the font from the stream
 	if (font.loadFromStream(archiveStream)) {
-		// Add the font to the text object and store it in text
-		text[name] = newText;
-		newText.setFont(font);
-		archiveStream.close();
+		// Store the font
+		fonts[name] = font;
+		// NOTE: Stream is not closed because SFML can't preload all the data.
 	} else {
 		// Throw a ResourceNotLoadedException
 		throw ResourceNotLoadedException("Font", source);
 	}
 }
 
-void DrawManager::createImage(string source, string name) {
+void DrawManager::loadImage(string source, string name) {
 	sf::Image image;
 	// Load image from the resource archive
 	if (!archiveStream.open(&source)) {
@@ -79,57 +76,67 @@ void DrawManager::createImage(string source, string name) {
 	// Obtain the font from the stream
 	if (image.loadFromStream(archiveStream)) {
 		images[name] = image;
+		// Close the stream
+		archiveStream.close();
 	} else {
 		// Throw a ResourceNotLoadedException
 		throw ResourceNotLoadedException("Image", source);
 	}
 }
 
-void DrawManager::setSprite(string name, float x, float y) {
-	// Check if the sprite exists and set its position
-	if (sprites.find(name) != sprites.end()) {
-		sprites[name].setPosition(x, y);
+void DrawManager::createSprite(string name, string texture, float x, float y) {
+	sf::Sprite sprite;
+	// Check if the texture exists, bind it to the sprite and set the sprite's position
+	if (textures.find(texture) != textures.end()) {
+		sprite.setTexture(textures[texture]);
+		sprite.setPosition(x, y);
+		// Store the sprite
+		sprites[name] = sprite;
 	} else {
 		// Throw a ResourceNotFoundException
-		throw ResourceNotFoundException("Sprite", name);
+		throw ResourceNotFoundException("Texture", texture);
 	}
 }
 
-void DrawManager::setText(string name, unsigned int size, sf::Color colour, string textString, float x, float y) {
-	// Check if the text exists and set its parameters
-	if (text.find(name) != text.end()) {
-		text[name].setCharacterSize(size);
-		text[name].setColor(colour);
-		text[name].setString(textString);
-		text[name].setPosition(x, y);
+void DrawManager::createText(string name, string font, unsigned int size, sf::Color colour, string textString, float x, float y) {
+	sf::Text newText;
+	// Check if the font exists, bind it to the text and set the text's attributes
+	if (fonts.find(font) != fonts.end()) {
+		newText.setFont(fonts[font]);
+		newText.setCharacterSize(size);
+		newText.setColor(colour);
+		newText.setString(textString);
+		newText.setPosition(x, y);
+		// Store the text
+		text[name] = newText;
 	} else {
 		// Throw a ResourceNotFoundException
-		throw ResourceNotFoundException("Text", name);
+		throw ResourceNotFoundException("Font", font);
 	}
 }
 
-void DrawManager::centerTextHorizontal(string name, float winWidth, float y) {
+void DrawManager::setTextCentered(string name, float winWidth, float y) {
 	sf::FloatRect rect;
 	// Check if the text exists and set its parameters
 	if (text.find(name) != text.end()) {
 		// Center the text horizontally
-		rect = text[name].getLocalBounds();
-		text[name].setOrigin((rect.left + rect.width) / 2, 0);
-		text[name].setPosition(winWidth / 2, y);
+		rect = text.find(name)->second.getLocalBounds();
+		text.find(name)->second.setOrigin((rect.left + rect.width) / 2, 0);
+		text.find(name)->second.setPosition(winWidth / 2, y);
 	} else {
 		// Throw a ResourceNotFoundException
 		throw ResourceNotFoundException("Text", name);
 	}
 }
 
-void DrawManager::centerTextRectangle(string name, float startX, float startY, float endX, float endY) {
+void DrawManager::setTextCentered(string name, float startX, float startY, float endX, float endY) {
 	sf::FloatRect rect;
 	// Check if the text exists and set its paramters
 	if (text.find(name) != text.end()) {
 		// Center the text in the rectangular area
 		rect = text[name].getLocalBounds();
 		text[name].setOrigin((rect.left + rect.width) / 2, (rect.top + rect.height) / 2);
-		text[name].setPosition(startX + ((endX - startX) / 2), startY + ((endY - startY) / 2));
+		text[name].setPosition(startX + ((endX - startX) / 2), (startY - 5) + ((endY - startY) / 2));
 	} else {
 		// Throw a ResourceNotFoundException
 		throw ResourceNotFoundException("Text", name);

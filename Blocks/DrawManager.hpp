@@ -45,23 +45,26 @@ class DrawManager {
 		// Constructor and destructor
 		DrawManager(sf::RenderWindow*, string*);
 		virtual ~DrawManager();
-		// Create drawing element functions
-		void createSprite(string, string);
-		void createText(string, string);
-		void createImage(string, string);
-		// Configure drawing element functions
-		void setSprite(string, float, float);
-		void setText(string, unsigned int, sf::Color, string, float, float);
-		void centerTextHorizontal(string, float, float);
-		void centerTextRectangle(string, float, float, float, float);
+		// Load basic elements
+		void loadTexture(string, string);
+		void loadFont(string, string);
+		void loadImage(string, string);
+		// Create drawing elements
+		void createSprite(string, string, float, float);
+		void createText(string, string, unsigned int, sf::Color, string, float, float);
+		void setTextCentered(string, float, float);
+		void setTextCentered(string, float, float, float, float);
 		// Draw functions
 		void drawSprite(string);
 		void drawText(string);
-		// Get drawing element functions
+		// Get drawing elements
 		sf::Sprite getSprite(string);
 		sf::Text getText(string);
 		sf::Image getImage(string);
 	private:
+		// Primary resources, texture fonts and images
+		map<string, sf::Texture> textures;
+		map<string, sf::Font> fonts;
 		// Map of sprites, text and images
 		map<string, sf::Sprite> sprites;
 		map<string, sf::Text> text;

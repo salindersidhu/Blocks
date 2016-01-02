@@ -1,26 +1,38 @@
 #include "Block.hpp"
 
 /* Block class */
-Block::Block(string orient, string spriteName, int size, int x, int y, int gridX, int gridY, int posIncr, bool isVictory) {
+Block::Block(string spriteName, string textureName, string orient, int size, int x, int y, bool isVictory) {
     blockOrient = orient;
-    blockSpriteName = spriteName;
+	blockTextureName = textureName;
+	blockSpriteName = spriteName;
     blockSize = size;
-    blockX = gridX + (x * posIncr);
-    blockY = gridY + (y * posIncr);
+	blockX = x;
+    blockY = y;
     isVictoryBlock = isVictory;
     isBlockSelected = false;
-    // Set the width and height of the block
-    if (blockOrient == "V") {
-        blockWidth = 58;
-        blockLength = -49 + (90 * blockSize);
-    } else {
-        blockWidth = -49 + (90 * blockSize);
-        blockLength = 57;
-    }
+}
+
+void Block::gridSet(int x, int y, int posIncr) {
+	// Update the block's position
+	blockX = x + (blockX * posIncr);
+	blockY = y + (blockY * posIncr);
+	// Set the width and height of the block
+	if (blockOrient == "V") {
+		blockWidth = 58;
+		blockLength = -49 + (90 * blockSize);
+	}
+	else {
+		blockWidth = -49 + (90 * blockSize);
+		blockLength = 57;
+	}
 }
 
 string Block::getSpriteName() {
     return blockSpriteName;
+}
+
+string Block::getTextureName() {
+	return blockTextureName;
 }
 
 int Block::getWidth() {

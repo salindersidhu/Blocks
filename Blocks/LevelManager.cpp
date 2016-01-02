@@ -1,14 +1,14 @@
 #include "LevelManager.hpp"
 
-LevelManager::LevelManager(sf::RenderWindow *_window, DrawManager *drawMan, Dialog *_dialog, map<int, vector<Block>> _levels) {
+LevelManager::LevelManager(sf::RenderWindow *_window, DrawManager *draw, DialogManager *_dialog, map<int, vector<Block>> _levels) {
     // Set render window, draw manager and dialog components for the level
 	window = _window;
-	drawMan = drawMan;
+	drawMan = draw;
     dialog = _dialog;
 	grid = new Grid(55, 167, 535, 637, 80, 375);
     // Setup the game's buttons
-    buttons.push_back(Button("TEXT_BUTTON_RESET", "Restart", 30, "SPRITE_BUTTON_RESET_NORMAL", "SPRITE_BUTTON_RESET_SELECTED", sf::Color(255 ,255, 255), sf::Color(255, 51, 82), 171, 39, 111, 107));
-    buttons.push_back(Button("TEXT_BUTTON_QUIT", "Quit", 30, "SPRITE_BUTTON_RESET_NORMAL", "SPRITE_BUTTON_RESET_SELECTED", sf::Color(255 ,255, 255), sf::Color(255, 51, 82), 171, 39, 321, 107));
+	buttons.push_back(Button("Restart", "FONT_COPPER", "TEXTURE_BUTTON_NORMAL", "TEXTURE_BUTTON_HOVER", sf::Color(255, 255, 255), sf::Color(255, 51, 82), 30, 171, 39, 111, 107));
+	buttons.push_back(Button("Quit", "FONT_COPPER", "TEXTURE_BUTTON_NORMAL", "TEXTURE_BUTTON_HOVER", sf::Color(255, 255, 255), sf::Color(255, 51, 82), 30, 171, 39, 321, 107));
 	// Initalize the level
 	currentLevel = 1;
 	numMoves = 0;
@@ -23,14 +23,14 @@ void LevelManager::createLevel() {
 	numMoves = 0;
 	// Configure the background, buttons, heading and display info text
 	try {
-		drawMan->setSprite("SPRITE_BG", 0, 0);
+		drawMan->createSprite("SPRITE_BG", "TEXTURE_BG", 0, 0);
 		for (unsigned int i = 0; i < buttons.size(); i++) {
-			buttons[i].set(drawMan);
+			buttons[i].set(*drawMan);
 		}
-		drawMan->setText("TEXT_HEADER", 60, sf::Color(0, 0, 0), "Level " + to_string(currentLevel), 0, 15);
-        drawMan->centerTextHorizontal("TEXT_HEADER", 600, 15);
+		drawMan->createText("TEXT_HEADER", "FONT_COPPER", 60, sf::Color(255, 255, 255), "Level " + to_string(currentLevel), 0, 15);
+        drawMan->setTextCentered("TEXT_HEADER", 600, 15);
 	} catch (exception &ex) {
-		dialog->errorDialog(ex.what());
+		dialog->error(ex.what());
 		window->close();
 	}
     // If there are still levels left
@@ -41,12 +41,12 @@ void LevelManager::createLevel() {
         }
     } else {
 		// Display a game victory message at the last level and start over at level 1
-		dialog->messageDialog("Congratulations!\nYou have completed all the levels!");
+		dialog->message("Congratulations!\nYou have completed all the levels!");
 		currentLevel = 1;
 		createLevel();
 	}
 	// Set the grid's blocks for drawing
-	grid->set(drawMan);
+	grid->set(*drawMan);
 }
 
 void LevelManager::handleLevelcleared() {
@@ -55,7 +55,7 @@ void LevelManager::handleLevelcleared() {
 		// Display a level complete message and load the next level
 		string head = "LEVEL " + to_string(currentLevel) +  " COMPLETE!\n\n";
 		string body = "Your time: " + clock.output() + " with " + to_string(numMoves) + " moves.";
-		dialog->messageDialog(head + body);
+		dialog->message(head + body);
 		currentLevel++;
 		createLevel();
 	}
@@ -64,11 +64,11 @@ void LevelManager::handleLevelcleared() {
 void LevelManager::buttonClickEvents(int mX, int mY) {
 	for (unsigned int i = 0; i < buttons.size(); i++) {
 		// Restart the current level if the restart button is pressed
-		if (buttons[i].isSelected("SPRITE_BUTTON_RESET_SELECTED", mX, mY)) {
+		if (buttons[i].isSelected("Restart", mX, mY)) {
 			createLevel();
 		}
 		// Quit the game if the quit button is pressed
-		if (buttons[i].isSelected("SPRITE_BUTTON_QUIT_SELECTED", mX, mY)) {
+		if (buttons[i].isSelected("Quit", mX, mY)) {
 			window->close();
 		}
 	}
@@ -77,7 +77,8 @@ void LevelManager::buttonClickEvents(int mX, int mY) {
 void LevelManager::buttonHoverEvents(int mX, int mY) {
 	// Check if the mouse is hovering over a button
 	for (unsigned int i = 0; i < buttons.size(); i++) {
-		buttons[i].set(drawMan);
+		buttons[i].isHovering(mX, mY);
+		buttons[i].set(*drawMan);
 	}
 }
 
@@ -86,10 +87,10 @@ void LevelManager::handlePassiveEvents() {
 	clock.tick();
 	// Update the info display text
 	try {
-        drawMan->setText("TEXT_INFO", 30, sf::Color(255, 255, 255), "Time: " + clock.output() + "    Moves: " + to_string(numMoves), 0, 640);
-		drawMan->centerTextHorizontal("TEXT_INFO", 600, 640);
+        drawMan->createText("TEXT_INFO", "FONT_COPPER", 30, sf::Color(255, 255, 255), "Time: " + clock.output() + "    Moves: " + to_string(numMoves), 0, 640);
+		drawMan->setTextCentered("TEXT_INFO", 600, 640);
 	} catch (exception &ex) {
-		dialog->errorDialog(ex.what());
+		dialog->error(ex.what());
 		window->close();
 	}
 }
@@ -108,7 +109,7 @@ void LevelManager::handleInputEvents(sf::Event *event) {
 	if (event->type == sf::Event::MouseButtonReleased) {
 		// Grid controls
 		grid->releaseBlock(numMoves);
-		grid->set(drawMan);
+		grid->set(*drawMan);
 		handleLevelcleared();
 	}
 	// Handle mouse movement events
@@ -117,7 +118,7 @@ void LevelManager::handleInputEvents(sf::Event *event) {
 		buttonHoverEvents(mousePosition.x, mousePosition.y);
 		// Grid controls
 		grid->moveBlock(mousePosition.x, mousePosition.y);
-		grid->set(drawMan);
+		grid->set(*drawMan);
 	}
 }
 
@@ -127,14 +128,15 @@ void LevelManager::drawLevel() {
 		drawMan->drawSprite("SPRITE_BG");
 		// Draw the buttons
 		for (unsigned int i = 0; i < buttons.size(); i++) {
-			buttons[i].draw(drawMan);
+			buttons[i].draw(*drawMan);
 		}
 		// Draw the text
 		drawMan->drawText("TEXT_HEADER");
+		drawMan->drawText("TEXT_INFO");
 		// Draw the grid
-		grid->draw(drawMan);
+		grid->draw(*drawMan);
 	} catch (exception &ex) {
-		dialog->errorDialog(ex.what());
+		dialog->error(ex.what());
 		window->close();
 	}
 }

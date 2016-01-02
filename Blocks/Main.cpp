@@ -1,7 +1,7 @@
 #include "BlocksGame.hpp"
 
 int main() {
+	// Create a new instance of BlocksGame
     BlocksGame *game = new BlocksGame();
-    game->execute();
     return EXIT_SUCCESS;
 }

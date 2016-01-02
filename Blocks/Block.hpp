@@ -8,7 +8,7 @@ using namespace std;
 class Block {
     public:
 		// Constructor and destructor
-		Block(string, string, int, int, int, int, int, int, bool);
+		Block(string, string, string, int, int, int, bool);
 		virtual ~Block() {};
         int getX();
         int getY();
@@ -21,10 +21,13 @@ class Block {
         void setSelected(bool);
         void setX(int);
         void setY(int);
+		void gridSet(int, int, int);
         string getSpriteName();
+		string getTextureName();
     private:
         string blockOrient;
         string blockSpriteName;
+		string blockTextureName;
         int blockX;
         int blockY;
         int blockWidth;

@@ -7,8 +7,7 @@
 #include <map>
 #include "LevelManager.hpp"
 #include "DrawManager.hpp"
-#include "Dialog.hpp"
-#include "Block.hpp"
+#include "DialogManager.hpp"
 using namespace std;
 
 class BlocksGame {
@@ -17,12 +16,10 @@ class BlocksGame {
         BlocksGame();
         virtual ~BlocksGame() {};
     private:
-        void setLevels();
-        void loadResources();
-        LevelManager *levelMan;
-        DrawManager *drawMan;
-        Dialog *dialog;
+        void loadLevelData(map<int, vector<Block>>&);
+        void loadResourceData(DrawManager&);
         sf::RenderWindow window;
+		DialogManager *dialog;
         map<int, vector<Block>> levels;
 };
 

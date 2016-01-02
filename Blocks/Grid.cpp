@@ -11,23 +11,25 @@ Grid::Grid(int x, int y, int endX, int endY, int incr, int victoryPos) {
 	isBlockFree = true;
 }
 
-void Grid::set(DrawManager *dm) {
+void Grid::set(DrawManager &drawMan) {
 	// Cycle through all the blocks on the grid
 	for (unsigned int i = 0; i < blocks.size(); i++) {
 		// Set the block image positions prior to drawing
-		dm->setSprite(blocks[i].getSpriteName(), (float)blocks[i].getX(), (float)blocks[i].getY());
+		drawMan.createSprite(blocks[i].getSpriteName(), blocks[i].getTextureName(), (float)blocks[i].getX(), (float)blocks[i].getY());
 	}
 }
 
-void Grid::draw(DrawManager *dm) {
+void Grid::draw(DrawManager &drawMan) {
 	// Cycle through all the blocks on the grid
 	for (unsigned int i = 0; i < blocks.size(); i++) {
 		// Draw the block to the screen
-		dm->drawSprite(blocks[i].getSpriteName());
+		drawMan.drawSprite(blocks[i].getSpriteName());
 	}
 }
 
 void Grid::addBlock(Block block) {
+	// Update the block
+	block.gridSet(gridX, gridY, posIncr);
 	// Add block to the grid
 	blocks.push_back(block);
 }
@@ -73,13 +75,13 @@ void Grid::selectBlock(int mX, int mY) {
 	}
 }
 
-void Grid::alignBlock(int initPos, int &posVal, int prevPos) {
+int Grid::alignBlock(int initPos, int posVal, int prevPos) {
 	// Get modulus for distance to cover and current position
 	int currPos = posVal - initPos;
 	int mod = currPos % posIncr;
 	// Find and set the closest positional alignment
-	if (mod) {
-		if ((posVal - mod) % posIncr) {
+	if (mod != 0) {
+		if ((posVal - mod) % posIncr != 0) {
 			posVal -= mod;
 		} else {
 			posVal += mod;
@@ -89,6 +91,7 @@ void Grid::alignBlock(int initPos, int &posVal, int prevPos) {
 			posVal += posIncr;
 		}
 	}
+	return posVal;
 }
 
 void Grid::releaseBlock(int &numMoves) {
@@ -103,9 +106,9 @@ void Grid::releaseBlock(int &numMoves) {
 			distanceX = distanceY = 0;
 			// Align the block correctly to the grid
 			if (!blocks[i].isVertical()) {
-				alignBlock(gridX, bX, previousX);
+				blocks[i].setX(alignBlock(gridX, bX, previousX));
 			} else {
-				alignBlock(gridY, bY, previousY);
+				blocks[i].setY(alignBlock(gridY, bY, previousY));
 			}
 		}
 	}
