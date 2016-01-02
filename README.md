@@ -3,6 +3,11 @@
 ##Description:
 Blocks is a 2D puzzle game where the objective is to rearrange the blocks (horizontally or vertically) so that you can push the red block out of the board. The blocks can only move in the direction of their orientation. Blocks positioned vertically can only move vertically, likewise, blocks positioned horizontally can only move horizontally. To slide a block, simply click on the block to select it and move the mouse, release the mouse to position the block. The number of moves and amount of time taken are displayed when the level is successfully completed.
 
+<p align="center">
+	<img src="http://i1379.photobucket.com/albums/ah129/SalinderSid/s1_zpshq8aay6z.png" alt="Screenshot 1"/>
+	<img src="http://i1379.photobucket.com/albums/ah129/SalinderSid/s2_zpsk9rcgffn.png" alt="Screenshot 2"/>
+</p>
+
 ##Supports:
 - Microsoft Windows 7, 8, 8.1 and 10
 - Linux based distributions
@@ -16,7 +21,6 @@ Blocks is a 2D puzzle game where the objective is to rearrange the blocks (horiz
 ##Build Instructions:
 
 ###Windows:
-
 ####Compiling PhysicsFS:
 1. First download and install `Microsoft Visual Studio 2015`
 2. Download and install [CMake](https://cmake.org/download/) Windows 32-bit installer
@@ -46,6 +50,10 @@ Blocks is a 2D puzzle game where the objective is to rearrange the blocks (horiz
 6. If successful, `Blocks.exe` will build in the `Release` folder in your repo's root folder
 7. Copy the `Data.7z` resource file from `\Blocks\Resources` to the `\Release` folder where `Blocks.exe` is located
 8. Execute `Blocks.exe` to launch the application
+
+###Linux:
+####Compiling PhysicsFS:
+####Compiling Blocks:
 
 ##License:
 Copyright (c) 2015 Salinder Sidhu
