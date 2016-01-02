@@ -3,8 +3,8 @@
 
 #include <string>
 #include <iostream>
-#include <PHYSFS\physfs.h>
-#include <SFML\Graphics.hpp>
+#include <PHYSFS/physfs.h>
+#include <SFML/Graphics.hpp>
 using namespace std;
 
 class PhyfsStream : public sf::InputStream {

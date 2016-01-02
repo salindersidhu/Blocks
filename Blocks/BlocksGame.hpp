@@ -1,7 +1,7 @@
 #ifndef BLOCKSGAME_HPP
 #define BLOCKSGAME_HPP
 
-#include <SFML\Graphics.hpp>
+#include <SFML/Graphics.hpp>
 #include <string>
 #include <vector>
 #include <map>

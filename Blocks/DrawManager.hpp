@@ -4,8 +4,8 @@
 #include <map>
 #include <string>
 #include <exception>
-#include <SFML\Graphics.hpp>
-#include <PHYSFS\physfs.h>
+#include <SFML/Graphics.hpp>
+#include <PHYSFS/physfs.h>
 #include "PhyfsStream.hpp"
 using namespace std;
 

@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 #include <map>
-#include <SFML\Graphics.hpp>
+#include <SFML/Graphics.hpp>
 #include "DrawManager.hpp"
 #include "Grid.hpp"
 #include "Button.hpp"
