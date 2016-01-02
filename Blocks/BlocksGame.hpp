@@ -16,11 +16,11 @@ class BlocksGame {
         BlocksGame();
         virtual ~BlocksGame() {};
     private:
-        void loadLevelData(map<int, vector<Block>>&);
+        void loadLevelData(map<int, vector<Block> >&);
         void loadResourceData(DrawManager&);
         sf::RenderWindow window;
 		DialogManager *dialog;
-        map<int, vector<Block>> levels;
+        map<int, vector<Block> > levels;
 };
 
 #endif

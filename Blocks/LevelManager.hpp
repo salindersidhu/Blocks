@@ -15,7 +15,7 @@ using namespace std;
 class LevelManager {
 	public:
         // Constructor and destructor
-		LevelManager(sf::RenderWindow*, DrawManager*, DialogManager*, map<int, vector<Block>>);
+		LevelManager(sf::RenderWindow*, DrawManager*, DialogManager*, map<int, vector<Block> >);
 		virtual ~LevelManager() {};
 		void drawLevel();
         void handleInputEvents(sf::Event*);
@@ -33,7 +33,7 @@ class LevelManager {
 		Clock clock;
 		Grid *grid;
 		vector<Button> buttons;
-        map<int, vector<Block>> levels;
+        map<int, vector<Block> > levels;
 };
 
 #endif
