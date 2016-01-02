@@ -1,303 +1,142 @@
 #include "LevelManager.hpp"
 
-LevelManager::LevelManager(sf::RenderWindow *window) {
-
-	// Initalize windows dialogs
-	dialog = new WindowsDialogs(window->getSystemHandle(), WINDOW_TITLE);
-	// Initalize drawing manager
-	try {
-		dm = new DrawManager(window, &string(GAME_RESOURCE_ARCHIVE));
-	} catch (exception &ex) {
-		dialog->showErrorDialog(ex.what());
-		window->close();
-	}
-	canvasWindow = window;
-
-	// Load all of the game's resources
-	try {
-		// Load sprites
-		dm->loadSpriteTexture(SPRITE::LEVELBG, IMAGE_BACKGROUND);
-		dm->loadSpriteTexture(SPRITE::BUTTON_RESET_NORMAL, IMAGE_BUTTON);
-		dm->loadSpriteTexture(SPRITE::BUTTON_RESET_SELECTED, IMAGE_BUTTON_SELECTED);
-		dm->loadSpriteTexture(SPRITE::BUTTON_QUIT_NORMAL, IMAGE_BUTTON);
-		dm->loadSpriteTexture(SPRITE::BUTTON_QUIT_SELECTED, IMAGE_BUTTON_SELECTED);
-		dm->loadSpriteTexture(SPRITE::BH21, IMAGE_BH21);
-		dm->loadSpriteTexture(SPRITE::BH22, IMAGE_BH22);
-		dm->loadSpriteTexture(SPRITE::BH23, IMAGE_BH23);
-		dm->loadSpriteTexture(SPRITE::BH24, IMAGE_BH24);
-		dm->loadSpriteTexture(SPRITE::BH25, IMAGE_BH25);
-		dm->loadSpriteTexture(SPRITE::BH26, IMAGE_BH26);
-		dm->loadSpriteTexture(SPRITE::BV21, IMAGE_BV21);
-		dm->loadSpriteTexture(SPRITE::BV22, IMAGE_BV22);
-		dm->loadSpriteTexture(SPRITE::BV23, IMAGE_BV23);
-		dm->loadSpriteTexture(SPRITE::BV24, IMAGE_BV24);
-		dm->loadSpriteTexture(SPRITE::BV25, IMAGE_BV25);
-		dm->loadSpriteTexture(SPRITE::BV26, IMAGE_BV26);
-		dm->loadSpriteTexture(SPRITE::BH31, IMAGE_BH31);
-		dm->loadSpriteTexture(SPRITE::BH32, IMAGE_BH32);
-		dm->loadSpriteTexture(SPRITE::BV31, IMAGE_BV31);
-		dm->loadSpriteTexture(SPRITE::BV32, IMAGE_BV32);
-		// Load duplicate sprites to have the same coloured blocks on a level
-		dm->loadSpriteTexture(SPRITE::BV22_2, IMAGE_BV22);
-		dm->loadSpriteTexture(SPRITE::BV25_2, IMAGE_BV25);
-		dm->loadSpriteTexture(SPRITE::BV32_2, IMAGE_BV32);
-		dm->loadSpriteTexture(SPRITE::BH32_2, IMAGE_BH32);
-		dm->loadSpriteTexture(SPRITE::BH23_2, IMAGE_BH23);
-		// Load text fonts
-		dm->loadTextFont(TEXTS::HEADER, FONT_COOPER_BLACK_STD);
-		dm->loadTextFont(TEXTS::INFO, FONT_COOPER_BLACK_STD);
-		dm->loadTextFont(TEXTS::BUTTON_RESET, FONT_COOPER_BLACK_STD);
-		dm->loadTextFont(TEXTS::BUTTON_QUIT, FONT_COOPER_BLACK_STD);
-	} catch (exception &ex) {
-		dialog->showErrorDialog(ex.what());
-		window->close();
-	}
-
-	// Setup the game's buttons
-	buttons.push_back(ButtonGUI(RESET_BUTTON_TEXT, TEXTS::BUTTON_RESET, 171, 39, 111, 107, SPRITE::BUTTON_RESET_NORMAL, SPRITE::BUTTON_RESET_SELECTED));
-	buttons.push_back(ButtonGUI(QUIT_BUTTON_TEXT, TEXTS::BUTTON_QUIT, 171, 39, 321, 107, SPRITE::BUTTON_QUIT_NORMAL, SPRITE::BUTTON_QUIT_SELECTED));
-
+LevelManager::LevelManager(sf::RenderWindow *_window, DrawManager *draw, DialogManager *_dialog, map<int, vector<Block>> _levels) {
+    // Set render window, draw manager and dialog components for the level
+	window = _window;
+	drawMan = draw;
+    dialog = _dialog;
+	grid = new Grid(55, 167, 535, 637, 80, 375);
+    // Setup the game's buttons
+	buttons.push_back(Button("Restart", "FONT_COPPER", "TEXTURE_BUTTON_NORMAL", "TEXTURE_BUTTON_HOVER", sf::Color(255, 255, 255), sf::Color(255, 51, 82), 30, 171, 39, 111, 107));
+	buttons.push_back(Button("Quit", "FONT_COPPER", "TEXTURE_BUTTON_NORMAL", "TEXTURE_BUTTON_HOVER", sf::Color(255, 255, 255), sf::Color(255, 51, 82), 30, 171, 39, 321, 107));
 	// Initalize the level
 	currentLevel = 1;
-	numberOfMoves = 0;
-	buildLevel();
+	numMoves = 0;
+    levels = _levels;
+	createLevel();
 }
 
-void LevelManager::buildLevel() {
-
+void LevelManager::createLevel() {
 	// Reset the level's grid, clock timer and number of moves
-	grid.clear();
-	timer.reset();
-	numberOfMoves = 0;
-
+	grid->clear();
+	clock.reset();
+	numMoves = 0;
 	// Configure the background, buttons, heading and display info text
 	try {
-		dm->configSpritePosition(SPRITE::LEVELBG, 0, 0);
+		drawMan->createSprite("SPRITE_BG", "TEXTURE_BG", 0, 0);
 		for (unsigned int i = 0; i < buttons.size(); i++) {
-			buttons[i].configure(dm);
+			buttons[i].set(*drawMan);
 		}
-		dm->configTextCenterHorizontal(TEXTS::HEADER, 60, WHITE, "Level " + to_string(currentLevel), 15);
-		dm->configTextCenterHorizontal(TEXTS::INFO, 30, WHITE, "Time: " + timer.output() + "    Moves: " + to_string(numberOfMoves), 640);
+		drawMan->createText("TEXT_HEADER", "FONT_COPPER", 60, sf::Color(255, 255, 255), "Level " + to_string(currentLevel), 0, 15);
+        drawMan->setTextCentered("TEXT_HEADER", 600, 15);
 	} catch (exception &ex) {
-		dialog->showErrorDialog(ex.what());
-		canvasWindow->close();
+		dialog->error(ex.what());
+		window->close();
 	}
-
-	// Add blocks to the grid corresponding to the next level
-	if (currentLevel == 1) {
-		grid.addBlock(Block(ORIENTATION::V, 3, 2, 0, SPRITE::BV31, false));
-		grid.addBlock(Block(ORIENTATION::H, 2, 4, 0, SPRITE::BH26, false));
-		grid.addBlock(Block(ORIENTATION::H, 2, 0, 2, SPRITE::BH21, true));
-		grid.addBlock(Block(ORIENTATION::H, 3, 0, 3, SPRITE::BH32, false));
-		grid.addBlock(Block(ORIENTATION::V, 3, 5, 3, SPRITE::BV32, false));
-	}
-	else if (currentLevel == 2) {
-		grid.addBlock(Block(ORIENTATION::V, 3, 2, 0, SPRITE::BV31, false));
-		grid.addBlock(Block(ORIENTATION::H, 2, 3, 2, SPRITE::BH21, true));
-		grid.addBlock(Block(ORIENTATION::V, 3, 5, 1, SPRITE::BV32, false));
-		grid.addBlock(Block(ORIENTATION::H, 3, 0, 3, SPRITE::BH31, false));
-		grid.addBlock(Block(ORIENTATION::V, 2, 3, 3, SPRITE::BV25, false));
-		grid.addBlock(Block(ORIENTATION::H, 2, 4, 4, SPRITE::BH23, false));
-	}
-	else if (currentLevel == 3) {
-		grid.addBlock(Block(ORIENTATION::V, 2, 0, 0, SPRITE::BV25, false));
-		grid.addBlock(Block(ORIENTATION::V, 2, 1, 0, SPRITE::BV22, false));
-		grid.addBlock(Block(ORIENTATION::H, 2, 2, 0, SPRITE::BH23, false));
-		grid.addBlock(Block(ORIENTATION::H, 2, 2, 1, SPRITE::BH26, false));
-		grid.addBlock(Block(ORIENTATION::V, 2, 4, 0, SPRITE::BV23, false));
-		grid.addBlock(Block(ORIENTATION::H, 2, 0, 2, SPRITE::BH21, true));
-		grid.addBlock(Block(ORIENTATION::V, 2, 2, 2, SPRITE::BV25_2, false));
-		grid.addBlock(Block(ORIENTATION::V, 2, 2, 4, SPRITE::BV24, false));
-		grid.addBlock(Block(ORIENTATION::V, 3, 3, 2, SPRITE::BV31, false));
-		grid.addBlock(Block(ORIENTATION::V, 2, 4, 3, SPRITE::BV26, false));
-	}
-	else if (currentLevel == 4) {
-		grid.addBlock(Block(ORIENTATION::H, 2, 0, 2, SPRITE::BH21, true));
-		grid.addBlock(Block(ORIENTATION::H, 3, 0, 3, SPRITE::BH31, false));
-		grid.addBlock(Block(ORIENTATION::V, 2, 2, 1, SPRITE::BV25, false));
-		grid.addBlock(Block(ORIENTATION::V, 2, 0, 4, SPRITE::BV23, false));
-		grid.addBlock(Block(ORIENTATION::V, 2, 1, 4, SPRITE::BV22, false));
-		grid.addBlock(Block(ORIENTATION::V, 2, 2, 4, SPRITE::BV26, false));
-		grid.addBlock(Block(ORIENTATION::V, 3, 4, 1, SPRITE::BV31, false));
-		grid.addBlock(Block(ORIENTATION::V, 2, 5, 2, SPRITE::BV21, false));
-		grid.addBlock(Block(ORIENTATION::H, 2, 4, 4, SPRITE::BH25, false));
-		grid.addBlock(Block(ORIENTATION::H, 2, 4, 5, SPRITE::BH23, false));
-	}
-	else if (currentLevel == 5) {
-		grid.addBlock(Block(ORIENTATION::H, 3, 2, 0, SPRITE::BH32, false));
-		grid.addBlock(Block(ORIENTATION::H, 3, 0, 1, SPRITE::BH31, false));
-		grid.addBlock(Block(ORIENTATION::H, 2, 0, 2, SPRITE::BH21, true));
-		grid.addBlock(Block(ORIENTATION::H, 3, 0, 3, SPRITE::BH32_2, false));
-		grid.addBlock(Block(ORIENTATION::H, 2, 4, 4, SPRITE::BH24, false));
-		grid.addBlock(Block(ORIENTATION::H, 2, 4, 5, SPRITE::BH22, false));
-		grid.addBlock(Block(ORIENTATION::V, 3, 4, 1, SPRITE::BV32, false));
-		grid.addBlock(Block(ORIENTATION::V, 2, 5, 2, SPRITE::BV25, false));
-		grid.addBlock(Block(ORIENTATION::V, 2, 0, 4, SPRITE::BV24, false));
-		grid.addBlock(Block(ORIENTATION::V, 2, 2, 4, SPRITE::BV23, false));
-	}
-	else if (currentLevel == 6) {
-		grid.addBlock(Block(ORIENTATION::H, 2, 0, 2, SPRITE::BH21, true));
-		grid.addBlock(Block(ORIENTATION::H, 2, 3, 3, SPRITE::BH23, false));
-		grid.addBlock(Block(ORIENTATION::H, 2, 1, 4, SPRITE::BH26, false));
-		grid.addBlock(Block(ORIENTATION::H, 3, 0, 5, SPRITE::BH32, false));
-		grid.addBlock(Block(ORIENTATION::V, 3, 2, 1, SPRITE::BV31, false));
-		grid.addBlock(Block(ORIENTATION::V, 2, 5, 1, SPRITE::BV25, false));
-		grid.addBlock(Block(ORIENTATION::V, 2, 0, 3, SPRITE::BV22, false));
-		grid.addBlock(Block(ORIENTATION::V, 2, 3, 4, SPRITE::BV23, false));
-		grid.addBlock(Block(ORIENTATION::V, 2, 4, 4, SPRITE::BV26, false));
-		grid.addBlock(Block(ORIENTATION::V, 3, 5, 3, SPRITE::BV32, false));
-	}
-	else if (currentLevel == 7) {
-		grid.addBlock(Block(ORIENTATION::H, 2, 0, 0, SPRITE::BH25, false));
-		grid.addBlock(Block(ORIENTATION::H, 3, 3, 0, SPRITE::BH32, false));
-		grid.addBlock(Block(ORIENTATION::H, 2, 4, 1, SPRITE::BH23, false));
-		grid.addBlock(Block(ORIENTATION::H, 2, 1, 2, SPRITE::BH21, true));
-		grid.addBlock(Block(ORIENTATION::H, 2, 3, 3, SPRITE::BH26, false));
-		grid.addBlock(Block(ORIENTATION::H, 2, 0, 4, SPRITE::BH22, false));
-		grid.addBlock(Block(ORIENTATION::H, 3, 3, 5, SPRITE::BH31, false));
-		grid.addBlock(Block(ORIENTATION::V, 2, 3, 1, SPRITE::BV22, false));
-		grid.addBlock(Block(ORIENTATION::V, 2, 0, 2, SPRITE::BV24, false));
-		grid.addBlock(Block(ORIENTATION::V, 3, 2, 3, SPRITE::BV31, false));
-		grid.addBlock(Block(ORIENTATION::V, 3, 5, 2, SPRITE::BV32, false));
-	}
-	else if (currentLevel == 8) {
-		grid.addBlock(Block(ORIENTATION::H, 2, 0, 0, SPRITE::BH25, false));
-		grid.addBlock(Block(ORIENTATION::H, 2, 4, 5, SPRITE::BH24, false));
-		grid.addBlock(Block(ORIENTATION::V, 3, 5, 1, SPRITE::BV31, false));
-		grid.addBlock(Block(ORIENTATION::H, 2, 4, 0, SPRITE::BH23, false));
-		grid.addBlock(Block(ORIENTATION::V, 2, 2, 0, SPRITE::BV22, false));
-		grid.addBlock(Block(ORIENTATION::H, 2, 1, 2, SPRITE::BH21, true));
-		grid.addBlock(Block(ORIENTATION::V, 3, 0, 2, SPRITE::BV32, false));
-		grid.addBlock(Block(ORIENTATION::H, 2, 0, 1, SPRITE::BH26, false));
-		grid.addBlock(Block(ORIENTATION::V, 2, 3, 4, SPRITE::BV22_2, false));
-		grid.addBlock(Block(ORIENTATION::H, 2, 0, 5, SPRITE::BH22, false));
-		grid.addBlock(Block(ORIENTATION::H, 3, 1, 3, SPRITE::BH32, false));
-		grid.addBlock(Block(ORIENTATION::H, 2, 4, 4, SPRITE::BH23_2, false));
-	}
-	else if (currentLevel == 9) {
-		grid.addBlock(Block(ORIENTATION::H, 2, 2, 2, SPRITE::BH21, true));
-		grid.addBlock(Block(ORIENTATION::V, 2, 4, 1, SPRITE::BV22, false));
-		grid.addBlock(Block(ORIENTATION::V, 2, 4, 3, SPRITE::BV25, false));
-		grid.addBlock(Block(ORIENTATION::H, 2, 3, 0, SPRITE::BH23, false));
-		grid.addBlock(Block(ORIENTATION::H, 3, 1, 4, SPRITE::BH31, false));
-		grid.addBlock(Block(ORIENTATION::H, 2, 2, 3, SPRITE::BH23_2, false));
-		grid.addBlock(Block(ORIENTATION::V, 2, 1, 2, SPRITE::BV24, false));
-		grid.addBlock(Block(ORIENTATION::V, 2, 2, 0, SPRITE::BV26, false));
-	} 
-	else if (currentLevel == 10) {
-		grid.addBlock(Block(ORIENTATION::H, 2, 1, 2, SPRITE::BH21, true));
-		grid.addBlock(Block(ORIENTATION::V, 3, 4, 1, SPRITE::BV31, false));
-		grid.addBlock(Block(ORIENTATION::V, 3, 5, 1, SPRITE::BV32, false));
-		grid.addBlock(Block(ORIENTATION::V, 3, 3, 2, SPRITE::BV32_2, false));
-		grid.addBlock(Block(ORIENTATION::V, 2, 3, 0, SPRITE::BV22, false));
-		grid.addBlock(Block(ORIENTATION::V, 2, 2, 3, SPRITE::BV26, false));
-		grid.addBlock(Block(ORIENTATION::H, 3, 3, 5, SPRITE::BH32, false));
-		grid.addBlock(Block(ORIENTATION::V, 2, 0, 4, SPRITE::BV25, false));
-		grid.addBlock(Block(ORIENTATION::H, 2, 0, 3, SPRITE::BH22, false));
-		grid.addBlock(Block(ORIENTATION::H, 2, 0, 1, SPRITE::BH23, false));
-		grid.addBlock(Block(ORIENTATION::H, 2, 0, 0, SPRITE::BH25, false));
-	} else {
+    // If there are still levels left
+    if (currentLevel <= (int)levels.size()) {
+        // Iterate through all the blocks of the current level
+        for (unsigned int i = 0; i < levels[currentLevel].size(); i++) {
+            grid->addBlock(levels[currentLevel][i]);
+        }
+    } else {
 		// Display a game victory message at the last level and start over at level 1
-		dialog->showInfoDialog(GAME_WON_MESSAGE);
+		dialog->message("Congratulations!\nYou have completed all the levels!");
 		currentLevel = 1;
-		buildLevel();
+		createLevel();
 	}
-
-	// Configure the grid's blocks for drawing
-	grid.configure(dm);
+	// Set the grid's blocks for drawing
+	grid->set(*drawMan);
 }
 
-void LevelManager::checkLevelCleared() {
+void LevelManager::handleLevelcleared() {
 	// Check if the current level is cleared
-	if (grid.isVictory()) {
+	if (grid->isVictory()) {
 		// Display a level complete message and load the next level
 		string head = "LEVEL " + to_string(currentLevel) +  " COMPLETE!\n\n";
-		string body = "Your time: " + timer.output() + " with " + to_string(numberOfMoves) + " moves.";
-		dialog->showInfoDialog(head + body);
+		string body = "Your time: " + clock.output() + " with " + to_string(numMoves) + " moves.";
+		dialog->message(head + body);
 		currentLevel++;
-		buildLevel();
+		createLevel();
 	}
 }
 
-void LevelManager::buttonEvent(int m_x, int m_y) {
+void LevelManager::buttonClickEvents(int mX, int mY) {
 	for (unsigned int i = 0; i < buttons.size(); i++) {
 		// Restart the current level if the restart button is pressed
-		if (buttons[i].selected(m_x, m_y, SPRITE::BUTTON_RESET_SELECTED)) {
-			buildLevel();
+		if (buttons[i].isSelected("Restart", mX, mY)) {
+			createLevel();
 		}
 		// Quit the game if the quit button is pressed
-		if (buttons[i].selected(m_x, m_y, SPRITE::BUTTON_QUIT_SELECTED)) {
-			canvasWindow->close();
+		if (buttons[i].isSelected("Quit", mX, mY)) {
+			window->close();
 		}
 	}
 }
 
-void LevelManager::buttonHover(int m_x, int m_y) {
+void LevelManager::buttonHoverEvents(int mX, int mY) {
 	// Check if the mouse is hovering over a button
 	for (unsigned int i = 0; i < buttons.size(); i++) {
-		buttons[i].hovering(m_x, m_y);
-		buttons[i].configure(dm);
+		buttons[i].isHovering(mX, mY);
+		buttons[i].set(*drawMan);
 	}
 }
 
-void LevelManager::handleTimer() {
-
-	// Increment the timer by 1 millisecond
-	timer.tick();
-
+void LevelManager::handlePassiveEvents() {
+	// Increment the clock by 1 millisecond
+	clock.tick();
 	// Update the info display text
 	try {
-		dm->configTextCenterHorizontal(TEXTS::INFO, 30, WHITE, "Time: " + timer.output() + "    Moves: " + to_string(numberOfMoves), 640);
+        drawMan->createText("TEXT_INFO", "FONT_COPPER", 30, sf::Color(255, 255, 255), "Time: " + clock.output() + "    Moves: " + to_string(numMoves), 0, 640);
+		drawMan->setTextCentered("TEXT_INFO", 600, 640);
 	} catch (exception &ex) {
-		dialog->showErrorDialog(ex.what());
-		canvasWindow->close();
+		dialog->error(ex.what());
+		window->close();
 	}
 }
 
-void LevelManager::handleEvents(sf::Event *event) {
-
+void LevelManager::handleInputEvents(sf::Event *event) {
 	// Get the position of the mouse relative to the window
-	sf::Vector2i mousePosition = sf::Mouse::getPosition(*canvasWindow);
-
+	sf::Vector2i mousePosition = sf::Mouse::getPosition(*window);
 	// Handle mouse click events
 	if (event->type == sf::Event::MouseButtonPressed) {
 		// Button controls
-		buttonEvent(mousePosition.x, mousePosition.y);
+		buttonClickEvents(mousePosition.x, mousePosition.y);
 		// Grid controls
-		grid.selectBlock(mousePosition.x, mousePosition.y);
+		grid->selectBlock(mousePosition.x, mousePosition.y);
 	}
 	// Handle mouse click release events
 	if (event->type == sf::Event::MouseButtonReleased) {
 		// Grid controls
-		grid.releaseBlock(numberOfMoves);
-		grid.configure(dm);
-		checkLevelCleared();
+		grid->releaseBlock(numMoves);
+		grid->set(*drawMan);
+		handleLevelcleared();
 	}
 	// Handle mouse movement events
 	if (event->type == sf::Event::MouseMoved) {
 		// Button controls
-		buttonHover(mousePosition.x, mousePosition.y);
+		buttonHoverEvents(mousePosition.x, mousePosition.y);
 		// Grid controls
-		grid.moveBlock(mousePosition.x, mousePosition.y);
-		grid.configure(dm);
+		grid->moveBlock(mousePosition.x, mousePosition.y);
+		grid->set(*drawMan);
 	}
 }
 
 void LevelManager::drawLevel() {
 	try {
 		// Draw the background
-		dm->drawSprite(SPRITE::LEVELBG);
+		drawMan->drawSprite("SPRITE_BG");
 		// Draw the buttons
 		for (unsigned int i = 0; i < buttons.size(); i++) {
-			buttons[i].draw(dm);
+			buttons[i].draw(*drawMan);
 		}
 		// Draw the text
-		dm->drawText(TEXTS::HEADER);
-		dm->drawText(TEXTS::INFO);
+		drawMan->drawText("TEXT_HEADER");
+		drawMan->drawText("TEXT_INFO");
 		// Draw the grid
-		grid.draw(dm);
+		grid->draw(*drawMan);
 	} catch (exception &ex) {
-		dialog->showErrorDialog(ex.what());
-		canvasWindow->close();
+		dialog->error(ex.what());
+		window->close();
 	}
 }

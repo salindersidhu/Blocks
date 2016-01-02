@@ -6,7 +6,6 @@
 #include <exception>
 #include <SFML\Graphics.hpp>
 #include <PHYSFS\physfs.h>
-#include "Constants.hpp"
 #include "PhyfsStream.hpp"
 using namespace std;
 
@@ -33,7 +32,7 @@ class ResourceNotLoadedException : public exception {
 /* ResourceNotFoundException class */
 class ResourceNotFoundException : public exception {
 	public:
-		ResourceNotFoundException(string, int);
+		ResourceNotFoundException(string, string);
 		virtual ~ResourceNotFoundException() throw() {};
 		const char *what() const throw() {return message.c_str();};
 	private:
@@ -43,26 +42,36 @@ class ResourceNotFoundException : public exception {
 /* DrawManager class */
 class DrawManager {
 	public:
-		DrawManager(sf::RenderWindow*, string*); // Constructor
-		virtual ~DrawManager(); // Destructor
-		void loadSpriteTexture(SPRITE, string);
-		void loadTextFont(TEXTS, string);
-		void configSpritePosition(SPRITE, float, float);
-		void configText(TEXTS, unsigned int, sf::Color, string, float, float);
-		void configTextCenterHorizontal(TEXTS, unsigned int, sf::Color, string, float);
-		void configTextCenterRectangle(TEXTS, unsigned int, sf::Color, string, float, float, float, float);
-		void drawSprite(SPRITE);
-		void drawText(TEXTS);
+		// Constructor and destructor
+		DrawManager(sf::RenderWindow*, string*);
+		virtual ~DrawManager();
+		// Load basic elements
+		void loadTexture(string, string);
+		void loadFont(string, string);
+		void loadImage(string, string);
+		// Create drawing elements
+		void createSprite(string, string, float, float);
+		void createText(string, string, unsigned int, sf::Color, string, float, float);
+		void setTextCentered(string, float, float);
+		void setTextCentered(string, float, float, float, float);
+		// Draw functions
+		void drawSprite(string);
+		void drawText(string);
+		// Get drawing elements
+		sf::Sprite getSprite(string);
+		sf::Text getText(string);
+		sf::Image getImage(string);
 	private:
-		// Store raw resource data objects
-		map<SPRITE, sf::Texture> texturesMap;
-		map<TEXTS, sf::Font> fontsMap;
-		// Store sprite and text objects
-		map<SPRITE, sf::Sprite> spritesMap;
-		map<TEXTS, sf::Text> textsMap;
-		// Window to draw on
-		sf::RenderWindow *canvasWindow;
-		// The PHYSFS custom input stream
+		// Primary resources, texture fonts and images
+		map<string, sf::Texture> textures;
+		map<string, sf::Font> fonts;
+		// Map of sprites, text and images
+		map<string, sf::Sprite> sprites;
+		map<string, sf::Text> text;
+		map<string, sf::Image> images;
+		// Pointer to canvas to draw on
+		sf::RenderWindow *canvas;
+		// The PhySFS input stream
 		PhyfsStream archiveStream;
 };
 
