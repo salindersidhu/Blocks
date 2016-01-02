@@ -2,7 +2,7 @@
 #define DIALOGMANAGER_HPP
 
 #include <string>
-#include "tinyfiledialogs.h"
+#include "tinyfiledialogs.hpp"
 using namespace std;
 
 class DialogManager {

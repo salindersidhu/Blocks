@@ -42,7 +42,7 @@
     <ClCompile Include="DialogManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="tinyfiledialogs.c">
+    <ClCompile Include="tinyfiledialogs.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="BlocksGame.cpp">
@@ -77,7 +77,7 @@
     <ClInclude Include="DialogManager.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="tinyfiledialogs.h">
+    <ClInclude Include="tinyfiledialogs.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BlocksGame.hpp">
