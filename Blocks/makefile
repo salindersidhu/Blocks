@@ -1,13 +1,11 @@
 # Makefile for compiling on a linux operating system
-# Compiler
 CC=g++
-# Compiler flags
-CFLAGS=-c
+CFLAGS=-std=c++0x -c
 
 all: Blocks
 
-Blocks: Clock.o Grid.o Block.o tinyfiledialogs.o DialogManager.o PhyfsStream.o DrawManager.o Button.o LevelManager.o  BlockGame.o Main.o
-	$(CC) Clock.o Grid.o Block.o tinyfiledialogs.o DialogManager.o PhyfsStream.o DrawManager.o Button.o LevelManager.o BlockGame.o Main.o -o Blocks
+Blocks: Clock.o Grid.o Block.o tinyfiledialogs.o DialogManager.o PhyfsStream.o DrawManager.o Button.o LevelManager.o  BlocksGame.o Main.o
+	$(CC) Clock.o Grid.o Block.o tinyfiledialogs.o DialogManager.o PhyfsStream.o DrawManager.o Button.o LevelManager.o BlocksGame.o Main.o -o Blocks
 
 Clock.o:
 	$(CC) $(CFLAGS) Clock.cpp
@@ -36,8 +34,8 @@ Button.o:
 LevelManager.o:
 	$(CC) $(CFLAGS) LevelManager.cpp
 
-BlockGame.o:
-	$(CC) $(CFLAGS) BlockGame.cpp
+BlocksGame.o:
+	$(CC) $(CFLAGS) BlocksGame.cpp
 
 clean:
-	rm *o
+	rm -rf *o

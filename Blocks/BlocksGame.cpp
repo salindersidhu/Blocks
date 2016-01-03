@@ -8,7 +8,8 @@ BlocksGame::BlocksGame() {
     dialog = new DialogManager("Blocks");
     try {
 		// Initialize the draw manager
-		DrawManager drawMan = DrawManager(&window, &string("Data.7z"));
+		string resourceFile = "Data.7z";
+		DrawManager drawMan = DrawManager(&window, &resourceFile);
 		// Load all resources and setup the level
 		loadResourceData(drawMan);
 		loadLevelData(levels);
