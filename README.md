@@ -13,7 +13,7 @@ Blocks is a 2D puzzle game where the objective is to rearrange the blocks (horiz
 - Linux based distributions
 
 ##Dependencies:
-- `GCC`, `Clang` or `Microsoft Visual Studio 2015` [(Community Edition)](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx)
+- `G++`, `Clang` or `Microsoft Visual Studio 2015` [(Community Edition)](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx)
 - `SFML 32-bit` [(Build 2.3.2)](http://www.sfml-dev.org/download.php)
 - `Tiny File Dialogs` [(Source)](http://sourceforge.net/projects/tinyfiledialogs/files/?source=navbar) **Already included in the project**
 - `PhysicsFS` [(Build 2.0.3)](https://icculus.org/physfs/) **You will need to compile this from source**
@@ -43,7 +43,7 @@ Blocks is a 2D puzzle game where the objective is to rearrange the blocks (horiz
 
 ####Compiling Blocks:
 1. Clone the repo to obtain the project and source code
-2. Download `SFML` 32-bit version build 2.3.2 and extract it to `C:\`
+2. Download `SFML` Visual C++ 14 32-bit version build 2.3.2 and extract it to `C:\`
 3. Open the project solution, `Blocks.sln` in `Microsoft Visual Studio 2015`
 4. Set the `Solutions Configurations` to `Release` and set the `Solutions Platform` to `x86`
 5. Right click the `Blocks` project in the `Class View` pane and select `Build`
@@ -53,7 +53,23 @@ Blocks is a 2D puzzle game where the objective is to rearrange the blocks (horiz
 
 ###Linux:
 ####Compiling PhysicsFS:
+1. Download and extract `PhysicsFS` [(2.0.3)](https://icculus.org/physfs/) source code
+2. Open terminal as root and type `sudo apt-get install cmake` to install CMake
+3. Use the terminal to navigate to the extracted `PhysicsFS` source code folder `physfs-2.0.3`
+4. Create a new folder called `bin` and navigate to it by typing `mkdir bin && cd bin` into the terminal
+5. Generate the Makefiles by typing `cmake ..` into the terminal
+6. Type `make` into the terminal to build `PhysicsFS`
+7. Type `sudo make install` to install the `PhysicsFS` library
+8. Type `cd /usr/local/include` into the terminal to navigate to that folder
+9. You will need to move the `physfs.h` header file a new folder called `PHYSFS` in this folder by typing `sudo chmod 777 physfs.h && sudo mkdir PHYSFS && sudo mv physfs.h PHYSFS`
+10. Delete the extracted PhysicsFS source code folder `physfs-2.0.3` and the `bin` folder
+
 ####Compiling Blocks:
+1. Clone the repo to obtain the project and source code
+2. Open terminal as root and type `sudo apt-get install libsfml-dev` to install the latest official release of SFML
+3. From the cloned repo, navigate to the source code by typing `cd Blocks` in the terminal
+4. Type `make` into the terminal to compile the project
+6. Launch the app by typing `./Blocks` in the terminal
 
 ##License:
 Copyright (c) 2015 Salinder Sidhu
