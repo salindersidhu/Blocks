@@ -61,7 +61,7 @@ Blocks is a 2D puzzle game where the objective is to rearrange the blocks (horiz
 6. Type `make` into the terminal to build `PhysicsFS`
 7. Type `sudo make install` to install the `PhysicsFS` library
 8. Type `cd /usr/local/include` into the terminal to navigate to that folder
-9. You will need to move the `physfs.h` header file a new folder called `PHYSFS` in this folder by typing `sudo chmod 777 physfs.h && sudo mkdir PHYSFS && sudo mv physfs.h PHYSFS`
+9. You will need to move the `physfs.h` header file to new folder called `PHYSFS` by typing `sudo chmod 777 physfs.h && sudo mkdir PHYSFS && sudo mv physfs.h PHYSFS`
 10. Delete the extracted PhysicsFS source code folder `physfs-2.0.3` and the `bin` folder
 
 ####Compiling Blocks:
