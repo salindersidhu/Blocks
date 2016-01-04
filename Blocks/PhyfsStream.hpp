@@ -3,7 +3,7 @@
 
 #include <string>
 #include <iostream>
-#include <PHYSFS/physfs.h>
+#include <physfs.h>
 #include <SFML/Graphics.hpp>
 using namespace std;
 

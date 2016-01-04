@@ -37,9 +37,8 @@ Blocks is a 2D puzzle game where the objective is to rearrange the blocks (horiz
 13. Create a new folder called `PHYSFS-2.0.3` at `C:\` and create the following folders inside of it: `bin`, `include` and `lib`
 14. Navigate to your `bin\release` folder, copy `physfs.dll` and `test_physfs.exe` to `C:\PHYSFS-2.0.3\bin`
 15. Copy the remaining files `physfs.exp`, `physfs.lib`, `test_physfs.exp` and `test_physfs.lib` to `C:\PHYSFS-2.0.3\lib`
-16. Navigate to `C:\PHYSFS-2.0.3\include` and create a new folder called `PHYSFS`
-17. Navigate to the extracted PhysicsFS source code folder `physfs-2.0.3` and copy all the folders, `.h` and `.c` files to `C:\PHYSFS-2.0.3\include\PHYSFS`
-18. Delete the extracted PhysicsFS source code folder `physfs-2.0.3` and the `bin` folder
+16. Navigate to the extracted PhysicsFS source code folder `physfs-2.0.3` and copy all the folders, `.h` and `.c` files to `C:\PHYSFS-2.0.3\include`
+17. Delete the extracted PhysicsFS source code folder `physfs-2.0.3` and the `bin` folder
 
 ####Compiling Blocks:
 1. Clone the repo to obtain the project and source code
@@ -60,9 +59,7 @@ Blocks is a 2D puzzle game where the objective is to rearrange the blocks (horiz
 5. Generate the Makefiles by typing `cmake ..` into the terminal
 6. Type `make` into the terminal to build `PhysicsFS`
 7. Type `sudo make install` to install the `PhysicsFS` library
-8. Type `cd /usr/local/include` into the terminal to navigate to that folder
-9. You will need to move the `physfs.h` header file to new folder called `PHYSFS` by typing `sudo chmod 777 physfs.h && sudo mkdir PHYSFS && sudo mv physfs.h PHYSFS`
-10. Delete the extracted PhysicsFS source code folder `physfs-2.0.3` and the `bin` folder
+8. Delete the extracted PhysicsFS source code folder `physfs-2.0.3` and the `bin` folder
 
 ####Compiling Blocks:
 1. Clone the repo to obtain the project and source code
