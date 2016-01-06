@@ -1,13 +1,20 @@
 #include "DialogManager.hpp"
 
-DialogManager::DialogManager(string title) {
+DialogManager::DialogManager(string title, HWND handle) {
 	dialogTitle = title;
+    windowHandle = handle;
 }
 
 void DialogManager::message(string message) {
-	tinyfd_messageBox(dialogTitle.c_str(), message.c_str(), "ok", "info", 1);
+    #ifdef _WIN32
+        MessageBoxW(windowHandle, message.c_str(), dialogTitle.c_str(), MB_ICONERROR | MB_OK);
+    #elif __linux__
+    #endif
 }
 
 void DialogManager::error(string message) {
-	tinyfd_messageBox(dialogTitle.c_str(), message.c_str(), "ok", "error", 1);
+    #ifdef _WIN32
+	   MessageBoxW(windowHandle, message.c_str(), dialogTitle.c_str(), MB_ICONINFORMATION | MB_OK);
+    #elif __linux__
+    #endif
 }

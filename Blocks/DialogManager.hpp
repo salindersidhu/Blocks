@@ -2,13 +2,16 @@
 #define DIALOGMANAGER_HPP
 
 #include <string>
-#include "tinyfiledialogs.hpp"
+#ifdef _WIN32
+    #include <window.h>
+#elif __linux__
+#endif
 using namespace std;
 
 class DialogManager {
 	public:
         // Constructor and destructor
-		DialogManager(string);
+		DialogManager(string, HWND);
 		virtual ~DialogManager() {};
 		void message(string);
 		void error(string);
