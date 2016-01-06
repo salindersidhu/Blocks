@@ -7,7 +7,7 @@ BlocksGame::BlocksGame() {
     // Initialize dialog
 #ifdef _WIN32
     dialog = new DialogManager("Blocks", window.getSystemHandle());
-#elif
+#elif __linux__
 	dialog = new DialogManager("Blocks");
 #endif
     try {
