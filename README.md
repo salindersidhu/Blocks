@@ -15,7 +15,6 @@ Blocks is a 2D puzzle game where the objective is to rearrange the blocks (horiz
 ##Dependencies:
 - `G++`, `Clang` or `Microsoft Visual Studio 2015` [(Community Edition)](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx)
 - `SFML 32-bit` [(Build 2.3.2)](http://www.sfml-dev.org/download.php)
-- `Tiny File Dialogs` [(Source)](http://sourceforge.net/projects/tinyfiledialogs/files/?source=navbar) **Already included in the project**
 - `PhysicsFS` [(Build 2.0.3)](https://icculus.org/physfs/) **You will need to compile this from source**
 
 ##Build Instructions:
@@ -47,7 +46,7 @@ Blocks is a 2D puzzle game where the objective is to rearrange the blocks (horiz
 4. Set the `Solutions Configurations` to `Release` and set the `Solutions Platform` to `x86`
 5. Right click the `Blocks` project in the `Class View` pane and select `Build`
 6. If successful, `Blocks.exe` will build in the `Release` folder in your repo's root folder
-7. Copy the `Data.7z` resource file from `\Blocks\Resources` to the `\Release` folder where `Blocks.exe` is located
+7. Copy the `Data.7z` resource file from `Blocks\Resources` to the `Release` folder where `Blocks.exe` is located
 8. Execute `Blocks.exe` to launch the application
 
 ###Linux:
@@ -59,14 +58,15 @@ Blocks is a 2D puzzle game where the objective is to rearrange the blocks (horiz
 5. Generate the Makefiles by typing `cmake ..` into the terminal
 6. Type `make` into the terminal to build `PhysicsFS`
 7. Type `sudo make install` to install the `PhysicsFS` library
-8. Delete the extracted PhysicsFS source code folder `physfs-2.0.3` and the `bin` folder
+8. Type `sudo ldconfig` to configure the shared library cache with the `PhysicsFS` library
+9. Delete the extracted PhysicsFS source code folder `physfs-2.0.3` and the `bin` folder
 
 ####Compiling Blocks:
 1. Clone the repo to obtain the project and source code
 2. Open terminal as root and type `sudo apt-get install libsfml-dev` to install the latest official release of SFML
 3. From the cloned repo, navigate to the source code by typing `cd Blocks` in the terminal
 4. Type `make` into the terminal to compile the project
-5. Copy `Data.7z` resource file from `/Resources` by typing `cp Resources/Data.7z .` in the terminal
+5. Copy the `Data.7z` resource file from `/Resources` by typing `cp Resources/Data.7z .` in the terminal
 6. Launch the app by typing `./Blocks &` in the terminal
 
 ##License:

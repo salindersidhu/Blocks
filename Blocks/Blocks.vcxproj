@@ -141,7 +141,6 @@
     <ClCompile Include="Clock.cpp" />
     <ClCompile Include="PhyfsStream.cpp" />
     <ClCompile Include="Block.cpp" />
-    <ClCompile Include="tinyfiledialogs.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BlocksGame.hpp" />
@@ -154,7 +153,6 @@
     <ClInclude Include="PhyfsStream.hpp" />
     <ClInclude Include="Block.hpp" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="tinyfiledialogs.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Blocks.rc" />
