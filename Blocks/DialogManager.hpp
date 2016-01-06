@@ -3,8 +3,10 @@
 
 #include <string>
 #ifdef _WIN32
-    #include <window.h>
+    #include <windows.h>
 #elif __linux__
+    #include <stdio.h>
+    #include <stdlib.h>
 #endif
 using namespace std;
 
@@ -17,6 +19,7 @@ class DialogManager {
 		void error(string);
 	private:
 		string dialogTitle;
+		HWND windowHandle;
 };
 
 #endif
