@@ -13,13 +13,19 @@ using namespace std;
 class DialogManager {
 	public:
         // Constructor and destructor
-		DialogManager(string, HWND);
+		#ifdef _WIN32
+			DialogManager(string, HWND);
+		#elif __linux__
+			DialogManager(string);
+		#endif
 		virtual ~DialogManager() {};
 		void message(string);
 		void error(string);
 	private:
 		string dialogTitle;
-		HWND windowHandle;
+		#ifdef _WIN32
+			HWND windowHandle;
+		#endif
 };
 
 #endif
