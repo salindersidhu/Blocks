@@ -58,7 +58,8 @@ Blocks is a 2D puzzle game where the objective is to rearrange the blocks (horiz
 5. Generate the Makefiles by typing `cmake ..` into the terminal
 6. Type `make` into the terminal to build `PhysicsFS`
 7. Type `sudo make install` to install the `PhysicsFS` library
-8. Delete the extracted PhysicsFS source code folder `physfs-2.0.3` and the `bin` folder
+8. Type `sudo ldconfig` to configure the shared library cache with the `PhysicsFS` library
+9. Delete the extracted PhysicsFS source code folder `physfs-2.0.3` and the `bin` folder
 
 ####Compiling Blocks:
 1. Clone the repo to obtain the project and source code
