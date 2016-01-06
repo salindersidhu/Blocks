@@ -5,7 +5,11 @@ BlocksGame::BlocksGame() {
 	sf::RenderWindow window(sf::VideoMode(600, 700, 32), "Blocks", sf::Style::Close);
     window.setFramerateLimit(60);
     // Initialize dialog
+#ifdef _WIN32
     dialog = new DialogManager("Blocks", window.getSystemHandle());
+#elif
+	dialog = new DialogManager("Blocks");
+#endif
     try {
 		// Initialize the draw manager
 		string resourceFile = "Data.7z";
