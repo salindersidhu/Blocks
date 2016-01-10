@@ -13,7 +13,7 @@ Blocks is a 2D puzzle game where the objective is to rearrange the blocks (horiz
 - Linux based distributions
 
 ##Dependencies:
-- `G++`, `Clang` or `Microsoft Visual Studio 2015` [(Community Edition)](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx)
+- `G++` or `Microsoft Visual Studio 2015` [(Community Edition)](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx)
 - `SFML 32-bit` [(Build 2.3.2)](http://www.sfml-dev.org/download.php)
 - `PhysicsFS` [(Build 2.0.3)](https://icculus.org/physfs/) **You will need to compile this from source**
 
