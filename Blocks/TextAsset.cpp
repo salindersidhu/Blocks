@@ -1,8 +1,8 @@
 #include "TextAsset.hpp"
 
-TextAsset::TextAsset(string name, Font _font) {
+TextAsset::TextAsset(string _name, Font _font) {
     name = _name;
-    font.setFont(_font);
+    text.setFont(_font);
 }
 
 Text TextAsset::getText() {
@@ -25,7 +25,7 @@ void TextAsset::setColour(Color colour) {
     text.setColor(colour);
 }
 
-void TextAsset::setCentered(float, winWidth, float y) {
+void TextAsset::setCentered(float winWidth, float y) {
     FloatRect rect;
     // Center the text horizontally
     rect = text.getLocalBounds();

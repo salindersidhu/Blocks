@@ -3,7 +3,7 @@
 
 #include <string>
 #include <SFML/Graphics.hpp>
-#include "Asset.hpp"
+#include "RenderAsset.hpp"
 using namespace sf;
 using namespace std;
 
@@ -11,7 +11,7 @@ class TextAsset : public RenderAsset {
     public:
         // Constructor and destructor
         TextAsset(string, Font);
-        virtual ~TextAsset();
+		virtual ~TextAsset() {};
         // Get asset attribute functions
         Text getText();
         // Configure asset functions

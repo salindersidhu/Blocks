@@ -3,7 +3,7 @@
 
 #include <string>
 #include <SFML/Graphics.hpp>
-#include "Asset.hpp"
+#include "RenderAsset.hpp"
 using namespace sf;
 using namespace std;
 
@@ -11,7 +11,7 @@ class SpriteAsset : public RenderAsset {
     public:
         // Constructor and destructor
         SpriteAsset(string, Texture);
-        virtual ~SpriteAsset();
+		virtual ~SpriteAsset() {};
         // Get asset attribute functions
         Sprite getSprite();
         // Configure asset functions

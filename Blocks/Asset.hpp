@@ -5,9 +5,7 @@
 using namespace std;
 
 class Asset {
-    public:
-        string getName();   // Return the name of the Asset
-    private:
+    protected:
         string name;        // The name of the Asset
 };
 

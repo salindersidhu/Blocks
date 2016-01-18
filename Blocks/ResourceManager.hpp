@@ -33,8 +33,8 @@ class ResourceException : public exception {
 class ResourceManager {
     public:
         // Constructor and destructor
-        DrawManager(string);
-        virtual ~DrawManager();
+		ResourceManager(string);
+        virtual ~ResourceManager();
         // Load basic elements
         void loadTexture(string, string);
         void loadFont(string, string);
@@ -46,7 +46,7 @@ class ResourceManager {
         map<string, Texture> textures;
         map<string, Font> fonts;
         // The Physfs input stream
-        PhysfsStream archiveStream;
+        PhyfsStream archiveStream;
 };
 
 #endif // RESOURCEMANAGER_HPP
