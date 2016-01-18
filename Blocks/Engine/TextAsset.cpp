@@ -15,46 +15,6 @@ Text TextAsset::getText() {
     }
 }
 
-void TextAsset::setSize(unsigned int size) {
-    // Check if Text exists
-    if (text.getFont()) {
-        text.setCharacterSize(size);
-    } else {
-        // Throw AssetException
-        throw AssetException("Cannot set Text's size");
-    }
-}
-
-void TextAsset::setPosition(float x, float y) {
-    // Check if Text exists
-    if (text.getFont()) {
-        text.setPosition(x, y);
-    } else {
-        // Throw AssetException
-        throw AssetException("Cannot set Text's position");
-    }
-}
-
-void TextAsset::setValue(string value) {
-    // Check if Text exists
-    if (text.getFont()) {
-        text.setString(value);
-    } else {
-        // Throw AssetException
-        throw AssetException("Cannot set Text's value");
-    }
-}
-
-void TextAsset::setColour(Color colour) {
-    // Check if Text exists
-    if (text.getFont()) {
-        text.setColor(colour);
-    } else {
-        // Throw AssetException
-        throw AssetException("Cannot set Text's colour");
-    }
-}
-
 void TextAsset::setCentered(float winWidth, float y) {
     // Check if Text exists
     if (text.getFont()) {

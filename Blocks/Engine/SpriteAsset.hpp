@@ -14,8 +14,6 @@ class SpriteAsset : public DrawAsset {
 		virtual ~SpriteAsset() {};
         // Get asset attribute functions
         Sprite getSprite();
-        // Configure asset functions
-        void setPosition(float, float);
         // Rendering asset function
         void draw(RenderWindow*);
     private:

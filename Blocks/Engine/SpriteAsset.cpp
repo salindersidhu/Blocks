@@ -15,16 +15,6 @@ Sprite SpriteAsset::getSprite() {
     }
 }
 
-void SpriteAsset::setPosition(float x, float y) {
-    // Check if Sprite exists
-    if (sprite.getTexture()) {
-        sprite.setPosition(x, y);
-    } else {
-        // Throw AssetException
-        throw AssetException("Cannot set Sprite's position");
-    }
-}
-
 void SpriteAsset::draw(RenderWindow *window) {
     // Check if Sprite exists
     if (sprite.getTexture()) {

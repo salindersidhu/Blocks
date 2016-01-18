@@ -15,10 +15,6 @@ class TextAsset : public DrawAsset {
         // Get asset attribute functions
         Text getText();
         // Configure asset functions
-        void setSize(unsigned int);
-        void setPosition(float, float);
-        void setValue(string);
-        void setColour(Color);
         void setCentered(float, float);
         void setCentered(float, float, float, float);
         // Rendering asset function
