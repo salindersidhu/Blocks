@@ -23,7 +23,7 @@ class PhysfsStreamException : public exception {
 
 class ResourceException : public exception {
 	public:
-		ResourceException(string);
+		ResourceException(string _message) {message = _message;};
 		virtual ~ResourceException() throw() {};
 		const char *what() const throw() {return message.c_str();};
 	private:

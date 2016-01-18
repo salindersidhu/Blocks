@@ -4,10 +4,6 @@ PhysfsStreamException::PhysfsStreamException(string _message) {
     message = "PHYSFS cannot perform action: " + _message;
 }
 
-ResourceException::ResourceException(string _message) {
-    message = _message;
-}
-
 ResourceManager::ResourceManager(string resourceArchive) {
 	// Initalize the PHYSFS system
 	PHYSFS_init(NULL);

@@ -1,13 +1,13 @@
-#ifndef RENDERASSET_HPP
-#define RENDERASSET_HPP
+#ifndef DRAWRASSET_HPP
+#define DRAWRASSET_HPP
 
 #include "Asset.hpp"
 #include <SFML/Graphics.hpp>
 using namespace sf;
 
-class RenderAsset : public Asset {
+class DrawAsset : public Asset {
     public:
         virtual void draw(RenderWindow*) = 0;   // For drawing graphics
 };
 
-#endif // RENDERASSET_HPP
+#endif // DRAWRASSET_HPP
