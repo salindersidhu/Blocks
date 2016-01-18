@@ -131,20 +131,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Engine\PhysfsStream.cpp" />
+    <ClCompile Include="Engine\ResourceManager.cpp" />
+    <ClCompile Include="Engine\SpriteAsset.cpp" />
+    <ClCompile Include="Engine\TextAsset.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="PhysfsStream.cpp" />
-    <ClCompile Include="ResourceManager.cpp" />
-    <ClCompile Include="SpriteAsset.cpp" />
-    <ClCompile Include="TextAsset.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Asset.hpp" />
-    <ClInclude Include="PhysfsStream.hpp" />
-    <ClInclude Include="RenderAsset.hpp" />
+    <ClInclude Include="Engine\Asset.hpp" />
+    <ClInclude Include="Engine\PhysfsStream.hpp" />
+    <ClInclude Include="Engine\RenderAsset.hpp" />
+    <ClInclude Include="Engine\ResourceManager.hpp" />
+    <ClInclude Include="Engine\SpriteAsset.hpp" />
+    <ClInclude Include="Engine\TextAsset.hpp" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="ResourceManager.hpp" />
-    <ClInclude Include="SpriteAsset.hpp" />
-    <ClInclude Include="TextAsset.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Blocks.rc" />

@@ -18,16 +18,16 @@
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PhysfsStream.cpp">
+    <ClCompile Include="Engine\PhysfsStream.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ResourceManager.cpp">
+    <ClCompile Include="Engine\ResourceManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SpriteAsset.cpp">
+    <ClCompile Include="Engine\SpriteAsset.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TextAsset.cpp">
+    <ClCompile Include="Engine\TextAsset.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -35,22 +35,22 @@
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Asset.hpp">
+    <ClInclude Include="Engine\Asset.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PhysfsStream.hpp">
+    <ClInclude Include="Engine\PhysfsStream.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RenderAsset.hpp">
+    <ClInclude Include="Engine\RenderAsset.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ResourceManager.hpp">
+    <ClInclude Include="Engine\ResourceManager.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SpriteAsset.hpp">
+    <ClInclude Include="Engine\SpriteAsset.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TextAsset.hpp">
+    <ClInclude Include="Engine\TextAsset.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
