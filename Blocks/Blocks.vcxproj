@@ -145,7 +145,6 @@
     <ClInclude Include="Engine\Asset.hpp" />
     <ClInclude Include="Engine\DialogManager.hpp" />
     <ClInclude Include="Engine\PhysfsStream.hpp" />
-    <ClInclude Include="Engine\DrawAsset.hpp" />
     <ClInclude Include="Engine\ResourceManager.hpp" />
     <ClInclude Include="Engine\SoundAsset.hpp" />
     <ClInclude Include="Engine\SpriteAsset.hpp" />

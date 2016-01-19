@@ -3,11 +3,11 @@
 
 #include <string>
 #include <SFML/Graphics.hpp>
-#include "DrawAsset.hpp"
+#include "Asset.hpp"
 using namespace sf;
 using namespace std;
 
-class TextAsset : public DrawAsset {
+class TextAsset : public Asset {
     public:
         // Constructor and destructor
         TextAsset(string, Font);

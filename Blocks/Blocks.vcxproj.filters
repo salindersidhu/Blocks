@@ -50,9 +50,6 @@
     <ClInclude Include="Engine\PhysfsStream.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\DrawAsset.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\ResourceManager.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
