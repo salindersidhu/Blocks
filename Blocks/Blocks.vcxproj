@@ -133,6 +133,7 @@
   <ItemGroup>
     <ClCompile Include="Clock.cpp" />
     <ClCompile Include="Engine\DialogManager.cpp" />
+    <ClCompile Include="Engine\Game.cpp" />
     <ClCompile Include="Engine\PhysfsStream.cpp" />
     <ClCompile Include="Engine\ResourceManager.cpp" />
     <ClCompile Include="Engine\SoundAsset.cpp" />
@@ -144,6 +145,9 @@
     <ClInclude Include="Clock.hpp" />
     <ClInclude Include="Engine\Asset.hpp" />
     <ClInclude Include="Engine\DialogManager.hpp" />
+    <ClInclude Include="Engine\Game.hpp" />
+    <ClInclude Include="Engine\GameObject.hpp" />
+    <ClInclude Include="Engine\LevelObject.hpp" />
     <ClInclude Include="Engine\PhysfsStream.hpp" />
     <ClInclude Include="Engine\ResourceManager.hpp" />
     <ClInclude Include="Engine\SoundAsset.hpp" />

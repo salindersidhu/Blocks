@@ -15,7 +15,7 @@ using namespace std;
 class DialogManager {
     public:
         // Constructor and destructor
-        DialogManager(string, RenderWindow);
+        DialogManager(string, RenderWindow*);
         virtual ~DialogManager() {};
         // Dialog functions
         void message(string);

@@ -1,10 +1,10 @@
 #include "DialogManager.hpp"
 
-DialogManager::DialogManager(string _title, RenderWindow window) {
+DialogManager::DialogManager(string _title, RenderWindow *window) {
     title = _title;
 #ifdef _WIN32
     // Set the window handle on Windows OSes
-    handle = window.getSystemHandle();
+    handle = window->getSystemHandle();
 #endif
 }
 
