@@ -131,6 +131,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Clock.cpp" />
     <ClCompile Include="Engine\DialogManager.cpp" />
     <ClCompile Include="Engine\PhysfsStream.cpp" />
     <ClCompile Include="Engine\ResourceManager.cpp" />
@@ -140,6 +141,7 @@
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Clock.hpp" />
     <ClInclude Include="Engine\Asset.hpp" />
     <ClInclude Include="Engine\DialogManager.hpp" />
     <ClInclude Include="Engine\PhysfsStream.hpp" />
