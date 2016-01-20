@@ -1,6 +1,5 @@
+    NOTICE: This project is currently being updated, for a working version please check the `Legacy` branch.
 #Blocks
-
-**<p style='color:red'>NOTICE: This project is currently being updated, for a working version please check the `Legacy` branch.</p>**
 
 ##Description:
 Blocks is a 2D puzzle game where the objective is to rearrange the blocks (horizontally or vertically) so that you can push the red block out of the board. The blocks can only move in the direction of their orientation. Blocks positioned vertically can only move vertically, likewise, blocks positioned horizontally can only move horizontally. To slide a block, simply click on the block to select it and move the mouse, release the mouse to position the block. The number of moves and amount of time taken are displayed when the level is successfully completed.
