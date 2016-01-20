@@ -1,37 +1,36 @@
 #include "Clock.hpp"
 
 Clock::Clock() {
-	minutes = 0;
-	seconds = 0;
-	milliSeconds = 0;
-}
-
-void Clock::tick() {
-	milliSeconds++;
-	if (milliSeconds >= 60) {
-		seconds++;
-		milliSeconds = 0;
-	}
-	if (seconds >= 60) {
-		minutes++;
-		seconds = 0;
-	}
+    reset();
 }
 
 void Clock::reset() {
-	seconds = 0;
-	minutes = 0;
-	milliSeconds = 0;
+    msecs = 0;
+    secs = 0;
+    mins = 0;
 }
 
-string Clock::doubleDigit(int integer) {
-	string num = to_string(integer);
-	if (num.length() == 1) {
-		num = "0" + num;
-	}
-	return num;
+void Clock::tick() {
+    update(msecs, secs);
+    update(secs, mins);
 }
 
-string Clock::output() {
-	return doubleDigit(minutes) + ":" + doubleDigit(seconds) + ":" + doubleDigit(milliSeconds);
+string Clock::getTime() {
+    return dDigit(mins) + ":" + dDigit(secs) + ":" + dDigit(msecs);
+}
+
+string Clock::dDigit(int timeUnit) {
+    string num = to_string(timeUnit);
+    if (num.length() == 1) {
+        num = "0" + num;
+    }
+    return num;
+}
+
+void Clock::update(int &timeUnit1, int &timeUnit2) {
+    timeUnit1++;
+    if (timeUnit1 >= 60) {
+		timeUnit2++;
+		timeUnit1 = 0;
+    }
 }

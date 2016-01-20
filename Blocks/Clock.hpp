@@ -5,17 +5,21 @@
 using namespace std;
 
 class Clock {
-	public:
-		Clock();
-		virtual ~Clock() {};
-		void tick();
-		void reset();
-		string output();
-	private:
-		string doubleDigit(int);
-		int milliSeconds;
-		int seconds;
-		int minutes;
+    public:
+        // Constructor and destructor
+        Clock();
+        virtual ~Clock() {};
+        // Clock functions
+        void reset();
+        void tick();
+        // Get attribute functions
+        string getTime();
+    private:
+        string dDigit(int);
+        void update(int&, int&);
+        int msecs;
+        int secs;
+        int mins;
 };
 
-#endif
+#endif // CLOCK_HPP
