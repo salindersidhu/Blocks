@@ -1,7 +1,7 @@
 #include "ResourceManager.hpp"
 
 PhysfsStreamException::PhysfsStreamException(string _message) {
-    message = "PHYSFS cannot perform action: " + _message;
+    message = "PHYSFS cannot perform action: " + _message + "!";
 }
 
 ResourceManager::ResourceManager(string resourceArchive) {

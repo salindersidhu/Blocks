@@ -7,7 +7,7 @@ using namespace std;
 
 class AssetException : public exception {
 	public:
-		AssetException(string _message) {message = _message;};
+		AssetException(string _message) {message = _message + "!";};
 		virtual ~AssetException() throw() {};
 		const char *what() const throw() {return message.c_str();};
 	private:
