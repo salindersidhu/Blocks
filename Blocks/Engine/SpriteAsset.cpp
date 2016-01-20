@@ -10,8 +10,8 @@ Sprite SpriteAsset::getSprite() {
     if (sprite.getTexture()) {
         return sprite;
     } else {
-        // Throw AssetException
-        throw AssetException("Cannot get Sprite");
+        // Throw EngineException
+        throw EngineException("Error: Getting Sprite");
     }
 }
 
@@ -20,7 +20,7 @@ void SpriteAsset::draw(RenderWindow *window) {
     if (sprite.getTexture()) {
         window->draw(sprite);
     } else {
-        // Throw AssetException
-        throw AssetException("Cannot draw Sprite");
+        // Throw EngineException
+        throw EngineException("Error: Drawing Sprite");
     }
 }

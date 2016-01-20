@@ -2,19 +2,10 @@
 #define GAMEOBJECT_HPP
 
 #include <string>
-#include <exception>
 #include <SFML/Graphics.hpp>
+#include "EngineException.hpp"
 using namespace sf;
 using namespace std;
-
-class GameObjectException : public exception {
-    public:
-        GameObjectException(string _message) {message = _message;};
-        virtual ~GameObjectException() throw() {};
-        const char *what() const throw() {return message.c_str();};
-    private:
-        string message;
-};
 
 class GameObject {
     public:

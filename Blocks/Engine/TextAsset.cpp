@@ -10,8 +10,8 @@ Text TextAsset::getText() {
     if (text.getFont()) {
         return text;
     } else {
-        // Throw AssetException
-        throw AssetException("Cannot get Text");
+        // Throw EngineException
+        throw EngineException("Error: Getting Text");
     }
 }
 
@@ -24,8 +24,8 @@ void TextAsset::setCentered(float winWidth, float y) {
         text.setOrigin((rect.left + rect.width) / 2, 0);
         text.setPosition(winWidth / 2, y);
     } else {
-        // Throw AssetException
-        throw AssetException("Cannot center Text");
+        // Throw EngineException
+        throw EngineException("Error: centering Text");
     }
 }
 
@@ -38,8 +38,8 @@ void TextAsset::setCentered(float sX, float sY, float eX, float eY) {
         text.setOrigin((rct.left + rct.width) / 2, (rct.top + rct.height) / 2);
         text.setPosition(sX + ((eX - sX) / 2), (sY - 5) + ((eY - sY) / 2));
     } else {
-        // Throw AssetException
-        throw AssetException("Cannot center Text");
+        // Throw EngineException
+        throw EngineException("Error: Centering Text");
     }
 }
 
@@ -48,7 +48,7 @@ void TextAsset::draw(RenderWindow *window) {
     if (text.getFont()) {
         window->draw(text);
     } else {
-        // Throw AssetException
-        throw AssetException("Cannot draw Text");
+        // Throw EngineException
+        throw EngineException("Error: Drawing Text");
     }
 }

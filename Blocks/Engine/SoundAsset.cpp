@@ -10,8 +10,8 @@ Sound SoundAsset::getSound() {
     if (sound.getBuffer()) {
         return sound;
     } else {
-        // Throw AssetException
-        throw AssetException("Cannot get Sound");
+        // Throw EngineException
+        throw EngineException("Error: Getting Sound");
     }
 }
 
@@ -20,8 +20,8 @@ void SoundAsset::play() {
     if (sound.getBuffer()) {
         sound.play();
     } else {
-        // Throw AssetException
-        throw AssetException("Cannot play Sound");
+        // Throw EngineException
+        throw EngineException("Error: Playing Sound");
     }
 }
 
@@ -30,8 +30,8 @@ void SoundAsset::stop() {
     if (sound.getBuffer()) {
         sound.stop();
     } else {
-        // Throw AssetException
-        throw AssetException("Cannot stop Sound");
+        // Throw EngineException
+        throw EngineException("Error: Stopping Sound");
     }
 }
 
@@ -40,7 +40,7 @@ void SoundAsset::pause() {
     if (sound.getBuffer()) {
         sound.pause();
     } else {
-        // Throw AssetException
-        throw AssetException("Cannot pause Sound");
+        // Throw EngineException
+        throw EngineException("Error: Pausing Sound");
     }
 }

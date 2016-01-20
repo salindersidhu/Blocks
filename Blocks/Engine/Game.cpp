@@ -33,8 +33,8 @@ void Game::processLevelComplete() {
 void Game::checkLevelExist() {
     // Check if any LevelObject exist
     if (levels.size() < 1) {
-        // throw GameException
-        throw GameException("Cannot find any level content");
+        // throw EngineException
+        throw EngineException("Error: Level content does not exist");
     }
 }
 

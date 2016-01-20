@@ -1,9 +1,5 @@
 #include "ResourceManager.hpp"
 
-PhysfsStreamException::PhysfsStreamException(string _message) {
-    message = "PHYSFS cannot perform action: " + _message + "!";
-}
-
 ResourceManager::ResourceManager(string resourceArchive) {
 	// Initalize the PHYSFS system
 	PHYSFS_init(NULL);
@@ -19,8 +15,8 @@ ResourceManager::~ResourceManager() {
 void ResourceManager::openVerifyStream(string source) {
     // Loading resource from resource archive
     if (!archiveStream.open(&source)) {
-        // Throw PhysfsStreamException
-        throw PhysfsStreamException("Loading resource " + source);
+        // Throw EngineException
+        throw EngineException("Error: Loading resource " + source);
     }
 }
 
@@ -34,8 +30,8 @@ void ResourceManager::loadTexture(string source, string name) {
         textures[name] = texture;
         archiveStream.close();
     } else {
-        // Throw a ResourceException
-        throw ResourceException("Cannot load Texture " + source);
+        // Throw a EngineException
+        throw EngineException("Error: Loading Texture " + source);
     }
 }
 
@@ -49,8 +45,8 @@ void ResourceManager::loadFont(string source, string name) {
         fonts[name] = font;
         // Stream is not closed because SFML can't preload all the data.
     } else {
-        // Throw a ResourceException
-        throw ResourceException("Cannot load Font " + source);
+        // Throw a EngineException
+        throw EngineException("Error: Loading Font " + source);
     }
 }
 
@@ -63,8 +59,8 @@ void ResourceManager::loadImage(string source, string name) {
         // Store the Image
         images[name] = image;
     } else {
-        // Throw a ResourceException
-        throw ResourceException("Cannot load Image " + source);
+        // Throw a EngineException
+        throw EngineException("Error: Loading Image " + source);
     }
 }
 
@@ -77,8 +73,8 @@ void ResourceManager::loadSound(string source, string name) {
         // Store the Sound
 		soundBuffers[name] = buffer;
     } else {
-        // Throw a ResourceException
-        throw ResourceException("Cannot load SoundBuffer " + source);
+        // Throw a EngineException
+        throw EngineException("Error: Loading SoundBuffer " + source);
     }
 }
 
@@ -87,8 +83,8 @@ Image ResourceManager::getImage(string imageName) {
     if (images.find(imageName) != images.end()) {
         return images[imageName];
     } else {
-        // Throw a ResourceException
-        throw ResourceException("Cannot get Image " + imageName);
+        // Throw a EngineException
+        throw EngineException("Error: Getting Image " + imageName);
     }
 }
 
@@ -99,8 +95,8 @@ SpriteAsset ResourceManager::createSprite(string name, string textureName) {
         SpriteAsset newSprite(name, textures[textureName]);
         return newSprite;
     } else {
-        // Throw a ResourceException
-        throw ResourceException("Cannot find Texture " + textureName);
+        // Throw a EngineException
+        throw EngineException("Error: Finding Texture " + textureName);
     }
 }
 
@@ -111,8 +107,8 @@ TextAsset ResourceManager::createText(string name, string fontName) {
         TextAsset newText(name, fonts[fontName]);
         return newText;
     } else {
-        // Throw a ResourceException
-        throw ResourceException("Cannot find Font " + fontName);
+        // Throw a EngineException
+        throw EngineException("Error: Finding Font " + fontName);
     }
 }
 
@@ -123,7 +119,7 @@ SoundAsset ResourceManager::createSound(string name, string bufferName) {
         SoundAsset newSound(name, soundBuffers[bufferName]);
         return newSound;
     } else {
-        // Throw a ResourceException
-		throw ResourceException("Cannot find SoundBuffer" + bufferName);
+        // Throw a EngineException
+		throw EngineException("Error: Finding SoundBuffer" + bufferName);
     }
 }

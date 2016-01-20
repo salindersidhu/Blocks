@@ -6,17 +6,9 @@
 #include <SFML/Graphics.hpp>
 #include "LevelObject.hpp"
 #include "DialogManager.hpp"
+#include "EngineException.hpp"
 using namespace sf;
 using namespace std;
-
-class GameException : public exception {
-    public:
-        GameException(string _message) {message = _message + "!";};
-        virtual ~GameException() throw() {};
-        const char *what() const throw() {return message.c_str();};
-    private:
-        string message;
-};
 
 class Game {
     public:

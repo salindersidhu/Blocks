@@ -4,33 +4,15 @@
 #include <map>
 #include <string>
 #include <physfs.h>
-#include <exception>
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include "TextAsset.hpp"
 #include "SoundAsset.hpp"
 #include "SpriteAsset.hpp"
 #include "PhysfsStream.hpp"
+#include "EngineException.hpp"
 using namespace sf;
 using namespace std;
-
-class PhysfsStreamException : public exception {
-	public:
-		PhysfsStreamException(string);
-		virtual ~PhysfsStreamException() throw() {};
-		const char *what() const throw() {return message.c_str();};
-	private:
-		string message;
-};
-
-class ResourceException : public exception {
-	public:
-		ResourceException(string _message) {message = _message;};
-		virtual ~ResourceException() throw() {};
-		const char *what() const throw() {return message.c_str();};
-	private:
-		string message;
-};
 
 class ResourceManager {
     public:
