@@ -14,8 +14,8 @@ void DialogManager::winDialog(string msg, UINT flags) {
 }
 
 #elif __linux__
-void DialogManager::zenityCommand(string msg, string t) {
-    string cmd("zenity --" + t + " --title=" + title + " --text" + msg + "'");
+void DialogManager::zenityCommand(string m, string t) {
+    string cmd("zenity --" + t + " --title=" + title + " --text='" + m + "'");
     system(cmd.c_str());
 }
 #endif
