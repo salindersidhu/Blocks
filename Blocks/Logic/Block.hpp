@@ -8,8 +8,8 @@ using namespace std;
 class Block{
     public:
         // Constructor and destructor
-        Block();
-        virtual ~Block(string, tuple<float, float>, int int) {};
+        Block(string, tuple<float, float>, int, int);
+        virtual ~Block() {};
         // Configure Block functions
         void setPosition(int, int);
         void setSelected(bool);
