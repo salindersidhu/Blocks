@@ -2,14 +2,14 @@
 CC=g++
 CFLAGS=-std=c++0x -c
 LDFLAGS=-L/usr/local/lib -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system -lphysfs
-SOURCES= Engine/DialogManager.o Engine/Game.o Engine/PhysfsStream.o Engine/ResourceManager.o Engine/SoundAsset.o Engine/SpriteAsset.o Engine/TextAsset.o Clock.o Main.o
-OBJECTS=$(SOURCES:.cpp=.0)
+OBJECTS=Engine/DialogManager.o Engine/Game.o Engine/PhysfsStream.o Engine/ResourceManager.o Engine/SoundAsset.o Engine/SpriteAsset.o Engine/TextAsset.o Clock.o Main.o
+SOURCES=$(OBJECTS:.cpp=.0)
 EXECUTABLE=Blocks
 
-all: $(SOURCES) $(EXECUTABLE)
+all: $(OBJECTS) $(EXECUTABLE)
 
-$(EXECUTABLE): $(OBJECTS)
-	$(CC) $(OBJECTS) $(LDFLAGS) -o $@
+$(EXECUTABLE): $(SOURCES)
+	$(CC) $(SOURCES) $(LDFLAGS) -o $@
 
 .cpp.o:
 	$(CC) $(CFLAGS) $< -o $@
