@@ -2,7 +2,7 @@
 CC=g++
 CFLAGS=-std=c++0x -c
 LDFLAGS=-L/usr/local/lib -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system -lphysfs
-OBJECTS=Logic/Clock.o Logic/Block.o Logic/Grid.o Object/Button.o Object/GameGrid.o Object/HUD.o Levels/EndLevel.o Levels/GameLevel.o Levels/MenuLevel.o Levels/VictoryLevel.o Engine/DialogManager.o Engine/Game.o Engine/PhysfsStream.o Engine/ResourceManager.o Engine/SoundAsset.o Engine/SpriteAsset.o Engine/TextAsset.o Main.o
+OBJECTS=Logic/Clock.o Logic/Block.o Logic/Grid.o Objects/Button.o Objects/GameGrid.o Objects/HUD.o Levels/EndLevel.o Levels/GameLevel.o Levels/MenuLevel.o Levels/VictoryLevel.o Engine/DialogManager.o Engine/Game.o Engine/PhysfsStream.o Engine/ResourceManager.o Engine/SoundAsset.o Engine/SpriteAsset.o Engine/TextAsset.o Main.o
 SOURCES=$(OBJECTS:.cpp=.0)
 EXECUTABLE=Blocks
 
@@ -15,4 +15,4 @@ $(EXECUTABLE): $(SOURCES)
 	$(CC) $(CFLAGS) $< -o $@
 
 clean:
-	rm -rf *.o Engine/*.o $(EXECUTABLE)
+	rm -rf *.o */*.o $(EXECUTABLE)
