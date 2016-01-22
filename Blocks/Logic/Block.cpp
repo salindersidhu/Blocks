@@ -1,50 +1,66 @@
 #include "Block.hpp"
 
-Block::Block(string _spriteName, tuple<float, float> _position, int _size, int _orientation) {
+Block::Block(string _spriteName, float _x, float _y, float _width, float _height, int _orientation) {
+    // Set instance variables based on constructor arguments
     spriteName = _spriteName;
-    position = _position;
-    dimensions = make_tuple(0, 0);
-    size = _size;
+    x = _x;
+    y = _y;
+    width = _width;
+    height = _height;
     orientation = _orientation;
+    // Set remaining instance variables
+    isFlagged = false;
+    isSelected = false;
 }
 
-void Block::setPosition(int x, int y) {
-    get<0>(position) = x;
-    get<1>(position) = y
+void Block::setX(float _x) {
+    x = _x
 }
 
-void Block::setSelected(bool _isSelected) {
-    isSelected = _isSelected;
+void Block::setY(float _y) {
+    y = _y;
+}
+
+void Block::select() {
+    isSelected = true;
+}
+
+void Block::unselect() {
+    isSelected = false;
 }
 
 void Block::flag() {
     isFlagged = true;
 }
 
-bool Block::getIsSelected() {
+float Block::getX() {
+    return x;
+}
+
+float Block::getY() {
+    return y;
+}
+
+float Block::getWidth() {
+    return width;
+}
+
+float Block::getHeight() {
+    return height;
+}
+
+bool Block::isSelected() {
     return isSelected;
 }
 
-bool Block::getIsFlagged() {
+bool Block::isFlagged() {
     return isFlagged;
 }
 
-bool Block::getIsVertical() {
+bool Block::isVertical() {
     return orientation == 0;
 }
 
 string Block::getSpriteName() {
     return getSpriteName;
-}
-
-float Block::getSize() {
-    return getSize();
-}
-
-tuple<float, float> getPosition() {
-    return position;
-}
-
-tuple<float, float> getDimensions() {
-    return dimensions
 }

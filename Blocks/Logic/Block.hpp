@@ -1,35 +1,38 @@
 #ifndef BLOCK_HPP
 #define BLOCK_HPP
 
-#include <tuple>
 #include <string>
 using namespace std;
 
 class Block{
     public:
         // Constructor and destructor
-        Block(string, tuple<float, float>, int, int);
+        Block(string, float, float, float, float, int);
         virtual ~Block() {};
         // Configure Block functions
-        void setPosition(int, int);
-        void setSelected(bool);
+        void setX(float);
+        void setY(float);
+        void select();
+        void unselect();
         void flag();
         // Get Block attribute functions
-        bool getIsSelected();
-        bool getIsFlagged();
-        bool getIsVertical();
+        float getX();
+        float getY();
+        float getWidth();
+        float getHeight();
+        bool isSelected();
+        bool isFlagged();
+        bool isVertical();
         string getSpriteName();
-        float getSize();
-        tuple<float, float> getPosition();
-        tuple<float, float> getDimensions();
     private:
         // Block variables
-        tuple<float, float> position;
-        tuple<float, float> dimensions;
-        int orientation;    // 0 = vertical and 1 = horizontal
-        float size;
+        float x;
+        float y;
+        float width;
+        float height;
         bool isFlagged;
         bool isSelected;
+        int orientation;    // 0 = vertical and 1 = horizontal
         string spriteName;
 };
 
