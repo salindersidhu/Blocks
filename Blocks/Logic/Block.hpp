@@ -20,9 +20,9 @@ class Block{
         float getY();
         float getWidth();
         float getHeight();
-        bool isSelected();
-        bool isFlagged();
-        bool isVertical();
+        bool getSelected();
+        bool getFlagged();
+        bool getVertical();
         string getSpriteName();
     private:
         // Block variables

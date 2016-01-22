@@ -14,7 +14,7 @@ Block::Block(string _spriteName, float _x, float _y, float _width, float _height
 }
 
 void Block::setX(float _x) {
-    x = _x
+	x = _x;
 }
 
 void Block::setY(float _y) {
@@ -49,18 +49,18 @@ float Block::getHeight() {
     return height;
 }
 
-bool Block::isSelected() {
+bool Block::getSelected() {
     return isSelected;
 }
 
-bool Block::isFlagged() {
+bool Block::getFlagged() {
     return isFlagged;
 }
 
-bool Block::isVertical() {
+bool Block::getVertical() {
     return orientation == 0;
 }
 
 string Block::getSpriteName() {
-    return getSpriteName;
+    return spriteName;
 }

@@ -14,7 +14,7 @@ class Grid {
         // Configure Grid functions
         void addBlock(Block);
         void selectBlock(float, float);
-        void releaseBlock(&int);
+        void releaseBlock(int&);
         void moveBlock(float, float);
         void clear();
         // Get Grid attribute functions
@@ -22,8 +22,8 @@ class Grid {
         bool isComplete();
     private:
         // Grid functions
-        float alignValue(float, float, float);
-        bool isHovering(float, float. float. float. float. float);
+        float align(float, float, float);
+        bool isHovering(float, float, float, float, float, float);
         bool isNotCollision(Block, float, float);
         bool isBounded(float, float, float, float);
         // Grid variables
