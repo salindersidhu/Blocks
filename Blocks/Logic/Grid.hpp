@@ -1,6 +1,7 @@
 #ifndef GRID_HPP
 #define GRID_HPP
 
+#include <cmath>
 #include <string>
 #include <vector>
 #include "Block.hpp"
@@ -9,7 +10,7 @@ using namespace std;
 class Grid {
     public:
         // Constructor and destructor
-        Grid(float, float, float, float, float, float);
+        Grid(float, float, float, float, float, float, float);
         virtual ~Grid() {};
         // Configure Grid functions
         void addBlock(Block);
@@ -34,6 +35,7 @@ class Grid {
         float height;
         float completeX;
         float completeY;
+        float tileGap;
         // Calculation variables for Blocks
         float prevX;
         float prevY;
