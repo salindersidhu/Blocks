@@ -6,13 +6,28 @@ OBJECTS=Logic/Clock.o Logic/Block.o Logic/Grid.o Objects/Button.o Objects/GameGr
 SOURCES=$(OBJECTS:.cpp=.0)
 EXECUTABLE=Blocks
 
-all: $(OBJECTS) $(EXECUTABLE)
+# Build the project and configure
+all: $(OBJECTS) $(EXECUTABLE) config
 
+# Rules for compiling all sources and building the project
 $(EXECUTABLE): $(SOURCES)
-	$(CC) $(SOURCES) $(LDFLAGS) -o $@
+	@echo -n "BUILDING PROJECT..."
+	@$(CC) $(SOURCES) $(LDFLAGS) -o $@
+	@echo "DONE"
 
 .cpp.o:
-	$(CC) $(CFLAGS) $< -o $@
+	@echo -n "COMPILING "$@"..."
+	@$(CC) $(CFLAGS) $< -o $@
+	@echo "DONE"
 
+# Remove compiled files and copy resource file to executable's location
+config:
+	@echo -n "ADDING RESOURCE..."
+	@rm -rf *.o */*.o && cp Resources/Data.7z .
+	@echo "DONE\n\nPlease type ./Blocks to execute the program."
+
+# Clean all compiled files, resources and executable
 clean:
-	rm -rf *.o */*.o $(EXECUTABLE)
+	@echo -n "CLEANING..."
+	@rm -rf *.o */*.o *.7z $(EXECUTABLE)
+	@echo "DONE"

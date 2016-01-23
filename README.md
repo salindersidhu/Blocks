@@ -62,8 +62,7 @@ Blocks is a 2D puzzle game where the objective is to rearrange the blocks (horiz
 2. Open terminal as root and type `sudo apt-get install libsfml-dev` to install the latest official release of SFML
 3. From the cloned repo, navigate to the source code by typing `cd Blocks` in the terminal
 4. Type `make` into the terminal to compile the project
-5. Copy the `Data.7z` resource file from `/Resources` by typing `cp Resources/Data.7z .` in the terminal
-6. Launch the app by typing `./Blocks &` in the terminal
+5. Launch the app by typing `./Blocks &` in the terminal
 
 ##License:
 Copyright (c) 2016 Salinder Sidhu

@@ -3,7 +3,7 @@
 DialogManager::DialogManager(string _title, RenderWindow *window) {
     title = _title;
 #ifdef _WIN32
-    // Set the window handle on Windows OSes
+    // Set the window handle on Windows
     handle = window->getSystemHandle();
 #endif
 }
@@ -14,8 +14,9 @@ void DialogManager::winDialog(string msg, UINT flags) {
 }
 
 #elif __linux__
-void DialogManager::zenityCommand(string m, string t) {
+void DialogManager::zenity(string m, string t) {
     string cmd("zenity --" + t + " --title=" + title + " --text='" + m + "'");
+    // Execute the zenity command
     system(cmd.c_str());
 }
 #endif
@@ -24,7 +25,7 @@ void DialogManager::message(string message) {
 #ifdef _WIN32
     winDialog(message, MB_ICONINFORMATION | MB_OK);
 #elif __linux__
-    zenityCommand(message, "info");
+    zenity(message, "info");
 #endif
 }
 
@@ -32,6 +33,6 @@ void DialogManager::error(string message) {
 #ifdef _WIN32
     winDialog(message, MB_ICONERROR | MB_OK);
 #elif __linux__
-    zenityCommand(message, "error");
+    zenity(message, "error");
 #endif
 }

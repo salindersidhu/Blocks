@@ -2,13 +2,10 @@
 #define DIALOGMANAGER_HPP
 
 #include <string>
-#include <SFML/Graphics.hpp>
 #ifdef _WIN32
 #include <windows.h>
-#elif __linux__
-#include <stdio.h>
-#include <stdlib.h>
 #endif
+#include <SFML/Graphics.hpp>
 using namespace sf;
 using namespace std;
 
@@ -29,7 +26,7 @@ class DialogManager {
         void winDialog(string, UINT);
 #elif __linux__
         // Unix zenity GTK+ dialog system
-        void zenityCommand(string, string);
+        void zenity(string, string);
 #endif
 };
 
