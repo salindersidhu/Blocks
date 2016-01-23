@@ -39,16 +39,13 @@
     <ClCompile Include="Engine\Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Levels\EndLevel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Levels\GameLevel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Levels\MenuLevel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Levels\VictoryLevel.cpp">
+    <ClCompile Include="Levels\CoreLevel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Logic\Block.cpp">
@@ -60,13 +57,13 @@
     <ClCompile Include="Logic\Grid.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Objects\Button.cpp">
+    <ClCompile Include="Objects\ButtonObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Objects\GameGrid.cpp">
+    <ClCompile Include="Objects\GridObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Objects\HUD.cpp">
+    <ClCompile Include="Objects\HUDObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -107,16 +104,13 @@
     <ClInclude Include="Engine\EngineException.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Levels\EndLevel.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Levels\GameLevel.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Levels\MenuLevel.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Levels\VictoryLevel.hpp">
+    <ClInclude Include="Levels\CoreLevel.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Logic\Block.hpp">
@@ -128,13 +122,13 @@
     <ClInclude Include="Logic\Grid.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Objects\Button.hpp">
+    <ClInclude Include="Objects\ButtonObject.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Objects\GameGrid.hpp">
+    <ClInclude Include="Objects\GridObject.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Objects\HUD.hpp">
+    <ClInclude Include="Objects\HUDObject.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

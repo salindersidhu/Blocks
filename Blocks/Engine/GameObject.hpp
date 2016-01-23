@@ -10,8 +10,9 @@ using namespace std;
 class GameObject {
     public:
         // Abstract functions
-        virtual void onMouseClick(Event*) = 0;
-        virtual void onMouseRelease(Event*) = 0;
+        virtual void onMouseClick(Vector2i) = 0;
+        virtual void onMouseRelease(Vector2i) = 0;
+        virtual void onMouseMove(Vector2i) = 0;
         virtual void onKeyPress(Event*) = 0;
         virtual void onKeyRelease(Event*) = 0;
         virtual void update() = 0;
