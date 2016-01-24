@@ -34,7 +34,6 @@ void Button::onMouseMove(Vector2i mousePosition) {
 
 void Button::draw(RenderWindow *window) {
     if (isMouseOver) {
-		// set the shape color to green
         // Draw the hover Sprite
 		window->draw(buttonHoverSprite);
         // Set text with hover colour
