@@ -14,7 +14,7 @@ class Game {
     public:
         // Constructor and destructor
         Game(string, int, int, int);
-        virtual ~Game() {};
+        ~Game();
         // Game attribute functions
         RenderWindow* getWindow();
         // Game functions

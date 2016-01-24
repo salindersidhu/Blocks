@@ -10,6 +10,14 @@ Game::Game(string title, int length, int width, int FPS) {
     currentLevel = 0;
 }
 
+Game::~Game() {
+    // Free memory used by the pointers
+    delete window;
+    window = NULL;
+    delete dialogMan;
+    dialogMan = NULL;
+}
+
 RenderWindow* Game::getWindow() {
     // Return the RenderWindow object
     return window;

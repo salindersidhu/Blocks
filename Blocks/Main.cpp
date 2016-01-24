@@ -17,6 +17,12 @@ void configWindow(RenderWindow *window, ResourceManager *resMan) {
 	window->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 }
 
+void freePointer(ResourceManager *resMan) {
+	// Free memory used by the ResourceManager pointer
+	delete resMan;
+	resMan = NULL;
+}
+
 int main() {
 	// Game variables
 	const string resourceArchive = "Data.7z";
@@ -41,5 +47,7 @@ int main() {
 	configWindow(game.getWindow(), resMan);
 	// Run the game
     game.runLoop();
-    return 0;
+	// Delete and NULL the ResourceManager pointer and free memory
+	freePointer(resMan);
+    return 0; // Exit success
 }
