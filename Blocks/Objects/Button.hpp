@@ -1,5 +1,5 @@
-#ifndef BUTTONOBJECT_HPP
-#define BUTTONOBJECT_HPP
+#ifndef BUTTON_HPP
+#define BUTTON_HPP
 
 #include <string>
 #include <SFML/Graphics.hpp>
@@ -9,11 +9,11 @@
 using namespace sf;
 using namespace std;
 
-class ButtonObject : public GameObject {
+class Button : public GameObject {
     public:
         // Constructor and destructor
-        ButtonObject(string, unsigned int, float, float, Color, Color, TextAsset*, SpriteAsset*, SpriteAsset*);
-        virtual ~ButtonObject() {};
+        Button(string, unsigned int, float, float, Color, Color, TextAsset*, SpriteAsset*, SpriteAsset*);
+        virtual ~Button() {};
         // ButtonObject functions
         void onMouseClick(Vector2i);
         void onMouseMove(Vector2i);
@@ -31,4 +31,4 @@ class ButtonObject : public GameObject {
         Color colHover;
 };
 
-#endif // BUTTONOBJECT_HPP
+#endif // BUTTON_HPP

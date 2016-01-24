@@ -139,15 +139,12 @@
     <ClCompile Include="Engine\SoundAsset.cpp" />
     <ClCompile Include="Engine\SpriteAsset.cpp" />
     <ClCompile Include="Engine\TextAsset.cpp" />
-    <ClCompile Include="Levels\GameLevel.cpp" />
     <ClCompile Include="Levels\MenuLevel.cpp" />
     <ClCompile Include="Logic\Block.cpp" />
     <ClCompile Include="Logic\Clock.cpp" />
     <ClCompile Include="Logic\Grid.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Objects\ButtonObject.cpp" />
-    <ClCompile Include="Objects\GridObject.cpp" />
-    <ClCompile Include="Objects\HUDObject.cpp" />
+    <ClCompile Include="Objects\Button.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Asset.hpp" />
@@ -161,14 +158,11 @@
     <ClInclude Include="Engine\SoundAsset.hpp" />
     <ClInclude Include="Engine\SpriteAsset.hpp" />
     <ClInclude Include="Engine\TextAsset.hpp" />
-    <ClInclude Include="Levels\GameLevel.hpp" />
     <ClInclude Include="Levels\MenuLevel.hpp" />
     <ClInclude Include="Logic\Block.hpp" />
     <ClInclude Include="Logic\Clock.hpp" />
     <ClInclude Include="Logic\Grid.hpp" />
-    <ClInclude Include="Objects\ButtonObject.hpp" />
-    <ClInclude Include="Objects\GridObject.hpp" />
-    <ClInclude Include="Objects\HUDObject.hpp" />
+    <ClInclude Include="Objects\Button.hpp" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>

@@ -1,6 +1,6 @@
-#include "ButtonObject.hpp"
+#include "Button.hpp"
 
-ButtonObject::ButtonObject(string text, unsigned int textSize, float x, float y, Color _colNormal, Color _colHover, TextAsset *_buttonText, SpriteAsset *_spriteNormal, SpriteAsset *_spriteHover) {
+Button::Button(string text, unsigned int textSize, float x, float y, Color _colNormal, Color _colHover, TextAsset *_buttonText, SpriteAsset *_spriteNormal, SpriteAsset *_spriteHover) {
     // Set instance variables based on constructor arguments
     buttonText = _buttonText;
     spriteNormal = _spriteNormal;
@@ -20,16 +20,16 @@ ButtonObject::ButtonObject(string text, unsigned int textSize, float x, float y,
     isMouseOver = false;
 }
 
-void ButtonObject::onMouseClick(Vector2i mousePosition) {
+void Button::onMouseClick(Vector2i mousePosition) {
     if (isMouseOver) {
     }
 }
 
-void ButtonObject::onMouseMove(Vector2i mousePosition) {
+void Button::onMouseMove(Vector2i mousePosition) {
     isMouseOver = isHovering(mousePosition.x, mousePosition.y);
 }
 
-void ButtonObject::draw(RenderWindow *window) {
+void Button::draw(RenderWindow *window) {
     if (isMouseOver) {
         // Draw the hover Sprite
         window->draw(spriteNormal->getSprite());
@@ -45,7 +45,7 @@ void ButtonObject::draw(RenderWindow *window) {
     window->draw(buttonText->getText());
 }
 
-bool ButtonObject::isHovering(int mX, int mY) {
+bool Button::isHovering(int mX, int mY) {
     // Obtain the positions dimensions of the Button's Sprite
     FloatRect dims = spriteNormal->getSprite().getGlobalBounds();
     Vector2f pos = spriteNormal->getSprite().getPosition();

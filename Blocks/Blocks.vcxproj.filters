@@ -42,9 +42,6 @@
     <ClCompile Include="Engine\LevelObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Levels\GameLevel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Levels\MenuLevel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -57,13 +54,7 @@
     <ClCompile Include="Logic\Grid.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Objects\ButtonObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Objects\GridObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Objects\HUDObject.cpp">
+    <ClCompile Include="Objects\Button.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -104,9 +95,6 @@
     <ClInclude Include="Engine\EngineException.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Levels\GameLevel.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Levels\MenuLevel.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -119,13 +107,7 @@
     <ClInclude Include="Logic\Grid.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Objects\ButtonObject.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Objects\GridObject.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Objects\HUDObject.hpp">
+    <ClInclude Include="Objects\Button.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
