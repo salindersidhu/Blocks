@@ -17,6 +17,7 @@ class Game {
         ~Game();
         // Game attribute functions
         RenderWindow* getWindow();
+        DialogManager* getDialogMan();
         // Game functions
         void addLevel(LevelObject*);
         void runLoop();

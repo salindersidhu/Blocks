@@ -19,7 +19,7 @@ class LevelObject {
         bool getComplete();
     protected:
         // LevelObject variables
-        vector<GameObject*> objects;    // Collection of GameObjects
+        vector<GameObject*> objects;    // Collection of GameObjects pointers
         bool isComplete;                // Is the LevelObject complete
 };
 

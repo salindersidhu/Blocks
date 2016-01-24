@@ -13,6 +13,7 @@ class PhyfsStream : public InputStream {
         // Constructor and destructor
 		PhyfsStream() {};
 		virtual ~PhyfsStream();
+		// PhysfsStream functions
 		bool isOpen();
 		bool open(const string*);
 		void close();
@@ -21,6 +22,7 @@ class PhyfsStream : public InputStream {
 	    virtual Int64 tell();
 	    virtual Int64 getSize();
 	private:
+		// PhysfsStream variables
 		PHYSFS_File* file;
 };
 

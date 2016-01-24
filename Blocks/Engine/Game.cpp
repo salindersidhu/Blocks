@@ -1,10 +1,10 @@
 #include "Game.hpp"
 
 Game::Game(string title, int length, int width, int FPS) {
-    // Initialize and configure the main game window
+    // Initialize and configure the main game window pointer
     window = new RenderWindow(VideoMode(length, width, 32), title, Style::Close);
     window->setFramerateLimit(FPS);
-    // Initialize and configure the DialogManager
+    // Initialize and configure the DialogManager pointer
     dialogMan = new DialogManager(title, window);
     // Initialize game variables
     currentLevel = 0;
@@ -17,19 +17,25 @@ Game::~Game() {
     delete dialogMan;
     dialogMan = NULL;
     // Free memory used by all the LevelObject pointers
-    for (unsigned int i = 0; i < levels.size(); i++) {
-        delete levels[i];
-        levels[i] = NULL;
+    vector<LevelObject*>::iterator iter;
+    for(iter = levels.begin(); iter != levels.end(); iter++) {
+        delete (*iter);
+        (*iter) = NULL;
     }
 }
 
 RenderWindow* Game::getWindow() {
-    // Return the RenderWindow object
+    // Return the RenderWindow pointer
     return window;
 }
 
+DialogManager* Game::getDialogMan() {
+    // Return the DialogManager pointer
+    return dialogMan;
+}
+
 void Game::addLevel(LevelObject *level) {
-    // Add LevelObject to level map with the specified name
+    // Add LevelObject pointer to the collection of LevelObject pointers
 	levels.push_back(level);
 }
 

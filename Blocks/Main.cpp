@@ -55,7 +55,7 @@ void freeResourceManager(ResourceManager *resMan) {
 	resMan = NULL;
 }
 
-void configWindow(RenderWindow *window, ResourceManager *resMan) {
+void addWinIcon(RenderWindow *window, ResourceManager *resMan) {
 	// Add icon to window
 	Image icon = resMan->getImage("IM_ICON");
 	window->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
@@ -68,9 +68,9 @@ int main() {
 	const int winWidth = 600;
 	const int winHeight = 700;
 	const int FPS = 60;
-	// Initialize Game, DialogManager and ResourceManager
+	// Initialize Game and ResourceManager
 	Game game(gameTitle, winWidth, winHeight, FPS);
-    DialogManager dialogMan(gameTitle, game.getWindow());
+    //DialogManager dialogMan(gameTitle, game.getWindow());
 	ResourceManager *resMan;
     try {
 		resMan = new ResourceManager(resourceArchive);
@@ -79,11 +79,11 @@ int main() {
 		setupLevels(gameTitle, &game, resMan);
     } catch (exception &ex) {
 		// If exception was thrown show error message and exit game
-        dialogMan.error(ex.what());
+		game.getDialogMan()->error(ex.what());
         return 1;
     }
-	// Configure game window
-	configWindow(game.getWindow(), resMan);
+	// Add an icon to the Game's window
+	addWinIcon(game.getWindow(), resMan);
 	// Run the game
     game.runLoop();
 	// Free memory used by ResourceManager
