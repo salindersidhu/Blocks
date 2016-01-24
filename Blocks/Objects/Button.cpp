@@ -25,11 +25,14 @@ Button::Button(string text, unsigned int textSize, float x, float y, Color norma
 
 void Button::onMouseClick(Vector2i mousePosition) {
     if (isMouseOver) {
+		isClicked = true;
     }
 }
 
 void Button::onMouseMove(Vector2i mousePosition) {
+	// Set isMouseOver to true if mouse is hovering over the Button
     isMouseOver = isHovering(mousePosition.x, mousePosition.y);
+	isClicked = false;
 }
 
 void Button::draw(RenderWindow *window) {

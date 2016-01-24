@@ -13,9 +13,9 @@ class LevelObject {
     public:
         // LevelObject functions
         ~LevelObject();
-        void draw(RenderWindow*);
-        void update();
-        void processEvents(Event*, Vector2i);
+        virtual void draw(RenderWindow*);
+        virtual void update();
+        virtual void processEvents(Event*, Vector2i);
         bool getComplete();
     protected:
         // LevelObject variables
