@@ -14,10 +14,6 @@ class SoundAsset : public Asset {
         virtual ~SoundAsset() {};
         // Get asset attribute functions
         Sound getSound();
-        // Play asset function
-        void play();
-        void stop();
-        void pause();
     private:
         Sound sound;    // The Sound object
 };

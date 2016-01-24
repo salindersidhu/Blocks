@@ -140,7 +140,6 @@
     <ClCompile Include="Engine\TextAsset.cpp" />
     <ClCompile Include="Levels\GameLevel.cpp" />
     <ClCompile Include="Levels\MenuLevel.cpp" />
-    <ClCompile Include="Levels\CoreLevel.cpp" />
     <ClCompile Include="Logic\Block.cpp" />
     <ClCompile Include="Logic\Clock.cpp" />
     <ClCompile Include="Logic\Grid.cpp" />
@@ -163,7 +162,6 @@
     <ClInclude Include="Engine\TextAsset.hpp" />
     <ClInclude Include="Levels\GameLevel.hpp" />
     <ClInclude Include="Levels\MenuLevel.hpp" />
-    <ClInclude Include="Levels\CoreLevel.hpp" />
     <ClInclude Include="Logic\Block.hpp" />
     <ClInclude Include="Logic\Clock.hpp" />
     <ClInclude Include="Logic\Grid.hpp" />

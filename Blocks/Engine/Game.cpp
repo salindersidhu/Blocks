@@ -22,7 +22,7 @@ void Game::addLevel(LevelObject *level) {
 
 void Game::processLevelComplete() {
     // Handle level completed
-    if (levels[currentLevel]->isComplete()) {
+    if (levels[currentLevel]->getComplete()) {
         // increment currentLevel
         currentLevel++;
         // Wrap currentLevel so that it resets back to 0 if > total levels

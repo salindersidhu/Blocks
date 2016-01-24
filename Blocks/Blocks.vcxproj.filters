@@ -45,9 +45,6 @@
     <ClCompile Include="Levels\MenuLevel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Levels\CoreLevel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Logic\Block.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -108,9 +105,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Levels\MenuLevel.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Levels\CoreLevel.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Logic\Block.hpp">

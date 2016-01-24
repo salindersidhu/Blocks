@@ -13,7 +13,11 @@ class LevelObject {
         virtual void draw(RenderWindow*) = 0;
         virtual void update() = 0;
         virtual void processEvents(Event*) = 0;
-        virtual bool isComplete() = 0;
+        // LevelObject functions
+        bool getComplete() {return isComplete;};
+    protected:
+        // LevelObject variables
+        bool isComplete;    // Is the LevelObject complete
 };
 
 #endif // LEVELOBJECT_HPP
