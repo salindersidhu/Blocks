@@ -24,15 +24,6 @@
     <ClCompile Include="Engine\ResourceManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\SpriteAsset.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\TextAsset.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\SoundAsset.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\DialogManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -62,22 +53,10 @@
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Asset.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\PhysfsStream.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Engine\ResourceManager.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\SpriteAsset.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\TextAsset.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\SoundAsset.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Engine\DialogManager.hpp">

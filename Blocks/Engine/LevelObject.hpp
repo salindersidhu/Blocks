@@ -2,6 +2,7 @@
 #define LEVELOBJECT_HPP
 
 #include <string>
+#include <vector>
 #include <SFML/Graphics.hpp>
 #include "GameObject.hpp"
 #include "EngineException.hpp"
@@ -11,6 +12,7 @@ using namespace std;
 class LevelObject {
     public:
         // LevelObject functions
+        ~LevelObject();
         void draw(RenderWindow*);
         void update();
         void processEvents(Event*, Vector2i);

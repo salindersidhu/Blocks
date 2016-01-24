@@ -1,34 +1,47 @@
 #include "LevelObject.hpp"
 
+LevelObject::~LevelObject() {
+    // Iterate through all the GameObject pointers in the LevelObject
+    vector<GameObject*>::iterator iter;
+    for(iter = objects.begin(); iter != objects.end(); iter++) {
+        // Free memory used by all the GameObject pointers
+        delete (*iter);
+        (*iter) = NULL;
+    }
+}
+
 void LevelObject::draw(RenderWindow *window) {
     // Iterate through all the GameObject pointers in the LevelObject
-    for (unsigned int i = 0; i < objects.size(); i++) {
+    vector<GameObject*>::iterator iter;
+    for(iter = objects.begin(); iter != objects.end(); iter++) {
         // Draw the GameObjects
-        objects[i]->draw(window);
+        (*iter)->draw(window);
     }
 }
 
 void LevelObject::update() {
     // Iterate through all the GameObject pointers in the LevelObject
-    for (unsigned int i = 0; i < objects.size(); i++) {
-        objects[i]->update();
+    vector<GameObject*>::iterator iter;
+    for(iter = objects.begin(); iter != objects.end(); iter++) {
+        (*iter)->update();
     }
 }
 
 void LevelObject::processEvents(Event *event, Vector2i mousePosition) {
     // Iterate through all the GameObject pointers in the LevelObject
-    for (unsigned int i = 0; i < objects.size(); i++) {
+    vector<GameObject*>::iterator iter;
+    for(iter = objects.begin(); iter != objects.end(); iter++) {
         // Process mouse click events
         if (event->type == Event::MouseButtonPressed) {
-            objects[i]->onMouseClick(mousePosition);
+            (*iter)->onMouseClick(mousePosition);
         }
         // Process mouse release events
         if (event->type == Event::MouseButtonReleased) {
-            objects[i]->onMouseRelease(mousePosition);
+			(*iter)->onMouseRelease(mousePosition);
         }
         // Process all mouse movement events
         if (event->type == Event::MouseMoved) {
-            objects[i]->onMouseMove(mousePosition);
+            (*iter)->onMouseMove(mousePosition);
         }
     }
 }

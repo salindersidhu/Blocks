@@ -136,9 +136,6 @@
     <ClCompile Include="Engine\LevelObject.cpp" />
     <ClCompile Include="Engine\PhysfsStream.cpp" />
     <ClCompile Include="Engine\ResourceManager.cpp" />
-    <ClCompile Include="Engine\SoundAsset.cpp" />
-    <ClCompile Include="Engine\SpriteAsset.cpp" />
-    <ClCompile Include="Engine\TextAsset.cpp" />
     <ClCompile Include="Levels\MenuLevel.cpp" />
     <ClCompile Include="Logic\Block.cpp" />
     <ClCompile Include="Logic\Clock.cpp" />
@@ -147,7 +144,6 @@
     <ClCompile Include="Objects\Button.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Engine\Asset.hpp" />
     <ClInclude Include="Engine\EngineException.hpp" />
     <ClInclude Include="Engine\DialogManager.hpp" />
     <ClInclude Include="Engine\Game.hpp" />
@@ -155,9 +151,6 @@
     <ClInclude Include="Engine\LevelObject.hpp" />
     <ClInclude Include="Engine\PhysfsStream.hpp" />
     <ClInclude Include="Engine\ResourceManager.hpp" />
-    <ClInclude Include="Engine\SoundAsset.hpp" />
-    <ClInclude Include="Engine\SpriteAsset.hpp" />
-    <ClInclude Include="Engine\TextAsset.hpp" />
     <ClInclude Include="Levels\MenuLevel.hpp" />
     <ClInclude Include="Logic\Block.hpp" />
     <ClInclude Include="Logic\Clock.hpp" />

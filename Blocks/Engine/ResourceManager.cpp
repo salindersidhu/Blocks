@@ -88,38 +88,32 @@ Image ResourceManager::getImage(string imageName) {
     }
 }
 
-SpriteAsset ResourceManager::createSprite(string name, string textureName) {
-    // Check if the Texture exists
-    if (textures.find(textureName) != textures.end()) {
-        // Return a new SpriteAsset with the specified name and texture
-        SpriteAsset newSprite(name, textures[textureName]);
-        return newSprite;
-    } else {
-        // Throw a EngineException
-        throw EngineException("Error: Finding Texture " + textureName);
-    }
+Texture ResourceManager::getTexture(string textureName) {
+	// Check if the Image exists
+	if (textures.find(textureName) != textures.end()) {
+		return textures[textureName];
+	} else {
+		// Throw a EngineException
+		throw EngineException("Error: Getting Texture " + textureName);
+	}
 }
 
-TextAsset ResourceManager::createText(string name, string fontName) {
-    // Check if the Font exists
-    if (fonts.find(fontName) != fonts.end()) {
-        // Return a new TextAsset with the specified name and font
-        TextAsset newText(name, fonts[fontName]);
-        return newText;
-    } else {
-        // Throw a EngineException
-        throw EngineException("Error: Finding Font " + fontName);
-    }
+Font ResourceManager::getFont(string fontName) {
+	// Check if the Image exists
+	if (fonts.find(fontName) != fonts.end()) {
+		return fonts[fontName];
+	} else {
+		// Throw a EngineException
+		throw EngineException("Error: Getting Font " + fontName);
+	}
 }
 
-SoundAsset ResourceManager::createSound(string name, string bufferName) {
-    // Check if the SoundBuffer exists
-    if (soundBuffers.find(bufferName) != soundBuffers.end()) {
-        // Return a new SoundAsset with the specified name and buffer
-        SoundAsset newSound(name, soundBuffers[bufferName]);
-        return newSound;
-    } else {
-        // Throw a EngineException
-		throw EngineException("Error: Finding SoundBuffer" + bufferName);
-    }
+SoundBuffer ResourceManager::getSound(string soundName) {
+	// Check if the Image exists
+	if (soundBuffers.find(soundName) != soundBuffers.end()) {
+		return soundBuffers[soundName];
+	} else {
+		// Throw a EngineException
+		throw EngineException("Error: Getting Sound " + soundName);
+	}
 }

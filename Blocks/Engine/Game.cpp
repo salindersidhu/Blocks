@@ -11,11 +11,16 @@ Game::Game(string title, int length, int width, int FPS) {
 }
 
 Game::~Game() {
-    // Free memory used by the pointers
+    // Free memory used by the instance pointers
     delete window;
     window = NULL;
     delete dialogMan;
     dialogMan = NULL;
+    // Free memory used by all the LevelObject pointers
+    for (unsigned int i = 0; i < levels.size(); i++) {
+        delete levels[i];
+        levels[i] = NULL;
+    }
 }
 
 RenderWindow* Game::getWindow() {

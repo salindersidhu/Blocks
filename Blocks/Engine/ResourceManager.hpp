@@ -6,9 +6,6 @@
 #include <physfs.h>
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
-#include "TextAsset.hpp"
-#include "SoundAsset.hpp"
-#include "SpriteAsset.hpp"
 #include "PhysfsStream.hpp"
 #include "EngineException.hpp"
 using namespace sf;
@@ -25,11 +22,10 @@ class ResourceManager {
 		void loadImage(string, string);
 		void loadSound(string, string);
 		// Get basic elements
+        Texture getTexture(string);
+        Font getFont(string);
 		Image getImage(string);
-        // Create Assets
-        SpriteAsset createSprite(string, string);
-        TextAsset createText(string, string);
-		SoundAsset createSound(string, string);
+        SoundBuffer getSound(string);
     private:
         // Primary resources: Textures, Images, SoundBuffers and Fonts
         map<string, Texture> textures;
