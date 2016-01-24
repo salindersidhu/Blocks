@@ -51,7 +51,9 @@ void Game::runLoop() {
                 if (event.type == Event::Closed) {
                     window->close();
                 }
-                levels[currentLevel]->processEvents(&event);
+                // Get the position of the mouse relative to the window
+                Vector2i mousePosition = Mouse::getPosition(*window);
+                levels[currentLevel]->processEvents(&event, mousePosition);
             }
             // Process all update events for the current LevelObject
             levels[currentLevel]->update();

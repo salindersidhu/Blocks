@@ -15,7 +15,7 @@ class ButtonObject : public GameObject {
         ButtonObject(string, unsigned int, float, float, Color, Color, TextAsset*, SpriteAsset*, SpriteAsset*);
         virtual ~ButtonObject() {};
         // ButtonObject functions
-        void onMouseRelease(Vector2i);
+        void onMouseClick(Vector2i);
         void onMouseMove(Vector2i);
         void draw(RenderWindow*);
         // Get Button attribute functions

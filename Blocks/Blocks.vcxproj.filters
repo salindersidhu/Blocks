@@ -39,6 +39,9 @@
     <ClCompile Include="Engine\Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\LevelObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="Levels\GameLevel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

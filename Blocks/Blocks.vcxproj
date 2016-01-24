@@ -133,6 +133,7 @@
   <ItemGroup>
     <ClCompile Include="Engine\DialogManager.cpp" />
     <ClCompile Include="Engine\Game.cpp" />
+    <ClCompile Include="Engine\LevelObject.cpp" />
     <ClCompile Include="Engine\PhysfsStream.cpp" />
     <ClCompile Include="Engine\ResourceManager.cpp" />
     <ClCompile Include="Engine\SoundAsset.cpp" />

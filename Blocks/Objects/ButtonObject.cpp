@@ -20,7 +20,7 @@ ButtonObject::ButtonObject(string text, unsigned int textSize, float x, float y,
     isMouseOver = false;
 }
 
-void ButtonObject::onMouseRelease(Vector2i mousePosition) {
+void ButtonObject::onMouseClick(Vector2i mousePosition) {
     if (isMouseOver) {
     }
 }

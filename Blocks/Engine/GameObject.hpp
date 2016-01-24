@@ -13,8 +13,6 @@ class GameObject {
         virtual void onMouseClick(Vector2i) = 0;
         virtual void onMouseRelease(Vector2i) = 0;
         virtual void onMouseMove(Vector2i) = 0;
-        virtual void onKeyPress(Event*) = 0;
-        virtual void onKeyRelease(Event*) = 0;
         virtual void update() = 0;
         virtual void draw(RenderWindow*) = 0;
 };
