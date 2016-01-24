@@ -3,32 +3,36 @@
 
 #include <string>
 #include <SFML/Graphics.hpp>
-#include "../Engine/TextAsset.hpp"
 #include "../Engine/GameObject.hpp"
-#include "../Engine/SpriteAsset.hpp"
 using namespace sf;
 using namespace std;
 
 class Button : public GameObject {
     public:
         // Constructor and destructor
-        Button(string, unsigned int, float, float, Color, Color, TextAsset*, SpriteAsset*, SpriteAsset*);
+        Button(string, unsigned int, float, float, Color, Color, Font, Texture, Texture);
         virtual ~Button() {};
         // ButtonObject functions
         void onMouseClick(Vector2i);
         void onMouseMove(Vector2i);
+        void onMouseRelease(Vector2i) {}
+        void update() {};
         void draw(RenderWindow*);
         // Get Button attribute functions
     private:
         // ButtonObject functions
         bool isHovering(int, int);
+        void centerText(float, float, float, float);
         // ButtonObject variables
         bool isMouseOver;
-        SpriteAsset *spriteNormal;
-        SpriteAsset *spriteHover;
-        TextAsset *buttonText;
-        Color colNormal;
-        Color colHover;
+		Texture buttonNormalTexture;
+		Texture buttonHoverTexture;
+        Sprite buttonNormalSprite;
+        Sprite buttonHoverSprite;
+        Font textFont;
+        Text buttonText;
+        Color normalColour;
+        Color hoverColour;
 };
 
 #endif // BUTTON_HPP
