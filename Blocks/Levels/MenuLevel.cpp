@@ -10,11 +10,15 @@ MenuLevel::MenuLevel(String title, Font font, Texture bg, Texture normal, Textur
     quitButton = new Button("Quit", 30, 220, 490, white, red, font, normal, hover);
     // Create a new HUD object
     displayHUD = new HUD(title, 600, 15, 60, white, font, bg);
+    // Create a new FadeTrans object
+    Vector2u dims = bg.getSize();
+    fadeEffect = new FadeTrans(4, dims.x, dims.y);
     // Add the Button objects to the GameObjects container
     objects.push_back(displayHUD);
     objects.push_back(startButton);
     objects.push_back(loadButton);
     objects.push_back(aboutButton);
     objects.push_back(quitButton);
+    objects.push_back(fadeEffect);
     isComplete = false;
 }

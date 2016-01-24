@@ -5,6 +5,7 @@
 #include <SFML/Graphics.hpp>
 #include "../Objects/HUD.hpp"
 #include "../Objects/Button.hpp"
+#include "../Objects/FadeTrans.hpp"
 #include "../Engine/LevelObject.hpp"
 using namespace sf;
 using namespace std;
@@ -21,6 +22,7 @@ class MenuLevel : public LevelObject {
         Button *aboutButton;
         Button *quitButton;
         HUD *displayHUD;
+        FadeTrans *fadeEffect;
 };
 
 #endif // MENULEVEL_HPP

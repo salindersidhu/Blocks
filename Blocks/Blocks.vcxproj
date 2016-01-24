@@ -143,6 +143,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Objects\Button.cpp" />
     <ClCompile Include="Objects\HUD.cpp" />
+    <ClCompile Include="Objects\FadeTrans.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\EngineException.hpp" />
@@ -158,6 +159,7 @@
     <ClInclude Include="Logic\Grid.hpp" />
     <ClInclude Include="Objects\Button.hpp" />
     <ClInclude Include="Objects\HUD.hpp" />
+    <ClInclude Include="Objects\FadeTrans.hpp" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
