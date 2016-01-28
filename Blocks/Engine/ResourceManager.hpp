@@ -4,8 +4,8 @@
 #include <map>
 #include <string>
 #include <physfs.h>
-#include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
+#include <SFML/Graphics.hpp>
 #include "PhysfsStream.hpp"
 #include "EngineException.hpp"
 using namespace sf;
@@ -16,12 +16,12 @@ class ResourceManager {
         // Constructor and destructor
 		ResourceManager(string);
         virtual ~ResourceManager();
-        // Load basic elements
+        // Load basic game elements
         void loadTexture(string, string);
         void loadFont(string, string);
 		void loadImage(string, string);
 		void loadSound(string, string);
-		// Get basic elements
+		// Get basic game elements
         Texture getTexture(string);
         Font getFont(string);
 		Image getImage(string);

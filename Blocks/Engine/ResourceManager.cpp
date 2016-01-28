@@ -15,7 +15,7 @@ ResourceManager::~ResourceManager() {
 void ResourceManager::openVerifyStream(string source) {
     // Loading resource from resource archive
     if (!archiveStream.open(&source)) {
-        // Throw EngineException
+        // Throw an EngineException
         throw EngineException("Error: Loading resource " + source);
     }
 }
@@ -30,7 +30,7 @@ void ResourceManager::loadTexture(string source, string name) {
         textures[name] = texture;
         archiveStream.close();
     } else {
-        // Throw a EngineException
+        // Throw an EngineException
         throw EngineException("Error: Loading Texture " + source);
     }
 }
@@ -45,7 +45,7 @@ void ResourceManager::loadFont(string source, string name) {
         fonts[name] = font;
         // Stream is not closed because SFML can't preload all the data.
     } else {
-        // Throw a EngineException
+        // Throw an EngineException
         throw EngineException("Error: Loading Font " + source);
     }
 }
@@ -60,7 +60,7 @@ void ResourceManager::loadImage(string source, string name) {
         images[name] = image;
 		archiveStream.close();
     } else {
-        // Throw a EngineException
+        // Throw an EngineException
         throw EngineException("Error: Loading Image " + source);
     }
 }
@@ -75,7 +75,7 @@ void ResourceManager::loadSound(string source, string name) {
 		soundBuffers[name] = buffer;
 		archiveStream.close();
     } else {
-        // Throw a EngineException
+        // Throw an EngineException
         throw EngineException("Error: Loading SoundBuffer " + source);
     }
 }
@@ -85,7 +85,7 @@ Image ResourceManager::getImage(string imageName) {
     if (images.find(imageName) != images.end()) {
         return images[imageName];
     } else {
-        // Throw a EngineException
+        // Throw an EngineException
         throw EngineException("Error: Getting Image " + imageName);
     }
 }
@@ -95,7 +95,7 @@ Texture ResourceManager::getTexture(string textureName) {
 	if (textures.find(textureName) != textures.end()) {
 		return textures[textureName];
 	} else {
-		// Throw a EngineException
+		// Throw an EngineException
 		throw EngineException("Error: Getting Texture " + textureName);
 	}
 }
@@ -105,7 +105,7 @@ Font ResourceManager::getFont(string fontName) {
 	if (fonts.find(fontName) != fonts.end()) {
 		return fonts[fontName];
 	} else {
-		// Throw a EngineException
+		// Throw an EngineException
 		throw EngineException("Error: Getting Font " + fontName);
 	}
 }
@@ -115,7 +115,7 @@ SoundBuffer ResourceManager::getSound(string soundName) {
 	if (soundBuffers.find(soundName) != soundBuffers.end()) {
 		return soundBuffers[soundName];
 	} else {
-		// Throw a EngineException
+		// Throw an EngineException
 		throw EngineException("Error: Getting Sound " + soundName);
 	}
 }
