@@ -41,7 +41,7 @@ void loadResources(ResourceManager *resMan) {
 	resMan->loadFont("CooperBlackStd.otf", "FN_COPPER");
 }
 
-void setupMenuLevel(String gameTitle, Game *game, ResourceManager *resMan) {
+void setupMenuLevel(String gameTitle, Game *game, ResourceManager *resMan, RenderWindow *win) {
 	// Obtain the resources from the ResourceManager
 	Texture normal = resMan->getTexture("TX_BUTTON_NORMAL");
 	Texture hover = resMan->getTexture("TX_BUTTON_HOVER");
@@ -51,13 +51,13 @@ void setupMenuLevel(String gameTitle, Game *game, ResourceManager *resMan) {
 	SoundBuffer clickBuffer = resMan->getSound("SND_BUTTON_CLICK");
 	SoundBuffer bgMusicBuffer = resMan->getSound("MUSIC_BACKGROUND");
 	// Create MenuLevel and add it to the Game
-	MenuLevel *menu = new MenuLevel(gameTitle, font, bg, normal, hover, hoverBuffer, clickBuffer, bgMusicBuffer);
+	MenuLevel *menu = new MenuLevel(gameTitle, font, bg, normal, hover, hoverBuffer, clickBuffer, bgMusicBuffer, win);
 	game->addLevel(menu);
 }
 
-void setupLevels(String gameTitle, Game *game, ResourceManager *resMan) {
+void setupLevels(String gameTitle, Game *game, ResourceManager *resMan, RenderWindow *win) {
 	// Setup all LevelObjects for the Game
-	setupMenuLevel(gameTitle, game, resMan);
+	setupMenuLevel(gameTitle, game, resMan, win);
 }
 
 void freeResourceManager(ResourceManager *resMan) {
@@ -87,7 +87,7 @@ int main() {
 		resMan = new ResourceManager(resourceArchive);
 		// Load resources and setup all LevelObjects
 		loadResources(resMan);
-		setupLevels(gameTitle, &game, resMan);
+		setupLevels(gameTitle, &game, resMan, game.getWindow());
     } catch (exception &ex) {
 		// If exception was thrown show error message and exit game
 		game.getDialogMan()->error(ex.what());

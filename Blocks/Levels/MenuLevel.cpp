@@ -1,6 +1,6 @@
 #include "MenuLevel.hpp"
 
-MenuLevel::MenuLevel(String title, Font font, Texture bg, Texture normal, Texture hover, SoundBuffer hoverBuffer, SoundBuffer clickBuffer, SoundBuffer _bgMusic) {
+MenuLevel::MenuLevel(String title, Font font, Texture bg, Texture normal, Texture hover, SoundBuffer hoverBuffer, SoundBuffer clickBuffer, SoundBuffer _bgMusic, RenderWindow *_window) {
     // Create colour objects
     Color white = Color(255, 255, 255);
     Color red = Color(255, 51, 82);
@@ -25,6 +25,17 @@ MenuLevel::MenuLevel(String title, Font font, Texture bg, Texture normal, Textur
     objects.push_back(quitButton);
     objects.push_back(fadeEffect);
     objects.push_back(bgMusic);
+    // Set the game window
+    window = _window;
     // Set level completed to false
     isComplete = false;
+}
+
+void MenuLevel::update() {
+    // Call parent update method
+    LevelObject::update();
+    // Close window if click Button click
+    if (quitButton->getClicked()) {
+        window->close();
+    }
 }

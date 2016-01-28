@@ -14,9 +14,11 @@ using namespace std;
 class MenuLevel : public LevelObject {
     public:
         // Constructor and destructor
-        MenuLevel(String, Font, Texture, Texture, Texture, SoundBuffer, SoundBuffer, SoundBuffer);
+        MenuLevel(String, Font, Texture, Texture, Texture, SoundBuffer, SoundBuffer, SoundBuffer, RenderWindow*);
         virtual ~MenuLevel() {};
     private:
+        // MenuLevel functions
+        void update();
         // MenuLevel variables
         Button *startButton;
         Button *loadButton;
@@ -25,6 +27,7 @@ class MenuLevel : public LevelObject {
         HUD *displayHUD;
         FadeTrans *fadeEffect;
         BGMusic *bgMusic;
+        RenderWindow *window;
 };
 
 #endif // MENULEVEL_HPP

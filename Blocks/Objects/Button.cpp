@@ -27,6 +27,7 @@ Button::Button(string text, unsigned int textSize, float x, float y, Color norma
     // Set remaining instance variables
     isMouseOver = false;
 	isPlayHoverSound = true;
+	isClicked = false;
 }
 
 void Button::onMouseClick(Vector2i mousePosition) {
@@ -67,6 +68,10 @@ void Button::draw(RenderWindow *window) {
     }
     // Draw the Text
     window->draw(buttonText);
+}
+
+bool Button::getClicked() {
+	return isClicked;
 }
 
 bool Button::isHovering(int mX, int mY) {
