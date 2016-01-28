@@ -3,6 +3,7 @@
 
 #include <map>
 #include <vector>
+#include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 #include "LevelObject.hpp"
 #include "DialogManager.hpp"

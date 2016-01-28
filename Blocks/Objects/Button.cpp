@@ -1,6 +1,6 @@
 #include "Button.hpp"
 
-Button::Button(string text, unsigned int textSize, float x, float y, Color normal, Color hover, Font font, Texture normalTexture, Texture hoverTexture) {
+Button::Button(string text, unsigned int textSize, float x, float y, Color normal, Color hover, Font font, Texture normalTexture, Texture hoverTexture, SoundBuffer _hoverBuffer, SoundBuffer _clickBuffer) {
 	// Set instance variables based on constructor arguments
 	normalColour = normal;
 	hoverColour = hover;
@@ -19,13 +19,21 @@ Button::Button(string text, unsigned int textSize, float x, float y, Color norma
     buttonText.setCharacterSize(textSize);
     buttonText.setColor(normalColour);
     centerText(x, y, x + dims.width, y + dims.height);
+	// Configure the hover and click Sounds
+	hoverBuffer = _hoverBuffer;
+	clickBuffer = _clickBuffer;
+	clickSound.setBuffer(clickBuffer);
+	hoverSound.setBuffer(hoverBuffer);
     // Set remaining instance variables
     isMouseOver = false;
+	isPlayHoverSound = true;
 }
 
 void Button::onMouseClick(Vector2i mousePosition) {
+	// Play click sound effect if button clicked
     if (isMouseOver) {
 		isClicked = true;
+		clickSound.play();
     }
 }
 
@@ -33,6 +41,16 @@ void Button::onMouseMove(Vector2i mousePosition) {
 	// Set isMouseOver to true if mouse is hovering over the Button
     isMouseOver = isHovering(mousePosition.x, mousePosition.y);
 	isClicked = false;
+	// Play hover sound effect only once if button is hovered
+	if (isMouseOver) {
+		if (isPlayHoverSound) {
+			hoverSound.play();
+			isPlayHoverSound = false;
+		}
+	} else {
+		// Reset isPlayHoverSound to true if mouse isn't hovering over button
+		isPlayHoverSound = true;
+	}
 }
 
 void Button::draw(RenderWindow *window) {

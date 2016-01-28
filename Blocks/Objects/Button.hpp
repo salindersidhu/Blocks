@@ -2,6 +2,7 @@
 #define BUTTON_HPP
 
 #include <string>
+#include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 #include "../Engine/GameObject.hpp"
 using namespace sf;
@@ -10,7 +11,7 @@ using namespace std;
 class Button : public GameObject {
 	public:
         // Constructor and destructor
-        Button(string, unsigned int, float, float, Color, Color, Font, Texture, Texture);
+        Button(string, unsigned int, float, float, Color, Color, Font, Texture, Texture, SoundBuffer, SoundBuffer);
         virtual ~Button() {};
         // ButtonObject functions
         void onMouseClick(Vector2i);
@@ -27,6 +28,7 @@ class Button : public GameObject {
         // ButtonObject variables
         bool isMouseOver;
 		bool isClicked;
+		bool isPlayHoverSound;
 		Texture buttonNormalTexture;
 		Texture buttonHoverTexture;
         Sprite buttonNormalSprite;
@@ -35,6 +37,10 @@ class Button : public GameObject {
         Text buttonText;
         Color normalColour;
         Color hoverColour;
+		SoundBuffer hoverBuffer;
+		SoundBuffer clickBuffer;
+		Sound hoverSound;
+		Sound clickSound;
 };
 
 #endif // BUTTON_HPP

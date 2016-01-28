@@ -13,7 +13,7 @@ using namespace std;
 class MenuLevel : public LevelObject {
     public:
         // Constructor and destructor
-        MenuLevel(String, Font, Texture, Texture, Texture);
+        MenuLevel(String, Font, Texture, Texture, Texture, SoundBuffer, SoundBuffer);
         virtual ~MenuLevel() {};
     private:
         // MenuLevel variables

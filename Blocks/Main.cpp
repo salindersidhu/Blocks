@@ -8,12 +8,15 @@ using namespace sf;
 using namespace std;
 
 void loadResources(ResourceManager *resMan) {
-	// Load all game resources
+	// Load game's icon
 	resMan->loadImage("icon.png", "IM_ICON");
+	// Load background graphics
 	resMan->loadTexture("button_select.png", "TX_BUTTON_HOVER");
 	resMan->loadTexture("button.png", "TX_BUTTON_NORMAL");
+	// Load menu graphics
 	resMan->loadTexture("menubg.png", "TX_BACKGROUND_MENU");
 	resMan->loadTexture("levelbg.png", "TX_BACKGROUND_GAME");
+	// Load block graphics
 	resMan->loadTexture("bh21.png", "TX_BH21");
 	resMan->loadTexture("bh22.png", "TX_BH22");
 	resMan->loadTexture("bh23.png", "TX_BH23");
@@ -30,6 +33,10 @@ void loadResources(ResourceManager *resMan) {
 	resMan->loadTexture("bv26.png", "TX_BV26");
 	resMan->loadTexture("bv31.png", "TX_BV31");
 	resMan->loadTexture("bv32.png", "TX_BV32");
+	// Load sounds
+	resMan->loadSound("hover.ogg", "SND_BUTTON_HOVER");
+	resMan->loadSound("click.ogg", "SND_BUTTON_CLICK");
+	// Load fonts
 	resMan->loadFont("CooperBlackStd.otf", "FN_COPPER");
 }
 
@@ -39,8 +46,10 @@ void setupMenuLevel(String gameTitle, Game *game, ResourceManager *resMan) {
 	Texture hover = resMan->getTexture("TX_BUTTON_HOVER");
 	Texture bg = resMan->getTexture("TX_BACKGROUND_MENU");
 	Font font = resMan->getFont("FN_COPPER");
+	SoundBuffer hoverBuffer = resMan->getSound("SND_BUTTON_HOVER");
+	SoundBuffer clickBuffer = resMan->getSound("SND_BUTTON_CLICK");
 	// Create MenuLevel and add it to the Game
-	MenuLevel *menu = new MenuLevel(gameTitle, font, bg, normal, hover);
+	MenuLevel *menu = new MenuLevel(gameTitle, font, bg, normal, hover, hoverBuffer, clickBuffer);
 	game->addLevel(menu);
 }
 

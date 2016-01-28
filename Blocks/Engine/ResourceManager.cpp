@@ -58,6 +58,7 @@ void ResourceManager::loadImage(string source, string name) {
     if (image.loadFromStream(archiveStream)) {
         // Store the Image
         images[name] = image;
+		archiveStream.close();
     } else {
         // Throw a EngineException
         throw EngineException("Error: Loading Image " + source);
@@ -72,6 +73,7 @@ void ResourceManager::loadSound(string source, string name) {
     if (buffer.loadFromStream(archiveStream)) {
         // Store the Sound
 		soundBuffers[name] = buffer;
+		archiveStream.close();
     } else {
         // Throw a EngineException
         throw EngineException("Error: Loading SoundBuffer " + source);
