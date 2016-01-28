@@ -1,6 +1,6 @@
 #include "MenuLevel.hpp"
 
-MenuLevel::MenuLevel(String title, Font font, Texture bg, Texture normal, Texture hover, SoundBuffer hoverBuffer, SoundBuffer clickBuffer) {
+MenuLevel::MenuLevel(String title, Font font, Texture bg, Texture normal, Texture hover, SoundBuffer hoverBuffer, SoundBuffer clickBuffer, SoundBuffer _bgMusic) {
     // Create colour objects
     Color white = Color(255, 255, 255);
     Color red = Color(255, 51, 82);
@@ -12,6 +12,8 @@ MenuLevel::MenuLevel(String title, Font font, Texture bg, Texture normal, Textur
     quitButton = new Button("Quit", 30, 220, 490, white, red, font, normal, hover, hoverBuffer, clickBuffer);
     // Create a new HUD object pointer
     displayHUD = new HUD(title, 600, 15, 60, white, font, bg);
+    // Create a new BGMusic object pointer
+    bgMusic = new BGMusic(_bgMusic, 19.5);
     // Create a new FadeTrans object pointer
     Vector2u dims = bg.getSize();
     fadeEffect = new FadeTrans(4, dims.x, dims.y, black);
@@ -22,6 +24,7 @@ MenuLevel::MenuLevel(String title, Font font, Texture bg, Texture normal, Textur
     objects.push_back(aboutButton);
     objects.push_back(quitButton);
     objects.push_back(fadeEffect);
+    objects.push_back(bgMusic);
     // Set level completed to false
     isComplete = false;
 }

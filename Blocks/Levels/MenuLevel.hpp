@@ -5,6 +5,7 @@
 #include <SFML/Graphics.hpp>
 #include "../Objects/HUD.hpp"
 #include "../Objects/Button.hpp"
+#include "../Objects/BGMusic.hpp"
 #include "../Objects/FadeTrans.hpp"
 #include "../Engine/LevelObject.hpp"
 using namespace sf;
@@ -13,7 +14,7 @@ using namespace std;
 class MenuLevel : public LevelObject {
     public:
         // Constructor and destructor
-        MenuLevel(String, Font, Texture, Texture, Texture, SoundBuffer, SoundBuffer);
+        MenuLevel(String, Font, Texture, Texture, Texture, SoundBuffer, SoundBuffer, SoundBuffer);
         virtual ~MenuLevel() {};
     private:
         // MenuLevel variables
@@ -23,6 +24,7 @@ class MenuLevel : public LevelObject {
         Button *quitButton;
         HUD *displayHUD;
         FadeTrans *fadeEffect;
+        BGMusic *bgMusic;
 };
 
 #endif // MENULEVEL_HPP

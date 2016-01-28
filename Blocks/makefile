@@ -2,7 +2,7 @@
 CC=g++
 CFLAGS=-std=c++0x -c
 LDFLAGS=-L/usr/local/lib -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system -lphysfs
-OBJECTS=Logic/Clock.o Logic/Block.o Logic/Grid.o Objects/Button.o Objects/FadeTrans.o Objects/HUD.o Levels/MenuLevel.o Engine/LevelObject.o Engine/DialogManager.o Engine/Game.o Engine/PhysfsStream.o Engine/ResourceManager.o Main.o
+OBJECTS=Logic/Clock.o Logic/Block.o Logic/Grid.o Objects/Button.o Objects/FadeTrans.o Objects/HUD.o Objects/BGMusic.o Levels/MenuLevel.o Engine/LevelObject.o Engine/DialogManager.o Engine/Game.o Engine/PhysfsStream.o Engine/ResourceManager.o Main.o
 SOURCES=$(OBJECTS:.cpp=.0)
 EXECUTABLE=Blocks
 
