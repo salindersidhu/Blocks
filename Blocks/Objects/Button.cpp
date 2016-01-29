@@ -33,7 +33,7 @@ Button::Button(string text, unsigned int textSize, float x, float y, Color norma
 
 void Button::onMouseClick(Vector2i mousePosition) {
 	// Play click sound effect if button clicked
-    if (isMouseOver) {
+    if (isMouseOver && !isSelected) {
 		clickSound.play();
 		isSelected = true;
     }
@@ -57,6 +57,7 @@ void Button::onMouseMove(Vector2i mousePosition) {
 void Button::update() {
 	if (isSelected && clickSound.getStatus() == SoundSource::Status::Stopped) {
 		isClicked = true;
+		isSelected = false;
 	}
 }
 
@@ -77,7 +78,12 @@ void Button::draw(RenderWindow *window) {
 }
 
 bool Button::getClicked() {
-	return isClicked;
+	// If the button is clicked return true and set isClicked to false
+	if (isClicked) {
+		isClicked = false;
+		return true;
+	}
+	return false;
 }
 
 bool Button::isHovering(int mX, int mY) {

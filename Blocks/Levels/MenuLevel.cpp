@@ -34,7 +34,11 @@ MenuLevel::MenuLevel(String title, Font font, Texture bg, Texture normal, Textur
 void MenuLevel::update() {
     // Call parent update method
     LevelObject::update();
-    // Close window if click Button click
+    // Start the game by fading out if start Button was clicked
+    if (startButton->getClicked()) {
+        fadeEffect->setFadeOut();
+    }
+    // Close window if quit Button was clicked
     if (quitButton->getClicked()) {
         window->close();
     }
