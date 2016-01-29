@@ -29,7 +29,6 @@ class MenuLevel : public LevelObject {
         FadeTrans *fadeEffect;
         BGMusic *bgMusic;
         RenderWindow *window;
-        bool isTransition;
 };
 
 #endif // MENULEVEL_HPP

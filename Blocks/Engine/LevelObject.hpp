@@ -12,6 +12,7 @@ using namespace std;
 class LevelObject {
     public:
         // Constructor and destructor
+        LevelObject();
         ~LevelObject();
         // LevelObject functions
         virtual void draw(RenderWindow*);
@@ -22,6 +23,7 @@ class LevelObject {
         // LevelObject variables
         vector<GameObject*> objects;    // Collection of GameObjects pointers
         bool isComplete;                // Is the LevelObject complete
+        bool isTransition;              // Is the LevelObject in transition
 };
 
 #endif // LEVELOBJECT_HPP
