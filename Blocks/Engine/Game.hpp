@@ -24,7 +24,7 @@ class Game {
         void runLoop();
     private:
         // Game variables
-        int currentLevel;
+        unsigned int currentLevel;
         RenderWindow *window;
         DialogManager *dialogMan;
         vector<LevelObject*> levels;

@@ -27,19 +27,30 @@ MenuLevel::MenuLevel(String title, Font font, Texture bg, Texture normal, Textur
     objects.push_back(bgMusic);
     // Set the game window
     window = _window;
-    // Set level completed to false
+    // Set remaining variables
     isComplete = false;
+    isTransition = false;
+}
+
+void MenuLevel::processGameStartEvent() {
+    if (fadeEffect->isDone() && isTransition) {
+        isTransition = false;
+        isComplete = true;  // Set the level completed to true
+    }
 }
 
 void MenuLevel::update() {
     // Call parent update method
     LevelObject::update();
-    // Start the game by fading out if start Button was clicked
+    // Fade out and set isTransition to true if start Button was clicked
     if (startButton->getClicked()) {
         fadeEffect->setFadeOut();
+        isTransition = true;
     }
     // Close window if quit Button was clicked
     if (quitButton->getClicked()) {
         window->close();
     }
+    // Process events for starting the game
+    processGameStartEvent();
 }

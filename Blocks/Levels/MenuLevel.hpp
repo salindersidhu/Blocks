@@ -19,6 +19,7 @@ class MenuLevel : public LevelObject {
     private:
         // MenuLevel functions
         void update();
+        void processGameStartEvent();
         // MenuLevel variables
         Button *startButton;
         Button *loadButton;
@@ -28,6 +29,7 @@ class MenuLevel : public LevelObject {
         FadeTrans *fadeEffect;
         BGMusic *bgMusic;
         RenderWindow *window;
+        bool isTransition;
 };
 
 #endif // MENULEVEL_HPP

@@ -42,10 +42,16 @@ void Game::addLevel(LevelObject *level) {
 void Game::processLevelComplete() {
     // Handle level completed
     if (levels[currentLevel]->getComplete()) {
-        // increment currentLevel
-        currentLevel++;
-        // Wrap currentLevel so that it resets back to 0 if > total levels
-        currentLevel = currentLevel % (levels.size() - 1);
+        // Check if the next level exists
+        if (currentLevel + 1 >= levels.size()) {
+            // throw EngineException
+            throw EngineException("Error: Level content was not found");
+        } else {
+            // Increment currentLevel
+            currentLevel++;
+            // Wrap currentLevel so that it resets back to 0 if > total levels
+            currentLevel = currentLevel % (levels.size() - 1);
+        }
     }
 }
 
@@ -53,7 +59,7 @@ void Game::checkLevelExist() {
     // Check if any LevelObject exist
     if (levels.size() < 1) {
         // throw EngineException
-        throw EngineException("Error: Level content does not exist");
+        throw EngineException("Error: Level content was not found");
     }
 }
 
