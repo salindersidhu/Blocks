@@ -11,8 +11,9 @@ using namespace std;
 
 class LevelObject {
     public:
-        // LevelObject functions
+        // Constructor and destructor
         ~LevelObject();
+        // LevelObject functions
         virtual void draw(RenderWindow*);
         virtual void update();
         virtual void processEvents(Event*, Vector2i);

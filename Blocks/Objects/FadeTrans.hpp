@@ -20,6 +20,7 @@ class FadeTrans : public GameObject {
         void draw(RenderWindow*);
         void setFadeIn();
         void setFadeOut();
+        bool isDone();
     private:
         // FreeTrans functions
         void fade(bool, int);

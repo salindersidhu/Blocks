@@ -28,20 +28,20 @@ Button::Button(string text, unsigned int textSize, float x, float y, Color norma
     isMouseOver = false;
 	isPlayHoverSound = true;
 	isClicked = false;
+	isSelected = false;
 }
 
 void Button::onMouseClick(Vector2i mousePosition) {
 	// Play click sound effect if button clicked
     if (isMouseOver) {
-		isClicked = true;
 		clickSound.play();
+		isSelected = true;
     }
 }
 
 void Button::onMouseMove(Vector2i mousePosition) {
 	// Set isMouseOver to true if mouse is hovering over the Button
     isMouseOver = isHovering(mousePosition.x, mousePosition.y);
-	isClicked = false;
 	// Play hover sound effect only once if button is hovered
 	if (isMouseOver) {
 		if (isPlayHoverSound) {
@@ -51,6 +51,12 @@ void Button::onMouseMove(Vector2i mousePosition) {
 	} else {
 		// Reset isPlayHoverSound to true if mouse isn't hovering over button
 		isPlayHoverSound = true;
+	}
+}
+
+void Button::update() {
+	if (isSelected && clickSound.getStatus() == SoundSource::Status::Stopped) {
+		isClicked = true;
 	}
 }
 

@@ -23,7 +23,7 @@ class BGMusic : public GameObject {
         // BGMusic variables
         SoundBuffer bgMusicBuffer;
         Sound bgMusic;
-        float loopTime;
+        float loopStartTime;
 };
 
 #endif // BGMUSIC_HPP

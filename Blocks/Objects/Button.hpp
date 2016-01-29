@@ -17,7 +17,7 @@ class Button : public GameObject {
         void onMouseClick(Vector2i);
         void onMouseMove(Vector2i);
         void onMouseRelease(Vector2i) {}
-        void update() {};
+        void update();
         void draw(RenderWindow*);
         // Get Button attribute functions
 		bool getClicked();
@@ -28,6 +28,7 @@ class Button : public GameObject {
         // ButtonObject variables
         bool isMouseOver;
 		bool isClicked;
+		bool isSelected;
 		bool isPlayHoverSound;
 		Texture buttonNormalTexture;
 		Texture buttonHoverTexture;

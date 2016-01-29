@@ -62,3 +62,7 @@ void FadeTrans::setFadeIn() {
 void FadeTrans::setFadeOut() {
     setFade(0, 1);
 }
+
+bool FadeTrans::isDone() {
+    return isComplete;
+}

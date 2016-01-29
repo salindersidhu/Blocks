@@ -1,12 +1,12 @@
 #include "BGMusic.hpp"
 
-BGMusic::BGMusic(SoundBuffer _bgMusicBuffer, float loopStartTime) {
-    // Configure the Sounds
+BGMusic::BGMusic(SoundBuffer _bgMusicBuffer, float _loopStartTime) {
+    // Configure the background music Sound
     bgMusicBuffer = _bgMusicBuffer;
     bgMusic.setBuffer(bgMusicBuffer);
     bgMusic.play();
     // Set remaining instance variables
-    loopTime = loopStartTime;
+    loopStartTime = _loopStartTime;
 }
 
 BGMusic::~BGMusic() {
@@ -15,9 +15,9 @@ BGMusic::~BGMusic() {
 }
 
 void BGMusic::update() {
-    // Loop audio from specific point when stops playing
+    // Loop audio from the loop start point when stops playing
     if (bgMusic.getStatus() == SoundSource::Status::Stopped) {
-        bgMusic.setPlayingOffset(seconds(loopTime));
+        bgMusic.setPlayingOffset(seconds(loopStartTime));
         bgMusic.play();
     }
 }
