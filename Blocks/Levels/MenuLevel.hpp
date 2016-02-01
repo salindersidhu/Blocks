@@ -22,13 +22,12 @@ class MenuLevel : public LevelObject {
         void processGameStartEvent();
         // MenuLevel variables
         Button *startButton;
-        Button *loadButton;
-        Button *aboutButton;
         Button *quitButton;
         HUD *displayHUD;
         FadeTrans *fadeEffect;
         BGMusic *bgMusic;
         RenderWindow *window;
+        bool isTransition;              // Is the LevelObject in transition
 };
 
 #endif // MENULEVEL_HPP

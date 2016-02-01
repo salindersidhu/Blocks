@@ -49,9 +49,10 @@ void Game::processLevelComplete() {
         } else {
             // Increment currentLevel
             currentLevel++;
-            // Wrap currentLevel so that it resets back to 0 if > total levels
-            currentLevel = currentLevel % (levels.size() - 1);
         }
+    } else {
+        // Reset current level back to 0
+        currentLevel = 0;
     }
 }
 

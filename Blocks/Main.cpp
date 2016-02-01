@@ -41,7 +41,7 @@ void loadResources(ResourceManager *resMan) {
 	resMan->loadFont("CooperBlackStd.otf", "FN_COPPER");
 }
 
-void setupMenuLevel(String gameTitle, Game *game, ResourceManager *resMan, RenderWindow *win) {
+void setupMenuLevel(String title, Game *game, ResourceManager *resMan, RenderWindow *win) {
 	// Obtain the resources from the ResourceManager
 	Texture normal = resMan->getTexture("TX_BUTTON_NORMAL");
 	Texture hover = resMan->getTexture("TX_BUTTON_HOVER");
@@ -51,7 +51,7 @@ void setupMenuLevel(String gameTitle, Game *game, ResourceManager *resMan, Rende
 	SoundBuffer clickBuffer = resMan->getSound("SND_BUTTON_CLICK");
 	SoundBuffer bgMusicBuffer = resMan->getSound("MUSIC_BACKGROUND");
 	// Create MenuLevel and add it to the Game
-	MenuLevel *menu = new MenuLevel(gameTitle, font, bg, normal, hover, hoverBuffer, clickBuffer, bgMusicBuffer, win);
+	MenuLevel *menu = new MenuLevel(title, font, bg, normal, hover, hoverBuffer, clickBuffer, bgMusicBuffer, win);
 	game->addLevel(menu);
 }
 

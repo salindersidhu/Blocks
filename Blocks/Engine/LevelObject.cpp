@@ -1,11 +1,5 @@
 #include "LevelObject.hpp"
 
-LevelObject::LevelObject() {
-    // Set instance variables
-    isComplete = false;
-    isTransition = false;
-}
-
 LevelObject::~LevelObject() {
     // Iterate through all the GameObject pointers in the LevelObject
     vector<GameObject*>::iterator iter;
