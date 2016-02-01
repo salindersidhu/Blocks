@@ -137,6 +137,7 @@
     <ClCompile Include="Engine\PhysfsStream.cpp" />
     <ClCompile Include="Engine\ResourceManager.cpp" />
     <ClCompile Include="Levels\CoreLevel.cpp" />
+    <ClCompile Include="Levels\GameLevel.cpp" />
     <ClCompile Include="Levels\MenuLevel.cpp" />
     <ClCompile Include="Logic\Block.cpp" />
     <ClCompile Include="Logic\Clock.cpp" />
@@ -156,6 +157,7 @@
     <ClInclude Include="Engine\PhysfsStream.hpp" />
     <ClInclude Include="Engine\ResourceManager.hpp" />
     <ClInclude Include="Levels\CoreLevel.hpp" />
+    <ClInclude Include="Levels\GameLevel.hpp" />
     <ClInclude Include="Levels\MenuLevel.hpp" />
     <ClInclude Include="Logic\Block.hpp" />
     <ClInclude Include="Logic\Clock.hpp" />

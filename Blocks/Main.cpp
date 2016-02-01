@@ -2,6 +2,7 @@
 #include <exception>
 #include "Engine/Game.hpp"
 #include "Levels/MenuLevel.hpp"
+#include "Levels/GameLevel.hpp"
 #include "Engine/DialogManager.hpp"
 #include "Engine/ResourceManager.hpp"
 using namespace sf;
@@ -55,9 +56,20 @@ void setupMenuLevel(String title, Game *game, ResourceManager *resMan, RenderWin
 	game->addLevel(menu);
 }
 
+void setupGameLevels(Game *game, ResourceManager *resMan, RenderWindow *win) {
+	// Obtain the resources from the ResourceManager
+	Texture bg = resMan->getTexture("TX_BACKGROUND_GAME");
+	Font font = resMan->getFont("FN_COPPER");
+	SoundBuffer bgMusicBuffer = resMan->getSound("MUSIC_BACKGROUND");
+	// Create GameLevel one and add it to the Game
+	GameLevel *gl = new GameLevel("Level 1", font, bg, bgMusicBuffer, win);
+	game->addLevel(gl);
+}
+
 void setupLevels(String gameTitle, Game *game, ResourceManager *resMan, RenderWindow *win) {
 	// Setup all LevelObjects for the Game
 	setupMenuLevel(gameTitle, game, resMan, win);
+	setupGameLevels(game, resMan, win);
 }
 
 void freeResourceManager(ResourceManager *resMan) {
