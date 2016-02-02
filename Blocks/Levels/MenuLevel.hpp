@@ -5,7 +5,6 @@
 #include <SFML/Graphics.hpp>
 #include "CoreLevel.hpp"
 #include "../Objects/Button.hpp"
-#include "../Objects/FadeTrans.hpp"
 using namespace sf;
 using namespace std;
 
@@ -17,11 +16,14 @@ class MenuLevel : public CoreLevel {
     private:
         // MenuLevel functions
         void update();
-        void processGameStartEvent();
+        void setTransition(string);
+        void processButtonEvents();
         // MenuLevel variables
-        FadeTrans *fadeEffect;
         Button *startButton;
+        Button *loadButton;
+        Button *aboutButton;
         Button *quitButton;
+        string buttonEventName;
 };
 
 #endif // MENULEVEL_HPP

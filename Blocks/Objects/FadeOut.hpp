@@ -1,5 +1,5 @@
-#ifndef FADETRANS_HPP
-#define FADETRANS_HPP
+#ifndef FADEOUT_HPP
+#define FADEOUT_HPP
 
 #include <string>
 #include <SFML/Graphics.hpp>
@@ -7,25 +7,23 @@
 using namespace sf;
 using namespace std;
 
-class FadeTrans : public GameObject {
+class FadeOut : public GameObject {
     public:
         // Constructor and destructor
-        FadeTrans(int, int, int, Color);
-        ~FadeTrans();
-        // FadeTrans functions
+        FadeOut(int, int, int, Color);
+        ~FadeOut();
+        // FadeOut functions
         void onMouseClick(Vector2i) {};
         void onMouseMove(Vector2i) {};
         void onMouseRelease(Vector2i) {}
         void update();
         void draw(RenderWindow*);
-        void setFadeIn();
-        void setFadeOut();
+        void start();
         bool isDone();
     private:
-        // FreeTrans functions
+        // FadeOut variables
         void fade(bool, int);
-        void setFade(int, int);
-        // FadeTrans variables
+        // FadeOut variables
         RectangleShape *cover;  // The fade transition rectangle
         Color fadeColour;       // The fade transition colour
         int speed;              // Fade transition speed
@@ -34,4 +32,4 @@ class FadeTrans : public GameObject {
         bool isComplete;        // Is the fade transition complete
 };
 
-#endif // FADETRANS_HPP
+#endif // FADEOUT_HPP

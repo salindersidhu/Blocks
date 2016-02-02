@@ -146,7 +146,7 @@
     <ClCompile Include="Objects\BGMusic.cpp" />
     <ClCompile Include="Objects\Button.cpp" />
     <ClCompile Include="Objects\HUD.cpp" />
-    <ClCompile Include="Objects\FadeTrans.cpp" />
+    <ClCompile Include="Objects\FadeOut.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\EngineException.hpp" />
@@ -165,7 +165,7 @@
     <ClInclude Include="Objects\BGMusic.hpp" />
     <ClInclude Include="Objects\Button.hpp" />
     <ClInclude Include="Objects\HUD.hpp" />
-    <ClInclude Include="Objects\FadeTrans.hpp" />
+    <ClInclude Include="Objects\FadeOut.hpp" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>

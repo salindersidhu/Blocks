@@ -51,7 +51,7 @@
     <ClCompile Include="Objects\HUD.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Objects\FadeTrans.cpp">
+    <ClCompile Include="Objects\FadeOut.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Objects\BGMusic.cpp">
@@ -107,7 +107,7 @@
     <ClInclude Include="Objects\HUD.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Objects\FadeTrans.hpp">
+    <ClInclude Include="Objects\FadeOut.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Objects\BGMusic.hpp">

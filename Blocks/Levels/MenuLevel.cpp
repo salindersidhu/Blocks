@@ -3,35 +3,45 @@
 MenuLevel::MenuLevel(String title, Font font, Texture bg, Texture normal, Texture hover, SoundBuffer hoverBuffer, SoundBuffer clickBuffer, SoundBuffer bgMusic, RenderWindow *window) : CoreLevel(title, font, bg, bgMusic, 19.5, window) {
     // Create new Button object pointers
     startButton = new Button("Start", 30, 220, 250, white, red, font, normal, hover, hoverBuffer, clickBuffer);
-    quitButton = new Button("Quit", 30, 220, 330, white, red, font, normal, hover, hoverBuffer, clickBuffer);
-    // Create a new FadeTrans object pointer
-    Vector2u dims = bg.getSize();
-    fadeEffect = new FadeTrans(5, dims.x, dims.y, black);
+    loadButton = new Button("Load", 30, 220, 330, white, red, font, normal, hover, hoverBuffer, clickBuffer);
+    aboutButton = new Button("About", 30, 220, 410, white, red, font, normal, hover, hoverBuffer, clickBuffer);
+    quitButton = new Button("Quit", 30, 220, 490, white, red, font, normal, hover, hoverBuffer, clickBuffer);
     // Add the GameObject pointers to the object's container
     objects.push_back(startButton);
+    objects.push_back(loadButton);
+    objects.push_back(aboutButton);
     objects.push_back(quitButton);
-    objects.push_back(fadeEffect);
-}
-
-void MenuLevel::processGameStartEvent() {
-    if (fadeEffect->isDone() && isTransition) {
-        isTransition = false;
-        isComplete = true;  // Set the level completed to true
-    }
 }
 
 void MenuLevel::update() {
     // Call parent update function
-    CoreLevel::update();    
-    // Fade out and set isTransition to true if start Button was clicked
-    if (startButton->getClicked()) {
-        fadeEffect->setFadeOut();
-        isTransition = true;
+    CoreLevel::update();
+    // Set fade out transition if any button was clicked
+    if (startButton->getClicked() && !isTransition) {
+        setTransition("BUTTON_EVT_START");
     }
-    // Close window if quit Button was clicked
-    if (quitButton->getClicked()) {
-        window->close();
+    if (quitButton->getClicked() && !isTransition) {
+        setTransition("BUTTON_EVT_QUIT");
     }
-    // Process events for starting the game
-    processGameStartEvent();
+    // Process button events
+    processButtonEvents();
+}
+
+void MenuLevel::setTransition(string _buttonEventName) {
+    fadeOutEffect->start();
+    isTransition = true;
+    buttonEventName = _buttonEventName;
+}
+
+void MenuLevel::processButtonEvents() {
+    if (fadeOutEffect->isDone() && isTransition) {
+        isTransition = false;   // No longer transitioning
+        // Process button events after transition effect
+        if (buttonEventName == "BUTTON_EVT_START") {
+            isComplete = true;
+        } else {
+            // Quit button clicked, terminate the game
+            window->close();
+        }
+    }
 }

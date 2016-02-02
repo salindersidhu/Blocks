@@ -5,7 +5,7 @@
 #include <SFML/Graphics.hpp>
 #include "CoreLevel.hpp"
 #include "../Objects/Button.hpp"
-#include "../Objects/FadeTrans.hpp"
+#include "../Objects/FadeOut.hpp"
 using namespace sf;
 using namespace std;
 

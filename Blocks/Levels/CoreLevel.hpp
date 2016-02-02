@@ -5,6 +5,7 @@
 #include <SFML/Graphics.hpp>
 #include "../Objects/HUD.hpp"
 #include "../Objects/BGMusic.hpp"
+#include "../Objects/FadeOut.hpp"
 #include "../Engine/LevelObject.hpp"
 using namespace sf;
 using namespace std;
@@ -21,6 +22,7 @@ class CoreLevel : public LevelObject {
         HUD *displayHUD;
         BGMusic *bgMusic;
         RenderWindow *window;
+        FadeOut *fadeOutEffect;
         Color red;
         Color white;
         Color black;
