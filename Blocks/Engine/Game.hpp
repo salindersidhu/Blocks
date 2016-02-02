@@ -1,9 +1,7 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
-#include <map>
 #include <vector>
-#include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 #include "LevelObject.hpp"
 #include "DialogManager.hpp"
@@ -21,16 +19,16 @@ class Game {
         DialogManager* getDialogMan();
         // Game functions
         void addLevel(LevelObject*);
-        void runLoop();
+        void start();
     private:
         // Game variables
-        unsigned int currentLevel;
         RenderWindow *window;
         DialogManager *dialogMan;
         vector<LevelObject*> levels;
+        LevelObject* currentLevel;
         // Game functions
+        void gameLoop();
         void processLevelComplete();
-        void checkLevelExist();
 };
 
 #endif // GAME_HPP

@@ -21,8 +21,8 @@ void MenuLevel::processGameStartEvent() {
 }
 
 void MenuLevel::update() {
-    // Call parent update method
-    LevelObject::update();
+    // Call parent update function
+    CoreLevel::update();    
     // Fade out and set isTransition to true if start Button was clicked
     if (startButton->getClicked()) {
         fadeEffect->setFadeOut();

@@ -107,8 +107,8 @@ int main() {
     }
 	// Add an icon to the Game's window
 	addWinIcon(game.getWindow(), resMan);
-	// Run the game
-    game.runLoop();
+	// Start the game
+    game.start();
 	// Free memory used by ResourceManager
 	freeResourceManager(resMan);
     return 0; // Exit success

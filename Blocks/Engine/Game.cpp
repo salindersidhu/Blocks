@@ -6,8 +6,6 @@ Game::Game(string title, int length, int width, int FPS) {
     window->setFramerateLimit(FPS);
     // Initialize and configure the DialogManager pointer
     dialogMan = new DialogManager(title, window);
-    // Initialize game variables
-    currentLevel = 0;
 }
 
 Game::~Game() {
@@ -39,36 +37,20 @@ void Game::addLevel(LevelObject *level) {
 	levels.push_back(level);
 }
 
-void Game::processLevelComplete() {
-    // Handle level completed
-    if (levels[currentLevel]->getComplete()) {
-        // Check if the next level exists
-        if (currentLevel + 1 >= levels.size()) {
-            // throw EngineException
-            throw EngineException("Error: Level content was not found");
-        } else {
-            // Increment currentLevel
-            currentLevel++;
-        }
-    } else {
-        // Reset current level back to 0
-        currentLevel = 0;
-    }
-}
-
-void Game::checkLevelExist() {
+void Game::start() {
     // Check if any LevelObject exist
-    if (levels.size() < 1) {
+    if (levels.size() > 0) {
+        // Set the currentLevel to the first LevelObject pointer
+        currentLevel = levels[0];
+        gameLoop();
+    } else {
         // throw EngineException
         throw EngineException("Error: Level content was not found");
     }
 }
 
-void Game::runLoop() {
+void Game::gameLoop() {
     try {
-        // Sanity check existence of LevelObject
-        checkLevelExist();
-        // Game loop
         while(window->isOpen()) {
             // Process all input events for the current LevelObject
             Event event;
@@ -79,19 +61,36 @@ void Game::runLoop() {
                 }
                 // Get the position of the mouse relative to the window
                 Vector2i mousePosition = Mouse::getPosition(*window);
-                levels[currentLevel]->processEvents(&event, mousePosition);
+                currentLevel->processEvents(&event, mousePosition);
             }
             // Process all update events for the current LevelObject
-            levels[currentLevel]->update();
+            currentLevel->update();
             processLevelComplete();
-            // Process all rendering events for the current LevelObject
+            // Process all drawing events for the current LevelObject
             window->clear();
-            levels[currentLevel]->draw(window);
+            currentLevel->draw(window);
             window->display();
         }
     } catch(exception &ex) {
-        // If something went wrong, display an error message and exit game
+        // If something went wrong, display an error message and terminate
         dialogMan->error(ex.what());
         window->close();
+    }
+}
+
+void Game::processLevelComplete() {
+    // Process level completed event
+    if (currentLevel->getComplete()) {
+        // Delete the current level and remove from Levels vector
+        delete currentLevel;
+        currentLevel = NULL;
+        levels.erase(levels.begin());
+        // Check if the next level exists
+        if (levels.size() > 0) {
+            currentLevel = levels[0];
+        } else {
+            // throw EngineException
+            throw EngineException("Error: Level content was not found");
+        }
     }
 }

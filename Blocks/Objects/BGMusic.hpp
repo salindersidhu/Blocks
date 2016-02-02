@@ -12,18 +12,21 @@ class BGMusic : public GameObject {
     public:
         // Constructor and destructor
         BGMusic(SoundBuffer, float);
-        ~BGMusic();
+        virtual ~BGMusic() {};
         // BGMusic functions
         void onMouseClick(Vector2i) {};
         void onMouseMove(Vector2i) {};
         void onMouseRelease(Vector2i) {}
         void update();
         void draw(RenderWindow*) {};
+        void start();
+        void stop();
     private:
         // BGMusic variables
         SoundBuffer bgMusicBuffer;
         Sound bgMusic;
         float loopStartTime;
+        bool isStarted;
 };
 
 #endif // BGMUSIC_HPP

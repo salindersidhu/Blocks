@@ -14,6 +14,8 @@ class CoreLevel : public LevelObject {
         // Constructor and destructor
         CoreLevel(String, Font, Texture, SoundBuffer, float, RenderWindow*);
         virtual ~CoreLevel() {};
+        // CoreLevel functions
+        virtual void update();
     protected:
         // CoreLevel variables
         HUD *displayHUD;
@@ -23,6 +25,7 @@ class CoreLevel : public LevelObject {
         Color white;
         Color black;
         bool isTransition;              // Is the LevelObject in transition
+        bool isStarted;                 // Is the LevelObject started
 };
 
 #endif // CORELEVEL_HPP

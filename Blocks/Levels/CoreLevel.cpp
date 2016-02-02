@@ -16,4 +16,19 @@ CoreLevel::CoreLevel(String title, Font font, Texture bg, SoundBuffer _bgMusic, 
     window = _window;
     isComplete = false;
     isTransition = false;
+    isStarted = false;
+}
+
+void CoreLevel::update() {
+    // Call parent update function
+    LevelObject::update();
+    // Start the bgMusic only once
+    if (!isStarted) {
+        bgMusic->start();
+        isStarted = true;
+    }
+    // Stop the bgMusic if level is transitoning
+    if (isTransition) {
+        bgMusic->stop();
+    }
 }
