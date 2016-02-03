@@ -5,18 +5,22 @@
 #include <SFML/Graphics.hpp>
 #include "CoreLevel.hpp"
 #include "../Objects/Button.hpp"
-#include "../Objects/FadeOut.hpp"
+#include "../Objects/GameInfo.hpp"
 using namespace sf;
 using namespace std;
 
 class GameLevel : public CoreLevel {
     public:
         // Constructor and destructor
-        GameLevel(String, Font, Texture, SoundBuffer, RenderWindow*);
+        GameLevel(String, Font, Texture, Texture, Texture, SoundBuffer, SoundBuffer, SoundBuffer, RenderWindow*);
         virtual ~GameLevel() {};
     private:
         // GameLevel functions
+        void update();
         // GameLevel variables
+        Button *resetButton;
+        Button *quitButton;
+        GameInfo *gameInfo;
 };
 
 #endif // GAMELEVEL_HPP

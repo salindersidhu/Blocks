@@ -42,7 +42,7 @@ void loadResources(ResourceManager *resMan) {
 	resMan->loadFont("CooperBlackStd.otf", "FN_COPPER");
 }
 
-void setupMenuLevel(String title, Game *game, ResourceManager *resMan, RenderWindow *win) {
+void setupLevels(String title, Game *game, ResourceManager *resMan, RenderWindow *win) {
 	// Obtain the resources from the ResourceManager
 	Texture normal = resMan->getTexture("TX_BUTTON_NORMAL");
 	Texture hover = resMan->getTexture("TX_BUTTON_HOVER");
@@ -54,34 +54,9 @@ void setupMenuLevel(String title, Game *game, ResourceManager *resMan, RenderWin
 	// Create MenuLevel and add it to the Game
 	MenuLevel *menu = new MenuLevel(title, font, bg, normal, hover, hoverBuffer, clickBuffer, bgMusicBuffer, win);
 	game->addLevel(menu);
-}
-
-void setupGameLevels(Game *game, ResourceManager *resMan, RenderWindow *win) {
-	// Obtain the resources from the ResourceManager
-	Texture bg = resMan->getTexture("TX_BACKGROUND_GAME");
-	Font font = resMan->getFont("FN_COPPER");
-	SoundBuffer bgMusicBuffer = resMan->getSound("MUSIC_BACKGROUND");
 	// Create GameLevel one and add it to the Game
-	GameLevel *gl = new GameLevel("Level 1", font, bg, bgMusicBuffer, win);
+	GameLevel *gl = new GameLevel("Level 1", font, bg, normal, hover, hoverBuffer, clickBuffer, bgMusicBuffer, win);
 	game->addLevel(gl);
-}
-
-void setupLevels(String gameTitle, Game *game, ResourceManager *resMan, RenderWindow *win) {
-	// Setup all LevelObjects for the Game
-	setupMenuLevel(gameTitle, game, resMan, win);
-	setupGameLevels(game, resMan, win);
-}
-
-void freeResourceManager(ResourceManager *resMan) {
-	// Delete and NULL the ResourceManager pointer and free memory
-	delete resMan;
-	resMan = NULL;
-}
-
-void addWinIcon(RenderWindow *window, ResourceManager *resMan) {
-	// Add icon to window
-	Image icon = resMan->getImage("IM_ICON");
-	window->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 }
 
 int main() {
@@ -93,7 +68,6 @@ int main() {
 	const int FPS = 60;
 	// Initialize Game and ResourceManager
 	Game game(gameTitle, winWidth, winHeight, FPS);
-    //DialogManager dialogMan(gameTitle, game.getWindow());
 	ResourceManager *resMan;
     try {
 		resMan = new ResourceManager(resourceArchive);
@@ -106,10 +80,12 @@ int main() {
         return 1;
     }
 	// Add an icon to the Game's window
-	addWinIcon(game.getWindow(), resMan);
+	Image icon = resMan->getImage("IM_ICON");
+	game.getWindow()->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 	// Start the game
     game.start();
-	// Free memory used by ResourceManager
-	freeResourceManager(resMan);
+	// Delete the ResourceManager pointer and free memory
+	delete resMan;
+	resMan = NULL;
     return 0; // Exit success
 }
