@@ -17,10 +17,14 @@ class GameLevel : public CoreLevel {
     private:
         // GameLevel functions
         void update();
+        void restart();
+        void processButtonEvents();
         // GameLevel variables
         Button *resetButton;
         Button *quitButton;
         GameInfo *gameInfo;
+        string buttonEventName;
+        unsigned int numMoves;
 };
 
 #endif // GAMELEVEL_HPP

@@ -6,8 +6,7 @@ FadeOut::FadeOut(int _speed, int width, int height, Color _fadeColour) {
     fadeColour = _fadeColour;
     // Configure the fade out rectangle, make it transparent
     cover = new RectangleShape(Vector2f((float)width, (float)height));
-    fadeColour.a = 0;
-    cover->setFillColor(fadeColour);
+    resetFade();
     // Set remaining instance variables
     isComplete = true;
 }
@@ -37,6 +36,11 @@ void FadeOut::fade(bool condition, int alphaVal) {
     }
 }
 
+void FadeOut::resetFade() {
+    fadeColour.a = 0;
+    cover->setFillColor(fadeColour);
+}
+
 void FadeOut::draw(RenderWindow *window) {
     // Draw the fade effect
     if (!isComplete) {
@@ -45,6 +49,7 @@ void FadeOut::draw(RenderWindow *window) {
 }
 
 void FadeOut::start() {
+    resetFade();
     alpha = 0;
     isComplete = false;
 }

@@ -16,12 +16,9 @@ class MenuLevel : public CoreLevel {
     private:
         // MenuLevel functions
         void update();
-        void setTransition(string);
         void processButtonEvents();
         // MenuLevel variables
         Button *startButton;
-        Button *loadButton;
-        Button *aboutButton;
         Button *quitButton;
         string buttonEventName;
 };

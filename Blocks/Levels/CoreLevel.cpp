@@ -11,7 +11,7 @@ CoreLevel::CoreLevel(String title, Font font, Texture bg, SoundBuffer _bgMusic, 
     bgMusic = new BGMusic(_bgMusic, loopTime);
     // Create a new FadeTrans object pointer
     Vector2u dims = bg.getSize();
-    fadeOutEffect = new FadeOut(5, dims.x, dims.y, black);
+    fadeOutEffect = new FadeOut(7, dims.x, dims.y, black);
     // Add the GameObject pointers to the object's container
     objects.push_back(displayHUD);
     objects.push_back(bgMusic);
@@ -37,4 +37,9 @@ void CoreLevel::update() {
     if (isTransition) {
         bgMusic->stop();
     }
+}
+
+void CoreLevel::setTransition() {
+    fadeOutEffect->start();
+    isTransition = true;
 }

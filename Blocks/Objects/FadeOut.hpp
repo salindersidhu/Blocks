@@ -23,6 +23,7 @@ class FadeOut : public GameObject {
     private:
         // FadeOut variables
         void fade(bool, int);
+        void resetFade();
         // FadeOut variables
         RectangleShape *cover;  // The fade transition rectangle
         Color fadeColour;       // The fade transition colour

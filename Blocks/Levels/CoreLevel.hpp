@@ -17,6 +17,7 @@ class CoreLevel : public LevelObject {
         virtual ~CoreLevel() {};
         // CoreLevel functions
         virtual void update();
+        void setTransition();
     protected:
         // CoreLevel variables
         HUD *displayHUD;

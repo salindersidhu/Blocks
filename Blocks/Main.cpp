@@ -46,16 +46,17 @@ void setupLevels(String title, Game *game, ResourceManager *resMan, RenderWindow
 	// Obtain the resources from the ResourceManager
 	Texture normal = resMan->getTexture("TX_BUTTON_NORMAL");
 	Texture hover = resMan->getTexture("TX_BUTTON_HOVER");
-	Texture bg = resMan->getTexture("TX_BACKGROUND_MENU");
+	Texture menuBg = resMan->getTexture("TX_BACKGROUND_MENU");
+	Texture gameBg = resMan->getTexture("TX_BACKGROUND_GAME");
 	Font font = resMan->getFont("FN_COPPER");
 	SoundBuffer hoverBuffer = resMan->getSound("SND_BUTTON_HOVER");
 	SoundBuffer clickBuffer = resMan->getSound("SND_BUTTON_CLICK");
 	SoundBuffer bgMusicBuffer = resMan->getSound("MUSIC_BACKGROUND");
 	// Create MenuLevel and add it to the Game
-	MenuLevel *menu = new MenuLevel(title, font, bg, normal, hover, hoverBuffer, clickBuffer, bgMusicBuffer, win);
+	MenuLevel *menu = new MenuLevel(title, font, menuBg, normal, hover, hoverBuffer, clickBuffer, bgMusicBuffer, win);
 	game->addLevel(menu);
 	// Create GameLevel one and add it to the Game
-	GameLevel *gl = new GameLevel("Level 1", font, bg, normal, hover, hoverBuffer, clickBuffer, bgMusicBuffer, win);
+	GameLevel *gl = new GameLevel("Level 1", font, gameBg, normal, hover, hoverBuffer, clickBuffer, bgMusicBuffer, win);
 	game->addLevel(gl);
 }
 
