@@ -1,6 +1,6 @@
-#include "FadeOut.hpp"
+#include "FadeEffect.hpp"
 
-FadeOut::FadeOut(int _speed, int width, int height, Color _fadeColour) {
+FadeEffect::FadeEffect(int _speed, int width, int height, Color _fadeColour) {
     // Set instance variables based on constructor arguments
     speed = _speed;
     fadeColour = _fadeColour;
@@ -11,12 +11,12 @@ FadeOut::FadeOut(int _speed, int width, int height, Color _fadeColour) {
     isComplete = true;
 }
 
-FadeOut::~FadeOut() {
+FadeEffect::~FadeEffect() {
     delete cover;
     cover = NULL;
 }
 
-void FadeOut::update() {
+void FadeEffect::update() {
     if (!isComplete) {
         // Update the fade out colour
         if (alpha < 255) {
@@ -28,7 +28,7 @@ void FadeOut::update() {
     }
 }
 
-void FadeOut::fade(bool condition, int alphaVal) {
+void FadeEffect::fade(bool condition, int alphaVal) {
     // Check if the condition holds before updating
     if (condition) {
         fadeColour.a = alphaVal;
@@ -36,24 +36,24 @@ void FadeOut::fade(bool condition, int alphaVal) {
     }
 }
 
-void FadeOut::resetFade() {
+void FadeEffect::resetFade() {
     fadeColour.a = 0;
     cover->setFillColor(fadeColour);
 }
 
-void FadeOut::draw(RenderWindow *window) {
+void FadeEffect::draw(RenderWindow *window) {
     // Draw the fade effect
     if (!isComplete) {
         window->draw(*cover);
     }
 }
 
-void FadeOut::start() {
+void FadeEffect::start() {
     resetFade();
     alpha = 0;
     isComplete = false;
 }
 
-bool FadeOut::isDone() {
+bool FadeEffect::isDone() {
     return isComplete;
 }

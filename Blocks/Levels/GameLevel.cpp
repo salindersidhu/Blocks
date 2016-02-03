@@ -38,7 +38,7 @@ void GameLevel::restart() {
 }
 
 void GameLevel::processButtonEvents() {
-    if (fadeOutEffect->isDone() && isTransition) {
+    if (fadeEffect->isDone() && isTransition) {
         isTransition = false;   // No longer transitioning
         // Process button events after transition effect
         if (buttonEventName == "BUTTON_EVT_RESTART") {

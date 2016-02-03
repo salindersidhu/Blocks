@@ -11,7 +11,7 @@ CoreLevel::CoreLevel(String title, Font font, Texture bg, SoundBuffer _bgMusic, 
     bgMusic = new BGMusic(_bgMusic, loopTime);
     // Create a new FadeTrans object pointer
     Vector2u dims = bg.getSize();
-    fadeOutEffect = new FadeOut(7, dims.x, dims.y, black);
+    fadeEffect = new FadeEffect(7, dims.x, dims.y, black);
     // Add the GameObject pointers to the object's container
     objects.push_back(displayHUD);
     objects.push_back(bgMusic);
@@ -28,7 +28,7 @@ void CoreLevel::update() {
     // Execute events only once per LevelObject
     if (!isStarted) {
         // Ensure FadeTrans is the last object in the list to draw
-        objects.push_back(fadeOutEffect);
+        objects.push_back(fadeEffect);
         // Start the background music only once
         bgMusic->start();
         isStarted = true;
@@ -40,6 +40,6 @@ void CoreLevel::update() {
 }
 
 void CoreLevel::setTransition() {
-    fadeOutEffect->start();
+    fadeEffect->start();
     isTransition = true;
 }

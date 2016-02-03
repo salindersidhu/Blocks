@@ -26,7 +26,7 @@ void MenuLevel::update() {
 }
 
 void MenuLevel::processButtonEvents() {
-    if (fadeOutEffect->isDone() && isTransition) {
+    if (fadeEffect->isDone() && isTransition) {
         isTransition = false;   // No longer transitioning
         // Process button events after transition effect
         if (buttonEventName == "BUTTON_EVT_START") {

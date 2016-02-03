@@ -1,5 +1,5 @@
-#ifndef FADEOUT_HPP
-#define FADEOUT_HPP
+#ifndef FADEEFFECT_HPP
+#define FADEEFFECT_HPP
 
 #include <string>
 #include <SFML/Graphics.hpp>
@@ -7,12 +7,12 @@
 using namespace sf;
 using namespace std;
 
-class FadeOut : public GameObject {
+class FadeEffect : public GameObject {
     public:
         // Constructor and destructor
-        FadeOut(int, int, int, Color);
-        ~FadeOut();
-        // FadeOut functions
+        FadeEffect(int, int, int, Color);
+        ~FadeEffect();
+        // FadeEffect functions
         void onMouseClick(Vector2i) {};
         void onMouseMove(Vector2i) {};
         void onMouseRelease(Vector2i) {}
@@ -21,16 +21,15 @@ class FadeOut : public GameObject {
         void start();
         bool isDone();
     private:
-        // FadeOut variables
+        // FadeEffect variables
         void fade(bool, int);
         void resetFade();
-        // FadeOut variables
-        RectangleShape *cover;  // The fade transition rectangle
-        Color fadeColour;       // The fade transition colour
+        // FadeEffect variables
+        RectangleShape *cover;  // The fade efect rectangle
+        Color fadeColour;       // The fade effect colour
         int speed;              // Fade transition speed
         int alpha;              // Value between 0 and 255
-        int fadeSwitch;         // 0 = Fade in, 1 = Fade out
         bool isComplete;        // Is the fade transition complete
 };
 
-#endif // FADEOUT_HPP
+#endif // FADEEFFECT_HPP

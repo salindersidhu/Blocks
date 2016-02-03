@@ -147,7 +147,7 @@
     <ClCompile Include="Objects\Button.cpp" />
     <ClCompile Include="Objects\GameInfo.cpp" />
     <ClCompile Include="Objects\HUD.cpp" />
-    <ClCompile Include="Objects\FadeOut.cpp" />
+    <ClCompile Include="Objects\FadeEffect.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\EngineException.hpp" />
@@ -167,7 +167,7 @@
     <ClInclude Include="Objects\Button.hpp" />
     <ClInclude Include="Objects\GameInfo.hpp" />
     <ClInclude Include="Objects\HUD.hpp" />
-    <ClInclude Include="Objects\FadeOut.hpp" />
+    <ClInclude Include="Objects\FadeEffect.hpp" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
