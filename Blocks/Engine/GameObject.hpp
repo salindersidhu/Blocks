@@ -9,6 +9,8 @@ using namespace std;
 
 class GameObject {
     public:
+        // Destructor
+        virtual ~GameObject() {};
         // Abstract functions
         virtual void onMouseClick(Vector2i) = 0;
         virtual void onMouseRelease(Vector2i) = 0;
