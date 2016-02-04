@@ -13,13 +13,16 @@ using namespace std;
 class CoreLevel : public LevelObject {
     public:
         // Constructor and destructor
-        CoreLevel(String, Font, Texture, SoundBuffer, float, RenderWindow*);
+        CoreLevel(String, RenderWindow*);
         virtual ~CoreLevel() {};
         // CoreLevel functions
         virtual void update();
         void setTransition();
+        void setBackgroundMusic(SoundBuffer, float);
+        void setBackgroundAndFont(Texture, Font);
     protected:
         // CoreLevel variables
+        string title;
         HUD *displayHUD;
         BGMusic *bgMusic;
         RenderWindow *window;
@@ -27,8 +30,8 @@ class CoreLevel : public LevelObject {
         Color red;
         Color white;
         Color black;
-        bool isTransition;              // Is the LevelObject in transition
-        bool isStarted;                 // Is the LevelObject started
+        bool isTransition;  // Is the LevelObject in transition
+        bool isStarted;     // Is the LevelObject started
 };
 
 #endif // CORELEVEL_HPP

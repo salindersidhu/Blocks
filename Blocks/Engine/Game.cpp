@@ -1,11 +1,13 @@
 #include "Game.hpp"
 
-Game::Game(string title, int length, int width, int FPS) {
+Game::Game(string t, int length, int width, int FPS) {
     // Initialize and configure the main game window pointer
-    window = new RenderWindow(VideoMode(length, width, 32), title, Style::Close);
+    window = new RenderWindow(VideoMode(length, width, 32), t, Style::Close);
     window->setFramerateLimit(FPS);
     // Initialize and configure the DialogManager pointer
-    dialogMan = new DialogManager(title, window);
+    dialogMan = new DialogManager(t, window);
+    // Set remaining instance variables
+    title = t;
 }
 
 Game::~Game() {
@@ -22,12 +24,17 @@ Game::~Game() {
     }
 }
 
+string Game::getTitle() {
+    // Return the Game's title
+    return title;
+}
+
 RenderWindow* Game::getWindow() {
     // Return the RenderWindow pointer
     return window;
 }
 
-DialogManager* Game::getDialogMan() {
+DialogManager* Game::getDialog() {
     // Return the DialogManager pointer
     return dialogMan;
 }

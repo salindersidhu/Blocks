@@ -1,34 +1,46 @@
 #include "Button.hpp"
 
-Button::Button(string text, unsigned int textSize, float x, float y, Color normal, Color hover, Font font, Texture normalTexture, Texture hoverTexture, SoundBuffer _hoverBuffer, SoundBuffer _clickBuffer) {
-	// Set instance variables based on constructor arguments
-	normalColour = normal;
-	hoverColour = hover;
+Button::Button(string title, int size, Font font, Texture nT, Texture hT) {
     // Configure the Sprites
-	buttonNormalTexture = normalTexture;
-	buttonHoverTexture = hoverTexture;
+	buttonNormalTexture = nT;
+	buttonHoverTexture = hT;
     buttonNormalSprite.setTexture(buttonNormalTexture);
     buttonHoverSprite.setTexture(buttonHoverTexture);
-	buttonNormalSprite.setPosition(x, y);
-	buttonHoverSprite.setPosition(x, y);
     // Configure the Text
-    FloatRect dims = buttonNormalSprite.getGlobalBounds();
 	textFont = font;
 	buttonText.setFont(textFont);
-    buttonText.setString(text);
-    buttonText.setCharacterSize(textSize);
-    buttonText.setColor(normalColour);
-    centerText(x, y, x + dims.width, y + dims.height);
-	// Configure the hover and click Sounds
-	hoverBuffer = _hoverBuffer;
-	clickBuffer = _clickBuffer;
-	clickSound.setBuffer(clickBuffer);
-	hoverSound.setBuffer(hoverBuffer);
+    buttonText.setString(title);
+    buttonText.setCharacterSize((unsigned int)size);
     // Set remaining instance variables
     isMouseOver = false;
 	isPlayHoverSound = true;
 	isClicked = false;
 	isSelected = false;
+}
+
+void Button::setSounds(SoundBuffer hover, SoundBuffer click) {
+	// Set the hover and click Sounds
+	hoverBuffer = hover;
+	clickBuffer = click;
+	clickSound.setBuffer(clickBuffer);
+	hoverSound.setBuffer(hoverBuffer);
+}
+
+void Button::setColours(Color normal, Color hover) {
+	// Set the normal and hover colours
+	normalColour = normal;
+	hoverColour = hover;
+	// Set buttonText color to normal
+	buttonText.setColor(normal);
+}
+
+void Button::setPosition(float x, float y) {
+	// Set the position of the button sprites and button text
+	buttonNormalSprite.setPosition(x, y);
+	buttonHoverSprite.setPosition(x, y);
+	// Configure the text to the new position
+    FloatRect dims = buttonNormalSprite.getGlobalBounds();
+	centerText(x, y, x + dims.width, y + dims.height);
 }
 
 void Button::onMouseClick(Vector2i mousePosition) {
@@ -91,13 +103,15 @@ bool Button::isHovering(int mX, int mY) {
     FloatRect dims = buttonNormalSprite.getGlobalBounds();
     Vector2f pos = buttonNormalSprite.getPosition();
     // Return if mouse is hovering over the Button's Sprite
-    return (mX >= pos.x && mX <= pos.x + dims.width) && (mY >= pos.y && mY <= pos.y + dims.height);
+	bool widthHover(mX >= pos.x && mX <= pos.x + dims.width);
+	bool heightHover(mY >= pos.y && mY <= pos.y + dims.height);
+    return widthHover && heightHover;
 }
 
 void Button::centerText(float sX, float sY, float eX, float eY) {
-	FloatRect rct;
+	FloatRect r;
 	// Center the text in the rectangular area
-	rct = buttonText.getLocalBounds();
-	buttonText.setOrigin((rct.left + rct.width) / 2, (rct.top + rct.height) / 2);
+	r = buttonText.getLocalBounds();
+	buttonText.setOrigin((r.left + r.width) / 2, (r.top + r.height) / 2);
 	buttonText.setPosition(sX + ((eX - sX) / 2), (sY - 5) + ((eY - sY) / 2));
 }

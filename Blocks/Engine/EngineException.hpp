@@ -7,10 +7,13 @@ using namespace std;
 
 class EngineException : public exception {
 	public:
+		// Constructor and destructor
 		EngineException(string _message) {message = _message + "!";};
 		virtual ~EngineException() throw() {};
+		// EngineException functions
 		const char *what() const throw() {return message.c_str();};
 	private:
+		// EngineException variables
 		string message;
 };
 

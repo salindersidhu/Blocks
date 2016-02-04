@@ -11,9 +11,12 @@ using namespace std;
 class Button : public GameObject {
 	public:
         // Constructor and destructor
-        Button(string, unsigned int, float, float, Color, Color, Font, Texture, Texture, SoundBuffer, SoundBuffer);
+        Button(string, int, Font, Texture, Texture);
         virtual ~Button() {};
         // ButtonObject functions
+		void setSounds(SoundBuffer, SoundBuffer);
+		void setColours(Color, Color);
+		void setPosition(float, float);
         void onMouseClick(Vector2i);
         void onMouseMove(Vector2i);
         void onMouseRelease(Vector2i) {}

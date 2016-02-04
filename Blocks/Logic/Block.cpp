@@ -1,13 +1,13 @@
 #include "Block.hpp"
 
-Block::Block(string _spriteName, float _x, float _y, float _width, float _height, int _orientation) {
+Block::Block(string name, float _x, float _y, float w, float h, int orient) {
     // Set instance variables based on constructor arguments
-    spriteName = _spriteName;
+    spriteName = name;
     x = _x;
     y = _y;
-    width = _width;
-    height = _height;
-    orientation = _orientation;
+    width = w;
+    height = h;
+    orientation = orient;
     // Set remaining instance variables
     isFlagged = false;
     isSelected = false;

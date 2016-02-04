@@ -9,13 +9,12 @@ class Block{
         // Constructor and destructor
         Block(string, float, float, float, float, int);
         virtual ~Block() {};
-        // Configure Block functions
+        // Block functions
         void setX(float);
         void setY(float);
         void select();
         void unselect();
         void flag();
-        // Get Block attribute functions
         float getX();
         float getY();
         float getWidth();

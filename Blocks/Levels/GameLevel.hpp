@@ -6,13 +6,14 @@
 #include "CoreLevel.hpp"
 #include "../Objects/Button.hpp"
 #include "../Objects/GameInfo.hpp"
+#include "../Engine/ResourceManager.hpp"
 using namespace sf;
 using namespace std;
 
 class GameLevel : public CoreLevel {
     public:
         // Constructor and destructor
-        GameLevel(String, Font, Texture, Texture, Texture, SoundBuffer, SoundBuffer, SoundBuffer, RenderWindow*);
+        GameLevel(string, ResourceManager*, RenderWindow*);
         virtual ~GameLevel() {};
     private:
         // GameLevel functions

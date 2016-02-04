@@ -1,4 +1,3 @@
-# Makefile for compiling on a linux operating system
 CC=g++
 CFLAGS=-std=c++0x -c
 OS := $(shell uname)

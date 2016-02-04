@@ -11,7 +11,7 @@ using namespace std;
 class GameInfo : public GameObject {
     public:
         // GameInfo and destructor
-        GameInfo(float, float, unsigned int, Color, Font);
+        GameInfo(float, float, int, Color, Font);
         virtual ~GameInfo() {};
         // GameInfo functions
         void onMouseClick(Vector2i) {};
@@ -26,7 +26,7 @@ class GameInfo : public GameObject {
 		void centerText(float, float);
         // GameInfo variables
         Font textFont;
-        Text clockText;
+        Text infoText;
         MinuteClock clock;
         float winWidth;
         float posY;

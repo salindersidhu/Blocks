@@ -1,6 +1,7 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
+#include <string>
 #include <vector>
 #include <SFML/Graphics.hpp>
 #include "LevelObject.hpp"
@@ -14,18 +15,19 @@ class Game {
         // Constructor and destructor
         Game(string, int, int, int);
         ~Game();
-        // Game attribute functions
-        RenderWindow* getWindow();
-        DialogManager* getDialogMan();
         // Game functions
+        string getTitle();
+        RenderWindow* getWindow();
+        DialogManager* getDialog();
         void addLevel(LevelObject*);
         void start();
     private:
         // Game variables
+        String title;
         RenderWindow *window;
         DialogManager *dialogMan;
-        vector<LevelObject*> levels;
         LevelObject* currentLevel;
+        vector<LevelObject*> levels;
         // Game functions
         void gameLoop();
         void processLevelComplete();

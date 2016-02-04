@@ -12,20 +12,19 @@ class Grid {
         // Constructor and destructor
         Grid(float, float, float, float, float, float, float);
         virtual ~Grid() {};
-        // Configure Grid functions
+        // Grid functions
         void addBlock(Block);
         void selectBlock(float, float);
         void releaseBlock(int&);
         void moveBlock(float, float);
         void clear();
-        // Get Grid attribute functions
-        vector<Block> getBlocks();
         bool isComplete();
+        vector<Block> getBlocks();
     private:
         // Grid functions
         float align(float, float, float);
         bool isHovering(float, float, float, float, float, float);
-        bool isNotCollision(Block, float, float);
+        bool isNotCol(Block, float, float);
         bool isBounded(float, float, float, float);
         // Grid variables
         vector<Block> blocks;
@@ -36,7 +35,6 @@ class Grid {
         float completeX;
         float completeY;
         float tileGap;
-        // Calculation variables for Blocks
         float prevX;
         float prevY;
         float distX;

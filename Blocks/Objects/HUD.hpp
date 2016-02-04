@@ -10,7 +10,7 @@ using namespace std;
 class HUD : public GameObject {
     public:
         // Constructor and destructor
-        HUD(string, float, float, unsigned int, Color, Font, Texture);
+        HUD(string, float, float, int, Color, Font, Texture);
         virtual ~HUD() {};
         // HUD functions
         void onMouseClick(Vector2i) {};

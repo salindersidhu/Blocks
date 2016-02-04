@@ -1,9 +1,27 @@
 #include "MenuLevel.hpp"
 
-MenuLevel::MenuLevel(String title, Font font, Texture bg, Texture normal, Texture hover, SoundBuffer hoverBuffer, SoundBuffer clickBuffer, SoundBuffer bgMusic, RenderWindow *window) : CoreLevel(title, font, bg, bgMusic, 19.5, window) {
-    // Create new Button object pointers
-    startButton = new Button("Start", 30, 220, 330, white, red, font, normal, hover, hoverBuffer, clickBuffer);
-    quitButton = new Button("Quit", 30, 220, 410, white, red, font, normal, hover, hoverBuffer, clickBuffer);
+MenuLevel::MenuLevel(string title, ResourceManager *res, RenderWindow *win) :
+CoreLevel(title, win) {
+    // Obtain the game's resources for this level
+    Font font = res->getFont("FN_COPPER");
+    SoundBuffer bgMusic = res->getSound("MS_BACKGROUND");
+    SoundBuffer hoverSound = res->getSound("SN_BUTTON_HOVER");
+	SoundBuffer clickSound = res->getSound("SN_BUTTON_CLICK");
+    Texture background = res->getTexture("TX_BACKGROUND_MENU");
+    Texture buttonHover = res->getTexture("TX_BUTTON_HOVER");
+	Texture buttonNormal = res->getTexture("TX_BUTTON_NORMAL");
+    // Create and configure new Button objects
+    startButton = new Button("Start", 30, font, buttonNormal, buttonHover);
+    quitButton = new Button("Quit", 30, font, buttonNormal, buttonHover);
+    startButton->setPosition(220, 330);
+    quitButton->setPosition(220, 410);
+    startButton->setSounds(hoverSound, clickSound);
+    quitButton->setSounds(hoverSound, clickSound);
+    startButton->setColours(white, red);
+    quitButton->setColours(white, red);
+    // Set the background texture and music
+    setBackgroundAndFont(background, font);
+    setBackgroundMusic(bgMusic, 19.5);
     // Add the GameObject pointers to the object's container
     objects.push_back(startButton);
     objects.push_back(quitButton);

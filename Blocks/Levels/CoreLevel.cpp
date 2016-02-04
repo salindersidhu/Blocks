@@ -1,22 +1,13 @@
 #include "CoreLevel.hpp"
 
-CoreLevel::CoreLevel(String title, Font font, Texture bg, SoundBuffer _bgMusic, float loopTime, RenderWindow *_window) : LevelObject(){
+CoreLevel::CoreLevel(String _title, RenderWindow *win) {
     // Create basic colour objects
     black = Color(0, 0, 0);
     white = Color(255, 255, 255);
     red = Color(255, 51, 82);
-    // Create a new HUD object pointer
-    displayHUD = new HUD(title, 600, 15, 60, white, font, bg);
-    // Create a new BGMusic object pointer
-    bgMusic = new BGMusic(_bgMusic, loopTime);
-    // Create a new FadeTrans object pointer
-    Vector2u dims = bg.getSize();
-    fadeEffect = new FadeEffect(7, dims.x, dims.y, black);
-    // Add the GameObject pointers to the object's container
-    objects.push_back(displayHUD);
-    objects.push_back(bgMusic);
+    title = _title;
     // Set the remaining variables
-    window = _window;
+    window = win;
     isComplete = false;
     isTransition = false;
     isStarted = false;
@@ -42,4 +33,21 @@ void CoreLevel::update() {
 void CoreLevel::setTransition() {
     fadeEffect->start();
     isTransition = true;
+}
+
+void CoreLevel::setBackgroundMusic(SoundBuffer musicBuffer, float loopTime) {
+    // Create a new BGMusic object pointer
+    bgMusic = new BGMusic(musicBuffer, loopTime);
+    // Add the GameObject pointers to the object's container
+    objects.push_back(bgMusic);
+}
+
+void CoreLevel::setBackgroundAndFont(Texture background, Font font) {
+    // Create a new HUD object pointer
+    displayHUD = new HUD(title, 600, 15, 60, white, font, background);
+    // Create a new FadeTrans object
+    Vector2u dims = background.getSize();
+    fadeEffect = new FadeEffect(7, dims.x, dims.y, black);
+    // Add the GameObject pointers to the object's container
+    objects.push_back(displayHUD);
 }
