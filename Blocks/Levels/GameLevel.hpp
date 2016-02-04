@@ -16,6 +16,8 @@ class GameLevel : public CoreLevel {
         // Constructor and destructor
         GameLevel(string, ResourceManager*, RenderWindow*);
         virtual ~GameLevel() {};
+        // GameLevel functions
+        void setGameGrid(GameGrid*);
     private:
         // GameLevel functions
         void update();

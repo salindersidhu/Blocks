@@ -21,8 +21,6 @@ CoreLevel(title, win) {
     quitButton->setColours(white, red);
     // Create a new GameInfo object
     gameInfo = new GameInfo(600, 640, 30, white, font);
-    // Create a new GameGrid object
-    gameGrid = new GameGrid(55, 167, 480, 87, 375, 407, 80);
     // Set the background texture and music
     setBackgroundAndFont(background, font);
     setBackgroundMusic(bgMusic, 19.5);
@@ -30,7 +28,6 @@ CoreLevel(title, win) {
     objects.push_back(resetButton);
     objects.push_back(quitButton);
     objects.push_back(gameInfo);
-    objects.push_back(gameGrid);
     // Set remaining instance variables
     numMoves = 0;
 }
@@ -54,8 +51,9 @@ void GameLevel::update() {
 void GameLevel::restart() {
     // Restart the GameLevel
     gameInfo->getClock()->reset();
-    numMoves = 0;
+    gameGrid->reset();
     bgMusic->start();
+    numMoves = 0;
 }
 
 void GameLevel::processButtonEvents() {
@@ -69,4 +67,11 @@ void GameLevel::processButtonEvents() {
             window->close();
         }
     }
+}
+
+void GameLevel::setGameGrid(GameGrid *_gameGrid) {
+    // Set the GameGrid
+    gameGrid = _gameGrid;
+    // Add the GameGrid pointer to the object's container
+    objects.push_back(gameGrid);
 }

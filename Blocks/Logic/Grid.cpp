@@ -16,6 +16,8 @@ void Grid::addBlock(Block block) {
     // Adjust the position of the block
     block.setX(x + (block.getX() * tileGap));
     block.setY(y + (block.getY() * tileGap));
+	block.setDefaultX(block.getX());
+	block.setDefaultY(block.getY());
     // Add Block to the Grid
     blocks.push_back(block);
 }
@@ -41,7 +43,7 @@ void Grid::selectBlock(float mouseX, float mouseY) {
     }
 }
 
-void Grid::releaseBlock(int &numMoves) {
+void Grid::releaseBlock() {
     isBlockFree = true;
     // Iterate through all the Blocks on the Grid
     for (unsigned int i = 0; i < blocks.size(); i++) {
@@ -60,10 +62,10 @@ void Grid::releaseBlock(int &numMoves) {
         }
     }
     // If the Block moved then increment the number of moves by 1
-    if (isBlockMoved) {
+    /*if (isBlockMoved) {
         numMoves++;
         isBlockMoved = false;
-    }
+    }*/
 }
 
 void Grid::moveBlock(float mouseX, float mouseY) {
@@ -93,9 +95,12 @@ void Grid::moveBlock(float mouseX, float mouseY) {
     }
 }
 
-void Grid::clear() {
-    // Remove all Blocks from the Grid
-    blocks.clear();
+void Grid::reset() {
+    // Iterate through all the Blocks on the Grid
+	for (unsigned int i = 0; i < blocks.size(); i++) {
+		// Reset the position of the Block
+		blocks[i].resetPosition();
+	}
 }
 
 vector<Block> Grid::getBlocks() {

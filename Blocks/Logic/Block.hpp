@@ -2,14 +2,12 @@
 #define BLOCK_HPP
 
 #include <string>
-#include <SFML/Graphics.hpp>
-using namespace sf;
 using namespace std;
 
 class Block{
     public:
         // Constructor and destructor
-        Block(Texture, float, float, bool);
+        Block(string, float, float, float, float, bool);
         virtual ~Block() {};
         // Block functions
         float getX();
@@ -18,20 +16,28 @@ class Block{
         float getHeight();
         void setX(float);
         void setY(float);
+        void setDefaultX(float);
+        void setDefaultY(float);
         void select();
         void unselect();
         void flag();
+        void resetPosition();
         bool getSelected();
         bool getFlagged();
         bool getVertical();
-        Sprite getSprite();
+        string getTextureName();
     private:
         // Block variables
+        float x;
+        float y;
+        float defaultX;
+        float defaultY;
+        float width;
+        float height;
         bool isFlagged;
         bool isSelected;
         bool isVertical;
-        Texture blockTexture;
-        Sprite blockSprite;
+        string textureName;
 };
 
 #endif // BLOCK_HPP

@@ -2,7 +2,7 @@
 
 Game::Game(string _title, int width, int height, int bits, int FPS) {
     // Initialize and configure the main game window pointer
-    window = new RenderWindow(VideoMode(width, height, bits), title,
+    window = new RenderWindow(VideoMode(width, height, bits), _title,
 		Style::Close);
     window->setFramerateLimit(FPS);
     // Initialize and configure the DialogManager pointer

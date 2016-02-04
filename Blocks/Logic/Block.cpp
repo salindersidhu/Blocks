@@ -1,43 +1,52 @@
 #include "Block.hpp"
 
-Block::Block(Texture texture, float x, float y, bool _isVertical) {
-    // Configure the Block's Sprite
-    blockTexture = texture;
-    blockSprite.setTexture(blockTexture);
-    blockSprite.setPosition(x, y);
-    // Set remaining instance variables
+Block::Block(string _textureName, float _x, float _y, float _width,
+    float _height, bool _isVertical) {
+    // Set instance variables
+    textureName = _textureName;
+    x = _x;
+    y = _y;
+    width = _width;
+    height = _height;
     isVertical = _isVertical;
     isFlagged = false;
     isSelected = false;
 }
 
-Sprite Block::getSprite() {
-    return blockSprite;
+string Block::getTextureName() {
+    return textureName;
 }
 
 float Block::getX() {
-    return blockSprite.getPosition().x;
+    return x;
 }
 
 float Block::getY() {
-    return blockSprite.getPosition().y;
+    return y;
 }
 
 float Block::getWidth() {
-    return blockSprite.getGlobalBounds().width;
+    return width;
 }
 
 float Block::getHeight() {
-    return blockSprite.getGlobalBounds().height;
+    return height;
 }
 
-void Block::setX(float x) {
-
-    blockSprite.setPosition(x, getY());
+void Block::setX(float _x) {
+    x = _x;
 }
 
-void Block::setY(float y) {
-    blockSprite.setPosition(getX(), y);
+void Block::setY(float _y) {
+    y = _y;
+}
+
+void Block::setDefaultX(float x) {
+    defaultX = x;
+}
+
+void Block::setDefaultY(float y) {
+    defaultY = y;
 }
 
 void Block::select() {
@@ -50,6 +59,11 @@ void Block::unselect() {
 
 void Block::flag() {
     isFlagged = true;
+}
+
+void Block::resetPosition() {
+    x = defaultX;
+    y = defaultY;
 }
 
 bool Block::getSelected() {
