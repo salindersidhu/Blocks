@@ -29,7 +29,7 @@ $(EXECUTABLE): $(SOURCES)
 # Remove compiled files and copy resource file to executable's location
 config:
 	@printf "ADDING RESOURCE..."
-	@cp Resources/Data.7z .
+	@cp Resources/data.7z .
 	@printf "DONE\n\nPlease type ./Blocks to execute the program.\n"
 
 # Clean all compiled files, resources and executable
