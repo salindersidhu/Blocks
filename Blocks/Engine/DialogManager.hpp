@@ -25,8 +25,11 @@ class DialogManager {
         // Windows dialog system
         void winDialog(string, UINT);
 #elif __linux__
-        // Unix zenity GTK+ dialog system
+        // Linux zenity GTK+ dialog system
         void zenity(string, string);
+#elif __APPLE__ && __MACH__
+        // Mac OS X Cocoa dialog system
+        void cocoa(string, string);
 #endif
 };
 

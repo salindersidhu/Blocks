@@ -1,4 +1,4 @@
-# Visual Studio Generated Files
+# Visual Studio generated files
 *.sdf
 *.opendb
 *.o
@@ -8,3 +8,5 @@ Debug
 Release
 x64
 x86
+# Mac OS X generated files
+.DS_Store

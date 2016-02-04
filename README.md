@@ -10,9 +10,10 @@ Blocks is a 2D puzzle game where the objective is to rearrange the blocks (horiz
 - Mac OS X
 
 ##Dependencies:
-- `g++` or `Microsoft Visual Studio 2015` [(Community Edition)](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx)
+- `G++` `Clang` or `Microsoft Visual Studio 2015` [(Community Edition)](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx)
 - `SFML 32-bit` [(Build 2.3.2)](http://www.sfml-dev.org/download.php)
 - `PhysicsFS` [(Build 2.0.3)](http://www.sfml-dev.org/download/sfml/2.3.2/) **You will need to compile this from source**
+- `CocoaDialog` [(Build 2.1.1)](https://mstratman.github.io/cocoadialog/#download) **Only for Mac OS X**
 
 ##Build Instructions:
 
@@ -77,6 +78,8 @@ Blocks is a 2D puzzle game where the objective is to rearrange the blocks (horiz
 4. Install the `SFML` frameworks by typing `cd Frameworks && sudo cp -a * /Library/Frameworks && cd ..`
 5. Install the dependency libraries for `SFML` by typing `cd extlibs && sudo cp -a * /Library/Frameworks`
 6. Download and extract `PhysicsFS` [(2.0.3)](https://icculus.org/physfs/) source code
+7. Download `CocoaDialog` [(2.1.1)](https://mstratman.github.io/cocoadialog/#download) and mount the `CocoaDialog-2.1.1.dmg` file
+8. Copy the `CocoaDialog.app` to your home directory and eject the mounted `CocoaDialog-2.1.1.dmg` file
 
 ####Compiling PhysicsFS:
 1. Open terminal and navigate to the extracted `physfs-2.0.3` folder, then type `mkdir bin && cd bin`
@@ -96,8 +99,9 @@ Blocks is a 2D puzzle game where the objective is to rearrange the blocks (horiz
 4. Launch the game by typing `./Blocks` in the terminal
 
 ##Credits:
-- `PhysicsFS` developed by Ryan C. Gordon [(icculus)](https://icculus.org/physfs/)
+- `PhysicsFS` developed by [Ryan C. Gordon](https://icculus.org/physfs/)
 - `Game Audio` files from [RPG Make VX Ace](http://www.rpgmakerweb.com/products/programs/rpg-maker-vx-ace)
+- `CocoaDialog` developed by [Mark A. Stratman](https://github.com/mstratman)
 
 ##License:
 Copyright (c) 2016 Salinder Sidhu
