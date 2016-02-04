@@ -8,7 +8,7 @@ else
 	# Linux LDFLAGS
 	LDFLAGS=-L/usr/local/lib -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system -lphysfs
 endif
-OBJECTS=Logic/MinuteClock.o Logic/Block.o Logic/Grid.o Objects/Button.o Objects/FadeEffect.o Objects/GameInfo.o Objects/HUD.o Objects/BGMusic.o Levels/CoreLevel.o Levels/MenuLevel.o Levels/GameLevel.o Engine/LevelObject.o Engine/DialogManager.o Engine/Game.o Engine/PhysfsStream.o Engine/ResourceManager.o Main.o
+OBJECTS=Logic/MinuteClock.o Logic/Block.o Logic/Grid.o Objects/GameGrid.o Objects/Button.o Objects/FadeEffect.o Objects/GameInfo.o Objects/HUD.o Objects/BGMusic.o Levels/CoreLevel.o Levels/MenuLevel.o Levels/GameLevel.o Engine/LevelObject.o Engine/DialogManager.o Engine/Game.o Engine/PhysfsStream.o Engine/ResourceManager.o Main.o
 SOURCES=$(OBJECTS:.cpp=.0)
 EXECUTABLE=Blocks
 
@@ -26,7 +26,7 @@ $(EXECUTABLE): $(SOURCES)
 	@$(CC) $(CFLAGS) $< -o $@
 	@printf "DONE\n"
 
-# Remove compiled files and copy resource file to executable's location
+# Copy resource file to executable's location
 config:
 	@printf "ADDING RESOURCE..."
 	@cp Resources/data.7z .

@@ -21,6 +21,8 @@ CoreLevel(title, win) {
     quitButton->setColours(white, red);
     // Create a new GameInfo object
     gameInfo = new GameInfo(600, 640, 30, white, font);
+    // Create a new GameGrid object
+    gameGrid = new GameGrid(55, 167, 480, 87, 375, 407, 80);
     // Set the background texture and music
     setBackgroundAndFont(background, font);
     setBackgroundMusic(bgMusic, 19.5);
@@ -28,6 +30,7 @@ CoreLevel(title, win) {
     objects.push_back(resetButton);
     objects.push_back(quitButton);
     objects.push_back(gameInfo);
+    objects.push_back(gameGrid);
     // Set remaining instance variables
     numMoves = 0;
 }

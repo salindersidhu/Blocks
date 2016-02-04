@@ -1,24 +1,43 @@
 #include "Block.hpp"
 
-Block::Block(string name, float _x, float _y, float w, float h, int orient) {
-    // Set instance variables based on constructor arguments
-    spriteName = name;
-    x = _x;
-    y = _y;
-    width = w;
-    height = h;
-    orientation = orient;   // 1 = horizontal, 0 = vertical
+Block::Block(Texture texture, float x, float y, bool _isVertical) {
+    // Configure the Block's Sprite
+    blockTexture = texture;
+    blockSprite.setTexture(blockTexture);
+    blockSprite.setPosition(x, y);
     // Set remaining instance variables
+    isVertical = _isVertical;
     isFlagged = false;
     isSelected = false;
 }
 
-void Block::setX(float _x) {
-	x = _x;
+Sprite Block::getSprite() {
+    return blockSprite;
 }
 
-void Block::setY(float _y) {
-    y = _y;
+float Block::getX() {
+    return blockSprite.getPosition().x;
+}
+
+float Block::getY() {
+    return blockSprite.getPosition().y;
+}
+
+float Block::getWidth() {
+    return blockSprite.getGlobalBounds().width;
+}
+
+float Block::getHeight() {
+    return blockSprite.getGlobalBounds().height;
+}
+
+void Block::setX(float x) {
+
+    blockSprite.setPosition(x, getY());
+}
+
+void Block::setY(float y) {
+    blockSprite.setPosition(getX(), y);
 }
 
 void Block::select() {
@@ -33,22 +52,6 @@ void Block::flag() {
     isFlagged = true;
 }
 
-float Block::getX() {
-    return x;
-}
-
-float Block::getY() {
-    return y;
-}
-
-float Block::getWidth() {
-    return width;
-}
-
-float Block::getHeight() {
-    return height;
-}
-
 bool Block::getSelected() {
     return isSelected;
 }
@@ -58,9 +61,5 @@ bool Block::getFlagged() {
 }
 
 bool Block::getVertical() {
-    return orientation == 0;
-}
-
-string Block::getSpriteName() {
-    return spriteName;
+    return isVertical;
 }

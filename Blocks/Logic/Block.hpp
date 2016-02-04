@@ -2,37 +2,36 @@
 #define BLOCK_HPP
 
 #include <string>
+#include <SFML/Graphics.hpp>
+using namespace sf;
 using namespace std;
 
 class Block{
     public:
         // Constructor and destructor
-        Block(string, float, float, float, float, int);
+        Block(Texture, float, float, bool);
         virtual ~Block() {};
         // Block functions
+        float getX();
+        float getY();
+        float getWidth();
+        float getHeight();
         void setX(float);
         void setY(float);
         void select();
         void unselect();
         void flag();
-        float getX();
-        float getY();
-        float getWidth();
-        float getHeight();
         bool getSelected();
         bool getFlagged();
         bool getVertical();
-        string getSpriteName();
+        Sprite getSprite();
     private:
         // Block variables
-        float x;
-        float y;
-        float width;
-        float height;
         bool isFlagged;
         bool isSelected;
-        int orientation;    // 0 = vertical and 1 = horizontal
-        string spriteName;
+        bool isVertical;
+        Texture blockTexture;
+        Sprite blockSprite;
 };
 
 #endif // BLOCK_HPP
