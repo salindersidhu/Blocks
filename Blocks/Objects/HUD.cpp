@@ -1,17 +1,18 @@
 #include "HUD.hpp"
 
-HUD::HUD(string t, float w, float y, int s, Color col, Font font, Texture tX) {
+HUD::HUD(string title, float width, float y, int size, Color col, Font font,
+	Texture _bgTexture) {
     // Configure the Sprites
-    bgTexture = tX;
+    bgTexture = _bgTexture;
     bgSprite.setTexture(bgTexture);
 	bgSprite.setPosition(0, 0);
     // Configure the Text
     textFont = font;
     titleText.setFont(textFont);
-    titleText.setString(t);
-    titleText.setCharacterSize((unsigned int)s);
+    titleText.setString(title);
+    titleText.setCharacterSize((unsigned int)size);
     titleText.setColor(col);
-    centerText(w, y);
+    centerText(width, y);
 }
 
 void HUD::draw(RenderWindow *window) {

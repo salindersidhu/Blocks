@@ -13,7 +13,7 @@ using namespace std;
 class Game {
     public:
         // Constructor and destructor
-        Game(string, int, int, int);
+        Game(string, int, int, int, int);
         ~Game();
         // Game functions
         string getTitle();

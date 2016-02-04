@@ -1,14 +1,15 @@
 #include "Grid.hpp"
 
-Grid::Grid(float _x, float _y, float w, float h, float cX, float cY, float t) {
+Grid::Grid(float _x, float _y, float _width, float _height, float _completeX,
+	float _completeY, float _tileGap) {
     // Set instance variables based on constructor arguments
     x = _x;
     y = _y;
-    width = w;
-    height = h;
-    completeX = cX;
-    completeY = cY;
-    tileGap = t;
+    width = _width;
+    height = _height;
+    completeX = _completeX;
+    completeY = _completeY;
+    tileGap = _tileGap;
 }
 
 void Grid::addBlock(Block block) {
@@ -19,7 +20,7 @@ void Grid::addBlock(Block block) {
     blocks.push_back(block);
 }
 
-void Grid::selectBlock(float mX, float mY) {
+void Grid::selectBlock(float mouseX, float mouseY) {
     isBlockMoved = false;
     // Iterate through all the Blocks on the Grid
     for (unsigned int i = 0; i < blocks.size(); i++) {
@@ -28,14 +29,14 @@ void Grid::selectBlock(float mX, float mY) {
         float bW = blocks[i].getWidth();
         float bH = blocks[i].getHeight();
         // Determine if mouse is over the Block
-        if (isHovering(mX, mY, bX, bY, bW, bH)) {
+        if (isHovering(mouseX, mouseY, bX, bY, bW, bH)) {
             blocks[i].select();
             // Set the current values of x and y used for positional alignment
             prevX = bX - x;
             prevY = bY - y;
             // Set the distances for sliding movement
-            distX = fabs(bX - mX);
-            distY = fabs(bY - mY);
+            distX = fabs(bX - mouseX);
+            distY = fabs(bY - mouseY);
         }
     }
 }
@@ -65,7 +66,7 @@ void Grid::releaseBlock(int &numMoves) {
     }
 }
 
-void Grid::moveBlock(float mX, float mY) {
+void Grid::moveBlock(float mouseX, float mouseY) {
     // Iterate through all the Blocks on the Grid
     for (unsigned int i = 0; i < blocks.size(); i++) {
         // Find the currently selected Block
@@ -74,8 +75,8 @@ void Grid::moveBlock(float mX, float mY) {
             float eY = height + y;
             float bW = blocks[i].getWidth();
             float bH = blocks[i].getHeight();
-            float cX = mX - distX;
-            float cY = mY - distY;
+            float cX = mouseX - distX;
+            float cY = mouseY - distY;
             // Move the Block with the mouse in the correct orientation
             if (blocks[i].getVertical()) {
                 if (isBounded(cY, bH, y, eY) && isNotCol(blocks[i], 0, cY)) {

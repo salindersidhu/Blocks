@@ -54,9 +54,10 @@ int main() {
 	const string title = "Blocks";
 	const int winWidth = 600;
 	const int winHeight = 700;
+	const int bits = 32;
 	const int FPS = 60;
 	// Initialize Game, RenderWindow and ResourceManager
-	Game game(title, winWidth, winHeight, FPS);
+	Game game(title, winWidth, winHeight, bits, FPS);
 	ResourceManager *res;
 	RenderWindow *win = game.getWindow();
     try {

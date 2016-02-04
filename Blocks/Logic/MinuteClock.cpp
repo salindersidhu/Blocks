@@ -39,8 +39,8 @@ string MinuteClock::getTime() {
     return dDigit(min) + ":" + dDigit(sec) + ":" + dDigit(ms);
 }
 
-string MinuteClock::dDigit(int timeUnit) {
-    string num = to_string(timeUnit);
+string MinuteClock::dDigit(int unit) {
+    string num = to_string(unit);
     if (num.length() == 1) {
         num = "0" + num;
     }

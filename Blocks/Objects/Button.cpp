@@ -1,9 +1,10 @@
 #include "Button.hpp"
 
-Button::Button(string title, int size, Font font, Texture nT, Texture hT) {
+Button::Button(string title, int size, Font font, Texture normalTexture,
+	Texture hoverTexture) {
     // Configure the Sprites
-	buttonNormalTexture = nT;
-	buttonHoverTexture = hT;
+	buttonNormalTexture = normalTexture;
+	buttonHoverTexture = hoverTexture;
     buttonNormalSprite.setTexture(buttonNormalTexture);
     buttonHoverSprite.setTexture(buttonHoverTexture);
     // Configure the Text
@@ -98,13 +99,13 @@ bool Button::getClicked() {
 	return false;
 }
 
-bool Button::isHovering(int mX, int mY) {
+bool Button::isHovering(int mouseX, int mouseY) {
     // Obtain the positions dimensions of the Button's Sprite
     FloatRect dims = buttonNormalSprite.getGlobalBounds();
     Vector2f pos = buttonNormalSprite.getPosition();
     // Return if mouse is hovering over the Button's Sprite
-	bool widthHover(mX >= pos.x && mX <= pos.x + dims.width);
-	bool heightHover(mY >= pos.y && mY <= pos.y + dims.height);
+	bool widthHover(mouseX >= pos.x && mouseX <= pos.x + dims.width);
+	bool heightHover(mouseY >= pos.y && mouseY <= pos.y + dims.height);
     return widthHover && heightHover;
 }
 

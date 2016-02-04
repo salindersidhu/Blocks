@@ -1,6 +1,6 @@
 #include "GameInfo.hpp"
 
-GameInfo::GameInfo(float w, float y, int size, Color col, Font font) {
+GameInfo::GameInfo(float width, float y, int size, Color col, Font font) {
     // Configure the MinuteClock
     clock = MinuteClock();
     // Configure the MinuteClock text
@@ -10,7 +10,7 @@ GameInfo::GameInfo(float w, float y, int size, Color col, Font font) {
     infoText.setColor(col);
     infoText.setString("Time: 00:00:00    Moves: 0");
     // Set remaining instance variables
-    winWidth = w;
+    winWidth = width;
     numMoves = 0;
     posY = y;
 }
@@ -21,8 +21,9 @@ void GameInfo::update() {
     // Update the game info's drawing position
     centerText(winWidth, posY);
     // Set the text for the game info
-    string i("Time: " + clock.getTime() + "    Moves: " + to_string(numMoves));
-    infoText.setString(i);
+    string infoString("Time: " + clock.getTime() + "    Moves: "
+		+ to_string(numMoves));
+    infoText.setString(infoString);
 }
 
 void GameInfo::draw(RenderWindow *window) {
