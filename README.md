@@ -79,11 +79,11 @@ Blocks is a 2D puzzle game where the objective is to rearrange the blocks (horiz
 5. Install the dependency libraries for `SFML` by typing `cd extlibs && sudo cp -a * /Library/Frameworks`
 6. Download and extract `PhysicsFS` [(2.0.3)](https://icculus.org/physfs/) source code
 7. Download `CocoaDialog` [(2.1.1)](https://mstratman.github.io/cocoadialog/#download) and mount the `CocoaDialog-2.1.1.dmg` file
-8. Copy the `CocoaDialog.app` to your home directory and eject the mounted `CocoaDialog-2.1.1.dmg` file
+8. Copy `CocoaDialog.app` to your home directory and eject the mounted `CocoaDialog-2.1.1.dmg` file
 
 ####Compiling PhysicsFS:
 1. Open terminal and navigate to the extracted `physfs-2.0.3` folder, then type `mkdir bin && cd bin`
-2. Open `CMAKE (cmake-gui)` from Launchpad
+2. Open `CMake` from Launchpad
 3. Set the `Where is the source code:` to point to the extracted `physfs-2.0.3` folder
 4. Set the `Where to build the binaries:` to point to the `bin` folder you've created
 5. Click `Generate` and select `Use default native compilers` as the generator for this project then click `Finish`
