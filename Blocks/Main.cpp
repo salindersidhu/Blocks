@@ -3,6 +3,7 @@
 #include "Engine/Game.hpp"
 #include "Levels/MenuLevel.hpp"
 #include "Levels/GameLevel.hpp"
+#include "Objects/GameGrid.hpp"
 #include "Engine/DialogManager.hpp"
 #include "Engine/ResourceManager.hpp"
 using namespace sf;
@@ -43,8 +44,17 @@ void setupLevels(Game *game, ResourceManager *res, RenderWindow *win) {
 	// Initialize MenuLevel and add it to the Game
 	MenuLevel *ml = new MenuLevel(game->getTitle(), res, win);
 	game->addLevel(ml);
-	// Initialize game's Level one and add it to the Game
+	// Initialize GameLevel one and add it to the Game
 	GameLevel *gl = new GameLevel("Level 1", res, win);
+	// Initalize GameGrid and Blocks
+	GameGrid *gameGrid = new GameGrid(55, 167, 480, 470, 375, 407, 80, res);
+	gameGrid->addBlock("TX_BV31", 2, 0, 58, 221, true, false);
+	gameGrid->addBlock("TX_BH26", 4, 0, 131, 57, false, false);
+	gameGrid->addBlock("TX_BH21", 0, 2, 131, 57, false, true);
+	gameGrid->addBlock("TX_BH32", 0, 3, 221, 57, false, false);
+	gameGrid->addBlock("TX_BV32", 5, 3, 58, 221, true, false);
+	// Set the GameGrid to the GameLevel
+	gl->setGameGrid(gameGrid);
 	game->addLevel(gl);
 }
 

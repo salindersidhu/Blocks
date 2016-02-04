@@ -72,6 +72,9 @@ void GameLevel::processButtonEvents() {
 void GameLevel::setGameGrid(GameGrid *_gameGrid) {
     // Set the GameGrid
     gameGrid = _gameGrid;
+    // Set numMoves for the GameGrid and GameInfo
+    gameGrid->setNumMoves(&numMoves);
+    gameInfo->setNumMoves(&numMoves);
     // Add the GameGrid pointer to the object's container
     objects.push_back(gameGrid);
 }

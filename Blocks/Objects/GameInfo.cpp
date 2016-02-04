@@ -11,7 +11,6 @@ GameInfo::GameInfo(float width, float y, int size, Color col, Font font) {
     infoText.setString("Time: 00:00:00    Moves: 0");
     // Set remaining instance variables
     winWidth = width;
-    numMoves = 0;
     posY = y;
 }
 
@@ -22,7 +21,7 @@ void GameInfo::update() {
     centerText(winWidth, posY);
     // Set the text for the game info
     string infoString("Time: " + clock.getTime() + "    Moves: "
-		+ to_string(numMoves));
+		+ to_string(*numMoves));
     infoText.setString(infoString);
 }
 
@@ -31,8 +30,12 @@ void GameInfo::draw(RenderWindow *window) {
     window->draw(infoText);
 }
 
-void GameInfo::setNumMoves(unsigned int _numMoves) {
+void GameInfo::setNumMoves(unsigned int *_numMoves) {
     numMoves = _numMoves;
+}
+
+unsigned int GameInfo::getNumMoves() {
+    return *numMoves;
 }
 
 MinuteClock* GameInfo::getClock() {

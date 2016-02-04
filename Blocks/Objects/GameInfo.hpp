@@ -19,8 +19,9 @@ class GameInfo : public GameObject {
         void onMouseRelease(Vector2i) {};
         void update();
         void draw(RenderWindow*);
-        void setNumMoves(unsigned int);
+        void setNumMoves(unsigned int*);
 		MinuteClock* getClock();
+        unsigned int getNumMoves();
     private:
         // GameInfo functions
 		void centerText(float, float);
@@ -30,7 +31,7 @@ class GameInfo : public GameObject {
         MinuteClock clock;
         float winWidth;
         float posY;
-        unsigned int numMoves;
+        unsigned int *numMoves;
 };
 
 #endif // GAMEINFO_HPP

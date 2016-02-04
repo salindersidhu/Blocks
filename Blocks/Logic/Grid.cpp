@@ -43,7 +43,7 @@ void Grid::selectBlock(float mouseX, float mouseY) {
     }
 }
 
-void Grid::releaseBlock() {
+void Grid::releaseBlock(unsigned int &numMoves) {
     isBlockFree = true;
     // Iterate through all the Blocks on the Grid
     for (unsigned int i = 0; i < blocks.size(); i++) {
@@ -62,10 +62,10 @@ void Grid::releaseBlock() {
         }
     }
     // If the Block moved then increment the number of moves by 1
-    /*if (isBlockMoved) {
+    if (isBlockMoved) {
         numMoves++;
         isBlockMoved = false;
-    }*/
+    }
 }
 
 void Grid::moveBlock(float mouseX, float mouseY) {

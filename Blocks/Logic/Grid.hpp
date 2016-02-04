@@ -15,7 +15,7 @@ class Grid {
         // Grid functions
         void addBlock(Block);
         void selectBlock(float, float);
-        void releaseBlock();
+        void releaseBlock(unsigned int&);
         void moveBlock(float, float);
         void reset();
         bool isComplete();
