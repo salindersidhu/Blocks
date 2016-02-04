@@ -15,7 +15,7 @@ class FadeEffect : public GameObject {
         // FadeEffect functions
         void onMouseClick(Vector2i) {};
         void onMouseMove(Vector2i) {};
-        void onMouseRelease(Vector2i) {}
+        void onMouseRelease(Vector2i) {};
         void update();
         void draw(RenderWindow*);
         void start();

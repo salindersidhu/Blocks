@@ -16,7 +16,7 @@ class BGMusic : public GameObject {
         // BGMusic functions
         void onMouseClick(Vector2i) {};
         void onMouseMove(Vector2i) {};
-        void onMouseRelease(Vector2i) {}
+        void onMouseRelease(Vector2i) {};
         void update();
         void draw(RenderWindow*) {};
         void start();

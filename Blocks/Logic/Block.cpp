@@ -7,7 +7,7 @@ Block::Block(string name, float _x, float _y, float w, float h, int orient) {
     y = _y;
     width = w;
     height = h;
-    orientation = orient;
+    orientation = orient;   // 1 = horizontal, 0 = vertical
     // Set remaining instance variables
     isFlagged = false;
     isSelected = false;
