@@ -7,13 +7,14 @@ using namespace std;
 class Block{
     public:
         // Constructor and destructor
-        Block(string, float, float, float, float, bool);
+        Block(string, float, float, float, float, float, bool);
         virtual ~Block() {};
         // Block functions
         float getX();
         float getY();
         float getWidth();
         float getHeight();
+        float getSize();
         void setX(float);
         void setY(float);
         void setDefaultX(float);
@@ -30,6 +31,7 @@ class Block{
         // Block variables
         float x;
         float y;
+        float size;
         float defaultX;
         float defaultY;
         float width;

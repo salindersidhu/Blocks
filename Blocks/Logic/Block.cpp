@@ -1,13 +1,14 @@
 #include "Block.hpp"
 
-Block::Block(string _textureName, float _x, float _y, float _width,
-    float _height, bool _isVertical) {
+Block::Block(string _textureName, float _size, float _x, float _y,
+    float _width, float _height, bool _isVertical) {
     // Set instance variables
     textureName = _textureName;
     x = _x;
     y = _y;
     width = _width;
     height = _height;
+    size = _size;
     isVertical = _isVertical;
     isFlagged = false;
     isSelected = false;
@@ -31,6 +32,10 @@ float Block::getWidth() {
 
 float Block::getHeight() {
     return height;
+}
+
+float Block::getSize() {
+    return size;
 }
 
 void Block::setX(float _x) {

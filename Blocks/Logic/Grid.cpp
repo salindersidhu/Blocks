@@ -26,19 +26,20 @@ void Grid::selectBlock(float mouseX, float mouseY) {
     isBlockMoved = false;
     // Iterate through all the Blocks on the Grid
     for (unsigned int i = 0; i < blocks.size(); i++) {
-        float bX = blocks[i].getX();
-        float bY = blocks[i].getY();
-        float bW = blocks[i].getWidth();
-        float bH = blocks[i].getHeight();
+        float blockX = blocks[i].getX();
+        float blockY = blocks[i].getY();
+        float blockWidth = blocks[i].getWidth();
+        float blockHeight = blocks[i].getHeight();
         // Determine if mouse is over the Block
-        if (isHovering(mouseX, mouseY, bX, bY, bW, bH)) {
+        if (isHovering(mouseX, mouseY, blockX, blockY, blockWidth,
+			blockHeight)) {
             blocks[i].select();
             // Set the current values of x and y used for positional alignment
-            prevX = bX - x;
-            prevY = bY - y;
+            prevX = blockX - x;
+            prevY = blockY - y;
             // Set the distances for sliding movement
-            distX = fabs(bX - mouseX);
-            distY = fabs(bY - mouseY);
+            distX = fabs(blockX - mouseX);
+            distY = fabs(blockY - mouseY);
         }
     }
 }
@@ -47,17 +48,17 @@ void Grid::releaseBlock(unsigned int &numMoves) {
     isBlockFree = true;
     // Iterate through all the Blocks on the Grid
     for (unsigned int i = 0; i < blocks.size(); i++) {
-        float bX = blocks[i].getX();
-        float bY = blocks[i].getY();
+        float blockX = blocks[i].getX();
+        float blockY = blocks[i].getY();
         // If the Block is selected then unselect it
         if (blocks[i].getSelected()) {
             blocks[i].unselect();
             distX = distY = 0;
             // Align the Block correctly to the Grid
             if (!blocks[i].getVertical()) {
-                blocks[i].setX(align(x, bX, prevX));
+                blocks[i].setX(align(x, blockX, prevX));
             } else {
-                blocks[i].setY(align(y, bY, prevY));
+                blocks[i].setY(align(y, blockY, prevY));
             }
         }
     }
@@ -73,21 +74,22 @@ void Grid::moveBlock(float mouseX, float mouseY) {
     for (unsigned int i = 0; i < blocks.size(); i++) {
         // Find the currently selected Block
         if (blocks[i].getSelected() && isBlockFree) {
-            float eX = width + x;
-            float eY = height + y;
-            float bW = blocks[i].getWidth();
-            float bH = blocks[i].getHeight();
-            float cX = mouseX - distX;
-            float cY = mouseY - distY;
+            float gridEndX = width + x;
+            float gridEndY = height + y;
+			float size = blocks[i].getSize() * tileGap;
+            float currentX = mouseX - distX;
+            float currentY = mouseY - distY;
             // Move the Block with the mouse in the correct orientation
             if (blocks[i].getVertical()) {
-                if (isBounded(cY, bH, y, eY) && isNotCol(blocks[i], 0, cY)) {
-                    blocks[i].setY(cY);
+                if (isBounded(currentY, size, y, gridEndY) &&
+					isNotCol(blocks[i], 0, currentY)) {
+                    blocks[i].setY(currentY);
                     isBlockMoved = true;
                 }
             } else {
-                if (isBounded(cX, bW, x, eX) && isNotCol(blocks[i], cX, 0)) {
-                    blocks[i].setX(cX);
+                if (isBounded(currentX, size, x, gridEndX) &&
+					isNotCol(blocks[i], currentX, 0)) {
+                    blocks[i].setX(currentX);
                     isBlockMoved = true;
                 }
             }
@@ -110,10 +112,11 @@ vector<Block> Grid::getBlocks() {
 bool Grid::isComplete() {
     // Iterate through all the Blocks on the Grid
     for (unsigned int i = 0; i < blocks.size(); i++) {
-        float x = blocks[i].getX();
-        float y = blocks[i].getY();
+        float blockX = blocks[i].getX();
+        float blockY = blocks[i].getY();
         // Check if the flagged Block is aligned with Grid complete position
-        if (blocks[i].getFlagged() && (x == completeX) && (y == completeY)) {
+        if (blocks[i].getFlagged() && (blockX == completeX) &&
+			(blockY == completeY)) {
             return true;
         }
     }
@@ -147,47 +150,47 @@ bool Grid::isNotCol(Block block, float _x, float _y) {
     // Iterate through all the Blocks on the Grid
     for (unsigned int i = 0; i < blocks.size(); i++) {
         // Default collision boundry values
-        float sX = blocks[i].getX();
-        float eX = blocks[i].getX();
-        float sY = blocks[i].getY();
-        float eY = blocks[i].getY();
-        float cX = _x;   // Default for moving left
-        float cY = _y;   // Default for moving up
+        float startX = blocks[i].getX();
+        float endX = blocks[i].getX();
+        float startY = blocks[i].getY();
+        float endY = blocks[i].getY();
+        float currentX = _x;   // Default for moving left
+        float currentY = _y;   // Default for moving up
         if (blocks[i].getVertical()) {
-            eY += blocks[i].getHeight();
+            endY += (blocks[i].getSize() - 1) * tileGap;
         } else {
-            eX += blocks[i].getWidth();
+            endX += (blocks[i].getSize() - 1) * tileGap;
         }
         // Check for horizontal and vertical Blocks
         if (blocks[i].getX() != block.getX() && _x > 0) {
-            eX += tileGap;
+            endX += tileGap;
             // Calculate for moving right
             if ((prevX + x) - _x < 0) {
-                cX += block.getWidth();
+                currentX += block.getSize() * tileGap;
             }
             // Check if collision will occur
-            if (cX >= sX && cX <= eX) {
-                if (block.getY() >= sY && block.getY() <= eY) {
+            if (currentX >= startX && currentX <= endX) {
+                if (block.getY() >= startY && block.getY() <= endY) {
                     isBlockFree = false;
                     return false;
                 }
             }
         } else if (blocks[i].getY() != block.getY() && _y > 0) {
-            eY += tileGap;
+            endY += tileGap;
             // Calculate for moving down
             if ((prevY + y) - _y < 0) {
-                cY += block.getHeight();
+                currentY += block.getSize() * tileGap;
             }
             // Check if collision will occur
-            if (cY >= sY && cY <= eY) {
-                if (block.getX() >= sX && block.getX() <= eY) {
+            if (currentY >= startY && currentY <= endY) {
+                if (block.getX() >= startX && block.getX() <= endX) {
                     isBlockFree = false;
                     return false;
                 }
             }
         }
     }
-    return true;    // No collision detected
+    return true; // No collision detected
 }
 
 bool Grid::isBounded(float posVal, float length, float uBound, float lBound) {

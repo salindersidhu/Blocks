@@ -58,9 +58,9 @@ void GameGrid::draw(RenderWindow *window) {
     }
 }
 
-void GameGrid::addBlock(string textureName, float x, float y, float width,
-    float height, bool orientation, bool flag) {
-    Block block = Block(textureName, x, y, width, height, orientation);
+void GameGrid::addBlock(string textureName, float size, float x, float y,
+    float width, float height, bool orientation, bool flag) {
+    Block block = Block(textureName, size, x, y, width, height, orientation);
     if (flag) {
         block.flag();
     }

@@ -23,7 +23,7 @@ class GameGrid : public GameObject {
         void onMouseRelease(Vector2i);
         void update() {};
         void draw(RenderWindow*);
-        void addBlock(string, float, float, float, float, bool, bool);
+        void addBlock(string, float, float, float, float, float, bool, bool);
         void setNumMoves(unsigned int*);
         void reset();
     private:
