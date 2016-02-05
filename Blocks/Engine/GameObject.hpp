@@ -12,8 +12,10 @@ class GameObject {
         // Destructor
         virtual ~GameObject() {};
         // Abstract functions
-        virtual void onMouseClick(Vector2i) = 0;
-        virtual void onMouseRelease(Vector2i) = 0;
+        virtual void onMouseLeftClick(Vector2i) = 0;
+        virtual void onMouseRightClick(Vector2i) = 0;
+        virtual void onMouseLeftRelease(Vector2i) = 0;
+        virtual void onMouseRightRelease(Vector2i) = 0;
         virtual void onMouseMove(Vector2i) = 0;
         virtual void update() = 0;
         virtual void draw(RenderWindow*) = 0;

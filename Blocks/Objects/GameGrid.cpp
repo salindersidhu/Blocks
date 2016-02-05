@@ -33,15 +33,18 @@ void GameGrid::reset() {
     grid->reset();
 }
 
-void GameGrid::onMouseClick(Vector2i mousePosition) {
+void GameGrid::onMouseLeftClick(Vector2i mousePosition) {
+    // Process select Block when left mouse button clicked
     grid->selectBlock((float)mousePosition.x, (float)mousePosition.y);
 }
 
 void GameGrid::onMouseMove(Vector2i mousePosition) {
+    // Process move Block when mouse is moved
     grid->moveBlock((float)mousePosition.x, (float)mousePosition.y);
 }
 
-void GameGrid::onMouseRelease(Vector2i mousePosition) {
+void GameGrid::onMouseLeftRelease(Vector2i mousePosition) {
+    // Process release Clock when left mouse button clicked
     grid->releaseBlock(*numMoves);
 }
 

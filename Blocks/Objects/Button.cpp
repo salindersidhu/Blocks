@@ -44,8 +44,8 @@ void Button::setPosition(float x, float y) {
 	centerText(x, y, x + dims.width, y + dims.height);
 }
 
-void Button::onMouseClick(Vector2i mousePosition) {
-	// Play click sound effect if button clicked
+void Button::onMouseLeftClick(Vector2i mousePosition) {
+	// Play click sound effect if left button clicked
     if (isMouseOver && !isSelected) {
 		clickSound.play();
 		isSelected = true;

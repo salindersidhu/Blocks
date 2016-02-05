@@ -17,9 +17,11 @@ class Button : public GameObject {
 		void setSounds(SoundBuffer, SoundBuffer);
 		void setColours(Color, Color);
 		void setPosition(float, float);
-        void onMouseClick(Vector2i);
+        void onMouseLeftClick(Vector2i);
+		void onMouseRightClick(Vector2i) {};
         void onMouseMove(Vector2i);
-        void onMouseRelease(Vector2i) {};
+        void onMouseLeftRelease(Vector2i) {};
+		void onMouseRightRelease(Vector2i) {};
         void update();
         void draw(RenderWindow*);
         // Get Button attribute functions

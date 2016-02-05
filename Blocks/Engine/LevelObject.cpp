@@ -33,11 +33,19 @@ void LevelObject::processEvents(Event *event, Vector2i mousePosition) {
     for(iter = objects.begin(); iter != objects.end(); iter++) {
         // Process mouse click events
         if (event->type == Event::MouseButtonPressed) {
-            (*iter)->onMouseClick(mousePosition);
+            if (event->mouseButton.button == Mouse::Left) {
+                (*iter)->onMouseLeftClick(mousePosition);
+            } else if (event->mouseButton.button == Mouse::Right) {
+                (*iter)->onMouseRightClick(mousePosition);
+            }
         }
         // Process mouse release events
         if (event->type == Event::MouseButtonReleased) {
-			(*iter)->onMouseRelease(mousePosition);
+            if (event->mouseButton.button == Mouse::Left) {
+                (*iter)->onMouseLeftRelease(mousePosition);
+            } else if (event->mouseButton.button == Mouse::Right) {
+                (*iter)->onMouseRightRelease(mousePosition);
+            }
         }
         // Process all mouse movement events
         if (event->type == Event::MouseMoved) {

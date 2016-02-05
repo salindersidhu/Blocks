@@ -12,10 +12,12 @@ class HUD : public GameObject {
         // Constructor and destructor
         HUD(string, float, float, int, Color, Font, Texture);
         virtual ~HUD() {};
-        // HUD functions
-        void onMouseClick(Vector2i) {};
+        // HUD function
         void onMouseMove(Vector2i) {};
-        void onMouseRelease(Vector2i) {};
+        void onMouseLeftClick(Vector2i) {};
+        void onMouseRightClick(Vector2i) {};
+        void onMouseLeftRelease(Vector2i) {};
+        void onMouseRightRelease(Vector2i) {};
         void update() {};
         void draw(RenderWindow*);
     private:
