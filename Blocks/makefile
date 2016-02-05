@@ -13,24 +13,21 @@ SOURCES=$(OBJECTS:.cpp=.0)
 EXECUTABLE=Blocks
 
 # Build the project and configure
-all: $(OBJECTS) $(EXECUTABLE) config
+all: $(OBJECTS) $(EXECUTABLE)
 
-# Rules for compiling all sources and building the project
+# Rules for compiling all sources, building the project and linking the resource archive
 $(EXECUTABLE): $(SOURCES)
 	@printf "BUILDING PROJECT..."
 	@$(CC) $(SOURCES) $(LDFLAGS) -o $@
 	@printf "DONE\n"
+	@printf "ADDING RESOURCE..."
+	@cp Resources/data.7z .
+	@printf "DONE\n\nPlease type ./Blocks to execute the program.\n"
 
 .cpp.o:
 	@printf "COMPILING "$@"..."
 	@$(CC) $(CFLAGS) $< -o $@
 	@printf "DONE\n"
-
-# Copy resource file to executable's location
-config:
-	@printf "ADDING RESOURCE..."
-	@cp Resources/data.7z .
-	@printf "DONE\n\nPlease type ./Blocks to execute the program.\n"
 
 # Clean all compiled files, resources and executable
 clean:
