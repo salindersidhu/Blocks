@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <SFML/Graphics.hpp>
+#include "SaveObject.hpp"
 #include "GameObject.hpp"
 #include "EngineException.hpp"
 #include "ResourceManager.hpp"
@@ -12,7 +13,7 @@ using namespace std;
 
 class LevelObject {
     public:
-        // Constructor and destructor
+        // Destructor
         ~LevelObject();
         // LevelObject functions
         virtual void init() {};
@@ -20,7 +21,8 @@ class LevelObject {
         virtual void update();
         virtual void processEvents(Event*, Vector2i);
         void setResourceManager(ResourceManager*);
-		void setRenderWindow(RenderWindow*);
+        void setRenderWindow(RenderWindow*);
+        void setSaveObject(SaveObject*);
         bool getisFinished();
     protected:
         // LevelObject variables
@@ -28,6 +30,7 @@ class LevelObject {
         ResourceManager *resMan;        // ResourceManager pointer
         RenderWindow *window;           // RenderWindow pointer
         bool isFinished;                // Is the LevelObject finished
+        SaveObject *saveObj;            // Save object pointer
 };
 
 #endif // LEVELOBJECT_HPP

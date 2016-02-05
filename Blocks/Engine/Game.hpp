@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <SFML/Graphics.hpp>
+#include "SaveObject.hpp"
 #include "LevelObject.hpp"
 #include "DialogManager.hpp"
 #include "EngineException.hpp"
@@ -29,6 +30,7 @@ class Game {
         DialogManager *dialogMan;
         LevelObject* currentLevel;
         vector<LevelObject*> levels;
+        SaveObject saveObj;
         unsigned int currentLevelCount;
         // Game functions
         void gameLoop();

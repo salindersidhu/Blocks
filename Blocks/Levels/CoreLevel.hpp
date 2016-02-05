@@ -5,6 +5,7 @@
 #include <SFML/Graphics.hpp>
 #include "../Objects/HUD.hpp"
 #include "../Objects/BGMusic.hpp"
+#include "../Engine/SaveObject.hpp"
 #include "../Objects/FadeEffect.hpp"
 #include "../Engine/LevelObject.hpp"
 using namespace sf;

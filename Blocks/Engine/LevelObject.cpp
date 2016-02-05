@@ -65,6 +65,11 @@ void LevelObject::setRenderWindow(RenderWindow *_window) {
     window = _window;
 }
 
+void LevelObject::setSaveObject(SaveObject *_saveObj) {
+    // Set the save object pointer
+    saveObj = _saveObj;
+}
+
 bool LevelObject::getisFinished() {
     // Return if the level is finished or not
     return isFinished;

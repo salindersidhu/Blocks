@@ -46,6 +46,7 @@ DialogManager *Game::getDialog() {
 void Game::addLevel(LevelObject *level) {
     level->setRenderWindow(window);
     level->setResourceManager(resMan);
+    level->setSaveObject(&saveObj);
     // Add LevelObject pointer to the collection of LevelObject pointers
 	levels.push_back(level);
 }
