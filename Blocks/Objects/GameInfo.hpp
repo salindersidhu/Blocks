@@ -11,7 +11,7 @@ using namespace std;
 class GameInfo : public GameObject {
     public:
         // GameInfo and destructor
-        GameInfo(float, float, int, Color, Font);
+        GameInfo(float, float, int, Color, Font, unsigned int*);
         virtual ~GameInfo() {};
         // GameInfo functions
         void onMouseClick(Vector2i) {};
@@ -19,9 +19,7 @@ class GameInfo : public GameObject {
         void onMouseRelease(Vector2i) {};
         void update();
         void draw(RenderWindow*);
-        void setNumMoves(unsigned int*);
 		MinuteClock* getClock();
-        unsigned int getNumMoves();
     private:
         // GameInfo functions
 		void centerText(float, float);

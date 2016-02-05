@@ -13,7 +13,7 @@ using namespace std;
 class CoreLevel : public LevelObject {
     public:
         // Constructor and destructor
-        CoreLevel(String, RenderWindow*);
+        CoreLevel(String);
         virtual ~CoreLevel() {};
         // CoreLevel functions
         virtual void update();
@@ -25,7 +25,6 @@ class CoreLevel : public LevelObject {
         string title;
         HUD *displayHUD;
         BGMusic *bgMusic;
-        RenderWindow *window;
         FadeEffect *fadeEffect;
         Color red;
         Color white;

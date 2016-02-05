@@ -1,13 +1,12 @@
 #include "CoreLevel.hpp"
 
-CoreLevel::CoreLevel(String _title, RenderWindow *win) {
+CoreLevel::CoreLevel(String _title) {
     // Create basic colour objects
     black = Color(0, 0, 0);
     white = Color(255, 255, 255);
     red = Color(255, 51, 82);
-    title = _title;
     // Set the remaining variables
-    window = win;
+    title = _title;
     isComplete = false;
     isTransition = false;
     isStarted = false;
@@ -43,10 +42,11 @@ void CoreLevel::setBackgroundMusic(SoundBuffer musicBuffer, float loopTime) {
 }
 
 void CoreLevel::setBackgroundAndFont(Texture background, Font font) {
-    // Create a new HUD object pointer
-    displayHUD = new HUD(title, 600, 15, 60, white, font, background);
-    // Create a new FadeTrans object
     Vector2u dims = background.getSize();
+    // Create a new HUD object pointer
+    displayHUD = new HUD(title, (float)dims.x, 15, 60, white, font,
+		background);
+    // Create a new FadeTrans object
     fadeEffect = new FadeEffect(7, dims.x, dims.y, black);
     // Add the GameObject pointers to the object's container
     objects.push_back(displayHUD);

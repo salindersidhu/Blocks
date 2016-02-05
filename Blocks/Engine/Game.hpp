@@ -7,23 +7,24 @@
 #include "LevelObject.hpp"
 #include "DialogManager.hpp"
 #include "EngineException.hpp"
+#include "ResourceManager.hpp"
 using namespace sf;
 using namespace std;
 
 class Game {
     public:
         // Constructor and destructor
-        Game(string, int, int, int, int);
+        Game(string, int, int, int, int, string, string);
         ~Game();
         // Game functions
-        string getTitle();
-        RenderWindow* getWindow();
-        DialogManager* getDialog();
+        ResourceManager *getResourceManager();
+        RenderWindow *getWindow();
+        DialogManager *getDialog();
         void addLevel(LevelObject*);
         void start();
     private:
         // Game variables
-        String title;
+        ResourceManager *resMan;
         RenderWindow *window;
         DialogManager *dialogMan;
         LevelObject* currentLevel;

@@ -1,14 +1,15 @@
 #include "Game.hpp"
 
-Game::Game(string _title, int width, int height, int bits, int FPS) {
-    // Initialize and configure the main game window pointer
-    window = new RenderWindow(VideoMode(width, height, bits), _title,
+Game::Game(string title, int width, int height, int bits, int FPS,
+    string iconName, string resArchive) {
+    // Initialize and setup the game RenderWindow
+    window = new RenderWindow(VideoMode(width, height, bits), title,
 		Style::Close);
     window->setFramerateLimit(FPS);
-    // Initialize and configure the DialogManager pointer
-    dialogMan = new DialogManager(_title, window);
-    // Set remaining instance variables
-    title = _title;
+    // Initialize and setup the DialogManager
+    dialogMan = new DialogManager(title, window);
+    // Initialize and setup the ResourceManager
+    resMan = new ResourceManager(resArchive);
 }
 
 Game::~Game() {
@@ -25,22 +26,24 @@ Game::~Game() {
     }
 }
 
-string Game::getTitle() {
-    // Return the Game's title
-    return title;
+ResourceManager *Game::getResourceManager() {
+    // Return the ResourceManager
+    return resMan;
 }
 
-RenderWindow* Game::getWindow() {
-    // Return the RenderWindow pointer
+RenderWindow *Game::getWindow() {
+    // Return the game RenderWindow
     return window;
 }
 
-DialogManager* Game::getDialog() {
+DialogManager *Game::getDialog() {
     // Return the DialogManager pointer
     return dialogMan;
 }
 
 void Game::addLevel(LevelObject *level) {
+    level->setRenderWindow(window);
+    level->setResourceManager(resMan);
     // Add LevelObject pointer to the collection of LevelObject pointers
 	levels.push_back(level);
 }
@@ -53,36 +56,31 @@ void Game::start() {
         gameLoop();
     } else {
         // throw EngineException
-        throw EngineException("Error: Level content was not found");
+        throw EngineException("Error: Cannot load first Level, it does not "
+			"exist");
     }
 }
 
 void Game::gameLoop() {
-    try {
-        while(window->isOpen()) {
-            // Process all input events for the current LevelObject
-            Event event;
-            while(window->pollEvent(event)) {
-                // Default window close event
-                if (event.type == Event::Closed) {
-                    window->close();
-                }
-                // Get the position of the mouse relative to the window
-                Vector2i mousePosition = Mouse::getPosition(*window);
-                currentLevel->processEvents(&event, mousePosition);
+    while(window->isOpen()) {
+        // Process all input events for the current LevelObject
+        Event event;
+        while(window->pollEvent(event)) {
+            // Default window close event
+            if (event.type == Event::Closed) {
+                window->close();
             }
-            // Process all update events for the current LevelObject
-            currentLevel->update();
-            processLevelComplete();
-            // Process all drawing events for the current LevelObject
-            window->clear();
-            currentLevel->draw(window);
-            window->display();
+            // Get the position of the mouse relative to the window
+            Vector2i mousePosition = Mouse::getPosition(*window);
+            currentLevel->processEvents(&event, mousePosition);
         }
-    } catch(exception &ex) {
-        // If something went wrong, display an error message and terminate
-        dialogMan->error(ex.what());
-        window->close();
+        // Process all update events for the current LevelObject
+        currentLevel->update();
+        processLevelComplete();
+        // Process all drawing events for the current LevelObject
+        window->clear();
+        currentLevel->draw();
+        window->display();
     }
 }
 
@@ -98,7 +96,8 @@ void Game::processLevelComplete() {
             currentLevel = levels[0];
         } else {
             // throw EngineException
-            throw EngineException("Error: Level content was not found");
+            throw EngineException("Error: Cannot load next Level, it does not "
+				"exist");
         }
     }
 }

@@ -15,14 +15,14 @@ EXECUTABLE=Blocks
 # Build the project and configure
 all: $(OBJECTS) $(EXECUTABLE)
 
-# Rules for compiling all sources, building the project and linking the resource archive
+# Rules for compiling all sources, building the project and add the resource archive file
 $(EXECUTABLE): $(SOURCES)
 	@printf "BUILDING PROJECT..."
 	@$(CC) $(SOURCES) $(LDFLAGS) -o $@
 	@printf "DONE\n"
 	@printf "ADDING RESOURCE..."
 	@cp Resources/data.7z .
-	@printf "DONE\n\nPlease type ./Blocks to execute the program.\n"
+	@printf "DONE\n\nPlease type ./Blocks to start the game.\n"
 
 .cpp.o:
 	@printf "COMPILING "$@"..."

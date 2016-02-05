@@ -1,15 +1,14 @@
 #include "MenuLevel.hpp"
 
-MenuLevel::MenuLevel(string title, ResourceManager *res, RenderWindow *win) :
-CoreLevel(title, win) {
+void MenuLevel::init() {
     // Obtain the game's resources for this level
-    Font font = res->getFont("FN_COPPER");
-    SoundBuffer bgMusic = res->getSound("MS_BACKGROUND");
-    SoundBuffer hoverSound = res->getSound("SN_BUTTON_HOVER");
-	SoundBuffer clickSound = res->getSound("SN_BUTTON_CLICK");
-    Texture background = res->getTexture("TX_BACKGROUND_MENU");
-    Texture buttonHover = res->getTexture("TX_BUTTON_HOVER");
-	Texture buttonNormal = res->getTexture("TX_BUTTON_NORMAL");
+    Font font = resMan->getFont("FN_COPPER");
+    SoundBuffer bgMusic = resMan->getSound("MS_BACKGROUND");
+    SoundBuffer hoverSound = resMan->getSound("SN_BUTTON_HOVER");
+    SoundBuffer clickSound = resMan->getSound("SN_BUTTON_CLICK");
+    Texture background = resMan->getTexture("TX_BACKGROUND_MENU");
+    Texture buttonHover = resMan->getTexture("TX_BUTTON_HOVER");
+    Texture buttonNormal = resMan->getTexture("TX_BUTTON_NORMAL");
     // Create and configure new Button objects
     startButton = new Button("Start", 30, font, buttonNormal, buttonHover);
     quitButton = new Button("Quit", 30, font, buttonNormal, buttonHover);

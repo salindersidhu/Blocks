@@ -10,7 +10,7 @@ LevelObject::~LevelObject() {
     }
 }
 
-void LevelObject::draw(RenderWindow *window) {
+void LevelObject::draw() {
     // Iterate through all the GameObject pointers in the LevelObject
     vector<GameObject*>::iterator iter;
     for(iter = objects.begin(); iter != objects.end(); iter++) {
@@ -46,6 +46,18 @@ void LevelObject::processEvents(Event *event, Vector2i mousePosition) {
     }
 }
 
+void LevelObject::setResourceManager(ResourceManager *_resMan) {
+    // Set the ResourceManager and initialize level
+    resMan = _resMan;
+    init();
+}
+
+void LevelObject::setRenderWindow(RenderWindow *_window) {
+    // Set the RenderWindow
+    window = _window;
+}
+
 bool LevelObject::getComplete() {
+    // Return if the level is finished or not
     return isComplete;
 }
