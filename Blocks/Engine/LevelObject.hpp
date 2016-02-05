@@ -21,13 +21,13 @@ class LevelObject {
         virtual void processEvents(Event*, Vector2i);
         void setResourceManager(ResourceManager*);
 		void setRenderWindow(RenderWindow*);
-        bool getComplete();
+        bool getisFinished();
     protected:
         // LevelObject variables
         vector<GameObject*> objects;    // Collection of GameObjects pointers
         ResourceManager *resMan;        // ResourceManager pointer
         RenderWindow *window;           // RenderWindow pointer
-        bool isComplete;                // Is the LevelObject complete
+        bool isFinished;                // Is the LevelObject finished
 };
 
 #endif // LEVELOBJECT_HPP

@@ -7,7 +7,7 @@ CoreLevel::CoreLevel(String _title) {
     red = Color(255, 51, 82);
     // Set the remaining variables
     title = _title;
-    isComplete = false;
+    isFinished = false;
     isTransition = false;
     isStarted = false;
 }

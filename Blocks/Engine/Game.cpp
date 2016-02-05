@@ -10,6 +10,8 @@ Game::Game(string title, int width, int height, int bits, int FPS,
     dialogMan = new DialogManager(title, window);
     // Initialize and setup the ResourceManager
     resMan = new ResourceManager(resArchive);
+    // Set remaining instance variables
+    currentLevelCount = 0;
 }
 
 Game::~Game() {
@@ -56,8 +58,7 @@ void Game::start() {
         gameLoop();
     } else {
         // throw EngineException
-        throw EngineException("Error: Cannot load first Level, it does not "
-			"exist");
+        throw EngineException("Error: Cannot load Level, does not exist");
     }
 }
 
@@ -86,18 +87,16 @@ void Game::gameLoop() {
 
 void Game::processLevelComplete() {
     // Process level completed event
-    if (currentLevel->getComplete()) {
-        // Delete the current level and remove from Levels vector
-        delete currentLevel;
+    if (currentLevel->getisFinished()) {
+        // NULL the currentLevel pointer
         currentLevel = NULL;
-        levels.erase(levels.begin());
-        // Check if the next level exists
-        if (levels.size() > 0) {
-            currentLevel = levels[0];
+        // Increment currentLevelCount
+        if (currentLevelCount + 1 < levels.size()) {
+            currentLevelCount++;
         } else {
-            // throw EngineException
-            throw EngineException("Error: Cannot load next Level, it does not "
-				"exist");
+            // If currentLevel is the last level then reset currentLevelCount
+            currentLevelCount = 0;
         }
+        currentLevel = levels[currentLevelCount];
     }
 }

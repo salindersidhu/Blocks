@@ -29,6 +29,7 @@ class Game {
         DialogManager *dialogMan;
         LevelObject* currentLevel;
         vector<LevelObject*> levels;
+        unsigned int currentLevelCount;
         // Game functions
         void gameLoop();
         void processLevelComplete();

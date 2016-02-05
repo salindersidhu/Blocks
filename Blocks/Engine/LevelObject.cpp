@@ -65,7 +65,7 @@ void LevelObject::setRenderWindow(RenderWindow *_window) {
     window = _window;
 }
 
-bool LevelObject::getComplete() {
+bool LevelObject::getisFinished() {
     // Return if the level is finished or not
-    return isComplete;
+    return isFinished;
 }

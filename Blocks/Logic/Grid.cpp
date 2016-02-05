@@ -51,11 +51,11 @@ void Grid::releaseBlock(unsigned int &numMoves) {
         float blockX = blocks[i].getX();
         float blockY = blocks[i].getY();
         // If the Block is selected then unselect it
-        if (blocks[i].getSelected()) {
+        if (blocks[i].getIsSelected()) {
             blocks[i].unselect();
             distX = distY = 0;
             // Align the Block correctly to the Grid
-            if (!blocks[i].getVertical()) {
+            if (!blocks[i].getIsVertical()) {
                 blocks[i].setX(align(x, blockX, prevX));
             } else {
                 blocks[i].setY(align(y, blockY, prevY));
@@ -73,14 +73,14 @@ void Grid::moveBlock(float mouseX, float mouseY) {
     // Iterate through all the Blocks on the Grid
     for (unsigned int i = 0; i < blocks.size(); i++) {
         // Find the currently selected Block
-        if (blocks[i].getSelected() && isBlockFree) {
+        if (blocks[i].getIsSelected() && isBlockFree) {
             float gridEndX = width + x;
             float gridEndY = height + y;
 			float size = blocks[i].getSize() * tileGap;
             float currentX = mouseX - distX;
             float currentY = mouseY - distY;
             // Move the Block with the mouse in the correct orientation
-            if (blocks[i].getVertical()) {
+            if (blocks[i].getIsVertical()) {
                 if (isBounded(currentY, size, y, gridEndY) &&
 					isNotCol(blocks[i], 0, currentY)) {
                     blocks[i].setY(currentY);
@@ -115,7 +115,7 @@ bool Grid::isComplete() {
         float blockX = blocks[i].getX();
         float blockY = blocks[i].getY();
         // Check if the flagged Block is aligned with Grid complete position
-        if (blocks[i].getFlagged() && (blockX == completeX) &&
+        if (blocks[i].getIsFlagged() && (blockX == completeX) &&
 			(blockY == completeY)) {
             return true;
         }
@@ -156,7 +156,7 @@ bool Grid::isNotCol(Block block, float _x, float _y) {
         float endY = blocks[i].getY();
         float currentX = _x;   // Default for moving left
         float currentY = _y;   // Default for moving up
-        if (blocks[i].getVertical()) {
+        if (blocks[i].getIsVertical()) {
             endY += (blocks[i].getSize() - 1) * tileGap;
         } else {
             endX += (blocks[i].getSize() - 1) * tileGap;

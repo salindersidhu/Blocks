@@ -30,11 +30,11 @@ void MenuLevel::update() {
     // Call parent update function
     CoreLevel::update();
     // Set fade out transition if any button was clicked
-    if (startButton->getClicked() && !isTransition) {
+    if (startButton->getIsClicked() && !isTransition) {
         setTransition();
         buttonEventName = "BUTTON_EVT_START";
     }
-    if (quitButton->getClicked() && !isTransition) {
+    if (quitButton->getIsClicked() && !isTransition) {
         setTransition();
         buttonEventName = "BUTTON_EVT_QUIT";
     }
@@ -47,7 +47,7 @@ void MenuLevel::processButtonEvents() {
         isTransition = false;   // No longer transitioning
         // Process button events after transition effect
         if (buttonEventName == "BUTTON_EVT_START") {
-            isComplete = true;
+            isFinished = true;
         } else {
             // Quit button clicked, terminate the game
             window->close();

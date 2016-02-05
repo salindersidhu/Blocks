@@ -90,7 +90,7 @@ void Button::draw(RenderWindow *window) {
     window->draw(buttonText);
 }
 
-bool Button::getClicked() {
+bool Button::getIsClicked() {
 	// If the button is clicked return true and set isClicked to false
 	if (isClicked) {
 		isClicked = false;

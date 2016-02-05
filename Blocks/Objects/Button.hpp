@@ -25,7 +25,7 @@ class Button : public GameObject {
         void update();
         void draw(RenderWindow*);
         // Get Button attribute functions
-		bool getClicked();
+		bool getIsClicked();
     private:
         // ButtonObject functions
         bool isHovering(int, int);

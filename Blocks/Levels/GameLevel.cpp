@@ -34,11 +34,11 @@ void GameLevel::update() {
     // Call parent update function
     CoreLevel::update();
     // Set fade out transition if any button was clicked
-    if (resetButton->getClicked() && !isTransition) {
+    if (resetButton->getIsClicked() && !isTransition) {
         setTransition();
 		buttonEventName = "BUTTON_EVT_RESTART";
     }
-    if (quitButton->getClicked() && !isTransition) {
+    if (quitButton->getIsClicked() && !isTransition) {
         setTransition();
         buttonEventName = "BUTTON_EVT_QUIT";
     }

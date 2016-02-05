@@ -71,14 +71,14 @@ void Block::resetPosition() {
     y = defaultY;
 }
 
-bool Block::getSelected() {
+bool Block::getIsSelected() {
     return isSelected;
 }
 
-bool Block::getFlagged() {
+bool Block::getIsFlagged() {
     return isFlagged;
 }
 
-bool Block::getVertical() {
+bool Block::getIsVertical() {
     return isVertical;
 }

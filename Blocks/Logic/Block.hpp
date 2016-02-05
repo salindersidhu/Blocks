@@ -23,9 +23,9 @@ class Block{
         void unselect();
         void flag();
         void resetPosition();
-        bool getSelected();
-        bool getFlagged();
-        bool getVertical();
+        bool getIsSelected();
+        bool getIsFlagged();
+        bool getIsVertical();
         string getTextureName();
     private:
         // Block variables
