@@ -140,6 +140,7 @@
     <ClCompile Include="Levels\CoreLevel.cpp" />
     <ClCompile Include="Levels\GameLevel.cpp" />
     <ClCompile Include="Levels\MenuLevel.cpp" />
+    <ClCompile Include="Levels\WinLevel.cpp" />
     <ClCompile Include="Logic\Block.cpp" />
     <ClCompile Include="Logic\MinuteClock.cpp" />
     <ClCompile Include="Logic\Grid.cpp" />
@@ -149,6 +150,7 @@
     <ClCompile Include="Objects\GameGrid.cpp" />
     <ClCompile Include="Objects\HUD.cpp" />
     <ClCompile Include="Objects\FadeEffect.cpp" />
+    <ClCompile Include="Objects\WinInfo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\EngineException.hpp" />
@@ -162,6 +164,7 @@
     <ClInclude Include="Levels\CoreLevel.hpp" />
     <ClInclude Include="Levels\GameLevel.hpp" />
     <ClInclude Include="Levels\MenuLevel.hpp" />
+    <ClInclude Include="Levels\WinLevel.hpp" />
     <ClInclude Include="Logic\Block.hpp" />
     <ClInclude Include="Logic\MinuteClock.hpp" />
     <ClInclude Include="Logic\Grid.hpp" />
@@ -170,6 +173,7 @@
     <ClInclude Include="Objects\GameGrid.hpp" />
     <ClInclude Include="Objects\HUD.hpp" />
     <ClInclude Include="Objects\FadeEffect.hpp" />
+    <ClInclude Include="Objects\WinInfo.hpp" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>

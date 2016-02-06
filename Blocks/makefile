@@ -8,7 +8,7 @@ else
 	# Linux LDFLAGS
 	LDFLAGS=-L/usr/local/lib -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system -lphysfs
 endif
-OBJECTS=Logic/MinuteClock.o Logic/Block.o Logic/Grid.o Objects/GameGrid.o Objects/Button.o Objects/FadeEffect.o Objects/HUD.o Objects/BGMusic.o Levels/CoreLevel.o Levels/MenuLevel.o Levels/GameLevel.o Engine/SaveObject.o Engine/LevelObject.o Engine/ErrorDialog.o Engine/Game.o Engine/PhysfsStream.o Engine/ResourceManager.o main.o
+OBJECTS=Logic/MinuteClock.o Logic/Block.o Logic/Grid.o Objects/WinInfo.o Objects/GameGrid.o Objects/Button.o Objects/FadeEffect.o Objects/HUD.o Objects/BGMusic.o Levels/CoreLevel.o Levels/MenuLevel.o Levels/GameLevel.o Levels/WinLevel.o Engine/SaveObject.o Engine/LevelObject.o Engine/ErrorDialog.o Engine/Game.o Engine/PhysfsStream.o Engine/ResourceManager.o main.o
 SOURCES=$(OBJECTS:.cpp=.0)
 EXECUTABLE=Blocks
 

@@ -3,6 +3,7 @@
 #include "Engine/Game.hpp"
 #include "Objects/GameGrid.hpp"
 #include "Levels/MenuLevel.hpp"
+#include "Levels/WinLevel.hpp"
 #include "Levels/GameLevel.hpp"
 #include "Engine/ResourceManager.hpp"
 using namespace sf;
@@ -56,7 +57,7 @@ int main() {
 		window->setIcon(icon.getSize().x, icon.getSize().y,
 			icon.getPixelsPtr());
 		// Create and setup the main menu level
-		MenuLevel *mainMenuLevel = new MenuLevel("Blocks", resMan, window);
+		MenuLevel *mainMenuLevel = new MenuLevel(title, resMan, window);
 		// Create Level 1 and setup level 1 GameGrid
 		GameGrid *gameGrid = new GameGrid(55, 167, 480, 470, 375, 327, 80,
 			winWidth, 640, resMan);
@@ -67,9 +68,11 @@ int main() {
 		gameGrid->addBlock("TX_BV32", 3, 5, 3, 58, 221, true, false);
 		GameLevel *gameLevel1 = new GameLevel("Level 1", resMan, window);
 		gameLevel1->setGameGrid(gameGrid);
+		WinLevel *winLevel1 = new WinLevel("Level 1", resMan, window);
 		// Add levels to the Game
 		game.addLevel(mainMenuLevel);
 		game.addLevel(gameLevel1);
+		game.addLevel(winLevel1);
 		// Start the Game
 		game.start();
 	} catch(exception &ex) {
