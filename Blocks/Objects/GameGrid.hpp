@@ -6,6 +6,7 @@
 #include <SFML/Graphics.hpp>
 #include "../Logic/Grid.hpp"
 #include "../Logic/Block.hpp"
+#include "../Logic/MinuteClock.hpp"
 #include "../Engine/GameObject.hpp"
 #include "../Engine/ResourceManager.hpp"
 using namespace sf;
@@ -14,7 +15,7 @@ using namespace std;
 class GameGrid : public GameObject {
     public:
         // Constructor and destructor
-        GameGrid(float, float, float, float, float, float, float,
+        GameGrid(float, float, float, float, float, float, float, int, int,
             ResourceManager*);
         ~GameGrid();
         // GameGrid functions
@@ -23,16 +24,24 @@ class GameGrid : public GameObject {
         void onMouseRightClick(Vector2i) {};
         void onMouseLeftRelease(Vector2i);
         void onMouseRightRelease(Vector2i) {};
-        void update() {};
+        void update();
         void draw(RenderWindow*);
         void addBlock(string, float, float, float, float, float, bool, bool);
-        void setNumMoves(unsigned int*);
         void reset();
+        unsigned int getNumMoves();
+        string getClockTime();
     private:
+        // GameGrid functions
+        void centerInfoText();
         // GameGrid variables
+        Font textFont;
+        Text infoText;
         Grid *grid;
+        MinuteClock clock;
         map<string, Texture> textures;
-        unsigned int *numMoves;
+        int infoTextY;
+        int winWidth;
+        unsigned int numMoves;
 };
 
 #endif // GAMEGRID_HPP

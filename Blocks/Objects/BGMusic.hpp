@@ -11,7 +11,7 @@ using namespace std;
 class BGMusic : public GameObject {
     public:
         // Constructor and destructor
-        BGMusic(SoundBuffer, float);
+        BGMusic(SoundBuffer, float, bool);
         virtual ~BGMusic() {};
         // BGMusic functions
         void onMouseMove(Vector2i) {};
@@ -29,6 +29,7 @@ class BGMusic : public GameObject {
         Sound bgMusic;
         float loopStartTime;
         bool isStarted;
+        bool isLoop;
 };
 
 #endif // BGMUSIC_HPP

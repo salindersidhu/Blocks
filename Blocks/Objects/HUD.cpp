@@ -12,7 +12,7 @@ HUD::HUD(string title, float width, float y, int size, Color col, Font font,
     titleText.setString(title);
     titleText.setCharacterSize((unsigned int)size);
     titleText.setColor(col);
-    centerText(width, y);
+    centerTitleText(width, y);
 }
 
 void HUD::draw(RenderWindow *window) {
@@ -22,7 +22,7 @@ void HUD::draw(RenderWindow *window) {
     window->draw(titleText);
 }
 
-void HUD::centerText(float winWidth, float y) {
+void HUD::centerTitleText(float winWidth, float y) {
     FloatRect rect;
     // Center the text horizontally
     rect = titleText.getLocalBounds();

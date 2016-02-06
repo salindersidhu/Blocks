@@ -4,6 +4,7 @@ void GameLevel::init() {
     // Obtain the game's resources for this level
     Font font = resMan->getFont("FN_COPPER");
     SoundBuffer bgMusic = resMan->getSound("MS_BACKGROUND");
+    SoundBuffer winMusic = resMan->getSound("SN_VICTORY");
     SoundBuffer hoverSound = resMan->getSound("SN_BUTTON_HOVER");
     SoundBuffer clickSound = resMan->getSound("SN_BUTTON_CLICK");
     Texture background = resMan->getTexture("TX_BACKGROUND_GAME");
@@ -18,15 +19,12 @@ void GameLevel::init() {
     quitButton->setSounds(hoverSound, clickSound);
     resetButton->setColours(white, red);
     quitButton->setColours(white, red);
-    // Create a new GameInfo object
-    gameInfo = new GameInfo(600, 640, 30, white, font, &numMoves);
     // Set the background texture and music
     setBackgroundAndFont(background, font);
-    setBackgroundMusic(bgMusic, 19.5);
+    setBackgroundMusic(bgMusic, 19.5, true);
     // Add the GameObject pointers to the object's container
     objects.push_back(resetButton);
     objects.push_back(quitButton);
-    objects.push_back(gameInfo);
     objects.push_back(gameGrid);
 }
 
@@ -47,11 +45,9 @@ void GameLevel::update() {
 }
 
 void GameLevel::restart() {
-    // Restart the GameLevel
-    gameInfo->getClock()->reset();
+    // Restart the GameGrid and start the bgMusic
     gameGrid->reset();
     bgMusic->start();
-    numMoves = 0;
 }
 
 void GameLevel::processButtonEvents() {
@@ -70,6 +66,4 @@ void GameLevel::processButtonEvents() {
 void GameLevel::setGameGrid(GameGrid *_gameGrid) {
     // Set the GameGrid
     gameGrid = _gameGrid;
-    // Set numMoves for the GameGrid
-    gameGrid->setNumMoves(&numMoves);
 }

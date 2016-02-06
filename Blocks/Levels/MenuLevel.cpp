@@ -20,7 +20,7 @@ void MenuLevel::init() {
     quitButton->setColours(white, red);
     // Set the background texture and music
     setBackgroundAndFont(background, font);
-    setBackgroundMusic(bgMusic, 19.5);
+    setBackgroundMusic(bgMusic, 19.5, true);
     // Add the GameObject pointers to the object's container
     objects.push_back(startButton);
     objects.push_back(quitButton);

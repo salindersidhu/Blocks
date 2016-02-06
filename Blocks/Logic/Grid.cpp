@@ -109,7 +109,7 @@ vector<Block> Grid::getBlocks() {
     return blocks;
 }
 
-bool Grid::isComplete() {
+bool Grid::getIsComplete() {
     // Iterate through all the Blocks on the Grid
     for (unsigned int i = 0; i < blocks.size(); i++) {
         float blockX = blocks[i].getX();

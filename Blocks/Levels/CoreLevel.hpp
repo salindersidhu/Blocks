@@ -19,7 +19,7 @@ class CoreLevel : public LevelObject {
         // CoreLevel functions
         virtual void update();
         void setTransition();
-        void setBackgroundMusic(SoundBuffer, float);
+        void setBackgroundMusic(SoundBuffer, float, bool);
         void setBackgroundAndFont(Texture, Font);
     protected:
         // CoreLevel variables

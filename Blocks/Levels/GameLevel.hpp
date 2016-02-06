@@ -5,7 +5,6 @@
 #include <SFML/Graphics.hpp>
 #include "CoreLevel.hpp"
 #include "../Objects/Button.hpp"
-#include "../Objects/GameInfo.hpp"
 #include "../Objects/GameGrid.hpp"
 #include "../Engine/ResourceManager.hpp"
 using namespace sf;
@@ -27,10 +26,8 @@ class GameLevel : public CoreLevel {
         // GameLevel variables
         Button *resetButton;
         Button *quitButton;
-        GameInfo *gameInfo;
         GameGrid *gameGrid;
         string buttonEventName;
-        unsigned int numMoves = 0;
 };
 
 #endif // GAMELEVEL_HPP

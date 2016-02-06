@@ -29,7 +29,7 @@ class Button : public GameObject {
     private:
         // ButtonObject functions
         bool isHovering(int, int);
-        void centerText(float, float, float, float);
+        void centerButtonText(float, float, float, float);
         // ButtonObject variables
         bool isMouseOver;
 		bool isClicked;

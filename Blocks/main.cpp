@@ -58,8 +58,8 @@ int main() {
 		// Create and setup the main menu level
 		MenuLevel *mainMenuLevel = new MenuLevel("Blocks");
 		// Create Level 1 and setup level 1 GameGrid
-		GameGrid *gameGrid = new GameGrid(55, 167, 480, 470, 375, 407, 80,
-			resMan);
+		GameGrid *gameGrid = new GameGrid(55, 167, 480, 470, 375, 327, 80,
+			winWidth, 640, resMan);
 		gameGrid->addBlock("TX_BV31", 3, 2, 0, 58, 221, true, false);
 		gameGrid->addBlock("TX_BH26", 2, 4, 0, 131, 57, false, false);
 		gameGrid->addBlock("TX_BH21", 2, 0, 2, 131, 57, false, true);

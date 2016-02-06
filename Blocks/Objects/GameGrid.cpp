@@ -1,9 +1,12 @@
 #include "GameGrid.hpp"
 
 GameGrid::GameGrid(float x, float y, float width, float height,
-    float completeX, float completeY, float tileGap, ResourceManager *res) {
+    float completeX, float completeY, float tileGap, int _winWidth,
+    int _infoTextY, ResourceManager *res) {
     // Initialize a new Grid
     grid = new Grid(x, y, width, height, completeX, completeY, tileGap);
+    // Initialize the MinuteClock
+    clock = MinuteClock();
     // Obtain all the textures
     textures["TX_BH21"] = res->getTexture("TX_BH21");
     textures["TX_BH22"] = res->getTexture("TX_BH22");
@@ -21,6 +24,17 @@ GameGrid::GameGrid(float x, float y, float width, float height,
     textures["TX_BV26"] = res->getTexture("TX_BV26");
     textures["TX_BV31"] = res->getTexture("TX_BV31");
     textures["TX_BV32"] = res->getTexture("TX_BV32");
+    // Obtain the game's resources for this object
+    Font font = res->getFont("FN_COPPER");
+    // Configure the infoText
+    textFont = font;
+    infoText.setFont(textFont);
+    infoText.setString("Time: 00:00:00    Moves: 0");
+    winWidth = _winWidth;
+    infoTextY = _infoTextY;
+    centerInfoText();
+    // Set the remaining instance variables
+    numMoves = 0;
 }
 
 GameGrid::~GameGrid() {
@@ -30,7 +44,10 @@ GameGrid::~GameGrid() {
 }
 
 void GameGrid::reset() {
+    // Reset the block, reset all the Blocks on the Grid and set numMoves to 0
+    clock.reset();
     grid->reset();
+    numMoves = 0;
 }
 
 void GameGrid::onMouseLeftClick(Vector2i mousePosition) {
@@ -45,10 +62,24 @@ void GameGrid::onMouseMove(Vector2i mousePosition) {
 
 void GameGrid::onMouseLeftRelease(Vector2i mousePosition) {
     // Process release Clock when left mouse button clicked
-    grid->releaseBlock(*numMoves);
+    grid->releaseBlock(numMoves);
+}
+
+void GameGrid::update() {
+    // Update the MinuteClock
+    clock.tick();
+    // Update the infoText's drawing position and text
+    centerInfoText();
+    infoText.setString("Time: " + clock.getTime() + "    Moves: " +
+		to_string(numMoves));
+    // Check if Grid is complete
+    if (grid->getIsComplete()) {
+    }
 }
 
 void GameGrid::draw(RenderWindow *window) {
+    // Draw the infoText
+    window->draw(infoText);
     // Iterate over all Blocks on the grid
     for (unsigned int i = 0; i < grid->getBlocks().size(); i++) {
         // Obtain the current Block
@@ -70,6 +101,20 @@ void GameGrid::addBlock(string textureName, float size, float x, float y,
     grid->addBlock(block);
 }
 
-void GameGrid::setNumMoves(unsigned int *_numMoves) {
-    numMoves = _numMoves;
+void GameGrid::centerInfoText() {
+    FloatRect rect;
+    // Center the text horizontally
+    rect = infoText.getLocalBounds();
+    infoText.setOrigin((rect.left + rect.width) / 2, 0);
+    infoText.setPosition((float)winWidth / 2, (float)infoTextY);
+}
+
+unsigned int GameGrid::getNumMoves() {
+    // Return the number of moves
+    return numMoves;
+}
+
+string GameGrid::getClockTime() {
+    // Return the time on MinuteClock
+    return clock.getTime();
 }

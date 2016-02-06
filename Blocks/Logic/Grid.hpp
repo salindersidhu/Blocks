@@ -18,7 +18,7 @@ class Grid {
         void releaseBlock(unsigned int&);
         void moveBlock(float, float);
         void reset();
-        bool isComplete();
+        bool getIsComplete();
         vector<Block> getBlocks();
     private:
         // Grid functions

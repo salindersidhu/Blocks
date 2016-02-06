@@ -34,9 +34,16 @@ void CoreLevel::setTransition() {
     isTransition = true;
 }
 
-void CoreLevel::setBackgroundMusic(SoundBuffer musicBuffer, float loopTime) {
+void CoreLevel::setBackgroundMusic(SoundBuffer musicBuffer, float loopTime,
+    bool isLoop) {
+    // Delete and null the bgMusic pointer if one already exists
+    if (bgMusic) {
+        bgMusic->stop(); // Safely stop the music prior to deleting
+        delete bgMusic;
+        bgMusic = NULL;
+    }
     // Create a new BGMusic object pointer
-    bgMusic = new BGMusic(musicBuffer, loopTime);
+    bgMusic = new BGMusic(musicBuffer, loopTime, isLoop);
     // Add the GameObject pointers to the object's container
     objects.push_back(bgMusic);
 }

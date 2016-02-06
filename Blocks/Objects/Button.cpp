@@ -41,7 +41,7 @@ void Button::setPosition(float x, float y) {
 	buttonHoverSprite.setPosition(x, y);
 	// Configure the text to the new position
     FloatRect dims = buttonNormalSprite.getGlobalBounds();
-	centerText(x, y, x + dims.width, y + dims.height);
+	centerButtonText(x, y, x + dims.width, y + dims.height);
 }
 
 void Button::onMouseLeftClick(Vector2i mousePosition) {
@@ -109,7 +109,7 @@ bool Button::isHovering(int mouseX, int mouseY) {
     return widthHover && heightHover;
 }
 
-void Button::centerText(float sX, float sY, float eX, float eY) {
+void Button::centerButtonText(float sX, float sY, float eX, float eY) {
 	FloatRect r;
 	// Center the text in the rectangular area
 	r = buttonText.getLocalBounds();

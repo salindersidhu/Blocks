@@ -22,7 +22,7 @@ class HUD : public GameObject {
         void draw(RenderWindow*);
     private:
         // HUD functions
-		void centerText(float, float);
+		void centerTitleText(float, float);
         // HUD variables
         Texture bgTexture;
         Sprite bgSprite;
