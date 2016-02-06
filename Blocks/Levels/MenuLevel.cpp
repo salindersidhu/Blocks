@@ -29,24 +29,28 @@ void MenuLevel::init() {
 void MenuLevel::update() {
     // Call parent update function
     CoreLevel::update();
-    // Set fade out transition if any button was clicked
-    if (startButton->getIsClicked() && !isTransition) {
-        setTransition();
-        buttonEventName = "BUTTON_EVT_START";
+    // If not transitioning
+    if (!isTransition) {
+        // Set fade out transition if any button was clicked
+        if (startButton->getIsClicked()) {
+            setTransition();
+            transitionEventName = "BUTTON_START";
+        }
+        if (quitButton->getIsClicked()) {
+            setTransition();
+            transitionEventName = "BUTTON_QUIT";
+        }
     }
-    if (quitButton->getIsClicked() && !isTransition) {
-        setTransition();
-        buttonEventName = "BUTTON_EVT_QUIT";
-    }
-    // Process button events
-    processButtonEvents();
+    // Process transition events
+    processTransition();
 }
 
-void MenuLevel::processButtonEvents() {
+void MenuLevel::processTransition() {
     if (fadeEffect->isDone() && isTransition) {
         isTransition = false;   // No longer transitioning
-        // Process button events after transition effect
-        if (buttonEventName == "BUTTON_EVT_START") {
+        // Process transition events
+        if (transitionEventName == "BUTTON_START") {
+            // Start button clicked, go to next level
             isFinished = true;
         } else {
             // Quit button clicked, terminate the game

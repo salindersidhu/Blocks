@@ -18,11 +18,11 @@ class MenuLevel : public CoreLevel {
         // MenuLevel functions
         void init();
         void update();
-        void processButtonEvents();
+        void processTransition();
         // MenuLevel variables
         Button *startButton;
         Button *quitButton;
-        string buttonEventName;
+        string transitionEventName;
 };
 
 #endif // MENULEVEL_HPP

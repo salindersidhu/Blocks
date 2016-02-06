@@ -35,6 +35,7 @@ GameGrid::GameGrid(float x, float y, float width, float height,
     centerInfoText();
     // Set the remaining instance variables
     numMoves = 0;
+    isGridComplete = false;
 }
 
 GameGrid::~GameGrid() {
@@ -74,6 +75,7 @@ void GameGrid::update() {
 		to_string(numMoves));
     // Check if Grid is complete
     if (grid->getIsComplete()) {
+        isGridComplete = true;
     }
 }
 
@@ -117,4 +119,9 @@ unsigned int GameGrid::getNumMoves() {
 string GameGrid::getClockTime() {
     // Return the time on MinuteClock
     return clock.getTime();
+}
+
+bool GameGrid::getIsGridComplete() {
+    // Return if the grid is complete
+    return isGridComplete;
 }

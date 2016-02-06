@@ -74,3 +74,8 @@ bool LevelObject::getisFinished() {
     // Return if the level is finished or not
     return isFinished;
 }
+
+void LevelObject::setNotFinished() {
+    // Set isFinished to false
+    isFinished = false;
+}

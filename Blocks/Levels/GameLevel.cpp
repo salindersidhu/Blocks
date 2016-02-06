@@ -4,7 +4,6 @@ void GameLevel::init() {
     // Obtain the game's resources for this level
     Font font = resMan->getFont("FN_COPPER");
     SoundBuffer bgMusic = resMan->getSound("MS_BACKGROUND");
-    SoundBuffer winMusic = resMan->getSound("SN_VICTORY");
     SoundBuffer hoverSound = resMan->getSound("SN_BUTTON_HOVER");
     SoundBuffer clickSound = resMan->getSound("SN_BUTTON_CLICK");
     Texture background = resMan->getTexture("TX_BACKGROUND_GAME");
@@ -31,17 +30,25 @@ void GameLevel::init() {
 void GameLevel::update() {
     // Call parent update function
     CoreLevel::update();
-    // Set fade out transition if any button was clicked
-    if (resetButton->getIsClicked() && !isTransition) {
-        setTransition();
-		buttonEventName = "BUTTON_EVT_RESTART";
+    // If not transitioning
+    if (!isTransition) {
+        // Set fade out transition if Grid is complete
+        if (gameGrid->getIsGridComplete()) {
+            setTransition();
+            transitionEventName = "GRID_COMPLETE";
+        }
+        // Set fade out transition if any button was clicked
+        if (resetButton->getIsClicked()) {
+            setTransition();
+    		transitionEventName = "BUTTON_RESTART";
+        }
+        if (quitButton->getIsClicked()) {
+            setTransition();
+            transitionEventName = "BUTTON_QUIT";
+        }
     }
-    if (quitButton->getIsClicked() && !isTransition) {
-        setTransition();
-        buttonEventName = "BUTTON_EVT_QUIT";
-    }
-    // Process button events
-    processButtonEvents();
+    // Process transition events
+    processTransition();
 }
 
 void GameLevel::restart() {
@@ -50,15 +57,19 @@ void GameLevel::restart() {
     bgMusic->start();
 }
 
-void GameLevel::processButtonEvents() {
+void GameLevel::processTransition() {
     if (fadeEffect->isDone() && isTransition) {
         isTransition = false;   // No longer transitioning
-        // Process button events after transition effect
-        if (buttonEventName == "BUTTON_EVT_RESTART") {
+        // Process transition events
+        if (transitionEventName == "BUTTON_RESTART") {
+            // Restart button clicked, restart the level
             restart();
-        } else {
+        } else if (transitionEventName == "BUTTON_QUIT") {
             // Quit button clicked, terminate the game
             window->close();
+        } else {
+            // Grid is complete, go to next level to display win results
+            isFinished = true;
         }
     }
 }

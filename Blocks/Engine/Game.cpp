@@ -44,6 +44,7 @@ DialogManager *Game::getDialog() {
 }
 
 void Game::addLevel(LevelObject *level) {
+    // Add RenderWindow, ResourceManager and SaveObject to each LevelObject
     level->setRenderWindow(window);
     level->setResourceManager(resMan);
     level->setSaveObject(&saveObj);
@@ -99,5 +100,6 @@ void Game::processLevelComplete() {
             currentLevelCount = 0;
         }
         currentLevel = levels[currentLevelCount];
+        currentLevel->setNotFinished();
     }
 }

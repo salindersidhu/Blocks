@@ -22,12 +22,12 @@ class GameLevel : public CoreLevel {
         void init();
         void update();
         void restart();
-        void processButtonEvents();
+        void processTransition();
         // GameLevel variables
         Button *resetButton;
         Button *quitButton;
         GameGrid *gameGrid;
-        string buttonEventName;
+        string transitionEventName;
 };
 
 #endif // GAMELEVEL_HPP

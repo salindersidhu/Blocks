@@ -30,6 +30,7 @@ class GameGrid : public GameObject {
         void reset();
         unsigned int getNumMoves();
         string getClockTime();
+        bool getIsGridComplete();
     private:
         // GameGrid functions
         void centerInfoText();
@@ -42,6 +43,7 @@ class GameGrid : public GameObject {
         int infoTextY;
         int winWidth;
         unsigned int numMoves;
+        bool isGridComplete;
 };
 
 #endif // GAMEGRID_HPP

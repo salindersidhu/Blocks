@@ -23,6 +23,7 @@ class LevelObject {
         void setResourceManager(ResourceManager*);
         void setRenderWindow(RenderWindow*);
         void setSaveObject(SaveObject*);
+        void setNotFinished();
         bool getisFinished();
     protected:
         // LevelObject variables
