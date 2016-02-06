@@ -1,6 +1,6 @@
-#include "DialogManager.hpp"
+#include "ErrorDialog.hpp"
 
-DialogManager::DialogManager(string _title, RenderWindow *window) {
+ErrorDialog::ErrorDialog(string _title, RenderWindow *window) {
     title = _title;
 #ifdef _WIN32
     // Set the window handle on Windows
@@ -9,12 +9,12 @@ DialogManager::DialogManager(string _title, RenderWindow *window) {
 }
 
 #ifdef _WIN32
-void DialogManager::winDialog(string message, UINT flags) {
+void ErrorDialog::winDialog(string message, UINT flags) {
     MessageBoxA(handle, message.c_str(), title.c_str(), flags);
 }
 
 #elif __linux__
-void DialogManager::zenity(string message, string type) {
+void ErrorDialog::zenity(string message, string type) {
     string cmd("zenity --" + type + " --title=" + title + " --text='"
 		+ message + "'");
     // Execute the zenity command
@@ -22,7 +22,7 @@ void DialogManager::zenity(string message, string type) {
 }
 
 #elif __APPLE__ && __MACH__
-void DialogManager::cocoa(string icon, string message) {
+void ErrorDialog::cocoa(string icon, string message) {
     string cmd("~/CocoaDialog.app/Contents/MacOS/CocoaDialog ok-msgbox --icon"
 		" " + icon + " --text '" + message + "' --title '" + title + "'");
     // Execute the cocoa dialog command
@@ -30,17 +30,7 @@ void DialogManager::cocoa(string icon, string message) {
 }
 #endif
 
-void DialogManager::message(string message) {
-#ifdef _WIN32
-    winDialog(message, MB_ICONINFORMATION | MB_OK);
-#elif __linux__
-    zenity(message, "info");
-#elif __APPLE__ && __MACH__
-    cocoa("info", message);
-#endif
-}
-
-void DialogManager::error(string message) {
+void ErrorDialog::showMessage(string message) {
 #ifdef _WIN32
     winDialog(message, MB_ICONERROR | MB_OK);
 #elif __linux__

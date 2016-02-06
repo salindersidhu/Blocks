@@ -1,5 +1,5 @@
-#ifndef DIALOGMANAGER_HPP
-#define DIALOGMANAGER_HPP
+#ifndef ERRORDIALOG_HPP
+#define ERRORDIALOG_HPP
 
 #include <string>
 #ifdef _WIN32
@@ -9,14 +9,13 @@
 using namespace sf;
 using namespace std;
 
-class DialogManager {
+class ErrorDialog {
     public:
         // Constructor and destructor
-        DialogManager(string, RenderWindow*);
-        virtual ~DialogManager() {};
-        // Dialog functions
-        void message(string);
-        void error(string);
+        ErrorDialog(string, RenderWindow*);
+        virtual ~ErrorDialog() {};
+        // ErrorDialog functions
+        void showMessage(string);
     private:
         string title;
 #ifdef _WIN32
@@ -33,4 +32,4 @@ class DialogManager {
 #endif
 };
 
-#endif // DIALOGMANAGER_HPP
+#endif // ERRORDIALOG_HPP

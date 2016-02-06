@@ -131,7 +131,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Engine\DialogManager.cpp" />
+    <ClCompile Include="Engine\ErrorDialog.cpp" />
     <ClCompile Include="Engine\Game.cpp" />
     <ClCompile Include="Engine\LevelObject.cpp" />
     <ClCompile Include="Engine\PhysfsStream.cpp" />
@@ -152,7 +152,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\EngineException.hpp" />
-    <ClInclude Include="Engine\DialogManager.hpp" />
+    <ClInclude Include="Engine\ErrorDialog.hpp" />
     <ClInclude Include="Engine\Game.hpp" />
     <ClInclude Include="Engine\GameObject.hpp" />
     <ClInclude Include="Engine\LevelObject.hpp" />

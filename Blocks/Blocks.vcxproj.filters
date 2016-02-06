@@ -24,7 +24,7 @@
     <ClCompile Include="Engine\ResourceManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\DialogManager.cpp">
+    <ClCompile Include="Engine\ErrorDialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Game.cpp">
@@ -80,7 +80,7 @@
     <ClInclude Include="Engine\ResourceManager.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\DialogManager.hpp">
+    <ClInclude Include="Engine\ErrorDialog.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Game.hpp">

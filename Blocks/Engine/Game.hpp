@@ -6,7 +6,7 @@
 #include <SFML/Graphics.hpp>
 #include "SaveObject.hpp"
 #include "LevelObject.hpp"
-#include "DialogManager.hpp"
+#include "ErrorDialog.hpp"
 #include "EngineException.hpp"
 #include "ResourceManager.hpp"
 using namespace sf;
@@ -20,14 +20,14 @@ class Game {
         // Game functions
         ResourceManager *getResourceManager();
         RenderWindow *getWindow();
-        DialogManager *getDialog();
+        ErrorDialog *getErrorDialog();
         void addLevel(LevelObject*);
         void start();
     private:
         // Game variables
         ResourceManager *resMan;
         RenderWindow *window;
-        DialogManager *dialogMan;
+        ErrorDialog *errorDialog;
         LevelObject* currentLevel;
         vector<LevelObject*> levels;
         SaveObject saveObj;

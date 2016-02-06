@@ -7,7 +7,7 @@ Game::Game(string title, int width, int height, int bits, int FPS,
 		Style::Close);
     window->setFramerateLimit(FPS);
     // Initialize and setup the DialogManager
-    dialogMan = new DialogManager(title, window);
+    errorDialog = new ErrorDialog(title, window);
     // Initialize and setup the ResourceManager
     resMan = new ResourceManager(resArchive);
     // Set remaining instance variables
@@ -18,8 +18,8 @@ Game::~Game() {
     // Free memory used by the instance pointers
     delete window;
     window = NULL;
-    delete dialogMan;
-    dialogMan = NULL;
+    delete errorDialog;
+    errorDialog = NULL;
     // Free memory used by all the LevelObject pointers
     vector<LevelObject*>::iterator iter;
     for(iter = levels.begin(); iter != levels.end(); iter++) {
@@ -38,9 +38,9 @@ RenderWindow *Game::getWindow() {
     return window;
 }
 
-DialogManager *Game::getDialog() {
+ErrorDialog *Game::getErrorDialog() {
     // Return the DialogManager pointer
-    return dialogMan;
+    return errorDialog;
 }
 
 void Game::addLevel(LevelObject *level) {

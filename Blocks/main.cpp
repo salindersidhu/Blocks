@@ -74,7 +74,7 @@ int main() {
 		game.start();
 	} catch(exception &ex) {
 		// Display error message and exit game if an exception was thrown
-		game.getDialog()->error(ex.what());
+		game.getErrorDialog()->showMessage(ex.what());
 		window->close();
 		// Exit with failure
 		return 1;
