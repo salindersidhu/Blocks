@@ -1,4 +1,3 @@
-    This project is currently being updated, for an old complete version, please check the `Legacy` branch.
 #Blocks
 
 ##Description:
