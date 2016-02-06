@@ -1,5 +1,11 @@
 #include "LevelObject.hpp"
 
+LevelObject::LevelObject(ResourceManager *_resMan, RenderWindow *_window) {
+    // Set ResourceManager and RenderWindow pointers
+    resMan = _resMan;
+    window = _window;
+}
+
 LevelObject::~LevelObject() {
     // Iterate through all the GameObject pointers in the LevelObject
     vector<GameObject*>::iterator iter;
@@ -54,15 +60,13 @@ void LevelObject::processEvents(Event *event, Vector2i mousePosition) {
     }
 }
 
-void LevelObject::setResourceManager(ResourceManager *_resMan) {
-    // Set the ResourceManager and initialize level
-    resMan = _resMan;
-    init();
-}
-
-void LevelObject::setRenderWindow(RenderWindow *_window) {
-    // Set the RenderWindow
-    window = _window;
+void LevelObject::reset() {
+    // Iterate through all the GameObject pointers in the LevelObject
+    vector<GameObject*>::iterator iter;
+    for(iter = objects.begin(); iter != objects.end(); iter++) {
+        // Reset each GameObject
+        (*iter)->reset();
+    }
 }
 
 void LevelObject::setSaveObject(SaveObject *_saveObj) {
@@ -73,9 +77,4 @@ void LevelObject::setSaveObject(SaveObject *_saveObj) {
 bool LevelObject::getisFinished() {
     // Return if the level is finished or not
     return isFinished;
-}
-
-void LevelObject::setNotFinished() {
-    // Set isFinished to false
-    isFinished = false;
 }

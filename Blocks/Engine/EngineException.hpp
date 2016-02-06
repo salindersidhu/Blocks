@@ -13,7 +13,7 @@ class EngineException : public exception {
 		// EngineException functions
 		const char *what() const throw() {return message.c_str();};
 	private:
-		// EngineException variables
+		// EngineException private variables
 		string message;
 };
 

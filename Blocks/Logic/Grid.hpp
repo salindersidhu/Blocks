@@ -21,12 +21,12 @@ class Grid {
         bool getIsComplete();
         vector<Block> getBlocks();
     private:
-        // Grid functions
+        // Grid private functions
         float align(float, float, float);
         bool isHovering(float, float, float, float, float, float);
         bool isNotCol(Block, float, float);
         bool isBounded(float, float, float, float);
-        // Grid variables
+        // Grid private variables
         vector<Block> blocks;
         float x;
         float y;

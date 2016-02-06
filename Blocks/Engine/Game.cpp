@@ -44,9 +44,7 @@ ErrorDialog *Game::getErrorDialog() {
 }
 
 void Game::addLevel(LevelObject *level) {
-    // Add RenderWindow, ResourceManager and SaveObject to each LevelObject
-    level->setRenderWindow(window);
-    level->setResourceManager(resMan);
+    // Set SaveObject to each LevelObject
     level->setSaveObject(&saveObj);
     // Add LevelObject pointer to the collection of LevelObject pointers
 	levels.push_back(level);
@@ -66,7 +64,7 @@ void Game::start() {
 
 void Game::gameLoop() {
     while(window->isOpen()) {
-        // Process all input events for the current LevelObject
+        // Process all input events for the current level
         Event event;
         while(window->pollEvent(event)) {
             // Default window close event
@@ -77,10 +75,10 @@ void Game::gameLoop() {
             Vector2i mousePosition = Mouse::getPosition(*window);
             currentLevel->processEvents(&event, mousePosition);
         }
-        // Process all update events for the current LevelObject
+        // Process all update events for the current level
         currentLevel->update();
         processLevelComplete();
-        // Process all drawing events for the current LevelObject
+        // Process all drawing events for the current level
         window->clear();
         currentLevel->draw();
         window->display();
@@ -90,6 +88,8 @@ void Game::gameLoop() {
 void Game::processLevelComplete() {
     // Process level completed event
     if (currentLevel->getisFinished()) {
+        // Reset the current level
+        currentLevel->reset();
         // NULL the currentLevel pointer
         currentLevel = NULL;
         // Increment currentLevelCount
@@ -100,6 +100,5 @@ void Game::processLevelComplete() {
             currentLevelCount = 0;
         }
         currentLevel = levels[currentLevelCount];
-        currentLevel->setNotFinished();
     }
 }

@@ -45,10 +45,11 @@ GameGrid::~GameGrid() {
 }
 
 void GameGrid::reset() {
-    // Reset the block, reset all the Blocks on the Grid and set numMoves to 0
+    // Reset GameGrid instance variables, MinuteClock and Grid
     clock.reset();
     grid->reset();
     numMoves = 0;
+    isGridComplete = false;
 }
 
 void GameGrid::onMouseLeftClick(Vector2i mousePosition) {

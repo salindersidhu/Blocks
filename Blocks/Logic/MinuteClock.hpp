@@ -17,9 +17,9 @@ class MinuteClock {
         string getSec();
         string getMin();
     private:
-        // MinuteClock functions
+        // MinuteClock private functions
         void update(int&, int&);
-        // MinuteClock variables
+        // MinuteClock private variables
         string dDigit(int);
         int ms;
         int sec;

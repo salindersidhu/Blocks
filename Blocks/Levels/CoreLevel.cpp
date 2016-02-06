@@ -1,15 +1,29 @@
 #include "CoreLevel.hpp"
 
-CoreLevel::CoreLevel(String _title) {
+CoreLevel::CoreLevel(String _title, ResourceManager *resMan,
+    RenderWindow *window) : LevelObject(resMan, window) {
     // Create basic colour objects
     black = Color(0, 0, 0);
     white = Color(255, 255, 255);
     red = Color(255, 51, 82);
     // Set the remaining variables
     title = _title;
+    defaultVarValues();
+}
+
+void CoreLevel::reset() {
+    // Call parent reset function
+    LevelObject::reset();
+    // Reset the core level variables
+    defaultVarValues();
+}
+
+void CoreLevel::defaultVarValues() {
+    // Set the default values for the instance variables
+    isStarted = false;
     isFinished = false;
     isTransition = false;
-    isStarted = false;
+    transitionEventName = "";
 }
 
 void CoreLevel::update() {
@@ -18,18 +32,32 @@ void CoreLevel::update() {
     // Execute events only once per LevelObject
     if (!isStarted) {
         // Ensure FadeTrans is the last object in the list to draw
-        objects.push_back(fadeEffect);
+        if (find(objects.begin(), objects.end(), fadeEffect) ==
+			objects.end()) {
+            // Add fadeEffect pointer if it doesn't exist in the objects
+            objects.push_back(fadeEffect);
+        }
         // Start the background music only once
         bgMusic->start();
         isStarted = true;
     }
-    // Stop the bgMusic if level is transitoning
+    // Process transition events
     if (isTransition) {
+        // Stop the bgMusic if level is transitoning
         bgMusic->stop();
+    } else {
+        // Execute events that trigger a level transition
+        transitionTriggerEvents();
+    }
+    // Process level transition
+    if (fadeEffect->isDone() && isTransition) {
+        isTransition = false;   // No longer transitioning
+        transitionEventHandler();
     }
 }
 
-void CoreLevel::setTransition() {
+void CoreLevel::setTransitionTriggerEvent(string _transitionEventName) {
+    transitionEventName = _transitionEventName;
     fadeEffect->start();
     isTransition = true;
 }
@@ -42,13 +70,13 @@ void CoreLevel::setBackgroundMusic(SoundBuffer musicBuffer, float loopTime,
     objects.push_back(bgMusic);
 }
 
-void CoreLevel::setBackgroundAndFont(Texture background, Font font) {
-    Vector2u dims = background.getSize();
+void CoreLevel::setHUD(Texture background, Font font) {
     // Create a new HUD object pointer
-    displayHUD = new HUD(title, (float)dims.x, 15, 60, white, font,
-		background);
+    displayHUD = new HUD(title, (float)window->getSize().x, 15, 60, white,
+		font, background);
     // Create a new FadeTrans object
-    fadeEffect = new FadeEffect(7, dims.x, dims.y, black);
+    fadeEffect = new FadeEffect(7, window->getSize().x, window->getSize().y,
+		black);
     // Add the GameObject pointers to the object's container
     objects.push_back(displayHUD);
 }

@@ -27,14 +27,14 @@ class ResourceManager {
 		Image getImage(string);
         SoundBuffer getSound(string);
     private:
-        // Primary resources: Textures, Images, SoundBuffers and Fonts
+        // ResourceManager private functions
+		void openVerifyStream(string);
+        // ResourceManager private variables
         map<string, Texture> textures;
         map<string, Font> fonts;
 		map<string, SoundBuffer> soundBuffers;
 		map<string, Image> images;
-        // The Physfs input stream
         PhyfsStream archiveStream;
-		void openVerifyStream(string);
 };
 
 #endif // RESOURCEMANAGER_HPP

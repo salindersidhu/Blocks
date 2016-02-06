@@ -24,7 +24,7 @@ int main() {
 	RenderWindow *window = game.getWindow();
 	// Try to call functions from ResourceManager
 	try {
-		// Load all of the game's Images, Textures, Sounds and Fonts
+		// Load all of the Game's Images, Textures, Sounds and Fonts
 		resMan->loadImage("icon.png", "IM_ICON");
 		resMan->loadTexture("bh21.png", "TX_BH21");
 		resMan->loadTexture("bh22.png", "TX_BH22");
@@ -56,7 +56,7 @@ int main() {
 		window->setIcon(icon.getSize().x, icon.getSize().y,
 			icon.getPixelsPtr());
 		// Create and setup the main menu level
-		MenuLevel *mainMenuLevel = new MenuLevel("Blocks");
+		MenuLevel *mainMenuLevel = new MenuLevel("Blocks", resMan, window);
 		// Create Level 1 and setup level 1 GameGrid
 		GameGrid *gameGrid = new GameGrid(55, 167, 480, 470, 375, 327, 80,
 			winWidth, 640, resMan);
@@ -65,7 +65,7 @@ int main() {
 		gameGrid->addBlock("TX_BH21", 2, 0, 2, 131, 57, false, true);
 		gameGrid->addBlock("TX_BH32", 3, 0, 3, 221, 57, false, false);
 		gameGrid->addBlock("TX_BV32", 3, 5, 3, 58, 221, true, false);
-		GameLevel *gameLevel1 = new GameLevel("Level 1");
+		GameLevel *gameLevel1 = new GameLevel("Level 1", resMan, window);
 		gameLevel1->setGameGrid(gameGrid);
 		// Add levels to the Game
 		game.addLevel(mainMenuLevel);

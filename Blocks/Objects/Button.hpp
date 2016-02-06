@@ -22,15 +22,16 @@ class Button : public GameObject {
         void onMouseMove(Vector2i);
         void onMouseLeftRelease(Vector2i) {};
 		void onMouseRightRelease(Vector2i) {};
+		void reset() {};
         void update();
         void draw(RenderWindow*);
         // Get Button attribute functions
 		bool getIsClicked();
     private:
-        // ButtonObject functions
+        // ButtonObject private functions
         bool isHovering(int, int);
         void centerButtonText(float, float, float, float);
-        // ButtonObject variables
+        // ButtonObject private variables
         bool isMouseOver;
 		bool isClicked;
 		bool isSelected;

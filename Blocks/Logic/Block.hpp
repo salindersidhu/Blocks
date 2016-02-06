@@ -28,7 +28,7 @@ class Block{
         bool getIsVertical();
         string getTextureName();
     private:
-        // Block variables
+        // Block private variables
         float x;
         float y;
         float size;

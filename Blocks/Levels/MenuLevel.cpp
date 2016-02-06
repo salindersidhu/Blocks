@@ -1,6 +1,7 @@
 #include "MenuLevel.hpp"
 
-void MenuLevel::init() {
+MenuLevel::MenuLevel(string title, ResourceManager *resMan,
+    RenderWindow *window) : CoreLevel(title, resMan, window) {
     // Obtain the game's resources for this level
     Font font = resMan->getFont("FN_COPPER");
     SoundBuffer bgMusic = resMan->getSound("MS_BACKGROUND");
@@ -18,43 +19,31 @@ void MenuLevel::init() {
     quitButton->setSounds(hoverSound, clickSound);
     startButton->setColours(white, red);
     quitButton->setColours(white, red);
-    // Set the background texture and music
-    setBackgroundAndFont(background, font);
+    // Set the background texture, HUD font and background music
+    setHUD(background, font);
     setBackgroundMusic(bgMusic, 19.5, true);
     // Add the GameObject pointers to the object's container
     objects.push_back(startButton);
     objects.push_back(quitButton);
 }
 
-void MenuLevel::update() {
-    // Call parent update function
-    CoreLevel::update();
-    // If not transitioning
-    if (!isTransition) {
-        // Set fade out transition if any button was clicked
-        if (startButton->getIsClicked()) {
-            setTransition();
-            transitionEventName = "BUTTON_START";
-        }
-        if (quitButton->getIsClicked()) {
-            setTransition();
-            transitionEventName = "BUTTON_QUIT";
-        }
+void MenuLevel::transitionTriggerEvents() {
+    // Set fade out transition if any button was clicked
+    if (startButton->getIsClicked()) {
+        setTransitionTriggerEvent("BUTTON_START");
     }
-    // Process transition events
-    processTransition();
+    if (quitButton->getIsClicked()) {
+        setTransitionTriggerEvent("BUTTON_QUIT");
+    }
 }
 
-void MenuLevel::processTransition() {
-    if (fadeEffect->isDone() && isTransition) {
-        isTransition = false;   // No longer transitioning
-        // Process transition events
-        if (transitionEventName == "BUTTON_START") {
-            // Start button clicked, go to next level
-            isFinished = true;
-        } else {
-            // Quit button clicked, terminate the game
-            window->close();
-        }
+void MenuLevel::transitionEventHandler() {
+    // Process transition events
+    if (transitionEventName == "BUTTON_START") {
+        // Start button clicked, go to next level
+        isFinished = true;
+    } else {
+        // Quit button clicked, terminate the game
+        window->close();
     }
 }

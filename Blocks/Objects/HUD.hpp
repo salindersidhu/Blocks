@@ -13,17 +13,18 @@ class HUD : public GameObject {
         HUD(string, float, float, int, Color, Font, Texture);
         virtual ~HUD() {};
         // HUD function
+        void reset() {};
+        void update() {};
+        void draw(RenderWindow*);
         void onMouseMove(Vector2i) {};
         void onMouseLeftClick(Vector2i) {};
         void onMouseRightClick(Vector2i) {};
         void onMouseLeftRelease(Vector2i) {};
         void onMouseRightRelease(Vector2i) {};
-        void update() {};
-        void draw(RenderWindow*);
     private:
-        // HUD functions
+        // HUD private functions
 		void centerTitleText(float, float);
-        // HUD variables
+        // HUD private variables
         Texture bgTexture;
         Sprite bgSprite;
         Font textFont;

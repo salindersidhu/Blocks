@@ -15,7 +15,7 @@ class SaveObject {
         void clearAll();
         string getData(string);
     private:
-        // SaveObject variables
+        // SaveObject private variables
         map<string, string> saveDataMap;
 };
 

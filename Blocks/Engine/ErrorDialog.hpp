@@ -17,14 +17,15 @@ class ErrorDialog {
         // ErrorDialog functions
         void showMessage(string);
     private:
+        // ErrorDialog private variables
         string title;
 #ifdef _WIN32
-        // window handle for Windows OSes
+        // window handle for Windows
         HWND handle;
         // Windows dialog system
         void winDialog(string, UINT);
 #elif __linux__
-        // Linux zenity GTK+ dialog system
+        // Unix zenity GTK+ dialog system
         void zenity(string, string);
 #elif __APPLE__ && __MACH__
         // Mac OS X Cocoa dialog system

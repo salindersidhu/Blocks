@@ -12,17 +12,15 @@ using namespace std;
 class MenuLevel : public CoreLevel {
     public:
         // Constructor and destructor
-        MenuLevel(string title) : CoreLevel(title) {};
+        MenuLevel(string, ResourceManager*, RenderWindow*);
         virtual ~MenuLevel() {};
     private:
         // MenuLevel functions
-        void init();
-        void update();
-        void processTransition();
+        void transitionEventHandler();
+        void transitionTriggerEvents();
         // MenuLevel variables
         Button *startButton;
         Button *quitButton;
-        string transitionEventName;
 };
 
 #endif // MENULEVEL_HPP

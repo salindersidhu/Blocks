@@ -24,17 +24,17 @@ class Game {
         void addLevel(LevelObject*);
         void start();
     private:
-        // Game variables
+        // Game private functions
+        void gameLoop();
+        void processLevelComplete();
+        // Game private variables
         ResourceManager *resMan;
         RenderWindow *window;
         ErrorDialog *errorDialog;
+        SaveObject saveObj;
         LevelObject* currentLevel;
         vector<LevelObject*> levels;
-        SaveObject saveObj;
         unsigned int currentLevelCount;
-        // Game functions
-        void gameLoop();
-        void processLevelComplete();
 };
 
 #endif // GAME_HPP

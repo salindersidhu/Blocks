@@ -14,22 +14,23 @@ class BGMusic : public GameObject {
         BGMusic(SoundBuffer, float, bool);
         virtual ~BGMusic() {};
         // BGMusic functions
+        void stop();
+        void start();
+        void update();
+        void reset() {};
+        void draw(RenderWindow*) {};
         void onMouseMove(Vector2i) {};
         void onMouseLeftClick(Vector2i) {};
         void onMouseRightClick(Vector2i) {};
         void onMouseLeftRelease(Vector2i) {};
         void onMouseRightRelease(Vector2i) {};
-        void update();
-        void draw(RenderWindow*) {};
-        void start();
-        void stop();
     private:
-        // BGMusic variables
-        SoundBuffer bgMusicBuffer;
-        Sound bgMusic;
-        float loopStartTime;
-        bool isStarted;
+        // BGMusic private variables
         bool isLoop;
+        bool isStarted;
+        float loopStartTime;
+        Sound bgMusic;
+        SoundBuffer bgMusicBuffer;
 };
 
 #endif // BGMUSIC_HPP

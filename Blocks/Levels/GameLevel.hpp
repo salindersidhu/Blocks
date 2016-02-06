@@ -13,21 +13,18 @@ using namespace std;
 class GameLevel : public CoreLevel {
     public:
         // Constructor and destructor
-        GameLevel(string title) : CoreLevel(title) {};
+        GameLevel(string, ResourceManager*, RenderWindow*);
         virtual ~GameLevel() {};
         // GameLevel functions
         void setGameGrid(GameGrid*);
     private:
         // GameLevel functions
-        void init();
-        void update();
-        void restart();
-        void processTransition();
+        void transitionEventHandler();
+        void transitionTriggerEvents();
         // GameLevel variables
         Button *resetButton;
         Button *quitButton;
         GameGrid *gameGrid;
-        string transitionEventName;
 };
 
 #endif // GAMELEVEL_HPP

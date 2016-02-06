@@ -32,9 +32,9 @@ class GameGrid : public GameObject {
         string getClockTime();
         bool getIsGridComplete();
     private:
-        // GameGrid functions
+        // GameGrid private functions
         void centerInfoText();
-        // GameGrid variables
+        // GameGrid private variables
         Font textFont;
         Text infoText;
         Grid *grid;

@@ -22,7 +22,7 @@ class PhyfsStream : public InputStream {
 	    virtual Int64 tell();
 	    virtual Int64 getSize();
 	private:
-		// PhysfsStream variables
+		// PhysfsStream private variables
 		PHYSFS_File* file;
 };
 
