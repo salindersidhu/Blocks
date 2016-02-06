@@ -14,11 +14,10 @@ using namespace std;
 class LevelObject {
     public:
         // Constructor and destructor
-        LevelObject(ResourceManager*, RenderWindow*);
+        LevelObject(ResourceManager*, RenderWindow*, SaveObject*);
         ~LevelObject();
         // LevelObject functions
         bool getisFinished();
-        void setSaveObject(SaveObject*);
         void processEvents(Event*, Vector2i);
         virtual void draw();
         virtual void reset();

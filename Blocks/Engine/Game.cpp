@@ -10,6 +10,8 @@ Game::Game(string title, int width, int height, int bits, int FPS,
     errorDialog = new ErrorDialog(title, window);
     // Initialize and setup the ResourceManager
     resMan = new ResourceManager(resArchive);
+    // Initialize the SaveObject
+    saveObj = new SaveObject();
     // Set remaining instance variables
     currentLevelCount = 0;
 }
@@ -34,7 +36,7 @@ ResourceManager *Game::getResourceManager() {
 }
 
 RenderWindow *Game::getWindow() {
-    // Return the game RenderWindow
+    // Return the RenderWindow pointer
     return window;
 }
 
@@ -43,9 +45,12 @@ ErrorDialog *Game::getErrorDialog() {
     return errorDialog;
 }
 
+SaveObject *Game::getSaveObject() {
+    // Return the SaveObject pointer
+    return saveObj;
+}
+
 void Game::addLevel(LevelObject *level) {
-    // Set SaveObject to each LevelObject
-    level->setSaveObject(&saveObj);
     // Add LevelObject pointer to the collection of LevelObject pointers
 	levels.push_back(level);
 }

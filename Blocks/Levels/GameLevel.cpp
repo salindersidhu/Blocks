@@ -1,7 +1,8 @@
 #include "GameLevel.hpp"
 
 GameLevel::GameLevel(string title, ResourceManager *resMan,
-    RenderWindow *window) : CoreLevel(title, resMan, window) {
+    RenderWindow *window, SaveObject *saveObj) :
+    CoreLevel(title, resMan, window, saveObj) {
     // Obtain the game's resources for this level
     Font font = resMan->getFont("FN_COPPER");
     SoundBuffer bgMusic = resMan->getSound("MS_BACKGROUND");
@@ -37,6 +38,9 @@ void GameLevel::setGameGrid(GameGrid *_gameGrid) {
 void GameLevel::transitionTriggerEvents() {
     // Set fade out transition if Grid is complete
     if (gameGrid->getIsGridComplete()) {
+        // Save the time and number of moves
+        saveObj->addData("TIME", gameGrid->getClockTime());
+        saveObj->addData("MOVES", to_string(gameGrid->getNumMoves()));
         setTransitionTriggerEvent("GRID_COMPLETE");
     }
     // Set fade out transition if any button was clicked

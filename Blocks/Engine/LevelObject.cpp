@@ -1,9 +1,11 @@
 #include "LevelObject.hpp"
 
-LevelObject::LevelObject(ResourceManager *_resMan, RenderWindow *_window) {
+LevelObject::LevelObject(ResourceManager *_resMan, RenderWindow *_window,
+    SaveObject *_saveObj) {
     // Set ResourceManager and RenderWindow pointers
     resMan = _resMan;
     window = _window;
+    saveObj = _saveObj;
 }
 
 LevelObject::~LevelObject() {
@@ -67,11 +69,6 @@ void LevelObject::reset() {
         // Reset each GameObject
         (*iter)->reset();
     }
-}
-
-void LevelObject::setSaveObject(SaveObject *_saveObj) {
-    // Set the save object pointer
-    saveObj = _saveObj;
 }
 
 bool LevelObject::getisFinished() {

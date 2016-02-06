@@ -1,7 +1,8 @@
 #include "MenuLevel.hpp"
 
 MenuLevel::MenuLevel(string title, ResourceManager *resMan,
-    RenderWindow *window) : CoreLevel(title, resMan, window) {
+    RenderWindow *window, SaveObject *saveObj) :
+    CoreLevel(title, resMan, window, saveObj) {
     // Obtain the game's resources for this level
     Font font = resMan->getFont("FN_COPPER");
     SoundBuffer bgMusic = resMan->getSound("MS_BACKGROUND");

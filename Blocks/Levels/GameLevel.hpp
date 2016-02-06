@@ -6,6 +6,8 @@
 #include "CoreLevel.hpp"
 #include "../Objects/Button.hpp"
 #include "../Objects/GameGrid.hpp"
+#include "../Engine/SaveObject.hpp"
+#include "../Engine/SaveObject.hpp"
 #include "../Engine/ResourceManager.hpp"
 using namespace sf;
 using namespace std;
@@ -13,7 +15,7 @@ using namespace std;
 class GameLevel : public CoreLevel {
     public:
         // Constructor and destructor
-        GameLevel(string, ResourceManager*, RenderWindow*);
+        GameLevel(string, ResourceManager*, RenderWindow*, SaveObject*);
         virtual ~GameLevel() {};
         // GameLevel functions
         void setGameGrid(GameGrid*);

@@ -5,6 +5,7 @@
 #include <SFML/Graphics.hpp>
 #include "CoreLevel.hpp"
 #include "../Objects/Button.hpp"
+#include "../Engine/SaveObject.hpp"
 #include "../Engine/ResourceManager.hpp"
 using namespace sf;
 using namespace std;
@@ -12,7 +13,7 @@ using namespace std;
 class MenuLevel : public CoreLevel {
     public:
         // Constructor and destructor
-        MenuLevel(string, ResourceManager*, RenderWindow*);
+        MenuLevel(string, ResourceManager*, RenderWindow*, SaveObject*);
         virtual ~MenuLevel() {};
     private:
         // MenuLevel functions

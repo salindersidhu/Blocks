@@ -6,6 +6,7 @@
 #include "../Objects/HUD.hpp"
 #include "../Objects/BGMusic.hpp"
 #include "../Engine/SaveObject.hpp"
+#include "../Engine/SaveObject.hpp"
 #include "../Objects/FadeEffect.hpp"
 #include "../Engine/LevelObject.hpp"
 #include "../Engine/ResourceManager.hpp"
@@ -15,7 +16,7 @@ using namespace std;
 class CoreLevel : public LevelObject {
     public:
         // Constructor and destructor
-        CoreLevel(String, ResourceManager*, RenderWindow*);
+        CoreLevel(String, ResourceManager*, RenderWindow*, SaveObject*);
         virtual ~CoreLevel() {};
         // CoreLevel functions
         virtual void transitionEventHandler() {};

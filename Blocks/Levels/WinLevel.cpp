@@ -1,7 +1,8 @@
 #include "WinLevel.hpp"
 
 WinLevel::WinLevel(string title, ResourceManager *resMan,
-    RenderWindow *window) : CoreLevel(title, resMan, window) {
+    RenderWindow *window, SaveObject *saveObj) :
+    CoreLevel(title, resMan, window, saveObj) {
     // Obtain the game's resources for this level
     Font font = resMan->getFont("FN_COPPER");
     SoundBuffer bgMusic = resMan->getSound("SN_VICTORY");
@@ -20,7 +21,7 @@ WinLevel::WinLevel(string title, ResourceManager *resMan,
     nextButton->setColours(white, red);
     quitButton->setColours(white, red);
     // Create and set the Win info object
-    winInfo = new WinInfo(font, white, (float)window->getSize().x);
+    winInfo = new WinInfo(saveObj, font, white, (float)window->getSize().x);
     // Set the background texture, HUD font and background music
     setHUD(background, font);
     setBackgroundMusic(bgMusic, 0, false);

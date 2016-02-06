@@ -1,7 +1,8 @@
 #include "CoreLevel.hpp"
 
 CoreLevel::CoreLevel(String _title, ResourceManager *resMan,
-    RenderWindow *window) : LevelObject(resMan, window) {
+    RenderWindow *window, SaveObject *saveObj) :
+	LevelObject(resMan, window, saveObj) {
     // Create basic colour objects
     black = Color(0, 0, 0);
     white = Color(255, 255, 255);

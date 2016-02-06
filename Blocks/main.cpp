@@ -1,10 +1,11 @@
 #include <string>
 #include <exception>
 #include "Engine/Game.hpp"
-#include "Objects/GameGrid.hpp"
-#include "Levels/MenuLevel.hpp"
 #include "Levels/WinLevel.hpp"
 #include "Levels/GameLevel.hpp"
+#include "Objects/GameGrid.hpp"
+#include "Levels/MenuLevel.hpp"
+#include "Engine/SaveObject.hpp"
 #include "Engine/ResourceManager.hpp"
 using namespace sf;
 using namespace std;
@@ -23,6 +24,7 @@ int main() {
 	// Obtain the ResourceManager and RenderWindow from Game
 	ResourceManager *resMan = game.getResourceManager();
 	RenderWindow *window = game.getWindow();
+	SaveObject *saveObj = game.getSaveObject();
 	// Try to call functions from ResourceManager
 	try {
 		// Load all of the Game's Images, Textures, Sounds and Fonts
@@ -57,7 +59,8 @@ int main() {
 		window->setIcon(icon.getSize().x, icon.getSize().y,
 			icon.getPixelsPtr());
 		// Create and setup the main menu level
-		MenuLevel *mainMenuLevel = new MenuLevel(title, resMan, window);
+		MenuLevel *mainMenuLevel = new MenuLevel(title, resMan, window,
+			saveObj);
 		// Create Level 1 and setup level 1 GameGrid
 		GameGrid *gameGrid1 = new GameGrid(55, 167, 480, 470, 375, 327, 80,
 			winWidth, 640, resMan);
@@ -66,9 +69,10 @@ int main() {
 		gameGrid1->addBlock("TX_BH21", 2, 0, 2, 131, 57, false, true);
 		gameGrid1->addBlock("TX_BH32", 3, 0, 3, 221, 57, false, false);
 		gameGrid1->addBlock("TX_BV32", 3, 5, 3, 58, 221, true, false);
-		GameLevel *gameLevel1 = new GameLevel("Level 1", resMan, window);
+		GameLevel *gameLevel1 = new GameLevel("Level 1", resMan, window,
+			saveObj);
 		gameLevel1->setGameGrid(gameGrid1);
-		WinLevel *winLevel1 = new WinLevel("Level 1", resMan, window);
+		WinLevel *winLevel1 = new WinLevel("Level 1", resMan, window, saveObj);
 		// Create Level 2 and setup level 2 GameGrid
 		GameGrid *gameGrid2 = new GameGrid(55, 167, 480, 470, 375, 327, 80,
 			winWidth, 640, resMan);
@@ -78,9 +82,10 @@ int main() {
 		gameGrid2->addBlock("TX_BH31", 3, 0, 3, 221, 57, false, false);
 		gameGrid2->addBlock("TX_BV25", 2, 3, 3, 58, 131, true, false);
 		gameGrid2->addBlock("TX_BH23", 2, 4, 4, 131, 57, false, false);
-		GameLevel *gameLevel2 = new GameLevel("Level 2", resMan, window);
+		GameLevel *gameLevel2 = new GameLevel("Level 2", resMan, window,
+			saveObj);
 		gameLevel2->setGameGrid(gameGrid2);
-		WinLevel *winLevel2 = new WinLevel("Level 2", resMan, window);
+		WinLevel *winLevel2 = new WinLevel("Level 2", resMan, window, saveObj);
 		GameGrid *gameGrid3 = new GameGrid(55, 167, 480, 470, 375, 327, 80,
 			winWidth, 640, resMan);
 		gameGrid3->addBlock("TX_BV25", 2, 0, 0, 58, 131, true, false);
@@ -93,9 +98,10 @@ int main() {
 		gameGrid3->addBlock("TX_BV24", 2, 2, 4, 58, 131, true, false);
 		gameGrid3->addBlock("TX_BV31", 3, 3, 2, 58, 221, true, false);
 		gameGrid3->addBlock("TX_BV26", 2, 4, 3, 58, 131, true, false);
-		GameLevel *gameLevel3 = new GameLevel("Level 3", resMan, window);
+		GameLevel *gameLevel3 = new GameLevel("Level 3", resMan, window,
+			saveObj);
 		gameLevel3->setGameGrid(gameGrid3);
-		WinLevel *winLevel3 = new WinLevel("Level 3", resMan, window);
+		WinLevel *winLevel3 = new WinLevel("Level 3", resMan, window, saveObj);
 		// Add levels to the Game
 		game.addLevel(mainMenuLevel);
 		game.addLevel(gameLevel1);

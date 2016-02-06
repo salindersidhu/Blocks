@@ -21,6 +21,7 @@ class Game {
         ResourceManager *getResourceManager();
         RenderWindow *getWindow();
         ErrorDialog *getErrorDialog();
+        SaveObject *getSaveObject();
         void addLevel(LevelObject*);
         void start();
     private:
@@ -31,7 +32,7 @@ class Game {
         ResourceManager *resMan;
         RenderWindow *window;
         ErrorDialog *errorDialog;
-        SaveObject saveObj;
+        SaveObject *saveObj;
         LevelObject* currentLevel;
         vector<LevelObject*> levels;
         unsigned int currentLevelCount;

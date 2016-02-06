@@ -3,6 +3,7 @@
 
 #include <string>
 #include <SFML/Graphics.hpp>
+#include "../Engine/SaveObject.hpp"
 #include "../Engine/GameObject.hpp"
 using namespace sf;
 using namespace std;
@@ -10,11 +11,11 @@ using namespace std;
 class WinInfo : public GameObject {
     public:
         // Constructor and destructor
-        WinInfo(Font, Color, float);
+        WinInfo(SaveObject*, Font, Color, float);
         virtual ~WinInfo() {};
         // WinInfo function
+        void update();
         void reset() {};
-        void update() {};
         void draw(RenderWindow*);
         void onMouseMove(Vector2i) {};
         void onMouseLeftClick(Vector2i) {};
@@ -31,6 +32,7 @@ class WinInfo : public GameObject {
         Text totalTimeText;
         Text totalMovesText;
         Color textColor;
+        SaveObject *saveObj;
 };
 
 #endif // WININFO_HPP
