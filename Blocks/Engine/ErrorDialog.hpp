@@ -23,7 +23,7 @@ class ErrorDialog {
         // window handle for Windows
         HWND handle;
         // Windows dialog system
-        void winDialog(string, UINT);
+        void windiag(string, UINT);
 #elif __linux__
         // Unix zenity GTK+ dialog system
         void zenity(string, string);

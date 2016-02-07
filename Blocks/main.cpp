@@ -86,6 +86,7 @@ int main() {
 			saveObj);
 		gameLevel2->setGameGrid(gameGrid2);
 		WinLevel *winLevel2 = new WinLevel("Level 2", resMan, window, saveObj);
+		// Create Level 3 and setup level 3 GameGrid
 		GameGrid *gameGrid3 = new GameGrid(55, 167, 480, 470, 375, 327, 80,
 			winWidth, 640, resMan);
 		gameGrid3->addBlock("TX_BV25", 2, 0, 0, 58, 131, true, false);
@@ -102,7 +103,129 @@ int main() {
 			saveObj);
 		gameLevel3->setGameGrid(gameGrid3);
 		WinLevel *winLevel3 = new WinLevel("Level 3", resMan, window, saveObj);
-		// Add levels to the Game
+		// Create Level 4 and setup level 4 GameGrid
+		GameGrid *gameGrid4 = new GameGrid(55, 167, 480, 470, 375, 327, 80,
+			winWidth, 640, resMan);
+		gameGrid4->addBlock("TX_BH21", 2, 0, 2, 131, 57, false, true);
+		gameGrid4->addBlock("TX_BH31", 3, 0, 3, 221, 57, false, false);
+		gameGrid4->addBlock("TX_BV25", 2, 2, 1, 58, 131, true, false);
+		gameGrid4->addBlock("TX_BV23", 2, 0, 4, 58, 131, true, false);
+		gameGrid4->addBlock("TX_BV22", 2, 1, 4, 58, 131, true, false);
+		gameGrid4->addBlock("TX_BV26", 2, 2, 4, 58, 131, true, false);
+		gameGrid4->addBlock("TX_BV31", 3, 4, 1, 58, 221, true, false);
+		gameGrid4->addBlock("TX_BV21", 2, 5, 2, 58, 131, true, false);
+		gameGrid4->addBlock("TX_BH25", 2, 4, 4, 131, 57, false, false);
+		gameGrid4->addBlock("TX_BH23", 2, 4, 5, 131, 57, false, false);
+		GameLevel *gameLevel4 = new GameLevel("Level 4", resMan, window,
+			saveObj);
+		gameLevel4->setGameGrid(gameGrid4);
+		WinLevel *winLevel4 = new WinLevel("Level 4", resMan, window, saveObj);
+		// Create Level 5 and setup level 5 GameGrid
+		GameGrid *gameGrid5 = new GameGrid(55, 167, 480, 470, 375, 327, 80,
+			winWidth, 640, resMan);
+		gameGrid5->addBlock("TX_BH32", 3, 2, 0, 221, 57, false, false);
+		gameGrid5->addBlock("TX_BH31", 3, 0, 1, 221, 57, false, false);
+		gameGrid5->addBlock("TX_BH21", 2, 0, 2, 131, 57, false, true);
+		gameGrid5->addBlock("TX_BH32", 3, 0, 3, 221, 57, false, false);
+		gameGrid5->addBlock("TX_BH24", 2, 4, 4, 131, 57, false, false);
+		gameGrid5->addBlock("TX_BH22", 2, 4, 5, 131, 57, false, false);
+		gameGrid5->addBlock("TX_BV32", 3, 4, 1, 58, 221, true, false);
+		gameGrid5->addBlock("TX_BV25", 2, 5, 2, 58, 131, true, false);
+		gameGrid5->addBlock("TX_BV24", 2, 0, 4, 58, 131, true, false);
+		gameGrid5->addBlock("TX_BV23", 2, 2, 4, 58, 131, true, false);
+		GameLevel *gameLevel5 = new GameLevel("Level 5", resMan, window,
+			saveObj);
+		gameLevel5->setGameGrid(gameGrid5);
+		WinLevel *winLevel5 = new WinLevel("Level 5", resMan, window, saveObj);
+		// Create Level 6 and setup level 6 GameGrid
+		GameGrid *gameGrid6 = new GameGrid(55, 167, 480, 470, 375, 327, 80,
+			winWidth, 640, resMan);
+		gameGrid6->addBlock("TX_BH21", 2, 0, 2, 131, 57, false, true);
+		gameGrid6->addBlock("TX_BH23", 2, 3, 3, 131, 57, false, false);
+		gameGrid6->addBlock("TX_BH26", 2, 1, 4, 131, 57, false, false);
+		gameGrid6->addBlock("TX_BH32", 3, 0, 5, 221, 57, false, false);
+		gameGrid6->addBlock("TX_BV31", 3, 2, 1, 58, 221, true, false);
+		gameGrid6->addBlock("TX_BV25", 2, 5, 1, 58, 131, true, false);
+		gameGrid6->addBlock("TX_BV22", 2, 0, 3, 58, 131, true, false);
+		gameGrid6->addBlock("TX_BV23", 2, 3, 4, 58, 131, true, false);
+		gameGrid6->addBlock("TX_BV26", 2, 4, 4, 58, 131, true, false);
+		gameGrid6->addBlock("TX_BV32", 3, 5, 3, 58, 221, true, false);
+		GameLevel *gameLevel6 = new GameLevel("Level 6", resMan, window,
+			saveObj);
+		gameLevel6->setGameGrid(gameGrid6);
+		WinLevel *winLevel6 = new WinLevel("Level 6", resMan, window, saveObj);
+		// Create Level 7 and setup level 7 GameGrid
+		GameGrid *gameGrid7 = new GameGrid(55, 167, 480, 470, 375, 327, 80,
+			winWidth, 640, resMan);
+		gameGrid7->addBlock("TX_BH25", 2, 0, 0, 131, 57, false, false);
+		gameGrid7->addBlock("TX_BH32", 3, 3, 0, 221, 57, false, false);
+		gameGrid7->addBlock("TX_BH23", 2, 4, 1, 131, 57, false, false);
+		gameGrid7->addBlock("TX_BH21", 2, 1, 2, 131, 57, false, true);
+		gameGrid7->addBlock("TX_BH26", 2, 3, 3, 131, 57, false, false);
+		gameGrid7->addBlock("TX_BH22", 2, 0, 4, 131, 57, false, false);
+		gameGrid7->addBlock("TX_BH31", 3, 3, 5, 221, 57, false, false);
+		gameGrid7->addBlock("TX_BV22", 2, 3, 1, 58, 131, true, false);
+		gameGrid7->addBlock("TX_BV24", 2, 0, 2, 58, 131, true, false);
+		gameGrid7->addBlock("TX_BV31", 3, 2, 3, 58, 221, true, false);
+		gameGrid7->addBlock("TX_BV32", 3, 5, 2, 58, 221, true, false);
+		GameLevel *gameLevel7 = new GameLevel("Level 7", resMan, window,
+			saveObj);
+		gameLevel7->setGameGrid(gameGrid7);
+		WinLevel *winLevel7 = new WinLevel("Level 7", resMan, window, saveObj);
+		// Create Level 8 and setup level 8 GameGrid
+		GameGrid *gameGrid8 = new GameGrid(55, 167, 480, 470, 375, 327, 80,
+			winWidth, 640, resMan);
+		gameGrid8->addBlock("TX_BH25", 2, 0, 0, 131, 57, false, false);
+		gameGrid8->addBlock("TX_BH24", 2, 4, 5, 131, 57, false, false);
+		gameGrid8->addBlock("TX_BV31", 3, 5, 1, 58, 221, true, false);
+		gameGrid8->addBlock("TX_BH23", 2, 4, 0, 131, 57, false, false);
+		gameGrid8->addBlock("TX_BV22", 2, 2, 0, 58, 131, true, false);
+		gameGrid8->addBlock("TX_BH21", 2, 1, 2, 131, 57, false, true);
+		gameGrid8->addBlock("TX_BV32", 3, 0, 2, 58, 221, true, false);
+		gameGrid8->addBlock("TX_BH26", 2, 0, 1, 131, 57, false, false);
+		gameGrid8->addBlock("TX_BV22", 2, 3, 4, 58, 131, true, false);
+		gameGrid8->addBlock("TX_BH22", 2, 0, 5, 131, 57, false, false);
+		gameGrid8->addBlock("TX_BH32", 3, 1, 3, 221, 57, false, false);
+		gameGrid8->addBlock("TX_BH23", 2, 4, 4, 131, 57, false, false);
+		GameLevel *gameLevel8 = new GameLevel("Level 8", resMan, window,
+			saveObj);
+		gameLevel8->setGameGrid(gameGrid8);
+		WinLevel *winLevel8 = new WinLevel("Level 8", resMan, window, saveObj);
+		// Create Level 9 and setup Level 9 GameGrid
+		GameGrid *gameGrid9 = new GameGrid(55, 167, 480, 470, 375, 327, 80,
+			winWidth, 640, resMan);
+		gameGrid9->addBlock("TX_BH21", 2, 2, 2, 131, 57, false, true);
+		gameGrid9->addBlock("TX_BV22", 2, 4, 1, 58, 131, true, false);
+		gameGrid9->addBlock("TX_BV25", 2, 4, 3, 58, 131, true, false);
+		gameGrid9->addBlock("TX_BH23", 2, 3, 0, 131, 57, false, false);
+		gameGrid9->addBlock("TX_BH31", 3, 1, 4, 221, 57, false, false);
+		gameGrid9->addBlock("TX_BH23", 2, 2, 3, 131, 57, false, false);
+		gameGrid9->addBlock("TX_BV24", 2, 1, 2, 58, 131, true, false);
+		gameGrid9->addBlock("TX_BV26", 2, 2, 0, 58, 131, true, false);
+		GameLevel *gameLevel9 = new GameLevel("Level 9", resMan, window,
+			saveObj);
+		gameLevel9->setGameGrid(gameGrid9);
+		WinLevel *winLevel9 = new WinLevel("Level 9", resMan, window, saveObj);
+		// Create Level 10 and setup Level 10 GameGrid
+		GameGrid *gameGrid10 = new GameGrid(55, 167, 480, 470, 375, 327, 80,
+			winWidth, 640, resMan);
+		gameGrid10->addBlock("TX_BH21", 2, 1, 2, 131, 57, false, true);
+		gameGrid10->addBlock("TX_BV31", 3, 4, 1, 58, 221, true, false);
+		gameGrid10->addBlock("TX_BV32", 3, 5, 1, 58, 221, true, false);
+		gameGrid10->addBlock("TX_BV32", 3, 3, 2, 58, 221, true, false);
+		gameGrid10->addBlock("TX_BV22", 2, 3, 0, 58, 131, true, false);
+		gameGrid10->addBlock("TX_BV26", 2, 2, 3, 58, 131, true, false);
+		gameGrid10->addBlock("TX_BH32", 3, 3, 5, 221, 57, false, false);
+		gameGrid10->addBlock("TX_BV25", 2, 0, 4, 58, 131, true, false);
+		gameGrid10->addBlock("TX_BH22", 2, 0, 3, 131, 57, false, false);
+		gameGrid10->addBlock("TX_BH23", 2, 0, 1, 131, 57, false, false);
+		gameGrid10->addBlock("TX_BH25", 2, 0, 0, 131, 57, false, false);
+		GameLevel *gameLevel10 = new GameLevel("Level 10", resMan, window,
+			saveObj);
+		gameLevel10->setGameGrid(gameGrid10);
+		WinLevel *winLevel10 = new WinLevel("Level 10", resMan, window,
+			saveObj);
+		// Add all levels to the Game
 		game.addLevel(mainMenuLevel);
 		game.addLevel(gameLevel1);
 		game.addLevel(winLevel1);
@@ -110,6 +233,20 @@ int main() {
 		game.addLevel(winLevel2);
 		game.addLevel(gameLevel3);
 		game.addLevel(winLevel3);
+		game.addLevel(gameLevel4);
+		game.addLevel(winLevel4);
+		game.addLevel(gameLevel5);
+		game.addLevel(winLevel5);
+		game.addLevel(gameLevel6);
+		game.addLevel(winLevel6);
+		game.addLevel(gameLevel7);
+		game.addLevel(winLevel7);
+		game.addLevel(gameLevel8);
+		game.addLevel(winLevel8);
+		game.addLevel(gameLevel9);
+		game.addLevel(winLevel9);
+		game.addLevel(gameLevel10);
+		game.addLevel(winLevel10);
 		// Start the Game
 		game.start();
 	} catch(exception &ex) {

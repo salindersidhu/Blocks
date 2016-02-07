@@ -9,22 +9,22 @@ ErrorDialog::ErrorDialog(string _title, RenderWindow *window) {
 }
 
 #ifdef _WIN32
-void ErrorDialog::winDialog(string message, UINT flags) {
+void ErrorDialog::windiag(string message, UINT flags) {
     MessageBoxA(handle, message.c_str(), title.c_str(), flags);
 }
 
 #elif __linux__
 void ErrorDialog::zenity(string message, string type) {
-    string cmd("zenity --" + type + " --title=" + title + " --text='"
-		+ message + "'");
+    string cmd("zenity --" + type + " --title=" + title + " --text='" +
+        message + "'");
     // Execute the zenity command
     system(cmd.c_str());
 }
 
 #elif __APPLE__ && __MACH__
-void ErrorDialog::cocoa(string icon, string message) {
+void ErrorDialog::cocoa(string message, string icon) {
     string cmd("~/CocoaDialog.app/Contents/MacOS/CocoaDialog ok-msgbox --icon"
-		" " + icon + " --text '" + message + "' --title '" + title + "'");
+        " " + icon + " --text '" + message + "' --title '" + title + "'");
     // Execute the cocoa dialog command
     system(cmd.c_str());
 }
@@ -32,10 +32,10 @@ void ErrorDialog::cocoa(string icon, string message) {
 
 void ErrorDialog::showMessage(string message) {
 #ifdef _WIN32
-    winDialog(message, MB_ICONERROR | MB_OK);
+    windiag(message, MB_ICONERROR | MB_OK);
 #elif __linux__
     zenity(message, "error");
 #elif __APPLE__ && __MACH__
-    cocoa("x", message);
+    cocoa(message, "x");
 #endif
 }
