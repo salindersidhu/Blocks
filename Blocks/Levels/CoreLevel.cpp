@@ -2,7 +2,7 @@
 
 CoreLevel::CoreLevel(String _title, ResourceManager *resMan,
     RenderWindow *window, SaveObject *saveObj) :
-	LevelObject(resMan, window, saveObj) {
+    LevelObject(resMan, window, saveObj) {
     // Create basic colour objects
     black = Color(0, 0, 0);
     white = Color(255, 255, 255);
@@ -34,7 +34,7 @@ void CoreLevel::update() {
     if (!isStarted) {
         // Ensure FadeTrans is the last object in the list to draw
         if (find(objects.begin(), objects.end(), fadeEffect) ==
-			objects.end()) {
+            objects.end()) {
             // Add fadeEffect pointer if it doesn't exist in the objects
             objects.push_back(fadeEffect);
         }
@@ -74,10 +74,10 @@ void CoreLevel::setBackgroundMusic(SoundBuffer musicBuffer, float loopTime,
 void CoreLevel::setHUD(Texture background, Font font) {
     // Create a new HUD object pointer
     displayHUD = new HUD(title, (float)window->getSize().x, 15, 60, white,
-		font, background);
+        font, background);
     // Create a new FadeTrans object
     fadeEffect = new FadeEffect(7, window->getSize().x, window->getSize().y,
-		black);
+        black);
     // Add the GameObject pointers to the object's container
     objects.push_back(displayHUD);
 }

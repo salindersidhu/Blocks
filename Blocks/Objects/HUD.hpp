@@ -23,7 +23,7 @@ class HUD : public GameObject {
         void onMouseRightRelease(Vector2i) {};
     private:
         // HUD private functions
-		void centerTitleText(float, float);
+        void centerTitleText(float, float);
         // HUD private variables
         Texture bgTexture;
         Sprite bgSprite;

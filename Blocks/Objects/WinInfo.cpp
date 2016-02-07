@@ -5,6 +5,7 @@ WinInfo::WinInfo(SaveObject *_saveObj, Font font, Color col, float winWidth) {
     textColor = col;
     textFont = font;
     saveObj = _saveObj;
+    isUpdateOnce = true;
     // Configure the congrats text
     congratsText.setFont(textFont);
     congratsText.setString("CONGRATULATIONS!");
@@ -29,9 +30,20 @@ WinInfo::WinInfo(SaveObject *_saveObj, Font font, Color col, float winWidth) {
     totalMovesText.setPosition(140, 425);
 }
 
+void WinInfo::reset() {
+    // Reset the update variable
+    isUpdateOnce = true;
+}
+
 void WinInfo::update() {
-    totalTimeText.setString("Total Time:        " + saveObj->getData("TIME"));
-    totalMovesText.setString("Total Moves:      " + saveObj->getData("MOVES"));
+    // Update the total time and total move strings only once
+    if (isUpdateOnce) {
+        totalTimeText.setString("Total Time:        " +
+            saveObj->getData("TIME"));
+        totalMovesText.setString("Total Moves:      " +
+            saveObj->getData("MOVES"));
+        isUpdateOnce = false;
+    }
 }
 
 void WinInfo::draw(RenderWindow *window) {

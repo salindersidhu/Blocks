@@ -2,18 +2,18 @@
 
 Button::Button(string title, int size, Font font, Texture normalTexture,
 	Texture hoverTexture) {
-    // Configure the Sprites
+	// Configure the Sprites
 	buttonNormalTexture = normalTexture;
 	buttonHoverTexture = hoverTexture;
-    buttonNormalSprite.setTexture(buttonNormalTexture);
-    buttonHoverSprite.setTexture(buttonHoverTexture);
-    // Configure the Text
+	buttonNormalSprite.setTexture(buttonNormalTexture);
+	buttonHoverSprite.setTexture(buttonHoverTexture);
+	// Configure the Text
 	textFont = font;
 	buttonText.setFont(textFont);
-    buttonText.setString(title);
-    buttonText.setCharacterSize((unsigned int)size);
-    // Set remaining instance variables
-    isMouseOver = false;
+	buttonText.setString(title);
+	buttonText.setCharacterSize((unsigned int)size);
+	// Set remaining instance variables
+	isMouseOver = false;
 	isPlayHoverSound = true;
 	isClicked = false;
 	isSelected = false;
@@ -40,21 +40,21 @@ void Button::setPosition(float x, float y) {
 	buttonNormalSprite.setPosition(x, y);
 	buttonHoverSprite.setPosition(x, y);
 	// Configure the text to the new position
-    FloatRect dims = buttonNormalSprite.getGlobalBounds();
+	FloatRect dims = buttonNormalSprite.getGlobalBounds();
 	centerButtonText(x, y, x + dims.width, y + dims.height);
 }
 
 void Button::onMouseLeftClick(Vector2i mousePosition) {
 	// Play click sound effect if left button clicked
-    if (isMouseOver && !isSelected) {
+	if (isMouseOver && !isSelected) {
 		clickSound.play();
 		isSelected = true;
-    }
+	}
 }
 
 void Button::onMouseMove(Vector2i mousePosition) {
 	// Set isMouseOver to true if mouse is hovering over the Button
-    isMouseOver = isHovering(mousePosition.x, mousePosition.y);
+	isMouseOver = isHovering(mousePosition.x, mousePosition.y);
 	// Play hover sound effect only once if button is hovered
 	if (isMouseOver) {
 		if (isPlayHoverSound) {
@@ -75,19 +75,19 @@ void Button::update() {
 }
 
 void Button::draw(RenderWindow *window) {
-    if (isMouseOver) {
-        // Draw the hover Sprite
+	if (isMouseOver) {
+		// Draw the hover Sprite
 		window->draw(buttonHoverSprite);
-        // Set text with hover colour
-        buttonText.setColor(hoverColour);
-    } else {
-        // Draw the normal Sprite
+		// Set text with hover colour
+		buttonText.setColor(hoverColour);
+	} else {
+		// Draw the normal Sprite
 		window->draw(buttonNormalSprite);
-        // Set text with normal colour
-        buttonText.setColor(normalColour);
-    }
-    // Draw the Text
-    window->draw(buttonText);
+		// Set text with normal colour
+		buttonText.setColor(normalColour);
+	}
+	// Draw the Text
+	window->draw(buttonText);
 }
 
 bool Button::getIsClicked() {
@@ -100,19 +100,22 @@ bool Button::getIsClicked() {
 }
 
 bool Button::isHovering(int mouseX, int mouseY) {
-    // Obtain the positions dimensions of the Button's Sprite
-    FloatRect dims = buttonNormalSprite.getGlobalBounds();
-    Vector2f pos = buttonNormalSprite.getPosition();
-    // Return if mouse is hovering over the Button's Sprite
+	// Obtain the positions dimensions of the Button's Sprite
+	FloatRect dims = buttonNormalSprite.getGlobalBounds();
+	Vector2f pos = buttonNormalSprite.getPosition();
+	// Return if mouse is hovering over the Button's Sprite
 	bool widthHover(mouseX >= pos.x && mouseX <= pos.x + dims.width);
 	bool heightHover(mouseY >= pos.y && mouseY <= pos.y + dims.height);
-    return widthHover && heightHover;
+	return widthHover && heightHover;
 }
 
-void Button::centerButtonText(float sX, float sY, float eX, float eY) {
-	FloatRect r;
+void Button::centerButtonText(float startX, float startY, float endX,
+	float endY) {
+	FloatRect rect;
 	// Center the text in the rectangular area
-	r = buttonText.getLocalBounds();
-	buttonText.setOrigin((r.left + r.width) / 2, (r.top + r.height) / 2);
-	buttonText.setPosition(sX + ((eX - sX) / 2), (sY - 5) + ((eY - sY) / 2));
+	rect = buttonText.getLocalBounds();
+	buttonText.setOrigin((rect.left + rect.width) / 2,
+		(rect.top + rect.height) / 2);
+	buttonText.setPosition(startX + ((endX - startX) / 2),
+		(startY - 5) + ((endY - startY) / 2));
 }

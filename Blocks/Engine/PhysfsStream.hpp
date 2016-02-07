@@ -10,7 +10,7 @@ using namespace std;
 
 class PhyfsStream : public InputStream {
 	public:
-        // Constructor and destructor
+		// Constructor and destructor
 		PhyfsStream() {};
 		virtual ~PhyfsStream();
 		// PhysfsStream functions
@@ -18,9 +18,9 @@ class PhyfsStream : public InputStream {
 		bool open(const string*);
 		void close();
 		virtual Int64 read(void*, Int64);
-	    virtual Int64 seek(Int64);
-	    virtual Int64 tell();
-	    virtual Int64 getSize();
+		virtual Int64 seek(Int64);
+		virtual Int64 tell();
+		virtual Int64 getSize();
 	private:
 		// PhysfsStream private variables
 		PHYSFS_File* file;

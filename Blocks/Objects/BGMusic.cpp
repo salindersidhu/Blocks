@@ -24,7 +24,7 @@ void BGMusic::stop() {
 void BGMusic::update() {
     // Loop audio from the loop start point when stops playing
     if (isLoop && isStarted && bgMusic.getStatus() ==
-		SoundSource::Status::Stopped) {
+        SoundSource::Status::Stopped) {
         bgMusic.setPlayingOffset(seconds(loopStartTime));
         bgMusic.play();
     }

@@ -14,26 +14,26 @@ using namespace std;
 class ResourceManager {
     public:
         // Constructor and destructor
-		ResourceManager(string);
+        ResourceManager(string);
         virtual ~ResourceManager();
         // Load basic game elements
         void loadTexture(string, string);
         void loadFont(string, string);
-		void loadImage(string, string);
-		void loadSound(string, string);
-		// Get basic game elements
+        void loadImage(string, string);
+        void loadSound(string, string);
+        // Get basic game elements
         Texture getTexture(string);
         Font getFont(string);
-		Image getImage(string);
+        Image getImage(string);
         SoundBuffer getSound(string);
     private:
         // ResourceManager private functions
-		void openVerifyStream(string);
+        void openVerifyStream(string);
         // ResourceManager private variables
         map<string, Texture> textures;
         map<string, Font> fonts;
-		map<string, SoundBuffer> soundBuffers;
-		map<string, Image> images;
+        map<string, SoundBuffer> soundBuffers;
+        map<string, Image> images;
         PhyfsStream archiveStream;
 };
 

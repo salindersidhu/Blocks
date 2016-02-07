@@ -14,8 +14,8 @@ class WinInfo : public GameObject {
         WinInfo(SaveObject*, Font, Color, float);
         virtual ~WinInfo() {};
         // WinInfo function
+        void reset();
         void update();
-        void reset() {};
         void draw(RenderWindow*);
         void onMouseMove(Vector2i) {};
         void onMouseLeftClick(Vector2i) {};
@@ -24,7 +24,7 @@ class WinInfo : public GameObject {
         void onMouseRightRelease(Vector2i) {};
     private:
         // WinInfo private functions
-		void centerText(Text*, float, float);
+        void centerText(Text*, float, float);
         // WinInfo private variables
         Font textFont;
         Text congratsText;
@@ -33,6 +33,7 @@ class WinInfo : public GameObject {
         Text totalMovesText;
         Color textColor;
         SaveObject *saveObj;
+        bool isUpdateOnce;
 };
 
 #endif // WININFO_HPP
