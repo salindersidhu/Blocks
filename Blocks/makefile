@@ -22,7 +22,7 @@ all: $(OBJECTS) $(EXECUTABLE)
 # Rules for compiling all sources, building the project and adding the resource archive file
 $(EXECUTABLE): $(OBJECTS)
 	@printf "BUILDING PROJECT..."
-	@$(CC) $(LDFLAGS) $(OBJECTS) -o $@
+	@$(CC) $(OBJECTS) $(LDFLAGS) -o $@
 	@printf "DONE\n"
 	@printf "ADDING RESOURCE..."
 	@cp Resources/data.7z .
