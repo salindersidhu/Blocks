@@ -2,6 +2,12 @@
 
 ##Description:
 Blocks is a 2D puzzle game where the objective is to rearrange the blocks (horizontally or vertically) so that you can push the red block out of the board. The blocks can only move in the direction of their orientation. Blocks positioned vertically can only move vertically, likewise, blocks positioned horizontally can only move horizontally. To slide a block, simply click on the block to select it and move the mouse, release the mouse to position the block. The number of moves and amount of time taken are displayed when the level is successfully completed.
+<p align="center">
+	<img src="http://i1379.photobucket.com/albums/ah129/SalinderSid/screenshot1_zpsiq71k6xv.png" alt="Main Menu"/>
+	<img src="http://i1379.photobucket.com/albums/ah129/SalinderSid/screenshot2_zpswnvgdof9.png" alt="Level 1"/>
+    <img src="http://i1379.photobucket.com/albums/ah129/SalinderSid/screenshot3_zpsakgqddvu.png" alt="Level 5"/>
+	<img src="http://i1379.photobucket.com/albums/ah129/SalinderSid/screenshot4_zpsgdpgwkk1.png" alt="Level 5 Results"/>
+</p>
 
 ##Supports:
 - Microsoft Windows 7, 8, 8.1 and 10
@@ -32,7 +38,7 @@ Blocks is a 2D puzzle game where the objective is to rearrange the blocks (horiz
 6. Click `Configure` and then close `CMAKE`
 7. Navigate to the `bin` folder and open `PhysicsFS.sln` with `Microsoft Visual Studio 2015`
 8. Set the `Solutions Configurations` to `Release` and set the `Solutions Platform` to `Win32`
-9. Right click  `ALL_BUILD` in the `Class View` pane and select `Build`
+9. Right click  `ALL_BUILD` in the `Solution Explorer` pane and select `Build`
 10. Create a new folder called `PHYSFS-2.0.3` at `C:\` and create the following folders inside of it: `bin`, `include` and `lib`
 11. Navigate to your `bin\release` folder, copy `physfs.dll` and `test_physfs.exe` to `C:\PHYSFS-2.0.3\bin`
 12. Copy the remaining files `physfs.exp`, `physfs.lib`, `test_physfs.exp` and `test_physfs.lib` to `C:\PHYSFS-2.0.3\lib`
@@ -43,9 +49,9 @@ Blocks is a 2D puzzle game where the objective is to rearrange the blocks (horiz
 1. Git clone this repo
 2. Open the project solution, `Blocks.sln` in `Microsoft Visual Studio 2015`
 3. Set the `Solutions Configurations` to `Release` and set the `Solutions Platform` to `x86`
-4. Right click the `Blocks` project in the `Class View` pane and select `Build`
+4. Right click the `Blocks` project in the `Solution Explorer` pane and select `Build`
 5. If successful, `Blocks.exe` will build in the `Release` folder in your repo's root folder
-6. Copy the `Data.7z` resource file from `Blocks\Resources` to the `Release` folder where `Blocks.exe` is located
+6. Copy both `Data.7z` and `openal32.dll` files from `Blocks\Resources` to the `Release` folder where `Blocks.exe` is located
 7. Execute `Blocks.exe` to start the game
 
 ###Linux:
