@@ -105,8 +105,10 @@ Blocks is a 2D puzzle game where the objective is to rearrange the blocks (horiz
 
 ##Credits:
 - `PhysicsFS` developed by [Ryan C. Gordon](https://icculus.org/physfs/)
-- `Game Audio` files from [RPG Make VX Ace](http://www.rpgmakerweb.com/products/programs/rpg-maker-vx-ace)
 - `CocoaDialog` developed by [Mark A. Stratman](https://github.com/mstratman)
+- `Game Audio` files obtained from [RPG Make VX Ace](http://www.rpgmakerweb.com/products/programs/rpg-maker-vx-ace)
+- `Game Graphics` created exclusively using Photoshop
+	- `Ribbon` inspired from Photoshop [Ribbon Tutorial](http://www.photoshopstar.com/web-design/cartoon-ribbon/)
 
 ##License:
 Copyright (c) 2016 Salinder Sidhu
