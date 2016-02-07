@@ -1,5 +1,7 @@
+# Compiler and compiler flag settings
 CC=g++
 CFLAGS=-std=c++0x -c
+# Coditional LDFLAGS based on Operating System
 OS := $(shell uname)
 ifeq ($(OS), Darwin)
 	# Mac OS X LDFLAGS
@@ -8,17 +10,19 @@ else
 	# Linux LDFLAGS
 	LDFLAGS=-L/usr/local/lib -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system -lphysfs
 endif
-OBJECTS=Logic/MinuteClock.o Logic/Block.o Logic/Grid.o Objects/WinInfo.o Objects/GameGrid.o Objects/Button.o Objects/FadeEffect.o Objects/HUD.o Objects/BGMusic.o Levels/CoreLevel.o Levels/MenuLevel.o Levels/GameLevel.o Levels/WinLevel.o Engine/SaveObject.o Engine/LevelObject.o Engine/ErrorDialog.o Engine/Game.o Engine/PhysfsStream.o Engine/ResourceManager.o main.o
-SOURCES=$(OBJECTS:.cpp=.0)
+# Sources for compiling
+SOURCES=Logic/MinuteClock.cpp Logic/Block.cpp Logic/Grid.cpp Objects/WinInfo.cpp Objects/GameGrid.cpp Objects/Button.cpp Objects/FadeEffect.cpp Objects/HUD.cpp Objects/BGMusic.cpp Levels/CoreLevel.cpp Levels/MenuLevel.cpp Levels/GameLevel.cpp Levels/WinLevel.cpp Engine/SaveObject.cpp Engine/LevelObject.cpp Engine/ErrorDialog.cpp Engine/Game.cpp Engine/PhysfsStream.cpp Engine/ResourceManager.cpp main.cpp
+OBJECTS=$(SOURCES:.cpp=.o)
+# Name of the compiled binary
 EXECUTABLE=Blocks
 
 # Build the project and configure
 all: $(OBJECTS) $(EXECUTABLE)
 
-# Rules for compiling all sources, building the project and add the resource archive file
-$(EXECUTABLE): $(SOURCES)
+# Rules for compiling all sources, building the project and adding the resource archive file
+$(EXECUTABLE): $(OBJECTS)
 	@printf "BUILDING PROJECT..."
-	@$(CC) $(SOURCES) $(LDFLAGS) -o $@
+	@$(CC) $(LDFLAGS) $(OBJECTS) -o $@
 	@printf "DONE\n"
 	@printf "ADDING RESOURCE..."
 	@cp Resources/data.7z .
