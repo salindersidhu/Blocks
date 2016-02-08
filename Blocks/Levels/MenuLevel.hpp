@@ -20,8 +20,8 @@ class MenuLevel : public CoreLevel {
         void transitionEventHandler();
         void transitionTriggerEvents();
         // MenuLevel variables
-        Button *startButton;
-        Button *quitButton;
+        Button *startButton;    // Button pointer for start button
+        Button *quitButton;     // Button pointer for quit button
 };
 
 #endif // MENULEVEL_HPP

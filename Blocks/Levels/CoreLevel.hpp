@@ -28,20 +28,20 @@ class CoreLevel : public LevelObject {
         void reset();
     protected:
         // CoreLevel protected variables
-        Color red;
-        Color white;
-        Color black;
-        string title;
-        HUD *displayHUD;
-        BGMusic *bgMusic;
-        FadeEffect *fadeEffect;
-        string transitionEventName;
+        Color red;                      // Red Colour object
+        Color white;                    // White Colour object
+        Color black;                    // Black Colour object
+        string title;                   // Title of the current LevelObject
+        HUD *displayHUD;                // HUD pointer
+        BGMusic *bgMusic;               // BGMusic pointer
+        FadeEffect *fadeEffect;         // FadeEffect pointer
+        string transitionEventName;     // Name of the transition event
     private:
         // CoreLevel private variables
         void defaultVarValues();
         // CoreLevel private variables
-        bool isStarted;
-        bool isTransition;
+        bool isStarted;                 // If the level has started
+        bool isTransition;              // If the level is transitioning
 };
 
 #endif // CORELEVEL_HPP

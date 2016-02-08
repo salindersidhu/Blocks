@@ -35,15 +35,15 @@ class GameGrid : public GameObject {
         // GameGrid private functions
         void centerInfoText();
         // GameGrid private variables
-        Font textFont;
-        Text infoText;
-        Grid *grid;
-        MinuteClock clock;
-        map<string, Texture> textures;
-        int infoTextY;
-        int winWidth;
-        unsigned int numMoves;
-        bool isGridComplete;
+        Font textFont;                  // Information text's Font
+        Text infoText;                  // Information Text
+        Grid *grid;                     // Grid object pointer
+        MinuteClock clock;              // MinuteClock object
+        map<string, Texture> textures;  // Map of Block's Textures
+        int infoTextY;                  // InfoText's y position
+        int winWidth;                   // Window's width
+        unsigned int numMoves;          // Number of Block moves
+        bool isGridComplete;            // Is the Grid complete
 };
 
 #endif // GAMEGRID_HPP

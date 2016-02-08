@@ -21,9 +21,9 @@ class MinuteClock {
         void update(int&, int&);
         // MinuteClock private variables
         string dDigit(int);
-        int ms;
-        int sec;
-        int min;
+        int ms;     // Clock's miliseconds
+        int sec;    // Clock's seconds
+        int min;    // Clokc's minutes
 };
 
 #endif // MINUTECLOCK_HPP

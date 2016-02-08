@@ -26,14 +26,14 @@ class WinInfo : public GameObject {
         // WinInfo private functions
         void centerText(Text*, float, float);
         // WinInfo private variables
-        Font textFont;
-        Text congratsText;
-        Text levelCompleteText;
-        Text totalTimeText;
-        Text totalMovesText;
-        Color textColor;
-        SaveObject *saveObj;
-        bool isUpdateOnce;
+        Font textFont;              // Text Font
+        Text congratsText;          // Congratulations display Text
+        Text levelCompleteText;     // Level complete display Text
+        Text totalTimeText;         // Total time display Text
+        Text totalMovesText;        // Total moves display Text
+        Color textColor;            // Text colour
+        SaveObject *saveObj;        // SaveObject pointer to read save data
+        bool isUpdateOnce;          // Is WinInfo only updated once
 };
 
 #endif // WININFO_HPP

@@ -32,22 +32,22 @@ class Button : public GameObject {
 		bool isHovering(int, int);
 		void centerButtonText(float, float, float, float);
 		// ButtonObject private variables
-		bool isMouseOver;
-		bool isClicked;
-		bool isSelected;
-		bool isPlayHoverSound;
-		Texture buttonNormalTexture;
-		Texture buttonHoverTexture;
-		Sprite buttonNormalSprite;
-		Sprite buttonHoverSprite;
-		Font textFont;
-		Text buttonText;
-		Color normalColour;
-		Color hoverColour;
-		SoundBuffer hoverBuffer;
-		SoundBuffer clickBuffer;
-		Sound hoverSound;
-		Sound clickSound;
+		bool isMouseOver;				// If mouse is over the Button
+		bool isClicked;					// If Button is clicked
+		bool isSelected;				// If Button is hover selected
+		bool isPlayHoverSound;			// If hover sound is played
+		Texture buttonNormalTexture;	// Button's normal Texture
+		Texture buttonHoverTexture;		// Button's hover Texture
+		Sprite buttonNormalSprite;		// Button's normal Sprite
+		Sprite buttonHoverSprite;		// Button's hover Sprite
+		Font textFont;					// Button's text Font
+		Text buttonText;				// Button's Text
+		Color normalColour;				// Button's normal text colour
+		Color hoverColour;				// Button's hover text colour
+		SoundBuffer hoverBuffer;		// Button's hover sound buffer
+		SoundBuffer clickBuffer;		// Button's click sound buffer
+		Sound hoverSound;				// Button's hover sound
+		Sound clickSound;				// Button's click sound
 };
 
 #endif // BUTTON_HPP

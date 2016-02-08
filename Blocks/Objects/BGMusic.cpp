@@ -12,11 +12,13 @@ BGMusic::BGMusic(SoundBuffer _bgMusicBuffer, float _loopStartTime,
 }
 
 void BGMusic::start() {
+    // Start playing the background music
     bgMusic.play();
     isStarted = true;
 }
 
 void BGMusic::stop() {
+    // Stop playing the background music
     bgMusic.stop();
     isStarted = false;
 }

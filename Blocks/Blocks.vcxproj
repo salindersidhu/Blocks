@@ -78,8 +78,9 @@
       <AdditionalIncludeDirectories>C:\PHYSFS-2.0.3\include;C:\SFML-2.3.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>sfml-graphics-s-d.lib;sfml-window-s-d.lib;opengl32.lib;freetype.lib;jpeg.lib;winmm.lib;gdi32.lib;sfml-system-s-d.lib;physfs.lib;test_physfs.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sfml-main.lib;sfml-graphics-s-d.lib;sfml-window-s-d.lib;sfml-system-s-d.lib;sfml-audio-s-d.lib;opengl32.lib;freetype.lib;jpeg.lib;winmm.lib;gdi32.lib;physfs.lib;test_physfs.lib;comdlg32.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>C:\SFML-2.3.2\lib;C:\PHYSFS-2.0.3\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -131,7 +132,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Engine\ErrorDialog.cpp" />
+    <ClCompile Include="Engine\Dialog.cpp" />
     <ClCompile Include="Engine\Game.cpp" />
     <ClCompile Include="Engine\LevelObject.cpp" />
     <ClCompile Include="Engine\PhysfsStream.cpp" />
@@ -154,7 +155,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\EngineException.hpp" />
-    <ClInclude Include="Engine\ErrorDialog.hpp" />
+    <ClInclude Include="Engine\Dialog.hpp" />
     <ClInclude Include="Engine\Game.hpp" />
     <ClInclude Include="Engine\GameObject.hpp" />
     <ClInclude Include="Engine\LevelObject.hpp" />

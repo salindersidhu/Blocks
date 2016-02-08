@@ -23,7 +23,7 @@ class PhyfsStream : public InputStream {
 		virtual Int64 getSize();
 	private:
 		// PhysfsStream private variables
-		PHYSFS_File* file;
+		PHYSFS_File* file;	// PHYSFS_File archive file pointer
 };
 
 #endif // PHYSFSSTREAM_HPP

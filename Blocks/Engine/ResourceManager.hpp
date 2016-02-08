@@ -30,11 +30,11 @@ class ResourceManager {
         // ResourceManager private functions
         void openVerifyStream(string);
         // ResourceManager private variables
-        map<string, Texture> textures;
-        map<string, Font> fonts;
-        map<string, SoundBuffer> soundBuffers;
-        map<string, Image> images;
-        PhyfsStream archiveStream;
+        map<string, Texture> textures;          // Map of Textures
+        map<string, Font> fonts;                // Map of Fonts
+        map<string, SoundBuffer> soundBuffers;  // Map of SoundBuffers
+        map<string, Image> images;              // Map of Images
+        PhyfsStream archiveStream;              // PHYSFS stream object
 };
 
 #endif // RESOURCEMANAGER_HPP

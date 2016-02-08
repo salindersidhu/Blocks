@@ -26,11 +26,11 @@ class BGMusic : public GameObject {
         void onMouseRightRelease(Vector2i) {};
     private:
         // BGMusic private variables
-        bool isLoop;
-        bool isStarted;
-        float loopStartTime;
-        Sound bgMusic;
-        SoundBuffer bgMusicBuffer;
+        bool isLoop;                    // If background music is looped
+        bool isStarted;                 // If background music has started
+        float loopStartTime;            // Bakcground music Loop start time
+        Sound bgMusic;                  // Background music sound
+        SoundBuffer bgMusicBuffer;      // Background music sound buffer
 };
 
 #endif // BGMUSIC_HPP

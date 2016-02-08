@@ -106,6 +106,7 @@ void Grid::reset() {
 }
 
 vector<Block> Grid::getBlocks() {
+	// Return all the Blocks on the Grid
 	return blocks;
 }
 

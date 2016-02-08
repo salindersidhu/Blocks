@@ -4,9 +4,9 @@
 #include <string>
 #include <vector>
 #include <SFML/Graphics.hpp>
+#include "Dialog.hpp"
 #include "SaveObject.hpp"
 #include "LevelObject.hpp"
-#include "ErrorDialog.hpp"
 #include "EngineException.hpp"
 #include "ResourceManager.hpp"
 using namespace sf;
@@ -15,12 +15,12 @@ using namespace std;
 class Game {
     public:
         // Constructor and destructor
-        Game(string, int, int, int, int, string, string);
+        Game(string, int, int, int, int, string);
         ~Game();
         // Game functions
         ResourceManager *getResourceManager();
         RenderWindow *getWindow();
-        ErrorDialog *getErrorDialog();
+        Dialog *getDialog();
         SaveObject *getSaveObject();
         void addLevel(LevelObject*);
         void start();
@@ -29,13 +29,13 @@ class Game {
         void gameLoop();
         void processLevelComplete();
         // Game private variables
-        ResourceManager *resMan;
-        RenderWindow *window;
-        ErrorDialog *errorDialog;
-        SaveObject *saveObj;
-        LevelObject* currentLevel;
-        vector<LevelObject*> levels;
-        unsigned int currentLevelCount;
+        ResourceManager *resMan;            // ResourceManager pointer
+        RenderWindow *window;               // RenderWindow pointer
+        Dialog *dialog;                     // Dialog pointer
+        SaveObject *saveObj;                // SaveObject pointer
+        LevelObject* currentLevel;          // Current LevelObject pointer
+        vector<LevelObject*> levels;        // List of LevelObject pointers
+        unsigned int currentLevelCount;     // level counter
 };
 
 #endif // GAME_HPP

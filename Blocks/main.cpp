@@ -13,14 +13,13 @@ using namespace std;
 int main() {
 	// Game constants
 	const string resArchive = "data.7z";
-	const string icon = "IM_ICON";
 	const string title = "Blocks";
 	const int winWidth = 600;
 	const int winHeight = 700;
 	const int FPS = 60;
 	const int bits = 32;
 	// Initialize the Game
-	Game game = Game(title, winWidth, winHeight, bits, FPS, icon, resArchive);
+	Game game = Game(title, winWidth, winHeight, bits, FPS, resArchive);
 	// Obtain the ResourceManager and RenderWindow from Game
 	ResourceManager *resMan = game.getResourceManager();
 	RenderWindow *window = game.getWindow();
@@ -251,7 +250,7 @@ int main() {
 		game.start();
 	} catch(exception &ex) {
 		// Display error message and exit game if an exception was thrown
-		game.getErrorDialog()->showMessage(ex.what());
+		game.getDialog()->showError(ex.what());
 		window->close();
 		// Exit with failure
 		return 1;

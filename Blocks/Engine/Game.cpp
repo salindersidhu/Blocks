@@ -1,13 +1,13 @@
 #include "Game.hpp"
 
 Game::Game(string title, int width, int height, int bits, int FPS,
-    string iconName, string resArchive) {
+    string resArchive) {
     // Initialize and setup the game RenderWindow
     window = new RenderWindow(VideoMode(width, height, bits), title,
-		Style::Close);
+        Style::Close);
     window->setFramerateLimit(FPS);
-    // Initialize and setup the DialogManager
-    errorDialog = new ErrorDialog(title, window);
+    // Initialize and setup the Dialog
+    dialog = new Dialog(title, window);
     // Initialize and setup the ResourceManager
     resMan = new ResourceManager(resArchive);
     // Initialize the SaveObject
@@ -20,8 +20,8 @@ Game::~Game() {
     // Free memory used by the instance pointers
     delete window;
     window = NULL;
-    delete errorDialog;
-    errorDialog = NULL;
+    delete dialog;
+    dialog = NULL;
     // Free memory used by all the LevelObject pointers
     vector<LevelObject*>::iterator iter;
     for(iter = levels.begin(); iter != levels.end(); iter++) {
@@ -40,9 +40,9 @@ RenderWindow *Game::getWindow() {
     return window;
 }
 
-ErrorDialog *Game::getErrorDialog() {
-    // Return the DialogManager pointer
-    return errorDialog;
+Dialog *Game::getDialog() {
+    // Return the Dialog pointer
+    return dialog;
 }
 
 SaveObject *Game::getSaveObject() {
@@ -101,7 +101,7 @@ void Game::processLevelComplete() {
         if (currentLevelCount + 1 < levels.size()) {
             currentLevelCount++;
         } else {
-            // If currentLevel is the last level then reset currentLevelCount
+            // If currentLevel is the last level then reset the level counter
             currentLevelCount = 0;
         }
         currentLevel = levels[currentLevelCount];

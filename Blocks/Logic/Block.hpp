@@ -29,17 +29,17 @@ class Block{
         string getTextureName();
     private:
         // Block private variables
-        float x;
-        float y;
-        float size;
-        float defaultX;
-        float defaultY;
-        float width;
-        float height;
-        bool isFlagged;
-        bool isSelected;
-        bool isVertical;
-        string textureName;
+        float x;                // The Block's x positon
+        float y;                // The Block's y position
+        float size;             // The Block's orientation based size
+        float defaultX;         // The Block's default starting x position
+        float defaultY;         // The Block's default starting y position
+        float width;            // The Block's width
+        float height;           // The Block's height
+        bool isFlagged;         // If the Block is flagged
+        bool isSelected;        // If the Block is selected
+        bool isVertical;        // If the Block is vertical
+        string textureName;     // Block's associated texture name
 };
 
 #endif // BLOCK_HPP

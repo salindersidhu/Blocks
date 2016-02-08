@@ -16,7 +16,7 @@ class SaveObject {
         string getData(string);
     private:
         // SaveObject private variables
-        map<string, string> saveDataMap;
+        map<string, string> saveDataMap;    // Map of strings for storing data
 };
 
 #endif // SAVEOBJECT_HPP

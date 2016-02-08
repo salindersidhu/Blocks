@@ -25,11 +25,11 @@ class HUD : public GameObject {
         // HUD private functions
         void centerTitleText(float, float);
         // HUD private variables
-        Texture bgTexture;
-        Sprite bgSprite;
-        Font textFont;
-        Text titleText;
-        Color textColor;
+        Texture bgTexture;  // HUD's background Texture
+        Sprite bgSprite;    // HUD's background Sprite
+        Font textFont;      // HUD's text Font
+        Text titleText;     // HUD's title Text
+        Color textColor;    // HUD's text colour
 };
 
 #endif // HUD_HPP

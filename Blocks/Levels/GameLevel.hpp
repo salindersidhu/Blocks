@@ -24,9 +24,9 @@ class GameLevel : public CoreLevel {
         void transitionEventHandler();
         void transitionTriggerEvents();
         // GameLevel variables
-        Button *resetButton;
-        Button *quitButton;
-        GameGrid *gameGrid;
+        Button *resetButton;    // Button pointer for reset button
+        Button *quitButton;     // Button pointer for quit button
+        GameGrid *gameGrid;     // GameGrid pointer
 };
 
 #endif // GAMELEVEL_HPP

@@ -11,7 +11,7 @@ class GameObject {
     public:
         // Destructor
         virtual ~GameObject() {};
-        // Abstract functions
+        // Abstract functions to be implemented in child class
         virtual void reset() = 0;
         virtual void update() = 0;
         virtual void draw(RenderWindow*) = 0;
