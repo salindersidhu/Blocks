@@ -1,7 +1,7 @@
 #include "Game.hpp"
 
 Game::Game(string title, int width, int height, int bits, int FPS,
-    string resArchive) {
+    string defaultFontName, string resArchive) {
     // Initialize and setup the game RenderWindow
     window = new RenderWindow(VideoMode(width, height, bits), title,
         Style::Close);
@@ -12,6 +12,8 @@ Game::Game(string title, int width, int height, int bits, int FPS,
     resMan = new ResourceManager(resArchive);
     // Initialize the SaveObject
     saveObj = new SaveObject();
+    // Show loading screen while Game and resources are loading
+    showLoadingScreen(defaultFontName);
     // Set remaining instance variables
     currentLevelCount = 0;
 }
@@ -106,4 +108,27 @@ void Game::processLevelComplete() {
         }
         currentLevel = levels[currentLevelCount];
     }
+}
+
+void Game::showLoadingScreen(string defaultFontName) {
+    // Load default font from ResourceManager
+    resMan->loadFont(defaultFontName, "FN_DEFAULT");
+    // Create the loading display text and font
+    Text loadingText;
+    Font font = resMan->getFont("FN_DEFAULT");
+    // Configure the loading display text
+    loadingText.setFont(font);
+    loadingText.setString("Loading Please Wait...");
+    loadingText.setCharacterSize(40);
+    loadingText.setColor(Color(38, 38, 38));
+    // Center the loading display text on the screen
+    FloatRect rect = loadingText.getLocalBounds();
+    loadingText.setOrigin((rect.left + rect.width) / 2,
+        (rect.top + rect.height) / 2);
+    loadingText.setPosition((float)window->getSize().x / 2,
+        (float)window->getSize().y / 2);
+    // Draw the text
+    window->clear(Color(64, 64, 64));
+    window->draw(loadingText);
+    window->display();
 }

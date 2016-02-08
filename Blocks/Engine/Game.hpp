@@ -15,7 +15,7 @@ using namespace std;
 class Game {
     public:
         // Constructor and destructor
-        Game(string, int, int, int, int, string);
+        Game(string, int, int, int, int, string, string);
         ~Game();
         // Game functions
         ResourceManager *getResourceManager();
@@ -28,6 +28,7 @@ class Game {
         // Game private functions
         void gameLoop();
         void processLevelComplete();
+        void showLoadingScreen(string);
         // Game private variables
         ResourceManager *resMan;            // ResourceManager pointer
         RenderWindow *window;               // RenderWindow pointer
