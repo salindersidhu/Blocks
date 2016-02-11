@@ -8,7 +8,6 @@
 #include "../Logic/Grid.hpp"
 #include "../Logic/Block.hpp"
 #include "../Logic/MinuteClock.hpp"
-#include "../Engine/ResourceManager.hpp"
 using namespace sf;
 using namespace std;
 

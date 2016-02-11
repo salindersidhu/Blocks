@@ -3,8 +3,9 @@
 
 #include <string>
 #include <SFML/Graphics.hpp>
-#include "../Engine/SaveObject.hpp"
-#include "../Engine/GameObject.hpp"
+#include "../../Engine/SaveObject.hpp"
+#include "../../Engine/GameObject.hpp"
+#include "../../Engine/ResourceManager.hpp"
 using namespace sf;
 using namespace std;
 

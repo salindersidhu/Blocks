@@ -33,49 +33,52 @@
     <ClCompile Include="Engine\LevelObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Levels\MenuLevel.cpp">
+    <ClCompile Include="Game\Levels\MenuLevel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Logic\Block.cpp">
+    <ClCompile Include="Game\Logic\Block.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Logic\MinuteClock.cpp">
+    <ClCompile Include="Game\Logic\MinuteClock.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Logic\Grid.cpp">
+    <ClCompile Include="Game\Logic\Grid.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Objects\Button.cpp">
+    <ClCompile Include="Game\Objects\Button.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Objects\HUD.cpp">
+    <ClCompile Include="Game\Objects\HUD.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Objects\FadeEffect.cpp">
+    <ClCompile Include="Game\Objects\FadeEffect.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Objects\BGMusic.cpp">
+    <ClCompile Include="Game\Levels\CoreLevel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Levels\CoreLevel.cpp">
+    <ClCompile Include="Game\Levels\GameLevel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Levels\GameLevel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Objects\GameGrid.cpp">
+    <ClCompile Include="Game\Objects\GameGrid.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Engine\SaveObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Levels\WinLevel.cpp">
+    <ClCompile Include="Game\Levels\WinLevel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Objects\WinInfo.cpp">
+    <ClCompile Include="Game\Objects\WinInfo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Objects\CoreObject.cpp">
+    <ClCompile Include="Game\Objects\CoreObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Objects\BGMusic.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\BlockGame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -104,49 +107,52 @@
     <ClInclude Include="Engine\EngineException.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Levels\MenuLevel.hpp">
+    <ClInclude Include="Game\Logic\Block.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Logic\Block.hpp">
+    <ClInclude Include="Game\Logic\MinuteClock.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Logic\MinuteClock.hpp">
+    <ClInclude Include="Game\Logic\Grid.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Logic\Grid.hpp">
+    <ClInclude Include="Game\Objects\Button.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Objects\Button.hpp">
+    <ClInclude Include="Game\Objects\HUD.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Objects\HUD.hpp">
+    <ClInclude Include="Game\Objects\FadeEffect.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Objects\FadeEffect.hpp">
+    <ClInclude Include="Game\Objects\BGMusic.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Objects\BGMusic.hpp">
+    <ClInclude Include="Game\Levels\CoreLevel.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Levels\CoreLevel.hpp">
+    <ClInclude Include="Game\Levels\GameLevel.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Levels\GameLevel.hpp">
+    <ClInclude Include="Game\Objects\GameGrid.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Objects\GameGrid.hpp">
+    <ClInclude Include="Game\Levels\WinLevel.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Objects\WinInfo.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Objects\CoreObject.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Engine\SaveObject.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Levels\WinLevel.hpp">
+    <ClInclude Include="Game\Game\Levels\MenuLevel.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Objects\WinInfo.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Objects\CoreObject.hpp">
+    <ClInclude Include="Game\BlockGame.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

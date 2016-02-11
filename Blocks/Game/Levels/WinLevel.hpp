@@ -6,8 +6,8 @@
 #include "CoreLevel.hpp"
 #include "../Objects/Button.hpp"
 #include "../Objects/WinInfo.hpp"
-#include "../Engine/SaveObject.hpp"
-#include "../Engine/ResourceManager.hpp"
+#include "../../Engine/SaveObject.hpp"
+#include "../../Engine/ResourceManager.hpp"
 using namespace sf;
 using namespace std;
 

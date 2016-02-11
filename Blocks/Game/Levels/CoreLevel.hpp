@@ -5,11 +5,11 @@
 #include <SFML/Graphics.hpp>
 #include "../Objects/HUD.hpp"
 #include "../Objects/BGMusic.hpp"
-#include "../Engine/SaveObject.hpp"
-#include "../Engine/SaveObject.hpp"
 #include "../Objects/FadeEffect.hpp"
-#include "../Engine/LevelObject.hpp"
-#include "../Engine/ResourceManager.hpp"
+#include "../../Engine/SaveObject.hpp"
+#include "../../Engine/SaveObject.hpp"
+#include "../../Engine/LevelObject.hpp"
+#include "../../Engine/ResourceManager.hpp"
 using namespace sf;
 using namespace std;
 
