@@ -27,8 +27,9 @@ Blocks is a 2D puzzle game where the objective is to rearrange the blocks (horiz
 ####Preperation:
 1. Download and install `Microsoft Visual Studio 2015`
 2. Download and install [CMake](https://cmake.org/download/) Windows 32-bit installer
-3. Download and extract the `PhysicsFS` [(2.0.3)](https://icculus.org/physfs/) source code
-4. Download `SFML` [(2.3.2)](http://www.sfml-dev.org/download/sfml/2.3.2/) Visual C++ 14 (2015) 32-bit and extract it to `C:\`
+3. Download and install `OpenSSL` [(1.0.2f)](https://slproweb.com/products/Win32OpenSSL.html) Windows 32-bit installer
+4. Download and extract the `PhysicsFS` [(2.0.3)](https://icculus.org/physfs/) source code
+5. Download `SFML` [(2.3.2)](http://www.sfml-dev.org/download/sfml/2.3.2/) Visual C++ 14 (2015) 32-bit and extract it to `C:\`
 
 ####Compiling PhysicsFS:
 1. Create a new folder named `bin` in the same location as the extracted `physfs-2.0.3` folder
@@ -59,7 +60,8 @@ Blocks is a 2D puzzle game where the objective is to rearrange the blocks (horiz
 ####Preperation:
 1. Download and install `CMake` by opening the terminal as root and typing `sudo apt-get install cmake`
 2. Download and install `SFML` by opening the terminal as root and typing `sudo apt-get install libsfml-dev`
-3. Download and extract the `PhysicsFS` [(2.0.3)](https://icculus.org/physfs/) source code
+3. Download and install `OpenSSL` by opening the terminal as root and typing `sudo apt-get install libssl-ocaml-dev`
+4. Download and extract the `PhysicsFS` [(2.0.3)](https://icculus.org/physfs/) source code
 
 ####Compiling PhysicsFS:
 1. Use the terminal to navigate to the extracted `PhysicsFS` source code folder `physfs-2.0.3`
@@ -107,6 +109,7 @@ Blocks is a 2D puzzle game where the objective is to rearrange the blocks (horiz
 ##Credits:
 - `PhysicsFS` developed by [Ryan C. Gordon](https://icculus.org/physfs/)
 - `CocoaDialog` developed by [Mark A. Stratman](https://github.com/mstratman)
+- `OpenSSL` windows binary distribution created by [Shinning Light Productions](https://slproweb.com/index.html)
 - `Game Audio` files obtained from [RPG Make VX Ace](http://www.rpgmakerweb.com/products/programs/rpg-maker-vx-ace)
 - `Game Graphics` created exclusively using Photoshop
 	- `Ribbon` inspired from Photoshop [Ribbon Tutorial](http://www.photoshopstar.com/web-design/cartoon-ribbon/)

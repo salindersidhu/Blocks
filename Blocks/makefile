@@ -6,11 +6,11 @@ OS:=$(shell uname)
 ifeq ($(OS),Darwin)
 	# Mac OS X LDFLAGS
 	LDFLAGS=-framework sfml-graphics -framework sfml-audio -framework \
-	sfml-window -framework sfml-system -lphysfs
+	sfml-window -framework sfml-system -lphysfs -lcrypto
 else
 	# Linux LDFLAGS
 	LDFLAGS=-L/usr/local/lib -lsfml-graphics -lsfml-audio -lsfml-window \
-	-lsfml-system -lphysfs
+	-lsfml-system -lphysfs -lcrypto
 endif
 # Sources for compiling
 SOURCES=Engine/Dialog.cpp Engine/SaveObject.cpp Engine/FileHashCheck.cpp \
