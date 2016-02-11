@@ -13,14 +13,14 @@ else
 	-lsfml-system -lphysfs
 endif
 # Sources for compiling
-SOURCES=Engine/Dialog.cpp Engine/SaveObject.cpp Engine/PhysfsStream.cpp \
-		Engine/ResourceManager.cpp Engine/LevelObject.cpp Engine/Game.cpp \
-		Game/Logic/MinuteClock.cpp Game/Logic/Block.cpp Game/Logic/Grid.cpp \
-		Game/Levels/CoreLevel.cpp Game/Levels/MenuLevel.cpp \
-		Game/Levels/WinLevel.cpp Game/Levels/GameLevel.cpp \
-		Game/Objects/CoreObject.cpp Game/Objects/FadeEffect.cpp \
-		Game/Objects/WinInfo.cpp Game/Objects/HUD.cpp \
-		Game/Objects/BGMusic.cpp Game/Objects/Button.cpp \
+SOURCES=Engine/Dialog.cpp Engine/SaveObject.cpp Engine/FileHashCheck.cpp \
+		Engine/PhysfsStream.cpp Engine/ResourceManager.cpp \
+		Engine/LevelObject.cpp Engine/Game.cpp Game/Logic/MinuteClock.cpp \
+		Game/Logic/Block.cpp Game/Logic/Grid.cpp Game/Levels/CoreLevel.cpp \
+		Game/Levels/MenuLevel.cpp Game/Levels/WinLevel.cpp \
+		Game/Levels/GameLevel.cpp Game/Objects/CoreObject.cpp \
+		Game/Objects/FadeEffect.cpp Game/Objects/WinInfo.cpp \
+		Game/Objects/HUD.cpp Game/Objects/BGMusic.cpp Game/Objects/Button.cpp \
 		Game/Objects/GameGrid.cpp Game/BlockGame.cpp main.cpp
 # Objects from the above sources
 OBJECTS=$(SOURCES:.cpp=.o)

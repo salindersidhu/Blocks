@@ -9,7 +9,13 @@ Game::Game(string title, int width, int height, int bits, int FPS,
     // Initialize and setup the Dialog
     dialog = new Dialog(title, window);
     // Initialize and setup the ResourceManager
-    resMan = new ResourceManager(resFile, resFileHash);
+    try {
+        resMan = new ResourceManager(resFile, resFileHash);
+    } catch(exception &ex) {
+        // Display error message and exit game if an exception was thrown
+        dialog->showError(ex.what());
+        window->close();
+    }
     // Initialize the SaveObject
     saveObj = new SaveObject();
     // Set remaining instance variables
@@ -62,7 +68,7 @@ void Game::start() {
         currentLevel = levels[0];
         gameLoop();
     } else {
-        // throw EngineException
+        // Throw EngineException
         throw EngineException("Error: Cannot load Level, does not exist");
     }
 }

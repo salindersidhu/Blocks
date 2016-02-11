@@ -15,8 +15,9 @@ Blocks is a 2D puzzle game where the objective is to rearrange the blocks (horiz
 - Mac OS X
 
 ##Dependencies:
-- `G++` `Clang` or `Microsoft Visual Studio 2015` [(Community Edition)](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx)
+- `g++` or `Microsoft Visual Studio 2015` [(Community Edition)](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx)
 - `SFML 32-bit` [(Build 2.3.2)](http://www.sfml-dev.org/download.php)
+- `OpenSSL 32-bit` [(Build 1.0.2f)](https://slproweb.com/products/Win32OpenSSL.html)
 - `PhysicsFS` [(Build 2.0.3)](http://www.sfml-dev.org/download/sfml/2.3.2/) **You will need to compile this from source**
 - `CocoaDialog` [(Build 2.1.1)](https://mstratman.github.io/cocoadialog/#download) **Only for Mac OS X**
 
