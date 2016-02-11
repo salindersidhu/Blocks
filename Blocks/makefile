@@ -11,7 +11,7 @@ else
 	LDFLAGS=-L/usr/local/lib -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system -lphysfs
 endif
 # Sources for compiling
-SOURCES=Logic/MinuteClock.cpp Logic/Block.cpp Logic/Grid.cpp Objects/WinInfo.cpp Objects/GameGrid.cpp Objects/Button.cpp Objects/FadeEffect.cpp Objects/HUD.cpp Objects/BGMusic.cpp Levels/CoreLevel.cpp Levels/MenuLevel.cpp Levels/GameLevel.cpp Levels/WinLevel.cpp Engine/SaveObject.cpp Engine/LevelObject.cpp Engine/Dialog.cpp Engine/Game.cpp Engine/PhysfsStream.cpp Engine/ResourceManager.cpp main.cpp
+SOURCES=Logic/MinuteClock.cpp Logic/Block.cpp Logic/Grid.cpp Objects/CoreObject.cpp Objects/WinInfo.cpp Objects/GameGrid.cpp Objects/Button.cpp Objects/FadeEffect.cpp Objects/HUD.cpp Objects/BGMusic.cpp Levels/CoreLevel.cpp Levels/MenuLevel.cpp Levels/GameLevel.cpp Levels/WinLevel.cpp Engine/SaveObject.cpp Engine/LevelObject.cpp Engine/Dialog.cpp Engine/Game.cpp Engine/PhysfsStream.cpp Engine/ResourceManager.cpp main.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
 # Name of the compiled binary
 EXECUTABLE=Blocks

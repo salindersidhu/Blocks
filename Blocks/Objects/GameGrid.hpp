@@ -4,15 +4,15 @@
 #include <string>
 #include <map>
 #include <SFML/Graphics.hpp>
+#include "CoreObject.hpp"
 #include "../Logic/Grid.hpp"
 #include "../Logic/Block.hpp"
 #include "../Logic/MinuteClock.hpp"
-#include "../Engine/GameObject.hpp"
 #include "../Engine/ResourceManager.hpp"
 using namespace sf;
 using namespace std;
 
-class GameGrid : public GameObject {
+class GameGrid : public CoreObject {
     public:
         // Constructor and destructor
         GameGrid(float, float, float, float, float, float, float, int, int,
@@ -32,8 +32,6 @@ class GameGrid : public GameObject {
         string getClockTime();
         bool getIsGridComplete();
     private:
-        // GameGrid private functions
-        void centerInfoText();
         // GameGrid private variables
         Font textFont;                  // Information text's Font
         Text infoText;                  // Information Text

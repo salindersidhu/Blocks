@@ -4,11 +4,11 @@
 #include <string>
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
-#include "../Engine/GameObject.hpp"
+#include "CoreObject.hpp"
 using namespace sf;
 using namespace std;
 
-class Button : public GameObject {
+class Button : public CoreObject {
 	public:
 		// Constructor and destructor
 		Button(string, int, Font, Texture, Texture);
@@ -30,7 +30,6 @@ class Button : public GameObject {
 	private:
 		// ButtonObject private functions
 		bool isHovering(int, int);
-		void centerButtonText(float, float, float, float);
 		// ButtonObject private variables
 		bool isMouseOver;				// If mouse is over the Button
 		bool isClicked;					// If Button is clicked

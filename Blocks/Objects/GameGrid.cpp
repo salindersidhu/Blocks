@@ -27,12 +27,12 @@ GameGrid::GameGrid(float x, float y, float width, float height,
     // Obtain the game's resources for this object
     Font font = res->getFont("FN_COPPER");
     // Configure the infoText
+    winWidth = _winWidth;
+    infoTextY = _infoTextY;
     textFont = font;
     infoText.setFont(textFont);
     infoText.setString("Time: 00:00:00    Moves: 0");
-    winWidth = _winWidth;
-    infoTextY = _infoTextY;
-    centerInfoText();
+    centerText(&infoText, (float)winWidth, (float)infoTextY);
     // Set the remaining instance variables
     numMoves = 0;
     isGridComplete = false;
@@ -71,7 +71,7 @@ void GameGrid::update() {
     // Update the MinuteClock
     clock.tick();
     // Update the infoText's drawing position and text
-    centerInfoText();
+    centerText(&infoText, (float)winWidth, (float)infoTextY);
     infoText.setString("Time: " + clock.getTime() + "    Moves: " +
 		to_string(numMoves));
     // Check if Grid is complete
@@ -103,14 +103,6 @@ void GameGrid::addBlock(string textureName, float size, float x, float y,
         block.flag();
     }
     grid->addBlock(block);
-}
-
-void GameGrid::centerInfoText() {
-    FloatRect rect;
-    // Center the text horizontally
-    rect = infoText.getLocalBounds();
-    infoText.setOrigin((rect.left + rect.width) / 2, 0);
-    infoText.setPosition((float)winWidth / 2, (float)infoTextY);
 }
 
 unsigned int GameGrid::getNumMoves() {

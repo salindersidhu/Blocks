@@ -12,16 +12,17 @@ using namespace std;
 
 int main() {
 	// Game constants
-	const string resArchive = "data.7z";
-	const string fontName = "CooperBlackStd.otf";
+	const string resFileHash =
+		"1b68baabebca8455942322ce77f8c99f707f0ead64e1cf27ab54577b06289b60";
+	const string resFile = "data.7z";
 	const string title = "Blocks";
 	const int winWidth = 600;
 	const int winHeight = 700;
 	const int FPS = 60;
 	const int bits = 32;
 	// Initialize the Game
-	Game game = Game(title, winWidth, winHeight, bits, FPS, fontName,
-		resArchive);
+	Game game = Game(title, winWidth, winHeight, bits, FPS, resFile,
+		resFileHash);
 	// Obtain the ResourceManager and RenderWindow from Game
 	ResourceManager *resMan = game.getResourceManager();
 	RenderWindow *window = game.getWindow();
@@ -54,7 +55,7 @@ int main() {
 		resMan->loadTexture("menubg.png", "TX_BACKGROUND_MENU");
 		resMan->loadTexture("levelbg.png", "TX_BACKGROUND_GAME");
 		resMan->loadTexture("button_select.png", "TX_BUTTON_HOVER");
-		resMan->loadFont(fontName, "FN_COPPER"); // Must load last
+		resMan->loadFont("CooperBlackStd.otf", "FN_COPPER"); // Must load last
 		// Add an icon to the Game's window
 		Image icon = resMan->getImage("IM_ICON");
 		window->setIcon(icon.getSize().x, icon.getSize().y,

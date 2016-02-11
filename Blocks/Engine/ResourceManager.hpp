@@ -14,7 +14,7 @@ using namespace std;
 class ResourceManager {
     public:
         // Constructor and destructor
-        ResourceManager(string);
+        ResourceManager(string, string);
         virtual ~ResourceManager();
         // Load basic game elements
         void loadTexture(string, string);

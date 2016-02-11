@@ -4,11 +4,11 @@
 #include <string>
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
-#include "../Engine/GameObject.hpp"
+#include "CoreObject.hpp"
 using namespace sf;
 using namespace std;
 
-class BGMusic : public GameObject {
+class BGMusic : public CoreObject {
     public:
         // Constructor and destructor
         BGMusic(SoundBuffer, float, bool);

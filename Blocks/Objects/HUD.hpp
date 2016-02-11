@@ -3,11 +3,11 @@
 
 #include <string>
 #include <SFML/Graphics.hpp>
-#include "../Engine/GameObject.hpp"
+#include "CoreObject.hpp"
 using namespace sf;
 using namespace std;
 
-class HUD : public GameObject {
+class HUD : public CoreObject {
     public:
         // Constructor and destructor
         HUD(string, float, float, int, Color, Font, Texture);
@@ -22,8 +22,6 @@ class HUD : public GameObject {
         void onMouseLeftRelease(Vector2i) {};
         void onMouseRightRelease(Vector2i) {};
     private:
-        // HUD private functions
-        void centerTitleText(float, float);
         // HUD private variables
         Texture bgTexture;  // HUD's background Texture
         Sprite bgSprite;    // HUD's background Sprite

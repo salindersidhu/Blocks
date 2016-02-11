@@ -1,10 +1,10 @@
 #include "ResourceManager.hpp"
 
-ResourceManager::ResourceManager(string resourceArchive) {
+ResourceManager::ResourceManager(string resFile, string resFileHash) {
 	// Initalize the PHYSFS system
 	PHYSFS_init(NULL);
 	// Open the resource archive with PHYSFS
-	PHYSFS_addToSearchPath(resourceArchive.c_str(), 1);
+	PHYSFS_addToSearchPath(resFile.c_str(), 1);
 }
 
 ResourceManager::~ResourceManager() {

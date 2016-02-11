@@ -53,11 +53,3 @@ void WinInfo::draw(RenderWindow *window) {
     window->draw(totalTimeText);
     window->draw(totalMovesText);
 }
-
-void WinInfo::centerText(Text *text, float winWidth, float y) {
-    FloatRect rect;
-    // Center the text horizontally
-    rect = text->getLocalBounds();
-    text->setOrigin((rect.left + rect.width) / 2, 0);
-    text->setPosition(winWidth / 2, y);
-}

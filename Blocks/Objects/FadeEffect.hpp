@@ -3,11 +3,11 @@
 
 #include <string>
 #include <SFML/Graphics.hpp>
-#include "../Engine/GameObject.hpp"
+#include "CoreObject.hpp"
 using namespace sf;
 using namespace std;
 
-class FadeEffect : public GameObject {
+class FadeEffect : public CoreObject {
     public:
         // Constructor and destructor
         FadeEffect(int, int, int, Color);

@@ -148,6 +148,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Objects\BGMusic.cpp" />
     <ClCompile Include="Objects\Button.cpp" />
+    <ClCompile Include="Objects\CoreObject.cpp" />
     <ClCompile Include="Objects\GameGrid.cpp" />
     <ClCompile Include="Objects\HUD.cpp" />
     <ClCompile Include="Objects\FadeEffect.cpp" />
@@ -171,6 +172,7 @@
     <ClInclude Include="Logic\Grid.hpp" />
     <ClInclude Include="Objects\BGMusic.hpp" />
     <ClInclude Include="Objects\Button.hpp" />
+    <ClInclude Include="Objects\CoreObject.hpp" />
     <ClInclude Include="Objects\GameGrid.hpp" />
     <ClInclude Include="Objects\HUD.hpp" />
     <ClInclude Include="Objects\FadeEffect.hpp" />
