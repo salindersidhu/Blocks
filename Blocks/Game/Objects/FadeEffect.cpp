@@ -8,7 +8,7 @@ FadeEffect::FadeEffect(int _speed, int width, int height, Color _fadeColour) {
     cover = new RectangleShape(Vector2f((float)width, (float)height));
     resetFade();
     // Set remaining instance variables
-    isComplete = true;
+    isCompleteVar = true;
 }
 
 FadeEffect::~FadeEffect() {
@@ -17,13 +17,13 @@ FadeEffect::~FadeEffect() {
 }
 
 void FadeEffect::update() {
-    if (!isComplete) {
+    if (!isCompleteVar) {
         // Update the fade out colour
         if (alpha < 255) {
             alpha += speed;
             fade(alpha < 255, alpha);
         } else {
-            isComplete = true;
+            isCompleteVar = true;
         }
     }
 }
@@ -43,7 +43,7 @@ void FadeEffect::resetFade() {
 
 void FadeEffect::draw(RenderWindow *window) {
     // Draw the fade effect
-    if (!isComplete) {
+    if (!isCompleteVar) {
         window->draw(*cover);
     }
 }
@@ -51,9 +51,9 @@ void FadeEffect::draw(RenderWindow *window) {
 void FadeEffect::start() {
     resetFade();
     alpha = 0;
-    isComplete = false;
+    isCompleteVar = false;
 }
 
-bool FadeEffect::isDone() {
-    return isComplete;
+bool FadeEffect::isComplete() {
+    return isCompleteVar;
 }

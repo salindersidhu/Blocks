@@ -9,9 +9,9 @@ Block::Block(string _textureName, float _size, float _x, float _y,
     width = _width;
     height = _height;
     size = _size;
-    isVertical = _isVertical;
-    isFlagged = false;
-    isSelected = false;
+    isVerticalVar = _isVertical;
+    isFlaggedVar = false;
+    isSelectedVar = false;
 }
 
 string Block::getTextureName() {
@@ -66,17 +66,17 @@ void Block::setDefaultY(float y) {
 
 void Block::select() {
     // Select the Block
-    isSelected = true;
+    isSelectedVar = true;
 }
 
 void Block::unselect() {
     // Unselect the Block
-    isSelected = false;
+    isSelectedVar = false;
 }
 
 void Block::flag() {
     // Flag the Block
-    isFlagged = true;
+    isFlaggedVar = true;
 }
 
 void Block::resetPosition() {
@@ -85,17 +85,17 @@ void Block::resetPosition() {
     y = defaultY;
 }
 
-bool Block::getIsSelected() {
+bool Block::isSelected() {
     // Return true if the Block is selected, false otherwise
-    return isSelected;
+    return isSelectedVar;
 }
 
-bool Block::getIsFlagged() {
+bool Block::isFlagged() {
     // Return true if the Block is flagged, false otherwise
-    return isFlagged;
+    return isFlaggedVar;
 }
 
-bool Block::getIsVertical() {
+bool Block::isVertical() {
     // Return true if the Block is vertical, false otherwise
-    return isVertical;
+    return isVerticalVar;
 }

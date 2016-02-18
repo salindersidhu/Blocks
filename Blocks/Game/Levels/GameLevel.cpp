@@ -37,17 +37,17 @@ void GameLevel::setGameGrid(GameGrid *_gameGrid) {
 
 void GameLevel::transitionTriggerEvents() {
     // Set fade out transition if Grid is complete
-    if (gameGrid->getIsGridComplete()) {
+    if (gameGrid->isGridComplete()) {
         // Save the time and number of moves
         saveObj->addData("TIME", gameGrid->getClockTime());
         saveObj->addData("MOVES", to_string(gameGrid->getNumMoves()));
         setTransitionTriggerEvent("GRID_COMPLETE");
     }
     // Set fade out transition if any button was clicked
-    if (resetButton->getIsClicked()) {
+    if (resetButton->isClicked()) {
         setTransitionTriggerEvent("BUTTON_RESTART");
     }
-    if (quitButton->getIsClicked()) {
+    if (quitButton->isClicked()) {
         setTransitionTriggerEvent("BUTTON_QUIT");
     }
 }
@@ -62,6 +62,6 @@ void GameLevel::transitionEventHandler() {
         window->close();
     } else {
         // Grid is complete, go to next level to display win results
-        isFinished = true;
+        isFinishedVar = true;
     }
 }

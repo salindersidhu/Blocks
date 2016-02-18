@@ -13,10 +13,10 @@ Button::Button(string title, int size, Font font, Texture normalTexture,
 	buttonText.setString(title);
 	buttonText.setCharacterSize((unsigned int)size);
 	// Set remaining instance variables
-	isMouseOver = false;
-	isPlayHoverSound = true;
-	isClicked = false;
-	isSelected = false;
+	isMouseOverVar = false;
+	isPlayHoverSoundVar = true;
+	isClickedVar = false;
+	isSelectedVar = false;
 }
 
 void Button::setSounds(SoundBuffer hover, SoundBuffer click) {
@@ -46,36 +46,37 @@ void Button::setPosition(float x, float y) {
 
 void Button::onMouseLeftClick(Vector2i mousePosition) {
 	// Play click sound effect if left button clicked
-	if (isMouseOver && !isSelected) {
+	if (isMouseOverVar && !isSelectedVar) {
 		clickSound.play();
-		isSelected = true;
+		isSelectedVar = true;
 	}
 }
 
 void Button::onMouseMove(Vector2i mousePosition) {
 	// Set isMouseOver to true if mouse is hovering over the Button
-	isMouseOver = isHovering(mousePosition.x, mousePosition.y);
+	isMouseOverVar = isHovering(mousePosition.x, mousePosition.y);
 	// Play hover sound effect only once if button is hovered
-	if (isMouseOver) {
-		if (isPlayHoverSound) {
+	if (isMouseOverVar) {
+		if (isPlayHoverSoundVar) {
 			hoverSound.play();
-			isPlayHoverSound = false;
+			isPlayHoverSoundVar = false;
 		}
 	} else {
 		// Reset isPlayHoverSound to true if mouse isn't hovering over button
-		isPlayHoverSound = true;
+		isPlayHoverSoundVar = true;
 	}
 }
 
 void Button::update() {
-	if (isSelected && clickSound.getStatus() == SoundSource::Status::Stopped) {
-		isClicked = true;
-		isSelected = false;
+	if (isSelectedVar &&
+		clickSound.getStatus() == SoundSource::Status::Stopped) {
+		isClickedVar = true;
+		isSelectedVar = false;
 	}
 }
 
 void Button::draw(RenderWindow *window) {
-	if (isMouseOver) {
+	if (isMouseOverVar) {
 		// Draw the hover Sprite
 		window->draw(buttonHoverSprite);
 		// Set text with hover colour
@@ -90,10 +91,10 @@ void Button::draw(RenderWindow *window) {
 	window->draw(buttonText);
 }
 
-bool Button::getIsClicked() {
+bool Button::isClicked() {
 	// If the button is clicked return true and set isClicked to false
-	if (isClicked) {
-		isClicked = false;
+	if (isClickedVar) {
+		isClickedVar = false;
 		return true;
 	}
 	return false;

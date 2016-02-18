@@ -23,9 +23,9 @@ class Block{
         void unselect();
         void flag();
         void resetPosition();
-        bool getIsSelected();
-        bool getIsFlagged();
-        bool getIsVertical();
+        bool isSelected();
+        bool isFlagged();
+        bool isVertical();
         string getTextureName();
     private:
         // Block private variables
@@ -36,9 +36,9 @@ class Block{
         float defaultY;         // The Block's default starting y position
         float width;            // The Block's width
         float height;           // The Block's height
-        bool isFlagged;         // If the Block is flagged
-        bool isSelected;        // If the Block is selected
-        bool isVertical;        // If the Block is vertical
+        bool isFlaggedVar;      // If the Block is flagged
+        bool isSelectedVar;     // If the Block is selected
+        bool isVerticalVar;     // If the Block is vertical
         string textureName;     // Block's associated texture name
 };
 

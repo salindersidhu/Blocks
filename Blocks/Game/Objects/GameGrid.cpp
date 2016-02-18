@@ -35,7 +35,7 @@ GameGrid::GameGrid(float x, float y, float width, float height,
     centerText(&infoText, (float)winWidth, (float)infoTextY);
     // Set the remaining instance variables
     numMoves = 0;
-    isGridComplete = false;
+    isGridCompleteVar = false;
 }
 
 GameGrid::~GameGrid() {
@@ -49,7 +49,7 @@ void GameGrid::reset() {
     clock.reset();
     grid->reset();
     numMoves = 0;
-    isGridComplete = false;
+    isGridCompleteVar = false;
 }
 
 void GameGrid::onMouseLeftClick(Vector2i mousePosition) {
@@ -75,8 +75,8 @@ void GameGrid::update() {
     infoText.setString("Time: " + clock.getTime() + "    Moves: " +
 		to_string(numMoves));
     // Check if Grid is complete
-    if (grid->getIsComplete()) {
-        isGridComplete = true;
+    if (grid->isComplete()) {
+        isGridCompleteVar = true;
     }
 }
 
@@ -115,7 +115,7 @@ string GameGrid::getClockTime() {
     return clock.getTime();
 }
 
-bool GameGrid::getIsGridComplete() {
+bool GameGrid::isGridComplete() {
     // Return if the grid is complete
-    return isGridComplete;
+    return isGridCompleteVar;
 }

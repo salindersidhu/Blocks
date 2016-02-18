@@ -30,10 +30,10 @@ MenuLevel::MenuLevel(string title, ResourceManager *resMan,
 
 void MenuLevel::transitionTriggerEvents() {
     // Set fade out transition if any button was clicked
-    if (startButton->getIsClicked()) {
+    if (startButton->isClicked()) {
         setTransitionTriggerEvent("BUTTON_START");
     }
-    if (quitButton->getIsClicked()) {
+    if (quitButton->isClicked()) {
         setTransitionTriggerEvent("BUTTON_QUIT");
     }
 }
@@ -42,7 +42,7 @@ void MenuLevel::transitionEventHandler() {
     // Process transition events
     if (transitionEventName == "BUTTON_START") {
         // Start button clicked, go to next level
-        isFinished = true;
+        isFinishedVar = true;
     } else {
         // Quit button clicked, terminate the game
         window->close();

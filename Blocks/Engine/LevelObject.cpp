@@ -71,7 +71,7 @@ void LevelObject::reset() {
     }
 }
 
-bool LevelObject::getisFinished() {
+bool LevelObject::isFinished() {
     // Return if the level is finished or not
-    return isFinished;
+    return isFinishedVar;
 }

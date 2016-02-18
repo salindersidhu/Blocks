@@ -29,7 +29,7 @@ class GameGrid : public CoreObject {
         void reset();
         unsigned int getNumMoves();
         string getClockTime();
-        bool getIsGridComplete();
+        bool isGridComplete();
     private:
         // GameGrid private variables
         Font textFont;                  // Information text's Font
@@ -40,7 +40,7 @@ class GameGrid : public CoreObject {
         int infoTextY;                  // InfoText's y position
         int winWidth;                   // Window's width
         unsigned int numMoves;          // Number of Block moves
-        bool isGridComplete;            // Is the Grid complete
+        bool isGridCompleteVar;         // Is the Grid complete
 };
 
 #endif // GAMEGRID_HPP

@@ -30,7 +30,7 @@ class WinInfo : public CoreObject {
         Text totalMovesText;        // Total moves display Text
         Color textColor;            // Text colour
         SaveObject *saveObj;        // SaveObject pointer to read save data
-        bool isUpdateOnce;          // Is WinInfo only updated once
+        bool isUpdateOnceVar;       // Is WinInfo only updated once
 };
 
 #endif // WININFO_HPP

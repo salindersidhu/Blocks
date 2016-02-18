@@ -7,25 +7,25 @@ BGMusic::BGMusic(SoundBuffer _bgMusicBuffer, float _loopStartTime,
     bgMusic.setBuffer(bgMusicBuffer);
     // Set remaining instance variables
     loopStartTime = _loopStartTime;
-    isLoop = _isLoop;
-    isStarted = false;
+    isLoopVar = _isLoop;
+    isStartedVar = false;
 }
 
 void BGMusic::start() {
     // Start playing the background music
     bgMusic.play();
-    isStarted = true;
+    isStartedVar = true;
 }
 
 void BGMusic::stop() {
     // Stop playing the background music
     bgMusic.stop();
-    isStarted = false;
+    isStartedVar = false;
 }
 
 void BGMusic::update() {
     // Loop audio from the loop start point when stops playing
-    if (isLoop && isStarted && bgMusic.getStatus() ==
+    if (isLoopVar && isStartedVar && bgMusic.getStatus() ==
         SoundSource::Status::Stopped) {
         bgMusic.setPlayingOffset(seconds(loopStartTime));
         bgMusic.play();

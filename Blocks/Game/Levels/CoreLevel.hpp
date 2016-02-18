@@ -40,8 +40,8 @@ class CoreLevel : public LevelObject {
         // CoreLevel private variables
         void defaultVarValues();
         // CoreLevel private variables
-        bool isStarted;                 // If the level has started
-        bool isTransition;              // If the level is transitioning
+        bool isStartedVar;              // If the level has started
+        bool isTransitionVar;           // If the level is transitioning
 };
 
 #endif // CORELEVEL_HPP

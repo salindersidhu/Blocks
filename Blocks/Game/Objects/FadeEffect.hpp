@@ -14,7 +14,7 @@ class FadeEffect : public CoreObject {
         ~FadeEffect();
         // FadeEffect functions
         void start();
-        bool isDone();
+        bool isComplete();
         void update();
         void reset() {};
         void draw(RenderWindow*);
@@ -32,7 +32,7 @@ class FadeEffect : public CoreObject {
         Color fadeColour;       // The fade effect colour
         int speed;              // Fade transition speed
         int alpha;              // Value between 0 and 255
-        bool isComplete;        // Is the fade transition complete
+        bool isCompleteVar;     // Is the fade transition complete
 };
 
 #endif // FADEEFFECT_HPP

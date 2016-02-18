@@ -17,7 +17,7 @@ class LevelObject {
         LevelObject(ResourceManager*, RenderWindow*, SaveObject*);
         ~LevelObject();
         // LevelObject functions
-        bool getisFinished();
+        bool isFinished();
         void processEvents(Event*, Vector2i);
         virtual void draw();
         virtual void reset();
@@ -28,7 +28,7 @@ class LevelObject {
         ResourceManager *resMan;        // ResourceManager pointer
         RenderWindow *window;           // RenderWindow pointer
         SaveObject *saveObj;            // Save object pointer
-        bool isFinished;                // Is the LevelObject finished
+        bool isFinishedVar;             // Is the LevelObject finished
 };
 
 #endif // LEVELOBJECT_HPP

@@ -98,7 +98,7 @@ void Game::gameLoop() {
 
 void Game::processLevelComplete() {
     // Process level completed event
-    if (currentLevel->getisFinished()) {
+    if (currentLevel->isFinished()) {
         // Reset the current level so it can be reused later
         currentLevel->reset();
         // NULL the currentLevel pointer

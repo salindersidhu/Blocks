@@ -18,7 +18,7 @@ class Grid {
         void releaseBlock(unsigned int&);
         void moveBlock(float, float);
         void reset();
-        bool getIsComplete();
+        bool isComplete();
         vector<Block> getBlocks();
     private:
         // Grid private functions
@@ -39,8 +39,8 @@ class Grid {
         float prevY;                // Gird's Block's previous Y position
         float distX;                // Grid's Block's distance X positon
         float distY;                // Grid's Block's distance Y position
-        bool isBlockMoved;          // If a Block on the Grid was moved
-        bool isBlockFree;           // If a Block on the Grid is free to move
+        bool isBlockMovedVar;       // If a Block on the Grid was moved
+        bool isBlockFreeVar;        // If a Block on the Grid is free to move
 };
 
 #endif // GRID_HPP

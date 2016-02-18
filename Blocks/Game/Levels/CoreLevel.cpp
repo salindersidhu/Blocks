@@ -21,9 +21,9 @@ void CoreLevel::reset() {
 
 void CoreLevel::defaultVarValues() {
     // Set the default values for the instance variables
-    isStarted = false;
-    isFinished = false;
-    isTransition = false;
+    isStartedVar = false;
+    isFinishedVar = false;
+    isTransitionVar = false;
     transitionEventName = "";
 }
 
@@ -31,7 +31,7 @@ void CoreLevel::update() {
     // Call parent update function
     LevelObject::update();
     // Execute events only once per LevelObject
-    if (!isStarted) {
+    if (!isStartedVar) {
         // Ensure FadeTrans is the last object in the list to draw
         if (find(objects.begin(), objects.end(), fadeEffect) ==
             objects.end()) {
@@ -40,10 +40,10 @@ void CoreLevel::update() {
         }
         // Start the background music only once
         bgMusic->start();
-        isStarted = true;
+        isStartedVar = true;
     }
     // Process transition events
-    if (isTransition) {
+    if (isTransitionVar) {
         // Stop the bgMusic if level is transitoning
         bgMusic->stop();
     } else {
@@ -51,8 +51,8 @@ void CoreLevel::update() {
         transitionTriggerEvents();
     }
     // Process level transition
-    if (fadeEffect->isDone() && isTransition) {
-        isTransition = false;   // No longer transitioning
+    if (fadeEffect->isComplete() && isTransitionVar) {
+        isTransitionVar = false;   // No longer transitioning
         transitionEventHandler();
     }
 }
@@ -60,7 +60,7 @@ void CoreLevel::update() {
 void CoreLevel::setTransitionTriggerEvent(string _transitionEventName) {
     transitionEventName = _transitionEventName;
     fadeEffect->start();
-    isTransition = true;
+    isTransitionVar = true;
 }
 
 void CoreLevel::setBackgroundMusic(SoundBuffer musicBuffer, float loopTime,

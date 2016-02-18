@@ -26,15 +26,15 @@ class Button : public CoreObject {
 		void update();
 		void draw(RenderWindow*);
 		// Get Button attribute functions
-		bool getIsClicked();
+		bool isClicked();
 	private:
 		// ButtonObject private functions
 		bool isHovering(int, int);
 		// ButtonObject private variables
-		bool isMouseOver;				// If mouse is over the Button
-		bool isClicked;					// If Button is clicked
-		bool isSelected;				// If Button is hover selected
-		bool isPlayHoverSound;			// If hover sound is played
+		bool isMouseOverVar;			// If mouse is over the Button
+		bool isClickedVar;				// If Button is clicked
+		bool isSelectedVar;				// If Button is hover selected
+		bool isPlayHoverSoundVar;		// If hover sound is played
 		Texture buttonNormalTexture;	// Button's normal Texture
 		Texture buttonHoverTexture;		// Button's hover Texture
 		Sprite buttonNormalSprite;		// Button's normal Sprite
