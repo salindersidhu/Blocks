@@ -88,7 +88,7 @@ void BlockGame::setupLevels(string gameTitle, int winWidth) {
     gameGrid3->addBlock("TX_BH26", 2, 2, 1, 131, 57, false, false);
     gameGrid3->addBlock("TX_BV23", 2, 4, 0, 58, 131, true, false);
     gameGrid3->addBlock("TX_BH21", 2, 0, 2, 131, 57, false, true);
-    gameGrid3->addBlock("TX_BV25", 2, 2, 2, 131, 57, true, false);
+    gameGrid3->addBlock("TX_BV25", 2, 2, 2, 58, 131, true, false);
     gameGrid3->addBlock("TX_BV24", 2, 2, 4, 58, 131, true, false);
     gameGrid3->addBlock("TX_BV31", 3, 3, 2, 58, 221, true, false);
     gameGrid3->addBlock("TX_BV26", 2, 4, 3, 58, 131, true, false);
