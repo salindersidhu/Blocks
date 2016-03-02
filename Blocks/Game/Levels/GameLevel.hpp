@@ -13,20 +13,20 @@ using namespace sf;
 using namespace std;
 
 class GameLevel : public CoreLevel {
-    public:
-        // Constructor and destructor
-        GameLevel(string, ResourceManager*, RenderWindow*, SaveObject*);
-        virtual ~GameLevel() {};
-        // GameLevel functions
-        void setGameGrid(GameGrid*);
-    private:
-        // GameLevel functions
-        void transitionEventHandler();
-        void transitionTriggerEvents();
-        // GameLevel variables
-        Button *resetButton;    // Button pointer for reset button
-        Button *quitButton;     // Button pointer for quit button
-        GameGrid *gameGrid;     // GameGrid pointer
+public:
+    // Constructor and destructor
+    GameLevel(string, ResourceManager*, RenderWindow*, SaveObject*);
+    virtual ~GameLevel() {};
+    // GameLevel functions
+    void setGameGrid(GameGrid*);
+private:
+    // GameLevel functions
+    void transitionEventHandler();
+    void transitionTriggerEvents();
+    // GameLevel variables
+    Button *resetButton;    // Button pointer for reset button
+    Button *quitButton;     // Button pointer for quit button
+    GameGrid *gameGrid;     // GameGrid pointer
 };
 
 #endif // GAMELEVEL_HPP

@@ -12,18 +12,18 @@ using namespace sf;
 using namespace std;
 
 class WinLevel : public CoreLevel {
-    public:
-        // Constructor and destructor
-        WinLevel(string, ResourceManager*, RenderWindow*, SaveObject*);
-        virtual ~WinLevel() {};
-    private:
-        // MenuLevel functions
-        void transitionEventHandler();
-        void transitionTriggerEvents();
-        // MenuLevel variables
-        Button *nextButton;     // Button pointer for next button
-        Button *quitButton;     // Button pointer for quit button
-        WinInfo *winInfo;       // WinInfo pointer object
+public:
+    // Constructor and destructor
+    WinLevel(string, ResourceManager*, RenderWindow*, SaveObject*);
+    virtual ~WinLevel() {};
+private:
+    // MenuLevel functions
+    void transitionEventHandler();
+    void transitionTriggerEvents();
+    // MenuLevel variables
+    Button *nextButton;     // Button pointer for next button
+    Button *quitButton;     // Button pointer for quit button
+    WinInfo *winInfo;       // WinInfo pointer object
 };
 
 #endif // WINLEVEL_HPP

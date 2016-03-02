@@ -10,23 +10,23 @@ using namespace sf;
 using namespace std;
 
 class Dialog {
-    public:
-        // Constructor and destructor
-        Dialog(string, RenderWindow*);
-        virtual ~Dialog() {};
-        // Dialog functions
-        void showError(string);
-        void showInfo(string);
-    private:
-        // Dialog private variables
-        string title;
+public:
+    // Constructor and destructor
+    Dialog(string, RenderWindow*);
+    virtual ~Dialog() {};
+    // Dialog functions
+    void showError(string);
+    void showInfo(string);
+private:
+    // Dialog private variables
+    string title;
 #ifdef _WIN32
-        HWND handle;                    // Window handle for Windows
-        void windiag(string, UINT);     // Windows standard dialog system
+    HWND handle;                    // Window handle for Windows
+    void windiag(string, UINT);     // Windows standard dialog system
 #elif __linux__
-        void zenity(string, string);    // Unix GTK+ dialog system
+    void zenity(string, string);    // Unix GTK+ dialog system
 #elif __APPLE__ && __MACH__
-        void cocoa(string, string);     // Mac OS X Cocoa dialog system
+    void cocoa(string, string);     // Mac OS X Cocoa dialog system
 #endif
 };
 

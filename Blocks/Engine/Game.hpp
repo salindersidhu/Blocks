@@ -13,30 +13,30 @@ using namespace sf;
 using namespace std;
 
 class Game {
-    public:
-        // Constructor and destructor
-        Game(string, int, int, int, int, string, string);
-        ~Game();
-        // Game functions
-        ResourceManager *getResourceManager();
-        RenderWindow *getWindow();
-        Dialog *getDialog();
-        SaveObject *getSaveObject();
-        void addLevel(LevelObject*);
-        void start();
-    private:
-        // Game private functions
-        void gameLoop();
-        void processLevelComplete();
-        void showLoadingScreen(string);
-        // Game private variables
-        ResourceManager *resMan;            // ResourceManager pointer
-        RenderWindow *window;               // RenderWindow pointer
-        Dialog *dialog;                     // Dialog pointer
-        SaveObject *saveObj;                // SaveObject pointer
-        LevelObject* currentLevel;          // Current LevelObject pointer
-        vector<LevelObject*> levels;        // List of LevelObject pointers
-        unsigned int currentLevelCount;     // level counter
+public:
+    // Constructor and destructor
+    Game(string, int, int, int, int, string, string);
+    ~Game();
+    // Game functions
+    ResourceManager *getResourceManager();
+    RenderWindow *getWindow();
+    Dialog *getDialog();
+    SaveObject *getSaveObject();
+    void addLevel(LevelObject*);
+    void start();
+private:
+    // Game private functions
+    void gameLoop();
+    void processLevelComplete();
+    void showLoadingScreen(string);
+    // Game private variables
+    ResourceManager *resMan;            // ResourceManager pointer
+    RenderWindow *window;               // RenderWindow pointer
+    Dialog *dialog;                     // Dialog pointer
+    SaveObject *saveObj;                // SaveObject pointer
+    LevelObject* currentLevel;          // Current LevelObject pointer
+    vector<LevelObject*> levels;        // List of LevelObject pointers
+    unsigned int currentLevelCount;     // level counter
 };
 
 #endif // GAME_HPP

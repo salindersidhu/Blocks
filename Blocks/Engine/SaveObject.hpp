@@ -6,17 +6,17 @@
 using namespace std;
 
 class SaveObject {
-    public:
-        // Destructor
-        virtual ~SaveObject() {};
-        // SaveObject functions
-        void addData(string, string);
-        void clearData(string);
-        void clearAll();
-        string getData(string);
-    private:
-        // SaveObject private variables
-        map<string, string> saveDataMap;    // Map of strings for storing data
+public:
+    // Destructor
+    virtual ~SaveObject() {};
+    // SaveObject functions
+    void addData(string, string);
+    void clearData(string);
+    void clearAll();
+    string getData(string);
+private:
+    // SaveObject private variables
+    map<string, string> saveDataMap;    // Map of strings for storing data
 };
 
 #endif // SAVEOBJECT_HPP

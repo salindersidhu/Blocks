@@ -1,6 +1,11 @@
 #include "ResourceManager.hpp"
 
 ResourceManager::ResourceManager(string resFile, string resFileHash) {
+	// Check if the resource file exists
+	if (!ifstream(resFile)) {
+		throw EngineException("Error: Resource file " + resFile +
+			" does not exist");
+	}
 	// Check if the resource file's hash matches the original stored hash
     if (!FileHashCheck().isHashMatch(resFile, resFileHash)) {
         // Throw EngineException

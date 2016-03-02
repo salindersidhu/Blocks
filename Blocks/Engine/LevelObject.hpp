@@ -12,23 +12,23 @@ using namespace sf;
 using namespace std;
 
 class LevelObject {
-    public:
-        // Constructor and destructor
-        LevelObject(ResourceManager*, RenderWindow*, SaveObject*);
-        ~LevelObject();
-        // LevelObject functions
-        bool isFinished();
-        void processEvents(Event*, Vector2i);
-        virtual void draw();
-        virtual void reset();
-        virtual void update();
-    protected:
-        // LevelObject private variables
-        vector<GameObject*> objects;    // Collection of GameObjects pointers
-        ResourceManager *resMan;        // ResourceManager pointer
-        RenderWindow *window;           // RenderWindow pointer
-        SaveObject *saveObj;            // Save object pointer
-        bool isFinishedVar;             // Is the LevelObject finished
+public:
+    // Constructor and destructor
+    LevelObject(ResourceManager*, RenderWindow*, SaveObject*);
+    ~LevelObject();
+    // LevelObject functions
+    bool isFinished();
+    void processEvents(Event*, Vector2i);
+    virtual void draw();
+    virtual void reset();
+    virtual void update();
+protected:
+    // LevelObject private variables
+    vector<GameObject*> objects;    // Collection of GameObjects pointers
+    ResourceManager *resMan;        // ResourceManager pointer
+    RenderWindow *window;           // RenderWindow pointer
+    SaveObject *saveObj;            // Save object pointer
+    bool isFinishedVar;             // Is the LevelObject finished
 };
 
 #endif // LEVELOBJECT_HPP

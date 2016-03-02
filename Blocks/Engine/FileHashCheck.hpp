@@ -11,12 +11,12 @@
 using namespace std;
 
 class FileHashCheck {
-    public:
-        // Constructor and destructor
-        FileHashCheck() {};
-        virtual ~FileHashCheck() {};
-        // FileHashCheck functions
-        bool isHashMatch(string, string);
+public:
+    // Constructor and destructor
+    FileHashCheck() {};
+    virtual ~FileHashCheck() {};
+    // FileHashCheck functions
+    bool isHashMatch(string, string);
 };
 
 #endif // FILEHASHCHECK_HPP

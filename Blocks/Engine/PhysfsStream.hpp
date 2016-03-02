@@ -9,21 +9,21 @@ using namespace sf;
 using namespace std;
 
 class PhyfsStream : public InputStream {
-	public:
-		// Constructor and destructor
-		PhyfsStream() {};
-		virtual ~PhyfsStream();
-		// PhysfsStream functions
-		bool isOpen();
-		bool open(const string*);
-		void close();
-		virtual Int64 read(void*, Int64);
-		virtual Int64 seek(Int64);
-		virtual Int64 tell();
-		virtual Int64 getSize();
-	private:
-		// PhysfsStream private variables
-		PHYSFS_File* file;	// PHYSFS_File archive file pointer
+public:
+	// Constructor and destructor
+	PhyfsStream() {};
+	virtual ~PhyfsStream();
+	// PhysfsStream functions
+	bool isOpen();
+	bool open(const string*);
+	void close();
+	virtual Int64 read(void*, Int64);
+	virtual Int64 seek(Int64);
+	virtual Int64 tell();
+	virtual Int64 getSize();
+private:
+	// PhysfsStream private variables
+	PHYSFS_File* file;	// PHYSFS_File archive file pointer
 };
 
 #endif // PHYSFSSTREAM_HPP
