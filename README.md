@@ -18,8 +18,8 @@ Blocks is a 2D puzzle game where the objective is to rearrange the blocks (horiz
 - **Compiler**
 	- G++ or Microsoft Visual Studio 2015 [Community Edition](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx)
 - **Libraries**
-	- SFML 32-bit [(Build 2.3.2)](http://www.sfml-dev.org/download.php)
-	- PhysicsFS [(Build 2.0.3)](http://www.sfml-dev.org/download/sfml/2.3.2/)
+	- SFML 32-bit [(Build 2.3.2)](http://www.sfml-dev.org/download/sfml/2.3.2/)
+	- PhysicsFS [(Build 2.0.3)](https://icculus.org/physfs/downloads/)
 	- CocoaDialog [(Build 2.1.1)](https://mstratman.github.io/cocoadialog/#download)
 
 ## Build Instructions:
