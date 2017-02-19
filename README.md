@@ -23,14 +23,17 @@ Blocks is a 2D puzzle game where the objective is to rearrange the blocks (horiz
 	- CocoaDialog [(Build 2.1.1)](https://mstratman.github.io/cocoadialog/#download)
 
 ## Build Instructions:
-Please refer to the [Wiki section](https://github.com/SalinderSidhu/Blocks/wiki) for instruction on compiling and building Blocks.
+Please refer to the [Wiki Section](https://github.com/SalinderSidhu/Blocks/wiki) for instruction on compiling and building Blocks.
 
 ## Credits:
 - **Audio**
-	- Obtained from [RPG Maker VX Ace](http://www.rpgmakerweb.com/products/programs/rpg-maker-vx-ace)
+	- Button click sound created by **josepharaoh99** from [freesound](https://www.freesound.org/people/josepharaoh99/sounds/379339/) under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/)
+	- Button hover sound created by **plasterbrain** from [freesound](https://www.freesound.org/people/plasterbrain/sounds/237422/) under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/)
+	- Level complete sound created by **Tuudurt** from [freesound](https://www.freesound.org/people/Tuudurt/sounds/275104/) under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/)
+	- Background music created by **Sirkoto51** from [freesound](https://www.freesound.org/people/Sirkoto51/sounds/378110/) under [CC Attribution 3.0](https://creativecommons.org/licenses/by/3.0/)
 - **Graphics**
-	- Ribbon inspired from Photoshop [Ribbon Tutorial](http://www.photoshopstar.com/web-design/cartoon-ribbon/)
-	- Blocks, grid and background created exclusively using Photoshop
+	- Ribbon inspired from a Photoshop [Ribbon Tutorial](http://www.photoshopstar.com/web-design/cartoon-ribbon/)
+	- Blocks, Grid and Background created exclusively using Photoshop
 
 ## License:
 MIT
