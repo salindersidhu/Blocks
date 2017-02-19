@@ -1,20 +1,15 @@
 #include "ResourceManager.hpp"
 
-ResourceManager::ResourceManager(string resFile, string resFileHash) {
+ResourceManager::ResourceManager(string resourceFile) {
 	// Check if the resource file exists
-	if (!ifstream(resFile)) {
-		throw EngineException("Error: Resource file " + resFile +
+	if (!ifstream(resourceFile)) {
+		throw EngineException("Error: Resource file " + resourceFile +
 			" does not exist");
 	}
-	// Check if the resource file's hash matches the original stored hash
-    if (!FileHashCheck().isHashMatch(resFile, resFileHash)) {
-        // Throw EngineException
-        throw EngineException("Error: Invalid hash value for " + resFile);
-    }
 	// Initalize the PHYSFS system
 	PHYSFS_init(NULL);
 	// Open the resource archive with PHYSFS
-	PHYSFS_addToSearchPath(resFile.c_str(), 1);
+	PHYSFS_addToSearchPath(resourceFile.c_str(), 1);
 }
 
 ResourceManager::~ResourceManager() {

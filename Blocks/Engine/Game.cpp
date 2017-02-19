@@ -1,7 +1,7 @@
 #include "Game.hpp"
 
 Game::Game(string title, int width, int height, int bits, int FPS,
-    string resFile, string resFileHash) {
+    string resourceFile) {
     // Initialize and setup the game RenderWindow
     window = new RenderWindow(VideoMode(width, height, bits), title,
         Style::Close);
@@ -10,7 +10,7 @@ Game::Game(string title, int width, int height, int bits, int FPS,
     dialog = new Dialog(title, window);
     // Initialize and setup the ResourceManager
     try {
-        resMan = new ResourceManager(resFile, resFileHash);
+        resMan = new ResourceManager(resourceFile);
     } catch(exception &ex) {
         // Display error message and exit game if an exception was thrown
         dialog->showError(ex.what());

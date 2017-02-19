@@ -1,9 +1,11 @@
 # Executable and copied resource file
 Blocks/data.7z
 Blocks/Blocks
-# Visual Studio generated files
+
+# Visual Studio
 *.sdf
 *.opendb
+*.db
 *.o
 .vs/
 Blocks.aps
@@ -11,5 +13,9 @@ Debug
 Release
 x64
 x86
+
+# Visual Studio Code
+.vscode
+
 # Mac OS X generated files
 .DS_Store

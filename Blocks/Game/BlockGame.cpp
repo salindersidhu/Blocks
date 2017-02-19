@@ -2,16 +2,14 @@
 
 BlockGame::BlockGame() {
 	// Define Game constants
-    const string resHash =
-        "1b68baabebca8455942322ce77f8c99f707f0ead64e1cf27ab54577b06289b60";
-    const string resFile = "data.7z";
+    const string resourceFile = "data.7z";
     const string title = "Blocks";
     const int winWidth = 600;
     const int winHeight = 700;
     const int FPS = 60;
     const int bits = 32;
     // Initialize the Game
-    game = new Game(title, winWidth, winHeight, bits, FPS, resFile, resHash);
+    game = new Game(title, winWidth, winHeight, bits, FPS, resourceFile);
     // Obtain the ResourceManager, RenderWindow and SaveObject from Game
     resMan = game->getResourceManager();
     window = game->getWindow();

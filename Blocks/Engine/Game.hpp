@@ -15,7 +15,7 @@ using namespace std;
 class Game {
 public:
     // Constructor and destructor
-    Game(string, int, int, int, int, string, string);
+    Game(string, int, int, int, int, string);
     ~Game();
     // Game functions
     ResourceManager *getResourceManager();
