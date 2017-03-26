@@ -1,4 +1,32 @@
-# Executable and copied resource file
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
 Blocks/data.7z
 Blocks/Blocks
 
@@ -6,7 +34,6 @@ Blocks/Blocks
 *.sdf
 *.opendb
 *.db
-*.o
 .vs/
 Blocks.aps
 Debug

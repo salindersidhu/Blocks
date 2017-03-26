@@ -36,4 +36,4 @@ Please refer to the [Wiki Section](https://github.com/SalinderSidhu/Blocks/wiki)
 	- Blocks, Grid and Background created exclusively using Photoshop
 
 ## License:
-MIT
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](/LICENSE.md)
