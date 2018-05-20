@@ -3,10 +3,10 @@
 ## Description:
 Blocks is a 2D puzzle game where the objective is to rearrange the blocks (horizontally or vertically) so that you can push the red block out of the board. The blocks can only move in the direction of their orientation. Blocks positioned vertically can only move vertically, likewise, blocks positioned horizontally can only move horizontally. To slide a block, simply click on the block to select it and move the mouse, release the mouse to position the block. The number of moves and amount of time taken are displayed when the level is successfully completed.
 <p align="center">
-	<img src="screenshot1.png" alt="Main Menu"/>
-	<img src="screenshot2.png" alt="Level 1"/>
-    <img src="screenshot3.png" alt="Level 5"/>
-	<img src="screenshot4.png" alt="Level 5 Results"/>
+	<img src="https://user-images.githubusercontent.com/12175684/40275888-726a1f1c-5bca-11e8-856d-d0793b536ae0.png" alt="Main Menu"/>
+	<img src="https://user-images.githubusercontent.com/12175684/40275889-74058b90-5bca-11e8-9100-8f62c97c08a0.png" alt="Level 1"/>
+    <img src="https://user-images.githubusercontent.com/12175684/40275890-75054fa8-5bca-11e8-85cc-1f9166718b48.png" alt="Level 5"/>
+	<img src="https://user-images.githubusercontent.com/12175684/40275891-75fa10ce-5bca-11e8-8987-7bfe8794f32c.png" alt="Level 5 Results"/>
 </p>
 
 ## Supports:
