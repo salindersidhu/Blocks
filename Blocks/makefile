@@ -8,7 +8,7 @@ ifeq ($(OS),Darwin)
 	LDFLAGS=-framework sfml-graphics -framework sfml-audio -framework sfml-window -framework sfml-system
 else
 	# Linux LDFLAGS
-	LDFLAGS=-L/usr/local/lib -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-System
+	LDFLAGS=-L/usr/local/lib -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system
 endif
 # Sources for compiling
 SOURCES=Engine/Dialog.cpp Engine/SaveObject.cpp Engine/ResourceManager.cpp Engine/LevelObject.cpp Engine/Game.cpp Game/Logic/MinuteClock.cpp Game/Logic/Block.cpp Game/Logic/Grid.cpp Game/Levels/CoreLevel.cpp Game/Levels/MenuLevel.cpp Game/Levels/WinLevel.cpp Game/Levels/GameLevel.cpp Game/Objects/CoreObject.cpp Game/Objects/FadeEffect.cpp Game/Objects/WinInfo.cpp Game/Objects/HUD.cpp Game/Objects/Button.cpp Game/Objects/GameGrid.cpp Game/BlockGame.cpp main.cpp
