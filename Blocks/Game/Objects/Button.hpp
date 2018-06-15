@@ -14,7 +14,6 @@ public:
 	Button(string, int, Font, Texture, Texture);
 	virtual ~Button() {};
 	// ButtonObject functions
-	void setSounds(SoundBuffer, SoundBuffer);
 	void setColours(Color, Color);
 	void setPosition(float, float);
 	void onMouseLeftClick(Vector2i);
@@ -34,7 +33,6 @@ private:
 	bool isMouseOverVar;			// If mouse is over the Button
 	bool isClickedVar;				// If Button is clicked
 	bool isSelectedVar;				// If Button is hover selected
-	bool isPlayHoverSoundVar;		// If hover sound is played
 	Texture buttonNormalTexture;	// Button's normal Texture
 	Texture buttonHoverTexture;		// Button's hover Texture
 	Sprite buttonNormalSprite;		// Button's normal Sprite
@@ -43,10 +41,6 @@ private:
 	Text buttonText;				// Button's Text
 	Color normalColour;				// Button's normal text colour
 	Color hoverColour;				// Button's hover text colour
-	SoundBuffer hoverBuffer;		// Button's hover sound buffer
-	SoundBuffer clickBuffer;		// Button's click sound buffer
-	Sound hoverSound;				// Button's hover sound
-	Sound clickSound;				// Button's click sound
 };
 
 #endif // BUTTON_HPP

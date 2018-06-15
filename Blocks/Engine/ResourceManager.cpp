@@ -1,126 +1,67 @@
 #include "ResourceManager.hpp"
 
-ResourceManager::ResourceManager(string resourceFile) {
-	// Check if the resource file exists
-	if (!ifstream(resourceFile)) {
-		throw EngineException("Error: Resource file " + resourceFile +
-			" does not exist");
-	}
-	// Initalize the PHYSFS system
-	PHYSFS_init(NULL);
-	// Open the resource archive with PHYSFS
-	PHYSFS_addToSearchPath(resourceFile.c_str(), 1);
-}
-
-ResourceManager::~ResourceManager() {
-	// De initalize the PHYSFS system
-	PHYSFS_deinit();
-}
-
-void ResourceManager::openVerifyStream(string source) {
-	// Loading resource from resource archive
-	if (!archiveStream.open(&source)) {
-		// Throw an EngineException
-		throw EngineException("Error: Loading resource " + source);
-	}
-}
-
-void ResourceManager::loadTexture(string source, string name) {
+void ResourceManager::loadTexture(const unsigned char* src, int size, string id) {
 	Texture texture;
-	// Load Texture from the resource archive
-	openVerifyStream(source);
-	// Obtain the Texture from the stream
-	if (texture.loadFromStream(archiveStream)) {
-		// Store the t=Texture
-		textures[name] = texture;
-		archiveStream.close();
+	// Load the Texture from the memory
+	if (texture.loadFromMemory(src, size)) {
+		// Store the Texture
+		textures[id] = texture;
 	} else {
 		// Throw an EngineException
-		throw EngineException("Error: Loading Texture " + source);
+		throw EngineException("Error: Loading Texture " + id);
 	}
 }
 
-void ResourceManager::loadFont(string source, string name) {
+void ResourceManager::loadFont(const unsigned char* src, int size, string id) {
 	Font font;
-	// Load font from the resource archive
-	openVerifyStream(source);
-	// Obtain the Font from the stream
-	if (font.loadFromStream(archiveStream)) {
+	// Load the Font from the memory
+	if (font.loadFromMemory(src, size)) {
 		// Store the Font
-		fonts[name] = font;
-		// Stream is not closed because SFML can't preload all the data.
+		fonts[id] = font;
 	} else {
 		// Throw an EngineException
-		throw EngineException("Error: Loading Font " + source);
+		throw EngineException("Error: Loading Font " + id);
 	}
 }
 
-void ResourceManager::loadImage(string source, string name) {
+void ResourceManager::loadImage(const unsigned char* src, int size, string id) {
 	Image image;
-	// Load image from the resource archive
-	openVerifyStream(source);
-	// Obtain the Image from the stream
-	if (image.loadFromStream(archiveStream)) {
+	// Load the Image from the memory
+	if (image.loadFromMemory(src, size)) {
 		// Store the Image
-		images[name] = image;
-		archiveStream.close();
+		images[id] = image;
 	} else {
 		// Throw an EngineException
-		throw EngineException("Error: Loading Image " + source);
+		throw EngineException("Error: Loading Image " + id);
 	}
 }
 
-void ResourceManager::loadSound(string source, string name) {
-	SoundBuffer buffer;
-	// Load sound from the resource archive
-	openVerifyStream(source);
-	// Obtain the Sound from the stream
-	if (buffer.loadFromStream(archiveStream)) {
-		// Store the Sound
-		soundBuffers[name] = buffer;
-		archiveStream.close();
-	} else {
-		// Throw an EngineException
-		throw EngineException("Error: Loading SoundBuffer " + source);
-	}
-}
-
-Image ResourceManager::getImage(string imageName) {
+Image ResourceManager::getImage(string id) {
 	// Check if the Image exists
-	if (images.find(imageName) != images.end()) {
-		return images[imageName];
+	if (images.find(id) != images.end()) {
+		return images[id];
 	} else {
 		// Throw an EngineException
-		throw EngineException("Error: Getting Image " + imageName);
+		throw EngineException("Error: Getting Image " + id);
 	}
 }
 
-Texture ResourceManager::getTexture(string textureName) {
+Texture ResourceManager::getTexture(string id) {
 	// Check if the Image exists
-	if (textures.find(textureName) != textures.end()) {
-		return textures[textureName];
+	if (textures.find(id) != textures.end()) {
+		return textures[id];
 	} else {
 		// Throw an EngineException
-		throw EngineException("Error: Getting Texture " + textureName);
+		throw EngineException("Error: Getting Texture " + id);
 	}
 }
 
-Font ResourceManager::getFont(string fontName) {
+Font ResourceManager::getFont(string id) {
 	// Check if the Image exists
-	if (fonts.find(fontName) != fonts.end()) {
-		return fonts[fontName];
+	if (fonts.find(id) != fonts.end()) {
+		return fonts[id];
 	} else {
 		// Throw an EngineException
-		throw EngineException("Error: Getting Font " + fontName);
-	}
-}
-
-SoundBuffer ResourceManager::getSound(string soundName) {
-	// Check if the Image exists
-	if (soundBuffers.find(soundName) != soundBuffers.end()) {
-		return soundBuffers[soundName];
-	} else {
-		// Throw an EngineException
-		throw EngineException("Error: Getting Sound " + soundName);
+		throw EngineException("Error: Getting Font " + id);
 	}
 }

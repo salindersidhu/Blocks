@@ -2,14 +2,13 @@
 
 BlockGame::BlockGame() {
 	// Define Game constants
-    const string resourceFile = "data.7z";
     const string title = "Blocks";
     const int winWidth = 600;
     const int winHeight = 700;
     const int FPS = 60;
     const int bits = 32;
     // Initialize the Game
-    game = new Game(title, winWidth, winHeight, bits, FPS, resourceFile);
+    game = new Game(title, winWidth, winHeight, bits, FPS);
     // Obtain the ResourceManager, RenderWindow and SaveObject from Game
     resMan = game->getResourceManager();
     window = game->getWindow();
@@ -195,7 +194,7 @@ void BlockGame::setupLevels(string gameTitle, int winWidth) {
 
 void BlockGame::showLoadingScreen() {
     // Load default Font from ResourceManager
-    resMan->loadFont("CooperBlackStd.otf", "FN_DEFAULT");
+    resMan->loadFont(cooperBlackStd, sizeof(cooperBlackStd), "FN_DEFAULT");
     // Create the loading display text and font
     Text loadingText;
     Font font = resMan->getFont("FN_DEFAULT");
@@ -217,32 +216,27 @@ void BlockGame::showLoadingScreen() {
 }
 
 void BlockGame::loadGameResources() {
-    // Load all of the Game's Images, Textures, Sounds and Fonts
-    resMan->loadImage("icon.png", "IM_ICON");
-    resMan->loadTexture("bh21.png", "TX_BH21");
-    resMan->loadTexture("bh22.png", "TX_BH22");
-    resMan->loadTexture("bh23.png", "TX_BH23");
-    resMan->loadTexture("bh24.png", "TX_BH24");
-    resMan->loadTexture("bh25.png", "TX_BH25");
-    resMan->loadTexture("bh26.png", "TX_BH26");
-    resMan->loadTexture("bh31.png", "TX_BH31");
-    resMan->loadTexture("bh32.png", "TX_BH32");
-    resMan->loadTexture("bv21.png", "TX_BV21");
-    resMan->loadTexture("bv22.png", "TX_BV22");
-    resMan->loadTexture("bv23.png", "TX_BV23");
-    resMan->loadTexture("bv24.png", "TX_BV24");
-    resMan->loadTexture("bv25.png", "TX_BV25");
-    resMan->loadTexture("bv26.png", "TX_BV26");
-    resMan->loadTexture("bv31.png", "TX_BV31");
-    resMan->loadTexture("bv32.png", "TX_BV32");
-    resMan->loadSound("victory.ogg", "SN_VICTORY");
-    resMan->loadSound("hover.ogg", "SN_BUTTON_HOVER");
-    resMan->loadSound("click.ogg", "SN_BUTTON_CLICK");
-    resMan->loadSound("musicbg.ogg", "MS_BACKGROUND");
-    resMan->loadTexture("button.png", "TX_BUTTON_NORMAL");
-    resMan->loadTexture("menubg.png", "TX_BACKGROUND_MENU");
-    resMan->loadTexture("levelbg.png", "TX_BACKGROUND_GAME");
-    resMan->loadTexture("button_select.png", "TX_BUTTON_HOVER");
-    // Fonts must be loaded last because the stream is requiured to be open
-    resMan->loadFont("CooperBlackStd.otf", "FN_COPPER");
+    // Load all of the Game's Images, Textures and Fonts
+    resMan->loadTexture(bh21, sizeof(bh21), "TX_BH21");
+    resMan->loadTexture(bh22, sizeof(bh22), "TX_BH22");
+    resMan->loadTexture(bh23, sizeof(bh23), "TX_BH23");
+    resMan->loadTexture(bh24, sizeof(bh24), "TX_BH24"); 
+    resMan->loadTexture(bh25, sizeof(bh25), "TX_BH25");
+    resMan->loadTexture(bh26, sizeof(bh26), "TX_BH26");
+    resMan->loadTexture(bh31, sizeof(bh31), "TX_BH31");
+    resMan->loadTexture(bh32, sizeof(bh32), "TX_BH32");
+    resMan->loadTexture(bv21, sizeof(bv21), "TX_BV21");
+    resMan->loadTexture(bv22, sizeof(bv22), "TX_BV22");
+    resMan->loadTexture(bv23, sizeof(bv23), "TX_BV23");
+    resMan->loadTexture(bv24, sizeof(bv24), "TX_BV24");
+    resMan->loadTexture(bv25, sizeof(bv25), "TX_BV25");
+    resMan->loadTexture(bv26, sizeof(bv26), "TX_BV26");
+    resMan->loadTexture(bv31, sizeof(bv31), "TX_BV31");
+    resMan->loadTexture(bv32, sizeof(bv32), "TX_BV32");
+    resMan->loadImage(icon, sizeof(icon), "IM_ICON");
+    resMan->loadTexture(menuBG, sizeof(menuBG), "TX_BG_MENU");
+    resMan->loadTexture(levelBG, sizeof(levelBG), "TX_BG_GAME");
+    resMan->loadTexture(btnHover, sizeof(btnHover), "TX_BUTTON_HOVER");
+    resMan->loadTexture(btnNormal, sizeof(btnNormal), "TX_BUTTON_NORMAL");
+    resMan->loadFont(cooperBlackStd, sizeof(cooperBlackStd), "FN_COPPER");
 }

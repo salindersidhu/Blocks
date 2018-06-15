@@ -5,10 +5,7 @@ GameLevel::GameLevel(string title, ResourceManager *resMan,
     CoreLevel(title, resMan, window, saveObj) {
     // Obtain the game's resources for this level
     Font font = resMan->getFont("FN_COPPER");
-    SoundBuffer bgMusic = resMan->getSound("MS_BACKGROUND");
-    SoundBuffer hoverSound = resMan->getSound("SN_BUTTON_HOVER");
-    SoundBuffer clickSound = resMan->getSound("SN_BUTTON_CLICK");
-    Texture background = resMan->getTexture("TX_BACKGROUND_GAME");
+    Texture background = resMan->getTexture("TX_BG_GAME");
     Texture buttonHover = resMan->getTexture("TX_BUTTON_HOVER");
     Texture buttonNormal = resMan->getTexture("TX_BUTTON_NORMAL");
     // Create and configure new Button objects
@@ -16,13 +13,10 @@ GameLevel::GameLevel(string title, ResourceManager *resMan,
     quitButton = new Button("Quit", 30, font, buttonNormal, buttonHover);
     resetButton->setPosition(111, 107);
     quitButton->setPosition(321, 107);
-    resetButton->setSounds(hoverSound, clickSound);
-    quitButton->setSounds(hoverSound, clickSound);
     resetButton->setColours(white, red);
     quitButton->setColours(white, red);
-    // Set the background texture and music
+    // Set the background texture
     setHUD(background, font);
-    setBackgroundMusic(bgMusic, 19.5, true);
     // Add the GameObject pointers to the object's container
     objects.push_back(resetButton);
     objects.push_back(quitButton);

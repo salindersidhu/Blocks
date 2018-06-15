@@ -14,17 +14,8 @@ Button::Button(string title, int size, Font font, Texture normalTexture,
 	buttonText.setCharacterSize((unsigned int)size);
 	// Set remaining instance variables
 	isMouseOverVar = false;
-	isPlayHoverSoundVar = true;
 	isClickedVar = false;
 	isSelectedVar = false;
-}
-
-void Button::setSounds(SoundBuffer hover, SoundBuffer click) {
-	// Set the hover and click Sounds
-	hoverBuffer = hover;
-	clickBuffer = click;
-	clickSound.setBuffer(clickBuffer);
-	hoverSound.setBuffer(hoverBuffer);
 }
 
 void Button::setColours(Color normal, Color hover) {
@@ -47,7 +38,6 @@ void Button::setPosition(float x, float y) {
 void Button::onMouseLeftClick(Vector2i mousePosition) {
 	// Play click sound effect if left button clicked
 	if (isMouseOverVar && !isSelectedVar) {
-		clickSound.play();
 		isSelectedVar = true;
 	}
 }
@@ -55,21 +45,10 @@ void Button::onMouseLeftClick(Vector2i mousePosition) {
 void Button::onMouseMove(Vector2i mousePosition) {
 	// Set isMouseOver to true if mouse is hovering over the Button
 	isMouseOverVar = isHovering(mousePosition.x, mousePosition.y);
-	// Play hover sound effect only once if button is hovered
-	if (isMouseOverVar) {
-		if (isPlayHoverSoundVar) {
-			hoverSound.play();
-			isPlayHoverSoundVar = false;
-		}
-	} else {
-		// Reset isPlayHoverSound to true if mouse isn't hovering over button
-		isPlayHoverSoundVar = true;
-	}
 }
 
 void Button::update() {
-	if (isSelectedVar &&
-		clickSound.getStatus() == SoundSource::Status::Stopped) {
+	if (isSelectedVar) {
 		isClickedVar = true;
 		isSelectedVar = false;
 	}

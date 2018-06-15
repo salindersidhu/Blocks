@@ -6,31 +6,25 @@ Blocks is a 2D puzzle game where the objective is to rearrange the blocks (horiz
 	<img src="https://user-images.githubusercontent.com/12175684/40275888-726a1f1c-5bca-11e8-856d-d0793b536ae0.png" alt="Main Menu"/>
 	<img src="https://user-images.githubusercontent.com/12175684/40275889-74058b90-5bca-11e8-9100-8f62c97c08a0.png" alt="Level 1"/>
     <img src="https://user-images.githubusercontent.com/12175684/40275890-75054fa8-5bca-11e8-85cc-1f9166718b48.png" alt="Level 5"/>
-	<img src="https://user-images.githubusercontent.com/12175684/40275891-75fa10ce-5bca-11e8-8987-7bfe8794f32c.png" alt="Level 5 Results"/>
+	<img src="https://user-images.githubusercontent.com/12175684/40275891-75fa10ce-5bca-11e8-8987-7bfe8794f32c.png" alt="Level 5 Complete"/>
 </p>
 
 ## Supports:
-- Microsoft Windows 7, 8, 8.1 and 10
-- Linux based distributions
+- Microsoft Windows 7 - 10
+- Linux Distributions
 - Mac OS X
 
 ## Dependencies:
 - **Compiler**
-	- G++ or Microsoft Visual Studio 2015 [Community Edition](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx)
+	- G++ or Microsoft Visual Studio 2017 [Community Edition](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx)
 - **Libraries**
-	- SFML 32-bit [(Build 2.3.2)](http://www.sfml-dev.org/download/sfml/2.3.2/)
-	- PhysicsFS [(Build 2.0.3)](https://icculus.org/physfs/downloads/)
+	- SFML 32-bit [(Build 2.3.2)](https://www.sfml-dev.org/download/sfml/2.3.2/)
 	- CocoaDialog [(Build 2.1.1)](https://mstratman.github.io/cocoadialog/#download)
 
 ## Build Instructions:
 Please refer to the [Wiki Section](https://github.com/SalinderSidhu/Blocks/wiki) for instruction on compiling and building Blocks.
 
 ## Credits:
-- **Audio**
-	- Button click sound created by **josepharaoh99** from [freesound](https://www.freesound.org/people/josepharaoh99/sounds/379339/) under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/)
-	- Button hover sound created by **plasterbrain** from [freesound](https://www.freesound.org/people/plasterbrain/sounds/237422/) under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/)
-	- Level complete sound created by **Tuudurt** from [freesound](https://www.freesound.org/people/Tuudurt/sounds/275104/) under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/)
-	- Background music created by **Sirkoto51** from [freesound](https://www.freesound.org/people/Sirkoto51/sounds/378110/) under [CC Attribution 3.0](https://creativecommons.org/licenses/by/3.0/)
 - **Graphics**
 	- Ribbon inspired from a Photoshop [Ribbon Tutorial](http://www.photoshopstar.com/web-design/cartoon-ribbon/)
 	- Blocks, Grid and Background created exclusively using Photoshop
