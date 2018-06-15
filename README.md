@@ -10,27 +10,21 @@ Blocks is a 2D puzzle game where the objective is to rearrange the blocks (horiz
 </p>
 
 ## Supports:
-- Microsoft Windows 7, 8, 8.1 and 10
-- Linux based distributions
+- Microsoft Windows 7 - 10
+- Linux Distributions
 - Mac OS X
 
 ## Dependencies:
 - **Compiler**
-	- G++ or Microsoft Visual Studio 2015 [Community Edition](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx)
+	- G++ or Microsoft Visual Studio 2017 [Community Edition](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx)
 - **Libraries**
-	- SFML 32-bit [(Build 2.3.2)](http://www.sfml-dev.org/download/sfml/2.3.2/)
-	- PhysicsFS [(Build 2.0.3)](https://icculus.org/physfs/downloads/)
-	- CocoaDialog [(Build 2.1.1)](https://mstratman.github.io/cocoadialog/#download)
+	- SFML 64-bit [(Build 2.5.0)](https://www.sfml-dev.org/download/sfml/2.5.0/)
+	- CocoaDialog [(Build 2.1.1)](https://github.com/cocoadialog/cocoadialog)
 
 ## Build Instructions:
 Please refer to the [Wiki Section](https://github.com/SalinderSidhu/Blocks/wiki) for instruction on compiling and building Blocks.
 
 ## Credits:
-- **Audio**
-	- Button click sound created by **josepharaoh99** from [freesound](https://www.freesound.org/people/josepharaoh99/sounds/379339/) under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/)
-	- Button hover sound created by **plasterbrain** from [freesound](https://www.freesound.org/people/plasterbrain/sounds/237422/) under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/)
-	- Level complete sound created by **Tuudurt** from [freesound](https://www.freesound.org/people/Tuudurt/sounds/275104/) under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/)
-	- Background music created by **Sirkoto51** from [freesound](https://www.freesound.org/people/Sirkoto51/sounds/378110/) under [CC Attribution 3.0](https://creativecommons.org/licenses/by/3.0/)
 - **Graphics**
 	- Ribbon inspired from a Photoshop [Ribbon Tutorial](http://www.photoshopstar.com/web-design/cartoon-ribbon/)
 	- Blocks, Grid and Background created exclusively using Photoshop
