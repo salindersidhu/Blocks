@@ -5,7 +5,7 @@ MenuLevel::MenuLevel(string title, ResourceManager *resMan,
     CoreLevel(title, resMan, window, saveObj) {
     // Obtain the game's resources for this level
     Font font = resMan->getFont("FN_COPPER");
-    Texture background = resMan->getTexture("TX_BACKGROUND_MENU");
+    Texture background = resMan->getTexture("TX_BG_MENU");
     Texture buttonHover = resMan->getTexture("TX_BUTTON_HOVER");
     Texture buttonNormal = resMan->getTexture("TX_BUTTON_NORMAL");
     // Create and configure new Button objects

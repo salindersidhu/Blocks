@@ -19,6 +19,7 @@ Blocks is a 2D puzzle game where the objective is to rearrange the blocks (horiz
 	- G++ or Microsoft Visual Studio 2017 [Community Edition](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx)
 - **Libraries**
 	- SFML 32-bit [(Build 2.3.2)](https://www.sfml-dev.org/download/sfml/2.3.2/)
+	- CocoaDialog [(Build 2.1.1)](https://mstratman.github.io/cocoadialog/#download)
 
 ## Build Instructions:
 Please refer to the [Wiki Section](https://github.com/SalinderSidhu/Blocks/wiki) for instruction on compiling and building Blocks.

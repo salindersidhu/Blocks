@@ -75,72 +75,6 @@
     <ClCompile Include="Engine\Dialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Assets\bh21.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Assets\bh22.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Assets\bh23.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Assets\bh24.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Assets\bh25.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Assets\bh26.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Assets\bh31.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Assets\bh32.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Assets\button_select.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Assets\bv21.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Assets\bv22.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Assets\bv23.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Assets\bv25.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Assets\bv24.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Assets\bv26.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Assets\bv31.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Assets\bv32.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Assets\CooperBlackStd.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Assets\levelbg.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Assets\menubg.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Assets\icon.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Assets\button_normal.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -213,6 +147,72 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Game\Levels\MenuLevel.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Assets\bh21.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Assets\bh22.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Assets\bh24.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Assets\bh23.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Assets\bh25.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Assets\bh26.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Assets\bh31.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Assets\bh32.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Assets\bv21.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Assets\bv22.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Assets\bv23.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Assets\bv24.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Assets\bv25.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Assets\bv26.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Assets\bv31.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Assets\bv32.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Assets\btnHover.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Assets\btnNormal.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Assets\cooperBlackStd.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Assets\icon.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Assets\levelBG.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Assets\menuBG.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
