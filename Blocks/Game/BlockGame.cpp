@@ -2,14 +2,13 @@
 
 BlockGame::BlockGame() {
 	// Define Game constants
-    const string resourceFile = "data.7z";
     const string title = "Blocks";
     const int winWidth = 600;
     const int winHeight = 700;
     const int FPS = 60;
     const int bits = 32;
     // Initialize the Game
-    game = new Game(title, winWidth, winHeight, bits, FPS, resourceFile);
+    game = new Game(title, winWidth, winHeight, bits, FPS);
     // Obtain the ResourceManager, RenderWindow and SaveObject from Game
     resMan = game->getResourceManager();
     window = game->getWindow();
@@ -195,7 +194,7 @@ void BlockGame::setupLevels(string gameTitle, int winWidth) {
 
 void BlockGame::showLoadingScreen() {
     // Load default Font from ResourceManager
-    resMan->loadFont("CooperBlackStd.otf", "FN_DEFAULT");
+    resMan->loadFont(_acCooperBlackStd, sizeof(_acCooperBlackStd), "FN_DEFAULT");
     // Create the loading display text and font
     Text loadingText;
     Font font = resMan->getFont("FN_DEFAULT");
@@ -218,31 +217,26 @@ void BlockGame::showLoadingScreen() {
 
 void BlockGame::loadGameResources() {
     // Load all of the Game's Images, Textures, Sounds and Fonts
-    resMan->loadImage("icon.png", "IM_ICON");
-    resMan->loadTexture("bh21.png", "TX_BH21");
-    resMan->loadTexture("bh22.png", "TX_BH22");
-    resMan->loadTexture("bh23.png", "TX_BH23");
-    resMan->loadTexture("bh24.png", "TX_BH24");
-    resMan->loadTexture("bh25.png", "TX_BH25");
-    resMan->loadTexture("bh26.png", "TX_BH26");
-    resMan->loadTexture("bh31.png", "TX_BH31");
-    resMan->loadTexture("bh32.png", "TX_BH32");
-    resMan->loadTexture("bv21.png", "TX_BV21");
-    resMan->loadTexture("bv22.png", "TX_BV22");
-    resMan->loadTexture("bv23.png", "TX_BV23");
-    resMan->loadTexture("bv24.png", "TX_BV24");
-    resMan->loadTexture("bv25.png", "TX_BV25");
-    resMan->loadTexture("bv26.png", "TX_BV26");
-    resMan->loadTexture("bv31.png", "TX_BV31");
-    resMan->loadTexture("bv32.png", "TX_BV32");
-    resMan->loadSound("victory.ogg", "SN_VICTORY");
-    resMan->loadSound("hover.ogg", "SN_BUTTON_HOVER");
-    resMan->loadSound("click.ogg", "SN_BUTTON_CLICK");
-    resMan->loadSound("musicbg.ogg", "MS_BACKGROUND");
-    resMan->loadTexture("button.png", "TX_BUTTON_NORMAL");
-    resMan->loadTexture("menubg.png", "TX_BACKGROUND_MENU");
-    resMan->loadTexture("levelbg.png", "TX_BACKGROUND_GAME");
-    resMan->loadTexture("button_select.png", "TX_BUTTON_HOVER");
-    // Fonts must be loaded last because the stream is requiured to be open
-    resMan->loadFont("CooperBlackStd.otf", "FN_COPPER");
+    resMan->loadTexture(_acbh21, sizeof(_acbh21), "TX_BH21");
+    resMan->loadTexture(_acbh22, sizeof(_acbh22), "TX_BH22");
+    resMan->loadTexture(_acbh23, sizeof(_acbh23), "TX_BH23");
+    resMan->loadTexture(_acbh24, sizeof(_acbh24), "TX_BH24"); 
+    resMan->loadTexture(_acbh25, sizeof(_acbh25), "TX_BH25");
+    resMan->loadTexture(_acbh26, sizeof(_acbh26), "TX_BH26");
+    resMan->loadTexture(_acbh31, sizeof(_acbh31), "TX_BH31");
+    resMan->loadTexture(_acbh32, sizeof(_acbh32), "TX_BH32");
+    resMan->loadTexture(_acbv21, sizeof(_acbv21), "TX_BV21");
+    resMan->loadTexture(_acbv22, sizeof(_acbv22), "TX_BV22");
+    resMan->loadTexture(_acbv23, sizeof(_acbv23), "TX_BV23");
+    resMan->loadTexture(_acbv24, sizeof(_acbv24), "TX_BV24");
+    resMan->loadTexture(_acbv25, sizeof(_acbv25), "TX_BV25");
+    resMan->loadTexture(_acbv26, sizeof(_acbv26), "TX_BV26");
+    resMan->loadTexture(_acbv31, sizeof(_acbv31), "TX_BV31");
+    resMan->loadTexture(_acbv32, sizeof(_acbv32), "TX_BV32");
+    resMan->loadImage(_acicon, sizeof(_acicon), "IM_ICON");
+    resMan->loadFont(_acCooperBlackStd, sizeof(_acCooperBlackStd), "FN_COPPER");
+    resMan->loadTexture(_acmenubg, sizeof(_acmenubg), "TX_BACKGROUND_MENU");
+    resMan->loadTexture(_aclevelbg, sizeof(_aclevelbg), "TX_BACKGROUND_GAME");
+    resMan->loadTexture(_acbutton_select, sizeof(_acbutton_select), "TX_BUTTON_NORMAL");
+    resMan->loadTexture(_acbutton_select, sizeof(_acbutton_select), "TX_BUTTON_HOVER");
 }

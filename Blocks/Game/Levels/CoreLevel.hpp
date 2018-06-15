@@ -4,7 +4,6 @@
 #include <string>
 #include <SFML/Graphics.hpp>
 #include "../Objects/HUD.hpp"
-#include "../Objects/BGMusic.hpp"
 #include "../Objects/FadeEffect.hpp"
 #include "../../Engine/SaveObject.hpp"
 #include "../../Engine/SaveObject.hpp"
@@ -22,7 +21,6 @@ public:
     virtual void transitionEventHandler() {};
     virtual void transitionTriggerEvents() {};
     void setTransitionTriggerEvent(string);
-    void setBackgroundMusic(SoundBuffer, float, bool);
     void setHUD(Texture, Font);
     void update();
     void reset();
@@ -33,7 +31,6 @@ protected:
     Color black;                    // Black Colour object
     string title;                   // Title of the current LevelObject
     HUD *displayHUD;                // HUD pointer
-    BGMusic *bgMusic;               // BGMusic pointer
     FadeEffect *fadeEffect;         // FadeEffect pointer
     string transitionEventName;     // Name of the transition event
 private:

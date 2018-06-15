@@ -38,15 +38,10 @@ void CoreLevel::update() {
             // Add fadeEffect pointer if it doesn't exist in the objects
             objects.push_back(fadeEffect);
         }
-        // Start the background music only once
-        bgMusic->start();
         isStartedVar = true;
     }
     // Process transition events
-    if (isTransitionVar) {
-        // Stop the bgMusic if level is transitoning
-        bgMusic->stop();
-    } else {
+    if (!isTransitionVar){
         // Execute events that trigger a level transition
         transitionTriggerEvents();
     }
@@ -61,14 +56,6 @@ void CoreLevel::setTransitionTriggerEvent(string _transitionEventName) {
     transitionEventName = _transitionEventName;
     fadeEffect->start();
     isTransitionVar = true;
-}
-
-void CoreLevel::setBackgroundMusic(SoundBuffer musicBuffer, float loopTime,
-    bool isLoop) {
-    // Create a new BGMusic object pointer
-    bgMusic = new BGMusic(musicBuffer, loopTime, isLoop);
-    // Add the GameObject pointers to the object's container
-    objects.push_back(bgMusic);
 }
 
 void CoreLevel::setHUD(Texture background, Font font) {

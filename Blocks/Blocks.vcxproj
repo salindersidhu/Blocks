@@ -103,14 +103,14 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\PHYSFS-2.0.3\include;C:\SFML-2.3.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\SFML-2.3.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>SFML_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>C:\PHYSFS-2.0.3\lib;C:\SFML-2.3.2\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-main.lib;sfml-graphics-s.lib;sfml-window-s.lib;sfml-system-s.lib;sfml-audio-s.lib;physfs.lib;test_physfs.lib;opengl32.lib;freetype.lib;jpeg.lib;winmm.lib;gdi32.lib;comdlg32.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\SFML-2.3.2\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-main.lib;sfml-graphics-s.lib;sfml-window-s.lib;sfml-system-s.lib;sfml-audio-s.lib;opengl32.lib;freetype.lib;jpeg.lib;winmm.lib;gdi32.lib;comdlg32.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
     </Link>
   </ItemDefinitionGroup>
@@ -135,9 +135,30 @@
     <ClCompile Include="Engine\Dialog.cpp" />
     <ClCompile Include="Engine\Game.cpp" />
     <ClCompile Include="Engine\LevelObject.cpp" />
-    <ClCompile Include="Engine\PhysfsStream.cpp" />
     <ClCompile Include="Engine\ResourceManager.cpp" />
     <ClCompile Include="Engine\SaveObject.cpp" />
+    <ClCompile Include="Game\Assets\bh21.c" />
+    <ClCompile Include="Game\Assets\bh22.c" />
+    <ClCompile Include="Game\Assets\bh23.c" />
+    <ClCompile Include="Game\Assets\bh24.c" />
+    <ClCompile Include="Game\Assets\bh25.c" />
+    <ClCompile Include="Game\Assets\bh26.c" />
+    <ClCompile Include="Game\Assets\bh31.c" />
+    <ClCompile Include="Game\Assets\bh32.c" />
+    <ClCompile Include="Game\Assets\button_normal.c" />
+    <ClCompile Include="Game\Assets\button_select.c" />
+    <ClCompile Include="Game\Assets\bv21.c" />
+    <ClCompile Include="Game\Assets\bv22.c" />
+    <ClCompile Include="Game\Assets\bv23.c" />
+    <ClCompile Include="Game\Assets\bv24.c" />
+    <ClCompile Include="Game\Assets\bv25.c" />
+    <ClCompile Include="Game\Assets\bv26.c" />
+    <ClCompile Include="Game\Assets\bv31.c" />
+    <ClCompile Include="Game\Assets\bv32.c" />
+    <ClCompile Include="Game\Assets\CooperBlackStd.c" />
+    <ClCompile Include="Game\Assets\icon.c" />
+    <ClCompile Include="Game\Assets\levelbg.c" />
+    <ClCompile Include="Game\Assets\menubg.c" />
     <ClCompile Include="Game\BlockGame.cpp" />
     <ClCompile Include="Game\Levels\CoreLevel.cpp" />
     <ClCompile Include="Game\Levels\GameLevel.cpp" />
@@ -147,7 +168,6 @@
     <ClCompile Include="Game\Logic\MinuteClock.cpp" />
     <ClCompile Include="Game\Logic\Grid.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Game\Objects\BGMusic.cpp" />
     <ClCompile Include="Game\Objects\Button.cpp" />
     <ClCompile Include="Game\Objects\CoreObject.cpp" />
     <ClCompile Include="Game\Objects\GameGrid.cpp" />
@@ -156,24 +176,23 @@
     <ClCompile Include="Game\Objects\WinInfo.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Engine\EngineException.hpp" />
     <ClInclude Include="Engine\Dialog.hpp" />
+    <ClInclude Include="Engine\EngineException.hpp" />
     <ClInclude Include="Engine\FileHashCheck.hpp" />
     <ClInclude Include="Engine\Game.hpp" />
     <ClInclude Include="Engine\GameObject.hpp" />
     <ClInclude Include="Engine\LevelObject.hpp" />
-    <ClInclude Include="Engine\PhysfsStream.hpp" />
     <ClInclude Include="Engine\ResourceManager.hpp" />
     <ClInclude Include="Engine\SaveObject.hpp" />
     <ClInclude Include="Game\BlockGame.hpp" />
     <ClInclude Include="Game\Levels\CoreLevel.hpp" />
     <ClInclude Include="Game\Levels\GameLevel.hpp" />
     <ClInclude Include="Game\Game\Levels\MenuLevel.hpp" />
+    <ClInclude Include="Game\Levels\MenuLevel.hpp" />
     <ClInclude Include="Game\Levels\WinLevel.hpp" />
     <ClInclude Include="Game\Logic\Block.hpp" />
     <ClInclude Include="Game\Logic\MinuteClock.hpp" />
     <ClInclude Include="Game\Logic\Grid.hpp" />
-    <ClInclude Include="Game\Objects\BGMusic.hpp" />
     <ClInclude Include="Game\Objects\Button.hpp" />
     <ClInclude Include="Game\Objects\CoreObject.hpp" />
     <ClInclude Include="Game\Objects\GameGrid.hpp" />
@@ -186,6 +205,7 @@
     <ResourceCompile Include="Blocks.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Icon.ico" />
     <Image Include="Resources\Icon.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

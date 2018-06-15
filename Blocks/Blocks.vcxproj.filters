@@ -18,13 +18,7 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\PhysfsStream.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\ResourceManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Dialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Game.cpp">
@@ -75,10 +69,76 @@
     <ClCompile Include="Game\Objects\CoreObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Objects\BGMusic.cpp">
+    <ClCompile Include="Game\BlockGame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game\BlockGame.cpp">
+    <ClCompile Include="Engine\Dialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Assets\bh21.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Assets\bh22.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Assets\bh23.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Assets\bh24.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Assets\bh25.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Assets\bh26.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Assets\bh31.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Assets\bh32.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Assets\button_select.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Assets\bv21.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Assets\bv22.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Assets\bv23.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Assets\bv25.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Assets\bv24.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Assets\bv26.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Assets\bv31.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Assets\bv32.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Assets\CooperBlackStd.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Assets\levelbg.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Assets\menubg.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Assets\icon.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Assets\button_normal.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -86,13 +146,7 @@
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\PhysfsStream.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\ResourceManager.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Dialog.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Game.hpp">
@@ -125,9 +179,6 @@
     <ClInclude Include="Game\Objects\FadeEffect.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Game\Objects\BGMusic.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Game\Levels\CoreLevel.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -158,6 +209,12 @@
     <ClInclude Include="Engine\FileHashCheck.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\Dialog.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Levels\MenuLevel.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Blocks.rc">
@@ -166,6 +223,9 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\Icon.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Icon.ico">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
